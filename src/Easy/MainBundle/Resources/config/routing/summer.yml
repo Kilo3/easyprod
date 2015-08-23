@@ -1,0 +1,8 @@
+easy_summer:
+    path:     /
+    defaults: { _controller: "EasyMainBundle:Default:summer" }
+    
+easy_summer_more:
+    path:     /more
+    defaults: { _controller: "EasyMainBundle:Summer:more" }
+    

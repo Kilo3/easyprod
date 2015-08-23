@@ -1,0 +1,18 @@
+Easy\MainBundle\Entity\Review:
+    type: entity
+    table: review
+    id:
+        id:
+            type: integer
+            generator: {strategy: AUTO}
+    fields:
+        title:
+            type: string
+        text:
+            type: text
+        image:
+            type: string
+        order_column:
+            type: integer
+        
+        

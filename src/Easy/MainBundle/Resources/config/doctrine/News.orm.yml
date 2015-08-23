@@ -1,0 +1,28 @@
+Easy\MainBundle\Entity\News:
+    type: entity
+    table: news
+    id:
+        id:
+            type: integer
+            generator: {strategy: AUTO}
+    fields:
+        name:
+            type: string
+        type:
+            type: string
+#            options:
+#                default: published
+        preview:
+            type: text
+        text:
+            type: text
+        order_column:
+            type: integer
+        date:
+            type: date
+#    oneToMany:
+#        content:
+#            targetEntity: Content
+#            mappedBy: city
+#            
+ 

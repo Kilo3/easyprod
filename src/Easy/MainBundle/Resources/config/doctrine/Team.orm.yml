@@ -1,0 +1,46 @@
+Easy\MainBundle\Entity\Team:
+    type: entity
+    table: team
+    fields:
+        id:
+            id: true
+            type: bigint
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        name:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        text:
+            type: text
+            
+#    oneToMany:
+#        media:
+#            targetEntity: Application\Sonata\MediaBundle\Entity\Media
+#            mappedBy: Team
+#            joinColumn:
+#                name: media_id
+#                referencedColumnName: id
+#    manyToOne:
+#        
+            
+    manyToOne:
+        content:
+            targetEntity: Content
+            inversedBy: teams
+        media:
+            targetEntity: Application\Sonata\MediaBundle\Entity\Media
+            cascade: ["persist"]
+            fetch: LAZY
+            
+#    manyToOne:
+#        content:
+#            targetEntity: Content
+#            inversedBy: team
+#            joinColumn:
+#                name: content_id
+#                referencedColumnName: id
+        
+    

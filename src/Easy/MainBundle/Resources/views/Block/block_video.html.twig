@@ -1,0 +1,25 @@
+<div class='content'>
+    <p class='title'>{{ content.getName()}}</p>
+    <div class='leftBlock'>
+        <div class='advantage'>
+            {% autoescape false %}
+                {{ content.getContent()}}
+            {% endautoescape %}
+        </div>
+        <div class='buttonSquare'>
+            <a href='javascript:;' onclick="toggleMenu('secondLayerMenu{{ content.getSecondMenu()}}');">Узнать подробнее</a>
+        </div>
+    </div>
+    <div class='rightBlock'>
+        <div class='videoContainer'>
+            <p>Easy Video</p>
+            <video loop=''>
+                {% for galleryHasMedia in gallery.GalleryHasMedias %}
+                    <source src='{% path galleryHasMedia.media, 'reference' %}' type='video/mp4'>
+                {% endfor %}
+            </video>  
+            <a class='play'><i class='fa fa-play'></i></a>
+            <a class='pause' href='#' style='display: none;'><i class='fa fa-pause'></i></a>
+        </div>
+    </div>
+</div>

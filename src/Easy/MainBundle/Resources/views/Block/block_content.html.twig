@@ -1,0 +1,14 @@
+<div class="content">
+    <p class="title">{{ content.getName() }}</p>
+    <div class="inside">
+        {% if galleryId is defined and galleryId is not null  %}
+            <div class="buttonSquare" style="margin-left: 70px;margin-bottom: 40px;">
+                <a href="/gallery/{{ galleryId }}">Фото / Видео</a>
+            </div>
+        {% endif %}
+        {% autoescape false %}
+            {{ content.getContent()}}
+        {% endautoescape %}
+        
+    </div>
+</div>

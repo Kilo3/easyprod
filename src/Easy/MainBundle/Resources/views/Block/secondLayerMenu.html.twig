@@ -1,0 +1,35 @@
+{% for menu in menuList %}
+    <div class="nav-menu secondLayerMenu{{ loop.index }}">
+        <a href="{{ path('easy_main_homepage') }}">
+            <img id="logo" src="{{ asset('/bundles/easymain/images/logoMain.png') }}" >
+        </a>
+        <div class="menuList">
+            {% if menu.content|length > 24 %}
+                {% set foo = 'col-2' %}
+            {% elseif menu.content|length > 18 %}
+                {% set foo = 'col-3' %}
+            {% elseif menu.content|length > 12 %}
+                {% set foo = 'col-4' %}
+            {% elseif menu.content|length > 6 %}
+                {% set foo = 'col-6' %}
+            {% else %}
+                {% set foo = 'col-12' %}
+            {% endif %}
+            <div class="{{ foo }}">
+                {% for content in menu.content %}
+                    <div><a class="yellowHover" href="{{ app.request.uri }}{{ menu.url }}#section{{ loop.index }}">{{ content.getName() }}</a></div>
+                    {% if loop.index == 6 or loop.index == 12 or loop.index == 18 or loop.index == 24 %}
+                        </div>
+                        <div class="{{ foo }}">
+                    {% endif%}
+                {% endfor %}
+            </div>
+
+        </div>
+        <div class="menu-button" onclick="toggleMenu('secondLayerMenu{{ loop.index }}');">
+            <span class=""></span>
+            <span class=""></span>
+            <span class=""></span>
+        </div>
+    </div>
+{% endfor %}

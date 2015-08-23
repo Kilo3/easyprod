@@ -1,0 +1,76 @@
+easy_main_test:
+    path:     /test/
+    defaults: { _controller: EasyMainBundle:Default:test }
+    
+easy_main_news_show:
+    pattern:  /news/{id}/
+    defaults: { _controller: EasyMainBundle:Default:newsShow }
+    requirements:
+        id: \d+
+        
+easy_main_news:
+    path:     /news/
+    defaults: { _controller: EasyMainBundle:Default:news }
+    
+login:
+    pattern:   /login/
+    defaults:  { _controller: EasyMainBundle:Default:login }
+    
+login_check:
+    pattern:   /login_check/
+#    defaults:  { _controller: EasyMainBundle:Default:login }
+logout:
+    pattern:   /logout
+    
+easy_main_gallery:
+    path:     /gallery/{id}/
+    defaults: { _controller: EasyMainBundle:Default:gallery }
+    
+easy_main_calendar:
+    path:     /calendar/{id}/
+    defaults: { _controller: EasyMainBundle:Default:calendar }
+    
+form_controller:
+    path: /ajax/
+    defaults: { _controller: EasyMainBundle:Form:index }
+
+
+    
+
+easy_main_controller:
+    pattern: /{part1}/
+    defaults: { _controller: EasyMainBundle:Default:index}
+    
+easy_main_controller_part2:
+    pattern: /{part1}/{part2}/
+    defaults: { _controller: EasyMainBundle:Default:indexPart2}
+#    
+
+#easy_main_kid:
+#    resource: "@EasyMainBundle/Resources/config/routing/kid.yml"
+#    prefix:   /kid
+#    
+#easy_main_foreign:
+#    path:     /foreign/
+#    defaults: { _controller: EasyMainBundle:Default:foreign }
+#    
+#easy_main_summer:
+#    resource: "@EasyMainBundle/Resources/config/routing/summer.yml"
+#    prefix:   /summer
+#    
+#easy_main_tsdo:
+#    path:     /tsdo/
+#    defaults: { _controller: EasyMainBundle:Default:tsdo }
+#    
+easy_main_homepage:
+    path:     /
+    defaults: { _controller: EasyMainBundle:Default:main }
+    
+
+#    
+#    
+#
+#easy_main_main:
+#    path:     /main/
+#    defaults: { _controller: EasyMainBundle:Default:main }
+#    

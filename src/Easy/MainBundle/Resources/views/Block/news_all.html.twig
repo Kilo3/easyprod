@@ -1,0 +1,13 @@
+<div class="content">
+    
+    <p class="title">{{ content.getName() }}</p>
+    <div class="links">
+        {% for new in news %}
+            {#{{ dump(new) }}#}
+            <a href="/news/{{ new.id }}">
+                {{ new.name }}
+            </a>
+        {% endfor %}
+        
+    </div>
+</div>

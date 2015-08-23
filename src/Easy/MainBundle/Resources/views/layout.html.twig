@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            {% block title %}
+                easy title
+            {% endblock %}
+        </title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('bundles/easymain/css/jquery-ui.css') }}" type="text/css" media="all" />
+            <link rel="stylesheet" href="{{ asset('bundles/easymain/css/jquery.fullPage.css') }}" type="text/css" media="all" />
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="{{ asset('bundles/easymain/css/blueimp-gallery.min.css') }}" type="text/css" media="all" />
+            <link rel="stylesheet" href="{{ asset('bundles/easymain/css/bootstrap-image-gallery.css') }}" type="text/css" media="all" />
+            <link rel="stylesheet" href="{{ asset('bundles/easymain/css/main.css') }}" type="text/css" media="all" />
+        {% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('bundles/easymain/js/jquery-2.1.4.min.js') }}"></script>
+            <script src="{{ asset('bundles/easymain/js/jquery.cookie.js') }}"></script>
+            <script src="{{ asset('bundles/easymain/js/jquery.slimscroll.min.js') }}"></script>
+            <script src="{{ asset('bundles/easymain/js/pace.min.js') }}"></script>
+            <script src="{{ asset('bundles/easymain/js/jquery.slides.min.js') }}"></script>
+            {#<script src="{{ asset('bundles/easymain/js/in-viewport.min.js') }}"></script>#}
+            <script src="{{ asset('bundles/easymain/js/jquery-ui.js') }}" ></script>
+            <script src="{{ asset('bundles/easymain/js/jquery.easing.1.3.js') }}"></script>
+            
+            <script src="{{ asset('bundles/easymain/js/jquery.fullPage.js') }}"></script>
+            <script src="{{ asset('bundles/easymain/js/jquery.blueimp-gallery.min.js') }}"></script>
+            <script src="{{ asset('bundles/easymain/js/bootstrap-image-gallery.js') }}"></script>
+            
+            <script src="http://maps.api.2gis.ru/2.0/loader.js?pkg=full" data-id="dgLoader"></script>
+            <script src="{{ asset('bundles/easymain/js/main.js') }}" ></script>
+        {% endblock %}
+    </head>
+    <body>
+        {#<img id="preloaderImage" src="{{ asset('bundles/easymain/images/logoMain.png') }}" style="margin-left: 37.6%;margin-top:21%;width:300px;position: fixed;">#}
+        
+        {#<div>
+            <p>Город</p>
+        </div>#}
+        <div id="blueimp-gallery" class="blueimp-gallery">
+            <!-- The container for the modal slides -->
+            <div class="slides"></div>
+            <!-- Controls for the borderless lightbox -->
+            <h3 class="title"></h3>
+            <a class="prev">‹</a>
+            <a class="next">›</a>
+            <a class="close">×</a>
+            <a class="play-pause"></a>
+            <ol class="indicator"></ol>
+            <!-- The modal dialog, which will be used to wrap the lightbox content -->
+            <div class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body next"></div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default pull-left prev">
+                                <i class="glyphicon glyphicon-chevron-left"></i>
+                                Предыдущий
+                            </button>
+                            <button type="button" class="btn btn-primary next">
+                                Следующий
+                                <i class="glyphicon glyphicon-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contentLoader">
+            
+            <div id="site-header">
+                <div class="menu-button" onclick="toggleMenu('mainMenu');">
+                    <span class=""></span>
+                    <span class=""></span>
+                    <span class=""></span>
+                </div>
+                <div class="nav-menu mainMenu">
+                    <a href="{{ path('easy_main_homepage') }}">
+                        <img id="logo" src="{{ asset('/bundles/easymain/images/logoMain.png') }}" >
+                    </a>
+                    <div class="menuList">
+                        {% for value in mainMenu %}
+                            <div><a class="purpleHover" href="{{ path('easy_main_homepage') }}{{ value.url }}">{{ value.title }}</a></div>
+                        {% endfor %}
+                    </div>
+                    <div class="menuInfo">
+                        <p style="margin-bottom: 5px;">2000-2015 Сеть образовательных центров Easy School</p>
+                        <span style="margin-right: 20px;"><i class="dot"></i>info@e-a-s-y.ru</span>
+                        <span><i class="dot"></i>7(3952)72-36-72</span>
+                    </div>
+                    <div class="socialIcons">
+                        <i class="fa fa-vk"></i>
+                        <i class="fa fa-instagram"></i>
+                        <i class="fa fa-twitter"></i>
+                        <i class="fa fa-facebook"></i>
+                        <i class="fa fa-youtube"></i>
+                    </div>
+                </div>
+                {% block sideHeader %}
+                    <nav id="nav">
+                        <ul id="menu">
+                            {% for value in content %}
+                                <li data-menuanchor="section{{ loop.index }}"><a href="#section{{ loop.index }}"></a><div>{{ value.getName() }}</div></li>
+                            {% endfor %}
+                        </ul>
+                    </nav>
+                {% endblock %}
+            </div>
+            {% if secondLayerMenu is defined %}
+                {% autoescape false %}
+                    {{ secondLayerMenu }}
+                {% endautoescape %}
+            {% endif %}
+            
+
+
+            <div id="top-header">
+                <a href="{{ path('easy_main_homepage') }}">
+                    {% if '/kid/' in app.request.uri %}
+                        <img src="{{ asset('/bundles/easymain/images/logoKindergarten.png') }}" style="position: relative;">
+                    {% else %}
+                        <img src="{{ asset('/bundles/easymain/images/logoSchool.png') }}" style="position: relative;">
+                    {% endif %}
+                    
+                </a>
+                {#{% block topHeader %}
+                {% endblock %}#}
+                <ul style="position: relative;">
+                    {% for value in topMenu %}
+                        <li><a href="#section{{ value.section }}" class="scroll">{{ value.title }}</a></li>
+                    {% endfor %}
+                </ul>
+                <div class="contact" style="position: relative;">
+                    <a id="opener" class="buttonHover">записаться</a>
+                    <p><span style="font-size: 17px;">(3952)</span> 72-36-72</p>
+                </div>
+            </div>
+
+            {% block pageContent %}
+                <div id="fullpage">
+                    {% for value in content %}
+                        <section class="section">
+                            {% autoescape false %}
+                                {{ value.content }}
+                            {% endautoescape %}
+                        </section>
+                    {% endfor %}
+                </div>
+            {% endblock %}
+            <a id="scrolldown-button" style="bottom: 30px;">
+                <i class="fa fa-chevron-down"></i>
+            </a>
+            
+            <div id="dialog">
+                <form id="callback">
+                    <input type="text" name="name" placeholder="Ваше имя">
+                    <input type="text" name="phone" placeholder="Ваш номер телефона">
+                    <a class="submit">жду звонка</a>
+                    <a class='close' onclick="$( '#dialog' ).dialog( 'close' )">
+                        <span class=""></span>
+                        <span class=""></span>
+                    </a>
+                </form>
+            </div>
+            <div id="thankyou">
+                <p style='font-size: 42px;margin: 0;'>СПАСИБО!</p>
+                <p style='font-size: 22px;'>Мы свяжемся с вами<br/>в ближайшее время</p>
+                <a href="#" class='close' onclick="$( '#thankyou' ).dialog( 'close' )">
+                    <span class=""></span>
+                    <span class=""></span>
+                </a>
+            </div>
+        </div>
+        <script>
+           
+            
+            $(window).on('load', function () {
+                //$.cookie('qwe',66, {path: '/'});
+                //console.log($.cookie('cityId'));
+                if(typeof $.cookie('cityId') === 'undefined'){
+                    
+                    var $preloader = $('#page-preloader'),
+                    $spinner = $preloader.find('.spinner');
+                    
+                    setTimeout(function(){
+                        //$spinner.fadeOut();
+                        //$preloader.delay(350).fadeOut('slow');
+                    }, 3000);
+
+                    
+                    
+                    {#$(".inView").inViewport(function(px){
+                        if(px) $(this).addClass("inViewReaction") ;
+                    });#}
+                }
+            });
+            
+            
+            
+            
+            
+            function toggleMenu(menuClass){
+                $('.'+menuClass).fadeToggle(200);
+                $('.'+menuClass).toggleClass('open');
+                console.log(menuClass);
+                $('.menu-button').toggleClass('activeNavMenuButton');
+            }
+            
+            function coloring(color){
+                $('.title').addClass(color);
+                //$('.advantage').addClass(color);
+                $('.advantage').addClass('red');
+                $('.contact p').addClass(color);
+                $('.buttonSquare').addClass(color+'Square');
+            }
+            
+            
+            $(function(){
+                {% if color is defined %}
+                    coloring('{{ color }}');
+                {% else %}
+                    coloring('purple');
+                {% endif %}
+                
+                $('a.submit').on('click', function(){
+                    //отправка
+                    //var data = {request : $('#request').val()};
+                    var data = $('#callback').serializeArray();
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ path('form_controller') }}",
+                        data: data,
+                        success: function(data, dataType)
+                        {
+                            console.log(data);
+                            if(data == 'sended'){
+                                $( '#dialog' ).dialog( 'close' );
+                                $( '#thankyou' ).dialog( 'open' );
+                            }
+                        },
+
+                        error: function(XMLHttpRequest, textStatus, errorThrown)
+                        {
+                            alert('Error : ' + errorThrown);
+                        }
+                    });
+                    
+                    
+                });
+                
+                $('#nav a+div').on('click', function(){
+                    var mark = $(this).parents().attr('data-menuanchor');
+                    $.fn.fullpage.moveTo(mark);
+                });
+                
+                $( "#dialog" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    resizable: false,
+                    draggable: false,
+                    minWidth: 450,
+                    height: 350,
+                    close: function( event, ui ) {
+                        $( "#dialog" ).removeClass("open");
+                    }
+                 });
+                 
+                 $( "#thankyou" ).dialog({
+                    autoOpen: false,
+                    modal: true,
+                    resizable: false,
+                    draggable: false,
+                    height: 300,
+                    minWidth: 400,
+                    open: function( event, ui ) {
+                        $( "#thankyou" ).addClass("open");
+                    },
+                    close: function( event, ui ) {
+                        $( "#thankyou" ).removeClass("open");
+                    }
+                 });
+                 
+
+                  $( "#opener" ).click(function() {
+                    $( "#dialog" ).dialog( "open" );
+                    $( "#dialog" ).addClass("open");
+                  });
+                
+                {#var scene = document.getElementById('scene');
+                var parallax = new Parallax(scene);#}
+                
+                if($("#map").length){
+                    var map;
+                    DG.then(function() {
+                        var map;
+
+                        map = DG.map('map', {
+                            center: [52.261, 104.293],
+                            zoom: 11
+                        });
+
+
+                        $(".address a").each(function(index){
+                            DG.marker($(this).data('coordinates')).addTo(map).bindPopup($(this).html());
+                        });
+
+                        $('.address a').on('click', function(){
+                            var coordinates = $(this).data('coordinates');
+                            moveTo(coordinates);
+                        });
+
+                        function moveTo(coordinates) {
+                            map.setView(coordinates);
+                        };
+                    });
+                }
+                
+                $(".panel").css({
+                    "height":$(window).height()
+                });
+                var timer;
+
+                $(window).resize(function() {
+                    clearTimeout(timer);
+                    timer = setTimeout(function() {
+                            $(".panel").css({
+                                    "height":$(window).height()
+                            });
+                    },40);
+                });
+
+                
+                
+                $('.play').on('click', function(){
+                    $('.videoContainer p').fadeOut();
+                    var vid = $('.videoContainer video').get(0);
+                    vid.play();
+                    $('.play').toggle();
+                    $('.pause').toggle();
+                });
+                
+                $('.pause').on('click', function(){
+                    var vid = $('.videoContainer video').get(0);
+                    vid.pause();
+                    $('.play').toggle();
+                    $('.pause').toggle();
+                });
+                
+                
+                $('body').mousemove(function(e){
+                    {#var middle = 0;
+                    var amountMovedX = middle + (e.pageX * -1 / 30);
+                    $('#top-header ul').css({'left':amountMovedX+'px'});
+                    
+                    amountMovedX = middle + (e.pageX * -1 / 100);
+                    $('#top-header img').css({'left':amountMovedX+'px'});
+                    
+                    amountMovedX = middle + (e.pageX * -1 / 50);
+                    $('#top-header .contact').css({'left':amountMovedX+'px'});
+                    
+                    amountMovedX = middle + (e.pageX * -1 / 120);
+                    $('.content').css({'left':amountMovedX+'px'});#}
+                });
+
+
+                {#;(function($, win) {
+                    $.fn.inViewport = function(cb) {
+                       return this.each(function(i,el){
+                         function visPx(){
+                           var H = $(this).height(),
+                               r = el.getBoundingClientRect(), t=r.top, b=r.bottom;
+                           return cb.call(el, Math.max(0, t>0? H-t : (b<H?b:H)));  
+                         } visPx();
+                         $(win).on("resize scroll", visPx);
+                       });
+                    };
+                  }(jQuery, window));#}
+
+
+                $('.slidesCont').slidesjs({
+                    width: 940,
+                    height: 528,
+                    navigation: false
+                  });
+                  
+                  if($(".contentSlider").length){  
+                    $(".contentSlider").slidesjs({
+                        width: 940,
+                        height: 428,
+                        navigation: false,
+                        pagination: false,
+                        callback: {
+                          complete: function(number) {
+                            // Do something awesome!
+                            // Passes slide number at start of animation
+                            console.log(number);
+                          }
+                        }
+                    });
+                }
+                
+                var sections = new Array();
+                var count = $('.section').length;
+                for(var i=1;i<=count;i++){
+                    sections.push('section'+i);
+                }
+                $('#fullpage').fullpage({
+                        onLeave: function(index, nextIndex, direction){
+                            if(nextIndex == count){
+                                $('#scrolldown-button').fadeOut();
+                            }else{
+                                $('#scrolldown-button').fadeIn();
+                            }
+                        },
+                        anchors: sections,
+                        menu: '#menu',
+                        css3: true,
+                        scrollingSpeed: 1000,
+                        scrollOverflow:true
+                       
+                });
+                
+                $(document).on('click', '#scrolldown-button', function(){
+                    $.fn.fullpage.moveSectionDown();
+                });
+                
+                $('.calendar div.leftBlock a').on('click', function(){
+                    $('.calendar div.leftBlock a').removeClass('active');
+                    $(this).addClass('active');
+                    var data = $(this).attr('data');
+                    $('div.calendarMonth').removeClass('active');
+                    $('div.calendarMonth[month='+data+']').addClass('active');
+                });
+                
+                var colors = new Array('purple', 'yellow', 'lightBlue', 'blue', 'green', 'salad');
+                $('.menuList div a').each(function(index, value){
+                    var random = Math.floor((Math.random() * colors.length) + 0);
+                    $(this).attr('class', colors[random]+'Hover');
+                });
+            });
+            
+            
+            
+            
+        </script>
+        {#{% block coloring %}
+        {% endblock %}#}
+    </body>
+</html>

@@ -1,0 +1,36 @@
+Easy\MainBundle\Entity\Inspection:
+    type: entity
+    table: inspection
+    id:
+        id:
+            type: integer
+            generator: {strategy: AUTO}
+    fields:
+        comment:
+            type: string
+        
+    manyToOne:
+        content:
+            targetEntity: Content
+            inversedBy: inspections
+            JoinColumns:
+                name: content_id
+                referencedColumnName: id
+#    manyToMany:
+#        content:
+#            targetEntity: Content
+#            joinTable:
+#                name: content
+#                joinColumns:
+#                    content_id:
+#                        referencedColumnName: id
+#                inverseJoinColumns:
+#                    inspection_id:
+#                        referencedColumnName: id
+#                        unique: true
+            
+#    manyToOne:
+#        content:
+#            targetEntity: Easy\MainBundle\Entity\Content
+#            inversedBy: inspections
+            

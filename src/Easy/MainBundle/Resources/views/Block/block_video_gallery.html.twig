@@ -1,0 +1,13 @@
+<div class="content">
+    <p class="title" style="">Видео</p>
+    <div class="video-gallery">
+        {% if content.getGallery.GalleryHasMedias is defined %}
+            {% for galleryHasMedia in content.getGallery.GalleryHasMedias %}
+                <div>
+                    {% media galleryHasMedia.media, 'medium' with {'class': ''} %}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+

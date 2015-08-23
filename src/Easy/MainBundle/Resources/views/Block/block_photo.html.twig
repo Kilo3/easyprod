@@ -1,0 +1,13 @@
+    <div class="content">
+        <p class="title purple" style="">Фото</p>
+        <div class="links">
+            {% if content.getGallery.GalleryHasMedias is defined %}
+                {% for galleryHasMedia in content.getGallery.GalleryHasMedias %}
+                    <a href="{% path galleryHasMedia.media, 'big' %}" title="" data-gallery style="background: url('{% path galleryHasMedia.media, 'medium' %}');">
+                        
+                    </a>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+

@@ -1,0 +1,216 @@
+{% extends 'EasyMainBundle::layout.html.twig' %}
+
+{% block topHeader %}     
+    <ul>
+        <li><a href="#section1" >LOST</a></li>
+        <li><a href="#section2" >CAMPUS</a></li>
+        <li><a href="#section3" >EASY LAND</a></li>
+        <li><a href="#section5" >IMMERSION ABROAD</a></li>
+    </ul>
+{% endblock %}
+
+{% block sideHeader %}
+    <nav id="nav">
+        <ul id="menu">
+            <li data-menuanchor="section1"><a href="#section1" ></a><div>Лагерь на байкале LOST</div></li>
+            <li data-menuanchor="section2"><a href="#section2" ></a><div>Детский лагерь Campus</div></li>
+            <li data-menuanchor="section3"><a href="#section3" ></a><div>Детская площадка Easy Land</div></li>
+            <li data-menuanchor="section4"><a href="#section4" ></a><div>Летний интенсив</div></li>
+            <li data-menuanchor="section5"><a href="#section5" ></a><div>Погружение за границей</div></li>
+            <li data-menuanchor="section6"><a href="#section6" ></a><div>Виза в США</div></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block sections %}
+    anchors: ['section0', 'section1', 'section2', 'section3', 'section4', 'section5', 'section6'],
+{% endblock %}
+    
+{% block coloring %}
+    <script>
+        $(function(){
+            $('.contact p').addClass('green');
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <section class="section">
+        <div class="content" style="">
+            <p class="title green">Летние проекты</p>
+            <div class="leftBlock">
+                <div class="advantage green" style="text-align: right;">
+                    <p style="margin-top: 0px;">ОТДЫХ С ПРАКТИКОЙ<br/>ИНОСТРАННОГО ЯЗЫКА</p>
+                    <p>ПУТЕШЕСТВИЯ<br/>ПО РОССИИ И ЗАГРАНИЦУ</p>
+                    <p>ЛЕТНИЙ ИНТЕНСИВ<br/>ПО ИЗУЧЕНИЮ ЯЗЫКА</p>
+                    <p>ПОЛЕЗНЫЙ ОТДЫХ<br/>ДЛЯ ДЕТЕЙ</p>
+                </div>
+                <div class="greenSquare">
+                    <a href="javascript:;" onclick="toggleMenu('secondLayerMenu');">Узнать подробнее</a>
+                </div>
+            </div>
+            <div class="rightBlock">
+                <div class="videoContainer">
+                    <video loop="">
+                        <source src="{{ asset('bundles/easymain/video/testVideo2.mp4') }}" type="video/mp4">
+                    </video>  
+                    <a class="play"><i class="fa fa-play"></i></a>
+                    <a class="pause" href="#" style="display: none;"><i class="fa fa-pause"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="content">
+            <p class="title green">Лагерь на байкале LOST</p>
+            <div class="leftBlock" style="">
+                <div class="advantage2 green" style="text-align: right;">
+                    <p><span>ПОЛНОЕ ПОГРУЖЕНИЕ</span>разговариваем только на<br/>английском языке</p>
+                    <p><span>ПРОГРАММА</span>спорт, искусство, йога,<br/>кино и диско под открытым небом</p>
+                    <p><span>ВОЗРАСТ</span>взрослые<br/>дети 16+</p>
+                </div>
+                <div class="greenSquare">
+                    <a href="javascript:;" onclick="toggleMenu('secondLayerMenu');">Узнать подробнее</a>
+                </div>
+            </div>
+            <div class="rightBlock">
+                <div class="slidesCont">
+                    <img src="{{ asset('/bundles/easymain/images/lost1.jpg') }}" style="float: right;">
+                    <img src="{{ asset('/bundles/easymain/images/lost2.jpg') }}" style="float: right;">
+                    <img src="{{ asset('/bundles/easymain/images/lost3.jpg') }}" style="float: right;">
+                    <a href="#" class="slidesjs-previous slidesjs-navigation"><i class="fa fa-chevron-left"></i></a>
+                    <a href="#" class="slidesjs-next slidesjs-navigation"><i class="fa fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="content">
+            <p class="title green">Детский лагерь CAMPUS</p>
+            <div class="leftBlock" style="">
+                <div class="advantage2 green" style="text-align: right;">
+                    <p><span>БОЛЬШАЯ ИГРА</span>экономическая командная игра<br/>«Новая цивилизация»<br/>на английском языке</p>
+                    <p><span>ПРОГРАММА</span>спорт, мастер-классы,<br/>посвещение, концерты, дискотеки</p>
+                    <p><span>ВОЗРАСТ</span>старшеклассники 12+<br/>младшие школьники 9+</p>
+                </div>
+                <div class="greenSquare">
+                    <a href="javascript:;" onclick="toggleMenu('secondLayerMenu');">Узнать подробнее</a>
+                </div>
+            </div>
+            <div class="rightBlock">
+                <div class="slidesCont">
+                    <img src="{{ asset('/bundles/easymain/images/campus1.jpg') }}" style="float: right;">
+                    <img src="{{ asset('/bundles/easymain/images/campus2.jpg') }}" style="float: right;">
+                    <img src="{{ asset('/bundles/easymain/images/campus3.jpg') }}" style="float: right;">
+                    <a href="#" class="slidesjs-previous slidesjs-navigation"><i class="fa fa-chevron-left"></i></a>
+                    <a href="#" class="slidesjs-next slidesjs-navigation"><i class="fa fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="content">
+            <p class="title green">Детская площадка EASY LAND</p>
+            <div class="leftBlock" style="">
+                <div class="advantage2 green" style="text-align: right;">
+                    <p><span>БОЛЬШАЯ ИГРА</span>о прошлом и будущем<br/>Back in time and Future adventure<br/>на английскоми языке</p>
+                    <p><span>ПРОГРАММА</span>спорт, походы, фильмы,<br/>танцы, уроки, hand made</p>
+                    <p><span>ВОЗРАСТ</span>дети от 3 лет<br/>старшеклассники до 14 лет</p>
+                </div>
+                <div class="greenSquare">
+                    <a href="javascript:;" onclick="toggleMenu('secondLayerMenu');">Узнать подробнее</a>
+                </div>
+            </div>
+            <div class="rightBlock">
+                <div class="slidesCont">
+                    <img src="{{ asset('/bundles/easymain/images/land1.jpg') }}" style="float: right;">
+                    <img src="{{ asset('/bundles/easymain/images/land2.jpg') }}" style="float: right;">
+                    <img src="{{ asset('/bundles/easymain/images/land3.jpg') }}" style="float: right;">
+                    <a href="#" class="slidesjs-previous slidesjs-navigation"><i class="fa fa-chevron-left"></i></a>
+                    <a href="#" class="slidesjs-next slidesjs-navigation"><i class="fa fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="content">
+            <p class="title green">Летний интенсив</p>
+            <div class="leftBlock" style="">
+                <div class="advantage2 green" style="text-align: right;">
+                    <p><span>ПЕРИОДИЧНОСТЬ</span>4 раза в неделю<br/>по 3 часа</p>
+                    <p><span>УДОБНОЕ РАСПИСАНИЕ</span>утренние и вечерние<br/>группы</p>
+                    <p><span>ЭФФЕКТ</span>за 2 месяца обучения осваивается<br/>годовая программа школы</p>
+                </div>
+                <div class="greenSquare">
+                    <a href="javascript:;" onclick="toggleMenu('secondLayerMenu');">Узнать подробнее</a>
+                </div>
+            </div>
+            <div class="rightBlock">
+                <div class="slidesCont">
+                    <img src="{{ asset('/bundles/easymain/images/intensiv1.jpg') }}" style="float: right;">
+                    <img src="{{ asset('/bundles/easymain/images/intensiv2.jpg') }}" style="float: right;">
+                    <img src="{{ asset('/bundles/easymain/images/intensiv3.jpg') }}" style="float: right;">
+                    <a href="#" class="slidesjs-previous slidesjs-navigation"><i class="fa fa-chevron-left"></i></a>
+                    <a href="#" class="slidesjs-next slidesjs-navigation"><i class="fa fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="content">
+            <p class="title green">Погружение за границей</p>
+            <div class="leftBlock" style="">
+                <div class="advantage2 green" style="text-align: right;">
+                    <p><span>Полное погружение</span>разговариваем только на<br/>английском языке</p>
+                    <p><span>программа</span>большая игра<br/>веселая компания<br/>экскурсии</p>
+                    <p><span>возраст</span>взрослые<br/>дети 14+</p>
+                </div>
+                <div class="greenSquare">
+                    <a href="javascript:;" onclick="toggleMenu('secondLayerMenu');">Узнать подробнее</a>
+                </div>
+            </div>
+            <div class="rightBlock">
+                <div class="slidesCont">
+                    <img src="{{ asset('/bundles/easymain/images/abroad1.jpg') }}" style="float: right;">
+                    <img src="{{ asset('/bundles/easymain/images/abroad2.jpg') }}" style="float: right;">
+                    <img src="{{ asset('/bundles/easymain/images/abroad3.jpg') }}" style="float: right;">
+                    <a href="#" class="slidesjs-previous slidesjs-navigation"><i class="fa fa-chevron-left"></i></a>
+                    <a href="#" class="slidesjs-next slidesjs-navigation"><i class="fa fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section">
+        <div class="content">
+            <p class="title green">Виза в США</p>
+            <div class="leftBlock" style="">
+                <div class="advantage2 green" style="text-align: right;">
+                    <p><span>Поездка в США</span>путешествуй компанией<br/>или самостоятельно</p>
+                    <p><span>Помощь</span>в подготовке и оформлении<br/>документов</p>
+                    <p><span>Получение Визы</span>организация<br/>групповых поездок</p>
+
+                </div>
+                <div class="greenSquare">
+                    <a href="javascript:;" onclick="toggleMenu('secondLayerMenu');">Узнать подробнее</a>
+                </div>
+            </div>
+            <div class="rightBlock">
+                <div class="slidesCont">
+                    <img src="{{ asset('/bundles/easymain/images/visa1.jpg') }}" style="float: right;">
+                    <img src="{{ asset('/bundles/easymain/images/visa2.jpg') }}" style="float: right;">
+                    <img src="{{ asset('/bundles/easymain/images/visa3.jpg') }}" style="float: right;">
+                    <a href="#" class="slidesjs-previous slidesjs-navigation"><i class="fa fa-chevron-left"></i></a>
+                    <a href="#" class="slidesjs-next slidesjs-navigation"><i class="fa fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+

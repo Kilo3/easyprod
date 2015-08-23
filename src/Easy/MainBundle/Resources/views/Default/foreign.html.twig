@@ -1,0 +1,41 @@
+{% extends 'EasyMainBundle::layout.html.twig' %}
+    
+{% block coloring %}
+    <script>
+        $(function(){
+            $('.contact p').addClass('purple');
+        });
+    </script>
+{% endblock %}
+
+{% block secondLayerMenu %}
+    <div class="nav-menu secondLayerMenu">
+        <a href="{{ path('easy_main_homepage') }}">
+            <img id="logo" src="{{ asset('/bundles/easymain/images/logoMain.png') }}" >
+        </a>
+        <div class="menuList">
+            <div class="col-2">
+                <div><a class="yellowHover" href="{{ path('easy_main_foreign') }}">иностранные языки2</a></div>
+                <div><a class="purpleHover" href="{{ path('easy_kid') }}">детский сад</a></div>
+                <div><a class="blueHover" href="{{ path('easy_main_tsdo') }}">дополнительное образование</a></div>
+                <div><a class="yellowHover" href="#">школа раннего развития</a></div>
+                <div><a class="purpleHover" href="{{ path('easy_summer') }}">летние проекты</a></div>
+                <div><a class="redHover" href="#">наша жизнь</a></div>
+            </div>
+            <div class="col-2">
+                <div><a class="yellowHover" href="{{ path('easy_main_foreign') }}">иностранные языки2</a></div>
+                <div><a class="purpleHover" href="{{ path('easy_kid') }}">детский сад</a></div>
+                <div><a class="blueHover" href="{{ path('easy_main_tsdo') }}">дополнительное образование</a></div>
+                <div><a class="yellowHover" href="#">школа раннего развития</a></div>
+                <div><a class="purpleHover" href="{{ path('easy_summer') }}">летние проекты</a></div>
+                <div><a class="redHover" href="#">наша жизнь</a></div>
+            </div>
+        </div>
+        <div class="menu-button" onclick="toggleMenu('secondLayerMenu');">
+            <span class=""></span>
+            <span class=""></span>
+            <span class=""></span>
+        </div>
+    </div>
+{% endblock %}
+

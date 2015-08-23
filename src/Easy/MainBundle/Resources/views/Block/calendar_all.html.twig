@@ -1,0 +1,10 @@
+<div class="content">
+    <p class="title">{{ content.getName() }}</p>
+    <div class="links">
+        {% for event in calendar %}
+            <a href="/calendar/{{ event.id }}">
+                {{ event.name }}
+            </a>
+        {% endfor %}
+    </div>
+</div>

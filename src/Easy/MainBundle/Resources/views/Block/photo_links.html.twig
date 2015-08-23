@@ -1,0 +1,14 @@
+<div class="content">
+    <p class="title">{{ content.getName() }}</p>
+    <div class="links">
+        {% for gallery in galleries %}
+            <a href="/gallery/{{ gallery.id }}">
+                {% if gallery.galleryHasMedias[0] is defined %}
+                    {% media gallery.galleryHasMedias[0], 'medium' with {'class': ''} %}
+                {% endif %}
+                {{ gallery.name }}
+            </a>
+        {% endfor %}
+        
+    </div>
+</div>

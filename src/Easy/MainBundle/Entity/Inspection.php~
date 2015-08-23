@@ -1,0 +1,83 @@
+<?php
+
+namespace Easy\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Inspection
+ */
+class Inspection
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $comment;
+
+    /**
+     * @var \Easy\MainBundle\Entity\Content
+     */
+    private $content;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set comment
+     *
+     * @param string $comment
+     * @return Inspection
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return string 
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * Set content
+     *
+     * @param \Easy\MainBundle\Entity\Content $content
+     * @return Inspection
+     */
+    public function setContent(\Easy\MainBundle\Entity\Content $content = null)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return \Easy\MainBundle\Entity\Content 
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+}

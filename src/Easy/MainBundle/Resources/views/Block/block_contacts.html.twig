@@ -1,0 +1,8 @@
+<div class="content">
+    <p class="title">{{ content.getName() }}</p>
+    <div class="inside">
+        {% autoescape false %}
+            {{ content.getContent()}}
+        {% endautoescape %}
+    </div>
+</div>

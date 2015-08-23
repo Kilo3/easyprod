@@ -1,0 +1,10 @@
+<div class="content">
+    {% for new in content %}
+        <p class="title">{{ new.getName() }}</p>
+        <div class="inside">
+            {% autoescape false %}
+                {{ new.getText()}}
+            {% endautoescape %}
+        </div>
+    {% endfor %}
+</div>

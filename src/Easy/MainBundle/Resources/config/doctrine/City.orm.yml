@@ -1,0 +1,21 @@
+Easy\MainBundle\Entity\City:
+    type: entity
+    table: city
+    id:
+        id:
+            type: integer
+            generator: {strategy: AUTO}
+    fields:
+        name:
+            type: string
+        type:
+            type: string
+        order_column:
+            type: integer
+            
+#    oneToMany:
+#        content:
+#            targetEntity: Content
+#            mappedBy: city
+#            
+ 

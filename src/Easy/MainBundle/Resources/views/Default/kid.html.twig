@@ -1,0 +1,194 @@
+{% extends 'EasyMainBundle::layout.html.twig' %}
+
+{% block topHeader %}     
+    <ul style="position: relative;">
+        <li><a href="#section1" >наша особенность</a></li>
+        <li><a href="#section2" >билингвизм</a></li>
+        <li><a href="#section3" >отзывы родителей</a></li>
+        <li><a href="#section4" >контакты</a></li>
+    </ul>
+{% endblock %}
+
+{% block sideHeader %}
+    <nav id="nav">
+        <ul id="menu">
+            <li data-menuanchor="section1"><a href="#section1" ></a><div>Наша особенность</div></li>
+            <li data-menuanchor="section2"><a href="#section2" ></a><div>Билингвизм</div></li>
+            <li data-menuanchor="section3"><a href="#section3" ></a><div>Отзывы родителей</div></li>
+            <li data-menuanchor="section4"><a href="#section4" ></a><div>Контакты</div></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block sections %}
+    anchors: ['section0', 'section1', 'section2', 'section3', 'section4'],
+{% endblock %}
+    
+{% block coloring %}
+    <script>
+        $(function(){
+            $('.contact p').addClass('yellow');
+        });
+    </script>
+{% endblock %}
+
+
+{% block secondLayerMenu %}
+    <div class="nav-menu secondLayerMenu">
+        <a href="{{ path('easy_main_homepage') }}">
+            <img id="logo" src="{{ asset('/bundles/easymain/images/logoMain.png') }}" >
+        </a>
+        <div class="menuList">
+            <div class="col-2">
+                <div><a class="yellowHover" href="#">наша особенность</a></div>
+                <div><a class="redHover" href="#">билингвизм</a></div>
+                <div><a class="blueHover" href="#">программа</a></div>
+                <div><a class="yellowHover" href="#">важно знать</a></div>
+                <div><a class="purpleHover" href="#">условия</a></div>
+            </div>
+            <div class="col-2">
+                <div><a class="yellowHover" href="#">вопросы</a></div>
+                <div><a class="redHover" href="#">преподователи</a></div>
+                <div><a class="blueHover" href="#">фото</a></div>
+                <div><a class="yellowHover" href="#">видео</a></div>
+                <div><a class="purpleHover" href="#">контакты</a></div>
+            </div>
+        </div>
+        <div class="menu-button" onclick="toggleMenu('secondLayerMenu');">
+            <span class=""></span>
+            <span class=""></span>
+            <span class=""></span>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <section class="section">
+        <div class="content" style="">
+            <p class="title red">Детский сад</p>
+            <div class="leftBlock">
+                <div class="advantage yellow" style="text-align: right;">
+                    <p>Дети<br/>1,8 - 6 лет</p>
+                    <p>Полное погружение<br/>в англоязычную среду</p>
+                    <p>Экологически чистый<br/>район города</p>
+                </div>
+                <div>
+                    <div class="yellowSquare">
+                        <a href="javascript:;" onclick="toggleMenu('secondLayerMenu');">Узнать подробнее</a>
+                    </div>
+                </div>
+            </div>
+            <div class="rightBlock">
+                <div class="videoContainer">
+                    <video loop="">
+                        <source src="{{ asset('bundles/easymain/video/testVideo2.mp4') }}" type="video/mp4">
+                    </video>  
+                    <a class="play"><i class="fa fa-play"></i></a>
+                    <a class="pause" href="#" style="display: none;"><i class="fa fa-pause"></i></a>
+                </div>
+            </div>
+        </div>
+        <a class="scrolldown-button" href="#section1" style="bottom: 30px;">
+            <i class="fa fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <section class="section">
+        <div class="content">
+            <div class="leftBlock" style="margin-top: 12%;">
+                <div class="advantage2 red" style="text-align: right;">
+                    <p><span>Малыши свободно<br/>говорят и думают<br/>на английском<br/>и русском языках</span></p>
+                    <p>разговариваем только<br/>на английском языке</p>
+                    <p>программа нацелена на<br/>всестороннее развитие детей</p>
+                    <p>создана комфортная,<br/>уютная и дружеская атмосфера</p>
+                </div>
+                <div>
+                    <div class="yellowSquare">
+                        <a href="javascript:;" onclick="toggleMenu('secondLayerMenu');">Узнать подробнее</a>
+                    </div>
+                </div>
+            </div>
+            <div class="rightBlock">
+                <p class="title yellow" style="">Наша особенность</p>
+                <div class="slidesCont">
+                    <img src="{{ asset('/bundles/easymain/images/feature1.jpg') }}" style="float: right;">
+                    <img src="{{ asset('/bundles/easymain/images/feature2.jpg') }}" style="float: right;">
+                    <img src="{{ asset('/bundles/easymain/images/feature3.jpg') }}" style="float: right;">
+                    <a href="#" class="slidesjs-previous slidesjs-navigation"><i class="fa fa-chevron-left"></i></a>
+                    <a href="#" class="slidesjs-next slidesjs-navigation"><i class="fa fa-chevron-right"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="content">
+            <div class="leftBlock" style="margin-top: 12%;">
+                <div class="advantage2 red" style="text-align: right;">
+                    <p><span>Знание двух языков<br/>с раннего детства<br/>способствует</span></p>
+                    <p>перспективному будущему<br/>ребенка</p>
+                    <p>положительному влиянию<br/>на его мыслительные процессы<br/>память и личность</p>
+                    <p>раскрытому<br/>творческому потенциалу</p>
+                </div>
+                <div>
+                     <div class="yellowSquare">
+                        <a href="javascript:;" onclick="toggleMenu('secondLayerMenu');">Узнать подробнее</a>
+                    </div>
+                </div>
+            </div>
+            <div class="rightBlock">
+                <p class="title yellow" style="">Билингвизм</p>
+                <div class="slidesCont">
+                    <img src="{{ asset('/bundles/easymain/images/bili1.jpg') }}" style="float: right;">
+                    <img src="{{ asset('/bundles/easymain/images/bili2.jpg') }}" style="float: right;">
+                    <img src="{{ asset('/bundles/easymain/images/bili3.jpg') }}" style="float: right;">
+                    <a href="#" class="slidesjs-previous slidesjs-navigation"><i class="fa fa-chevron-left"></i></a>
+                    <a href="#" class="slidesjs-next slidesjs-navigation"><i class="fa fa-chevron-right"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="content">
+            <div class="leftBlock" style="margin-top: 12%;">
+                <div class="advantage2 red" style="text-align: right;">
+                    <p><span>Семья Григорьевых:</span></p>
+                    <p>фывфыв<br/>asdasdasdasd</p>
+                </div>
+                
+            </div>
+            <div class="rightBlock">
+                <p class="title yellow" style="">Отзывы родителей</p>
+                <div class="slidesCont">
+                    
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    
+
+    <section class="section">
+        <div class="content">
+            <div class="leftBlock" style="margin-top: 115px;">
+                <div class="advantage address red" style="text-align: right;">
+                    <p>адреса</p>
+                    <a href="javascript:;" data-coordinates='[52.233, 104.284]'>Дзержинского, 24а</a>
+                    <a href="javascript:;" data-coordinates='[52.267, 104.323]'>Дзержинского, 24а-2</a>
+                    <a href="javascript:;" data-coordinates='[52.271, 104.248]'>Дзержинского, 24а-3</a>
+                </div>
+            </div>
+            <div class="rightBlock">
+                <p class="title yellow" style="">Контакты</p>
+                <div id="map" style="width:570px; height:400px"></div>
+            </div>
+        </div>
+    </section>
+
+    
+{% endblock %}
+

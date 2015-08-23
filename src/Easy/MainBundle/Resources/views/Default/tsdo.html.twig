@@ -1,0 +1,139 @@
+{% extends 'EasyMainBundle::layout.html.twig' %}
+
+{% block topHeader %}     
+    <ul>
+        <li><a href="#section1" >Подготовка<br/>к экзаменам</a></li>
+        <li><a href="#section2" >школьные<br/>предметы</a></li>
+        <li><a href="#section3" >компьютерные<br/>технологии</a></li>
+        <li><a href="#section4" >творчество</a></li>
+        {#<li><a href="#contacts" >контакты</a></li>#}
+    </ul>
+{% endblock %}
+
+{% block sideHeader %}
+    <nav id="nav">
+        <ul id="menu">
+            <li data-menuanchor="section1"><a href="#section1" ></a><div>Подготовка к экзаменам</div></li>
+            <li data-menuanchor="section2"><a href="#section2" ></a><div>Школьные предметы</div></li>
+            <li data-menuanchor="section3"><a href="#section3" ></a><div>Компьютерные технологии</div></li>
+            <li data-menuanchor="section4"><a href="#section4" ></a><div>Творчество</div></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block sections %}
+    anchors: ['section0', 'section1', 'section2', 'section3', 'section4'],
+{% endblock %}
+    
+{% block coloring %}
+    <script>
+        $(function(){
+            $('.contact p').addClass('blue');
+        });
+    </script>
+{% endblock %}
+
+
+{% block content %}
+    <section class="section">
+        <div class="content" style="">
+            <p class="title blue">Центр дополнительного образования</p>
+            <div class="leftBlock">
+                <div class="advantage blue" style="text-align: right;">
+                    <p style="margin-top: 0px;">курсы для взрослых<br/>и детей 7+ лет</p>
+                    <p>возможность изучать<br/>любой предмет<br/>легко и просто</p>
+                    <p>компетентные<br/>и увлеченные<br/>преподователи</p>
+
+                </div>
+                <div class="blueSquare">
+                    <a href="javascript:;" onclick="toggleMenu('secondLayerMenu');">Узнать подробнее</a>
+                </div>
+            </div>
+            <div class="rightBlock">
+                <div class="videoContainer">
+                    <video loop="">
+                        <source src="{{ asset('bundles/easymain/video/testVideo2.mp4') }}" type="video/mp4">
+                    </video>  
+                    <a class="play"><i class="fa fa-play"></i></a>
+                    <a class="pause" href="#" style="display: none;"><i class="fa fa-pause"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="content">
+            <p class="title blue">подготовка к экзаменам</p>
+            <div class="leftBlock" style="">
+                <div class="advantage2 blue" style="text-align: right;">
+                    <p><span>подготовка к гиа(огэ)</span>математика<br/>русский язык</p>
+                    <p><span>подготовка к егэ</span>математика<br/>русский язык<br/>физика<br/>химия<br/>биология<br/>обществознание<br/>английский язык</p>
+                </div>
+                <div class="blueSquare">
+                    <a href="javascript:;" onclick="toggleMenu('secondLayerMenu');">Узнать подробнее</a>
+                </div>
+            </div>
+            <div class="rightBlock">
+                <img src="{{ asset('/bundles/easymain/images/group_image1.jpg') }}" style="float: right;">
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="content">
+            <p class="title blue">школьные предметы</p>
+            <div class="leftBlock" style="">
+                <div class="advantage2 blue" style="text-align: right;">
+                    <p><span>помощь со школьной программой</span>математика<br/>русский язык</p>
+                    <p><span>занимательная наука</span>математика<br/>физика<br/>химия<br/>биология</p>
+                </div>
+                <div class="blueSquare">
+                    <a href="javascript:;" onclick="toggleMenu('secondLayerMenu');">Узнать подробнее</a>
+                </div>
+            </div>
+            <div class="rightBlock">
+                <img src="{{ asset('/bundles/easymain/images/group_image1.jpg') }}" style="float: right;">
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section">
+        <div class="content">
+            <p class="title blue">компьютерные технологии</p>
+            <div class="leftBlock" style="">
+                <div class="advantage2 blue" style="text-align: right;">
+                    <p style="margin-top:0;"><span>робототехника</span>механизмы<br/>электроника<br/>конструирование</p>
+                    <p><span>программирование</span>приложения<br/>базы данных<br/>веб технологии</p>
+                    <p><span>анимация</span>трехмерная графика<br/>компьютерный рисунок<br/>анимационные движения</p>
+                </div>
+                <div class="blueSquare">
+                    <a href="javascript:;" onclick="toggleMenu('secondLayerMenu');">Узнать подробнее</a>
+                </div>
+            </div>
+            <div class="rightBlock">
+                <img src="{{ asset('/bundles/easymain/images/group_image1.jpg') }}" style="float: right;">
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="content">
+            <p class="title blue">творчество</p>
+            <div class="leftBlock" style="">
+                <div class="advantage2 blue" style="text-align: right;">
+                    <p style="margin-top:0;"><span>искусство</span>дизайн<br/>графика<br/>живопись</p>
+                    <p><span>журналистика</span>интернет медиа<br/>написание текстов<br/>искусство коммуникации</p>
+                    <p><span>фотография</span>композиция<br/>свет и освещение<br/>обработка изображения</p>
+                </div>
+                <div class="blueSquare">
+                    <a href="javascript:;" onclick="toggleMenu('secondLayerMenu');">Узнать подробнее</a>
+                </div>
+            </div>
+            <div class="rightBlock">
+                <img src="{{ asset('/bundles/easymain/images/group_image1.jpg') }}" style="float: right;">
+            </div>
+        </div>
+    </section>
+{% endblock %}
+

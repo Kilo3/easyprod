@@ -1,0 +1,8 @@
+#easy_kid:
+#    path:     /
+#    defaults: { _controller: "EasyMainBundle:Default:kid" }
+#    
+#easy_kid_more:
+#    path:     /more
+#    defaults: { _controller: "EasyMainBundle:Kid:more" }
+#    

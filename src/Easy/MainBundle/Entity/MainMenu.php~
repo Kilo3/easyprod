@@ -1,0 +1,322 @@
+<?php
+
+namespace Easy\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * MainMenu
+ */
+class MainMenu
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $url;
+
+    /**
+     * @var string
+     */
+    private $title;
+
+    /**
+     * @var integer
+     */
+    private $order;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     * @return MainMenu
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string 
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return MainMenu
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set order
+     *
+     * @param integer $order
+     * @return MainMenu
+     */
+    public function setOrder($order)
+    {
+        $this->order = $order;
+
+        return $this;
+    }
+
+    /**
+     * Get order
+     *
+     * @return integer 
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
+    /**
+     * @var integer
+     */
+    private $parent_id;
+
+    /**
+     * @var integer
+     */
+    private $order_column;
+
+
+    /**
+     * Set parent_id
+     *
+     * @param integer $parentId
+     * @return MainMenu
+     */
+    public function setParentId($parentId)
+    {
+        $this->parent_id = $parentId;
+
+        return $this;
+    }
+
+    /**
+     * Get parent_id
+     *
+     * @return integer 
+     */
+    public function getParentId()
+    {
+        return $this->parent_id;
+    }
+
+    /**
+     * Set order_column
+     *
+     * @param integer $orderColumn
+     * @return MainMenu
+     */
+    public function setOrderColumn($orderColumn)
+    {
+        $this->order_column = $orderColumn;
+
+        return $this;
+    }
+
+    /**
+     * Get order_column
+     *
+     * @return integer 
+     */
+    public function getOrderColumn()
+    {
+        return $this->order_column;
+    }
+    /**
+     * @var string
+     */
+    private $color;
+
+
+    /**
+     * Set color
+     *
+     * @param string $color
+     * @return MainMenu
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * Get color
+     *
+     * @return string 
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $children;
+
+    /**
+     * @var \Easy\MainBundle\Entity\MainMenu
+     */
+    private $parent;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add children
+     *
+     * @param \Easy\MainBundle\Entity\MainMenu $children
+     * @return MainMenu
+     */
+    public function addChild(\Easy\MainBundle\Entity\MainMenu $children)
+    {
+        $this->children[] = $children;
+
+        return $this;
+    }
+
+    /**
+     * Remove children
+     *
+     * @param \Easy\MainBundle\Entity\MainMenu $children
+     */
+    public function removeChild(\Easy\MainBundle\Entity\MainMenu $children)
+    {
+        $this->children->removeElement($children);
+    }
+
+    /**
+     * Get children
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * Set parent
+     *
+     * @param \Easy\MainBundle\Entity\MainMenu $parent
+     * @return MainMenu
+     */
+    public function setParent(\Easy\MainBundle\Entity\MainMenu $parent = null)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return \Easy\MainBundle\Entity\MainMenu 
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+    
+    public function __toString()
+    {
+        return (string) $this->getTitle();
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $content;
+
+
+    /**
+     * Add content
+     *
+     * @param \Easy\MainBundle\Entity\Content $content
+     * @return MainMenu
+     */
+    public function addContent(\Easy\MainBundle\Entity\Content $content)
+    {
+        $this->content[] = $content;
+
+        return $this;
+    }
+
+    /**
+     * Remove content
+     *
+     * @param \Easy\MainBundle\Entity\Content $content
+     */
+    public function removeContent(\Easy\MainBundle\Entity\Content $content)
+    {
+        $this->content->removeElement($content);
+    }
+
+    /**
+     * Get content
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+    
+    public static function getColors(){
+        return array(
+            'purple'=>'purple',
+            'yellow'=>'yellow',
+            'lightBlue'=>'lightBlue',
+            'blue'=>'blue',
+            'green'=>'green',
+            'salad'=>'salad',
+        );
+    }
+}

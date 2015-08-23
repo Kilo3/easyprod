@@ -1,0 +1,62 @@
+#    easy_main.example:
+#        class: Easy\MainBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+services:
+    easy.admin.content:
+        class: Easy\MainBundle\Admin\ContentAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: easy, label: Content }
+        arguments:
+            - ~
+            - Easy\MainBundle\Entity\Content
+            - 'EasyMainBundle:ContentAdmin'
+    easy.admin.team:
+        class: Easy\MainBundle\Admin\TeamAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: easy, label: Team }
+        arguments:
+            - ~
+            - Easy\MainBundle\Entity\Team
+            - 'EasyMainBundle:TeamAdmin'
+    easy.admin.mainmenu:
+        class: Easy\MainBundle\Admin\MainMenuAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: easy, label: MainMenu }
+        arguments:
+            - ~
+            - Easy\MainBundle\Entity\MainMenu
+            - 'EasyMainBundle:MainMenuAdmin'
+    easy.admin.city:
+        class: Easy\MainBundle\Admin\CityAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: easy, label: City }
+        arguments:
+            - ~
+            - Easy\MainBundle\Entity\City
+            - 'EasyMainBundle:CityAdmin'
+    easy.admin.news:
+        class: Easy\MainBundle\Admin\NewsAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: easy, label: News }
+        arguments:
+            - ~
+            - Easy\MainBundle\Entity\News
+            - 'EasyMainBundle:NewsAdmin'
+    easy.admin.calendar:
+        class: Easy\MainBundle\Admin\CalendarAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: easy, label: Calendar }
+        arguments:
+            - ~
+            - Easy\MainBundle\Entity\Calendar
+            - 'EasyMainBundle:CalendarAdmin'
+ 
+#    ens.jobeet.admin.job:
+#        class: Ens\JobeetBundle\Admin\JobAdmin
+#        tags:
+#            - { name: sonata.admin, manager_type: orm, group: jobeet, label: Jobs }
+#        arguments:
+#            - ~
+#            - Ens\JobeetBundle\Entity\Job
+#            - 'EnsJobeetBundle:JobAdmin'

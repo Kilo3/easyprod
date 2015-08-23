@@ -1,0 +1,45 @@
+Easy\MainBundle\Entity\MainMenu:
+    type: entity
+    table: main_menu
+    id:
+        id:
+            type: integer
+            generator: {strategy: AUTO}
+    fields:
+        url:
+            type: string
+            length: 255
+            nullable: true
+        title:
+            type: string
+            length: 255
+        order_column:
+            type: integer
+            nullable: false
+            options:
+                default: 0
+        color:
+            type: string
+            length: 50
+    oneToMany:
+        children:
+            targetEntity: MainMenu
+            mappedBy: parent
+        content:
+            targetEntity: Content
+            mappedBy: url
+            orderBy:
+                order_column: ASC
+    manyToOne:
+        parent:
+            targetEntity: MainMenu
+            inversedBy: children
+            joinColumn:
+                name: parent
+                referencedColumnName: id
+        city:
+            targetEntity: City
+            joinColumn:
+                name: city_id
+                referencedColumnName: id
+        

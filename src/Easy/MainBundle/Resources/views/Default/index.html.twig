@@ -1,0 +1,28 @@
+{% extends 'EasyMainBundle:Default:main.html.twig' %}
+
+{% block videoFullScreenFix %}
+    <script>
+        $(function(){
+            $('#fullpage').css({'position':'initial'});
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div id="mainVideo">
+        <video muted="" autoplay="" loop="" style="height:100%;opacity: 1;">
+            <source src="{{ asset('bundles/easymain/video/wow.mp4') }}" type="video/mp4">
+        </video>
+    </div>
+    <div class="row" style="margin:0;padding:0;z-index: 185;position: relative;">
+        <div class="col-md-12" style="margin:0;padding:0;">
+            <a href="#" onclick="toggleMenu('mainMenu');">
+                <img src="{{ asset('bundles/easymain/images/logoMain.png') }}" style="margin:0 auto;display:table;margin-top:18%;width:300px;">
+            </a>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-md-offset-4" style="margin-top:40px;z-index: 185;position: relative;">
+        <a class="main-button" href="#" onclick="toggleMenu('mainMenu');">Окунись в новое</a>
+    </div>
+{% endblock %}
