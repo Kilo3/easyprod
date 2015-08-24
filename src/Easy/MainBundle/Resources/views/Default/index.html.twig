@@ -9,6 +9,19 @@
 {% endblock %}
 
 {% block content %}
+    <div style="width: 1px;
+height: 1px;
+display: block;
+position: absolute;
+top: -2px;
+overflow: hidden;">
+        <img src="{{ asset('/bundles/easymain/images/yellowSmall.png') }}">
+        <img src="{{ asset('/bundles/easymain/images/redSmall.png') }}">
+        <img src="{{ asset('/bundles/easymain/images/lightBlueSmall.png') }}">
+        <img src="{{ asset('/bundles/easymain/images/blueSmall.png') }}">
+        <img src="{{ asset('/bundles/easymain/images/greenSmall.png') }}">
+        <img src="{{ asset('/bundles/easymain/images/saladSmall.png') }}">
+    </div>
     <div id="mainVideo">
         <video muted="" autoplay="" loop="" style="opacity: 1;">
             <source src="{{ asset('bundles/easymain/video/wow.mp4') }}" type="video/mp4">
