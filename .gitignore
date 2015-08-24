@@ -35,8 +35,5 @@
 
 # Composer PHAR
 /composer.phar
-/src/Easy/MainBundle/Resources/public/video/wow.mp4
-/src/Easy/MainBundle/Resources/public/video/testVideo2.mp4
-/src/Easy/MainBundle/Resources/public/video/testVideo.mp4
-/src/Easy/MainBundle/Resources/public/video/testVideo3.mp4
+/src/Easy/MainBundle/Resources/public/video/*
 /src/Easy/MainBundle/Resources/public/video/

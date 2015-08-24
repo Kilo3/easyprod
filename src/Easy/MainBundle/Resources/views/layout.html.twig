@@ -73,7 +73,19 @@
             </div>
         </div>
         <div class="contentLoader">
-            
+            <div style="width: 1px;
+height: 1px;
+display: block;
+position: absolute;
+top: -2px;
+overflow: hidden;">
+                <img src="{{ asset('/bundles/easymain/images/yellowSmall.png') }}">
+                <img src="{{ asset('/bundles/easymain/images/redSmall.png') }}">
+                <img src="{{ asset('/bundles/easymain/images/lightBlueSmall.png') }}">
+                <img src="{{ asset('/bundles/easymain/images/blueSmall.png') }}">
+                <img src="{{ asset('/bundles/easymain/images/greenSmall.png') }}">
+                <img src="{{ asset('/bundles/easymain/images/saladSmall.png') }}">
+            </div>
             <div id="site-header">
                 <div class="menu-button" onclick="toggleMenu('mainMenu');">
                     <span class=""></span>
@@ -338,7 +350,7 @@
                 
                 
                 $('.play').on('click', function(){
-                    $('.videoContainer p').fadeOut();
+                    $('.videoPreloader').fadeOut();
                     var vid = $('.videoContainer video').get(0);
                     vid.play();
                     $('.play').toggle();

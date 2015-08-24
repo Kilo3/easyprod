@@ -12,11 +12,14 @@
     </div>
     <div class='rightBlock'>
         <div class='videoContainer'>
-            <p>Easy Video</p>
+            <div class="videoPreloader">
+                {% if gallery.GalleryHasMedias[1] is defined %}
+                    {% media gallery.GalleryHasMedias[1].media, 'big' %}
+                {% endif %}
+                <p>Пожалуйста, посмотрите наше видео</p>
+            </div>
             <video loop=''>
-                {% for galleryHasMedia in gallery.GalleryHasMedias %}
-                    <source src='{% path galleryHasMedia.media, 'reference' %}' type='video/mp4'>
-                {% endfor %}
+                <source src='{% path gallery.GalleryHasMedias[0].media, 'reference' %}' type='video/mp4'>
             </video>  
             <a class='play'><i class='fa fa-play'></i></a>
             <a class='pause' href='#' style='display: none;'><i class='fa fa-pause'></i></a>

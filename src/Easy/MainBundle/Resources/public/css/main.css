@@ -72,9 +72,9 @@ and open the template in the editor.
     color: #EF7F1A;
 }
 .inside strong{
-    color: #EB1C24;
-    font-family: sansRoundedBold;
-    font-size: 22px;
+    color: #949699;
+    font-family: sansRoundedLight;
+    font-size: 16px;
 }
 
 
@@ -2189,4 +2189,27 @@ h4{
     top: 35%;
     font-size: 26px;
     text-align: center;
+}
+.strongRed strong{
+    color: #EB1C24;
+    font-size: 25px;
+    font-family: sansRoundedBold;
+}
+
+.videoPreloader{
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+}
+.videoPreloader img{
+    width: 100%;
+    height: initial;
+}
+.videoPreloader p{
+    position: absolute;
+    top: 254px;
+    left: 24px;
+    font-size: 19px;
+    color: #EA2327;
+    text-shadow: -1px -1px 3px #FFF, 1px 1px 3px #FFF;
 }
