@@ -371,7 +371,7 @@ ul.orangeDot li:before {
     height: 41px;
     line-height: 39px;
     padding: 0 20px;
-    width: 265px;
+    width: 345px;
     letter-spacing: 0.2em;
     border: 2px solid #fff;
     text-transform: uppercase;
@@ -690,10 +690,10 @@ section{
     opacity:1;
 }
 .menuList{
-    margin: 0 auto;
     display: block;
-    width: 80%;
-    margin-top: 17%;
+    width: 85%;
+    top: 20%;
+    position: absolute;
     font-family: gothicRegular;
       -moz-transform: perspective(600px) rotateX(10deg);
     -webkit-transform: perspective(600px) rotateX(10deg);
@@ -1014,7 +1014,7 @@ i.dot{
     width: 575px; 
     height: 322px;
     position: relative;
-    border: 2px solid #EA2327;
+/*    border: 2px solid #EA2327;*/
 }
 .videoContainer video{
     position: absolute;
@@ -1694,13 +1694,14 @@ opacity: 1;
     
 .yellowSquare a, .redSquare a, .greenSquare a, .purpleSquare a, .blueSquare a, .lightBlueSquare a, .orangeSquare a, .saladSquare a{
     font-family: sansRoundedBold;
-    color: #fff;
+    color: #fff !important;
     font-size: 29px;
     letter-spacing: 0.5px;
     text-decoration: none;
     padding: 8px 25px;
     display: block;
     cursor: pointer;
+    border: none !important;
 }
 .ui-dialog-titlebar-close {
   display: none;
@@ -1911,6 +1912,7 @@ opacity: 1;
     background: #EB1C24 !important;
     opacity: 1 !important;
     cursor: pointer !important;
+    margin-right: 15px !important; //?
 }
 
 .fp-section.fp-table, .fp-slide.fp-table{
@@ -2009,7 +2011,7 @@ table>tbody>tr>td{
 }
 .blueimp-gallery .modal-dialog{
     margin: 0 auto;
-    margin-top: 8%;
+    margin-top: 5%;
 }
 .modal-content {
     position: relative;
@@ -2211,5 +2213,22 @@ h4{
     left: 24px;
     font-size: 19px;
     color: #EA2327;
-    text-shadow: -1px -1px 3px #FFF, 1px 1px 3px #FFF;
+/*    text-shadow: -1px -1px 3px #FFF, 1px 1px 3px #FFF;*/
+}
+.inside ul{
+    display: table;
+}
+.inside a{
+    color: #EA2327;
+    font-family: sansRoundedBold;
+    text-decoration: none;
+    border-bottom: 2px solid;
+}
+.soundControl{
+    position: absolute;
+    color: rgb(235, 28, 36);
+    z-index: 1000;
+    font-size: 3em;
+    left: 3%;
+    top: 2%;
 }

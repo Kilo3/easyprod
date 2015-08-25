@@ -22,20 +22,18 @@ overflow: hidden;">
         <img src="{{ asset('/bundles/easymain/images/greenSmall.png') }}">
         <img src="{{ asset('/bundles/easymain/images/saladSmall.png') }}">
     </div>
+    
+    <a href="#" class="soundControl"><i class="fa fa-volume-up"></i></a>
+    
     <div id="mainVideo">
-        <video muted="" autoplay="" loop="" style="opacity: 1;">
+        <video id="mainVideoSource" autoplay="" loop="" style="opacity: 1;">
             <source src="{{ asset('bundles/easymain/video/wow.mp4') }}" type="video/mp4">
         </video>
     </div>
-    <div class="row" style="margin:0;padding:0;z-index: 185;position: relative;">
-        <div class="col-md-12" style="margin:0;padding:0;">
-            <a href="#" onclick="toggleMenu('mainMenu');">
-                <img src="{{ asset('bundles/easymain/images/logoMain.png') }}" style="margin:0 auto;display:table;margin-top:18%;width:300px;">
-            </a>
-        </div>
-    </div>
-
-    <div class="col-md-4 col-md-offset-4" style="margin-top:40px;z-index: 185;position: relative;">
-        <a class="main-button" href="#" onclick="toggleMenu('mainMenu');">Окунись в новое</a>
+    <div class="" style="top: 20%;z-index: 185;position: absolute;left: 41%;">
+        <a href="#" onclick="toggleMenu('mainMenu');">
+            <img src="{{ asset('bundles/easymain/images/logoMain.png') }}" style="margin:0 auto;display:table;margin-top:18%;width:300px;">
+        </a>
+        <a class="main-button" style="margin-top:20px;" href="#" onclick="toggleMenu('mainMenu');">Учись с удовольствием</a>
     </div>
 {% endblock %}

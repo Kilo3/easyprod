@@ -1,20 +1,22 @@
 {% extends 'EasyMainBundle::layout.html.twig' %}
 {% block pageContent %}
-    <div class="content" style="margin-top: 160px;">
-        {% for new in content %}
-            <div style="display: table;margin-bottom: 50px;width: 100%;">
-                <p class="title">{{ new.getName() }}</p>
-                <div class="inside">
-                    {% autoescape false %}
-                        {{ new.getText()}}
-                    {% endautoescape %}
+    <section class="section">
+        <div class="content" style="">
+            {% for new in content %}
+                <div style="display: table;margin-bottom: 50px;width: 100%;">
+                    <p class="title">{{ new.getName() }}</p>
+                    <div class="inside">
+                        {% autoescape false %}
+                            {{ new.getText()}}
+                        {% endautoescape %}
+                    </div>
+                    <div class="buttonSquare">
+                        <a href="/news/{{ new.getId() }}">Узнать подробнее</a>
+                    </div>
                 </div>
-                <div class="buttonSquare">
-                    <a href="/news/{{ new.getId() }}">Узнать подробнее</a>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
+            {% endfor %}
+        </div>
+    </section>
 {% endblock %}
 
 {% block sideHeader %}

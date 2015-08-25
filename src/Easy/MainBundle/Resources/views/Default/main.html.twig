@@ -442,6 +442,28 @@
                     var random = Math.floor((Math.random() * colors.length) + 0);
                     $(this).attr('class', colors[random]+'Hover');
                 });
+                
+                
+                if($("#mainVideoSource").length){
+                    var video = document.getElementById("mainVideoSource");
+                    video.volume = 0.7;
+                }
+                
+                $('.soundControl').on('click',function(){
+                    var video = document.getElementById("mainVideoSource");
+                    
+                    if($(this).children('i').hasClass('fa-volume-off')){
+                        $(this).children('i').removeClass('fa-volume-off');
+                        $(this).children('i').addClass('fa-volume-up');
+                        video.volume = 0.7;
+                    }else{
+                        $(this).children('i').removeClass('fa-volume-up');
+                        $(this).children('i').addClass('fa-volume-off');
+                        video.volume = 0;
+                    }
+                    
+                });
+                
             });
             
             

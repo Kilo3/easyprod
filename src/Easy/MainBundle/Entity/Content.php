@@ -312,7 +312,7 @@ class Content
             'photo' => 'photo', // фотки с попапом
 //            'news' => 'news', // блок новости ?
 //            'calendar' => 'calendar', // календарь событий в гашей жизни
-//            'video_gallery' => 'video_gallery', //видео галлерея
+            'video_gallery' => 'video_gallery', //видео галлерея
 //            'news_all' => 'news_all', //все новости в нашей жизни подробнее
 //            'calendar_all' => 'calendar_all', //все события календаря в подробнее
 //            'photo_links' => 'photo_links', // ссылки фотогаллерей на фотки непосредственно
