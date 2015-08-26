@@ -3,7 +3,7 @@
     <div class='leftBlock'>
         <div class='advantage2'>
             {% for gallery in galleries %}
-                <a style="text-decoration: none;font-family: sansRoundedBold;color: #EA2327;font-size: 1.5em;border-bottom: 2px solid;" href="/gallery/{{ gallery.id }}">{{ gallery.name }}</a>
+                <a style="text-decoration: none;font-family: sansRoundedBold;color: #EA2327;font-size: 1.5em;border-bottom: 2px solid;" target="_blank" href="{% path gallery.GalleryHasMedias[0].media, 'reference' %}">{{ gallery.name }}</a>
             {% endfor %}
         </div>
         <div class='buttonSquare'>
