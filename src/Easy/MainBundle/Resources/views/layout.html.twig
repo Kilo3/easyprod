@@ -398,7 +398,12 @@ overflow: hidden;">
                 $('.slidesCont').slidesjs({
                     width: 940,
                     height: 528,
-                    navigation: false
+                    navigation: false,
+                    play:{
+                        auto: true,
+                        interval: 5000
+                    },
+                    pauseOnHover: true
                   });
                   
                   if($(".contentSlider").length){  
@@ -407,6 +412,11 @@ overflow: hidden;">
                         height: 428,
                         navigation: false,
                         pagination: false,
+                        pauseOnHover: true,
+                        play:{
+                            auto: true,
+                            interval: 5000
+                        },
                         callback: {
                           complete: function(number) {
                             // Do something awesome!

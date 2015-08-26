@@ -1,15 +1,17 @@
 {% extends 'EasyMainBundle::layout.html.twig' %}
 {% block pageContent %}
-    <div class="content" style="margin-top: 160px;">
-        <div style="display: table;margin-bottom: 50px;width: 100%;">
-            <p class="title">{{ content.getName() }}</p>
-            <div class="inside">
-                {% autoescape false %}
-                    {{ content.getText()}}
-                {% endautoescape %}
+    <section class="section">
+        <div class="content">
+            <div style="display: table;margin-bottom: 50px;width: 100%;">
+                <p class="title">{{ content.getName() }}</p>
+                <div class="inside">
+                    {% autoescape false %}
+                        {{ content.getText()}}
+                    {% endautoescape %}
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 {% endblock %}
 
 {% block sideHeader %}
