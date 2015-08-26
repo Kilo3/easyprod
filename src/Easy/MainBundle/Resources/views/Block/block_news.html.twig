@@ -1,0 +1,25 @@
+<div class="content">
+    <div class="buttonSquare" style="position: absolute;right: 250px;top: 35px;">
+        <a href="/news/" style="font-size: 20px;padding: 4px 20px;">Все новости</a>
+    </div>
+    <p class="title">{{ content.getName() }}</p>
+    <div class="contentSlider">
+        {% for new in news %}
+            <figure class="slidesjs-slide" style="margin:0;padding:0;">
+                <div class="rightBlock" style="width:100%;">
+                    <div class="advantage2" style="text-align: right;">
+                        {% autoescape false %}
+                            {{ new.preview }}
+                        {% endautoescape %}
+                    </div>
+                    <div class="buttonSquare">
+                        <a href="/news/{{ new.getId() }}">Узнать подробнее</a>
+                    </div>
+                </div>
+            </figure>
+        {% endfor %}
+
+        <a href="#" class="slidesjs-previous slidesjs-navigation"><i class="fa fa-chevron-left"></i></a>
+        <a href="#" class="slidesjs-next slidesjs-navigation"><i class="fa fa-chevron-right"></i></a>
+    </div>
+</div>

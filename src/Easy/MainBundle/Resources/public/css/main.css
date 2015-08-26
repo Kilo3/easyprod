@@ -2227,7 +2227,7 @@ h4{
 .soundControl{
     position: absolute;
     color: rgb(235, 28, 36);
-    z-index: 1000;
+    z-index: 190;
     font-size: 3em;
     left: 3%;
     top: 2%;

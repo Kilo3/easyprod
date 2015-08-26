@@ -65,17 +65,20 @@ class ContentAdmin extends Admin
             ->with('Content', array('class' => 'col-md-12'))
                 ->add('content', 'ckeditor',array('config_name' => 'default'))
             ->end()
-                
-            
         ;   
         
         $subject = $this->getSubject();
         //выбор меню второго уровня если есть контент для этого
-        if ($subject->getUrl() != null && count($subject->getUrl()->getChildren()) > 1) {
+        //if ($subject->getUrl() != null && count($subject->getUrl()->getChildren()) > 1) {
+        if ($subject->getUrl() != null) {
             $choices = array();
             foreach($subject->getUrl()->getChildren() as $index => $value){
                 $choices[$index+1] = $value->getTitle();
             }
+//            if(count($choices)>1){
+//                $choices[0] = 'Все меню';
+//            }
+            $choices[-1] = 'Отключить';
             $formMapper
                 ->with('secondMenu', array('class' => 'col-md-6'))
                     ->add('second_menu', 'choice', array('choices' => $choices, 'expanded' => true))

@@ -127,6 +127,13 @@ sonata_media:
                 medium:   { width: 500 , quality: 80}
                 big:   { width: 540 , quality: 100}
                 special:   { width: 440, height: 200, quality: 100}
+        easy_times:
+            providers:
+                - sonata.media.provider.image
+                - sonata.media.provider.file
+            formats:
+                big:   { width: 540 , quality: 100}
+            
 
     cdn:
         server:
@@ -143,6 +150,8 @@ sonata_media:
         file: 
             allowed_mime_types:
               - video/mp4
+              - application/pdf
             allowed_extensions:
               - mp4
+              - pdf
 

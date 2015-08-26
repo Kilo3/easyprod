@@ -141,13 +141,13 @@ overflow: hidden;">
                     {% endif %}
                     
                 </a>
-                {#{% block topHeader %}
-                {% endblock %}#}
-                <ul style="position: relative;">
-                    {% for value in topMenu %}
-                        <li><a href="#section{{ value.section }}" class="scroll">{{ value.title }}</a></li>
-                    {% endfor %}
-                </ul>
+                {% block topHeader %}
+                    <ul style="position: relative;">
+                        {% for value in topMenu %}
+                            <li><a href="#section{{ value.section }}" class="scroll">{{ value.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% endblock %}
                 <div class="contact" style="position: relative;">
                     <a id="opener" class="buttonHover">записаться</a>
                     <p><span style="font-size: 17px;">(3952)</span> 72-36-72</p>
@@ -412,11 +412,6 @@ overflow: hidden;">
                         height: 428,
                         navigation: false,
                         pagination: false,
-                        pauseOnHover: true,
-                        play:{
-                            auto: true,
-                            interval: 5000
-                        },
                         callback: {
                           complete: function(number) {
                             // Do something awesome!

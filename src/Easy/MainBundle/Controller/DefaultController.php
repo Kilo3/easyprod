@@ -169,10 +169,28 @@ class DefaultController extends Controller
                     $value->setContent($foo->getContent());
                     break;
                 
+                case 'news':
+                    $news = $hp->getRepository('EasyMainBundle:News')->findBy(array(), array('order_column'=>'ASC'), 3);
+                    $foo = $this->render('EasyMainBundle:Block:block_news.html.twig', array(
+                        'content'   => $value,
+                        'news'   => $news
+                    ));
+                    $value->setContent($foo->getContent());
+                    break;
+                
                 case 'content':
                  
                     $foo = $this->render('EasyMainBundle:Block:block_content.html.twig', array(
                         'content'   => $value
+                    ));
+                    $value->setContent($foo->getContent());
+                    break;
+                
+                case 'easy_times':
+                    $galleries = $hp->getRepository('Application\Sonata\MediaBundle\Entity\Gallery')->findBy(array('context' => 'easy_times'));
+                    $foo = $this->render('EasyMainBundle:Block:block_easy_times.html.twig', array(
+                        'content'   => $value,
+                        'galleries'   => $galleries,
                     ));
                     $value->setContent($foo->getContent());
                     break;
@@ -312,6 +330,8 @@ class DefaultController extends Controller
                     ));
                     $value->setContent($foo->getContent());
                     break;
+                
+                
 
                 default:
                     break;
@@ -352,6 +372,26 @@ class DefaultController extends Controller
         $topMenu = "";
         $secondLayerMenu = "";
         return $this->render('EasyMainBundle:Block:news.html.twig', array(
+            'mainMenu' => $mainMenu,
+            'content' => $content,
+            'topMenu' => $topMenu,
+            'secondLayerMenu' => $secondLayerMenu,
+            'color' => 'salad'
+        ));
+    }
+    
+    public function easyTimesAction()
+    {
+        $hp = $this->getDoctrine()->getManager();
+        
+        $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8)); // id = 8 корень меню
+        
+        $content = $hp->getRepository('Application\Sonata\MediaBundle\Entity\Gallery')->findBy(array('context' => 'easy_times'));
+        
+        
+        $topMenu = "";
+        $secondLayerMenu = "";
+        return $this->render('EasyMainBundle:Block:easy_times.html.twig', array(
             'mainMenu' => $mainMenu,
             'content' => $content,
             'topMenu' => $topMenu,
@@ -409,7 +449,7 @@ class DefaultController extends Controller
         
         $topMenu = "";
         $secondLayerMenu = "";
-        return $this->render('EasyMainBundle:Block:news_show.html.twig', array(
+        return $this->render('EasyMainBundle:Block:calendar_show.html.twig', array(
             'mainMenu' => $mainMenu,
             'content' => $content,
             'topMenu' => $topMenu,

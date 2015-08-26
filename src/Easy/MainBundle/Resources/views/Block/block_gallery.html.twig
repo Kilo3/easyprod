@@ -6,9 +6,11 @@
                 {{ content.getContent()}}
             {% endautoescape %}
         </div>
-        <div class='buttonSquare'>
-            <a href='javascript:;' onclick="toggleMenu('secondLayerMenu{{ content.getSecondMenu()}}');">Узнать подробнее</a>
-        </div>
+        {% if content.secondMenu !=  -1%}
+            <div class='buttonSquare'>
+                <a href='javascript:;' onclick="toggleMenu('secondLayerMenu{{ content.getSecondMenu()}}');">Узнать подробнее</a>
+            </div>
+        {% endif %}
     </div>
     <div class='rightBlock'>
         <div class='slidesCont'>

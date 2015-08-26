@@ -1,0 +1,27 @@
+{% extends 'EasyMainBundle::layout.html.twig' %}
+{% block pageContent %}
+    <section class="section">
+        <div class="content">
+            <p class="title">The Easy Times</p>
+            <div class="links">
+                {% for gallery in content %}
+                    <a href="{% path gallery.GalleryHasMedias[0].media, 'reference' %}" target="_blank">
+                        {% if gallery.GalleryHasMedias[1] is defined %}
+                            {% media gallery.GalleryHasMedias[1].media, 'big' %}
+                        {% endif %}
+                        {{ gallery.name }} 
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block sideHeader %}
+{% endblock %}
+
+{% block topHeader %}
+    <ul style="position: relative;">
+        <li><a href="/life/#section2" class="scroll">Наша жизнь</a></li>
+    </ul>
+{% endblock %}

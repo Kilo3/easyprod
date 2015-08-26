@@ -30,6 +30,11 @@ easy_main_calendar:
     path:     /calendar/{id}/
     defaults: { _controller: EasyMainBundle:Default:calendar }
     
+easy_main_easy_times:
+    path:     /easytimes/
+    defaults: { _controller: EasyMainBundle:Default:easyTimes }
+    
+    
 form_controller:
     path: /ajax/
     defaults: { _controller: EasyMainBundle:Form:index }

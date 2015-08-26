@@ -1,0 +1,16 @@
+<div class='content'>
+    <p class='title'>{{ content.getName()}}</p>
+    <div class='leftBlock'>
+        <div class='advantage2'>
+            {% for gallery in galleries %}
+                <a style="text-decoration: none;font-family: sansRoundedBold;color: #EA2327;font-size: 1.5em;border-bottom: 2px solid;" href="/gallery/{{ gallery.id }}">{{ gallery.name }}</a>
+            {% endfor %}
+        </div>
+        <div class='buttonSquare'>
+            <a href='/easytimes/'>Все выпуски</a>
+        </div>
+    </div>
+    <div class='rightBlock'>
+        <img src="{{ asset('/uploads/media/default/0001/01/thumb_92_default_big.jpeg') }}">
+    </div>
+</div>
