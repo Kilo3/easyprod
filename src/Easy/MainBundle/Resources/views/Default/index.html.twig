@@ -9,12 +9,14 @@
 {% endblock %}
 
 {% block content %}
-    <div style="width: 1px;
-height: 1px;
-display: block;
-position: absolute;
-top: -2px;
-overflow: hidden;">
+    <div style="width: 10px;
+    height: 10px;
+    display: block;
+    position: absolute;
+    top: -2px;
+    overflow: hidden;
+    z-index: 10000;
+    opacity: 0.1;">
         <img src="{{ asset('/bundles/easymain/images/yellowSmall.png') }}">
         <img src="{{ asset('/bundles/easymain/images/redSmall.png') }}">
         <img src="{{ asset('/bundles/easymain/images/lightBlueSmall.png') }}">
