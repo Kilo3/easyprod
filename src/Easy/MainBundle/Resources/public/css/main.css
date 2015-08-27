@@ -2327,7 +2327,9 @@ h4{
 .inside table thead{
     text-align: center;
     color:#ea2327;
-    font-family: sansRoundedBold;
+/*    font-family: sansRoundedBold;*/
+}
+.inside table>thead>tr>th{
     padding: 10px 0;
 }
 
@@ -2361,4 +2363,11 @@ h4{
     color: #EB1C24;
     display: inherit;
     margin-top: 6px;
+    text-decoration: none;
+}
+.advantage2 a{
+    color: #EA2327;
+    text-decoration: none;
+    border-bottom: 2px solid;
+    font-family: sansRoundedLight;
 }
