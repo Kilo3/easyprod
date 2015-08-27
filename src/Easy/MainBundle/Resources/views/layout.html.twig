@@ -7,6 +7,7 @@
             {% endblock %}
         </title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/jquery-ui.css') }}" type="text/css" media="all" />
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/jquery.fullPage.css') }}" type="text/css" media="all" />
@@ -98,7 +99,7 @@ overflow: hidden;">
                     </a>
                     <div class="menuList">
                         {% for value in mainMenu %}
-                            <div><a class="purpleHover" href="{{ path('easy_main_homepage') }}{{ value.url }}">{{ value.title }}</a></div>
+                            <div><a class="{{ value.color }}Hover" href="{{ path('easy_main_homepage') }}{{ value.url }}">{{ value.title }}</a></div>
                         {% endfor %}
                     </div>
                     <div class="menuInfo">
@@ -230,6 +231,8 @@ overflow: hidden;">
                 $('.advantage').addClass('red');
                 $('.contact p').addClass(color);
                 $('.buttonSquare').addClass(color+'Square');
+                $('#dialog').addClass(color);
+                $('#thankyou').addClass(color);
             }
             
             
@@ -316,7 +319,17 @@ overflow: hidden;">
                             center: [52.261, 104.293],
                             zoom: 11
                         });
+                            
+                        marker = DG.marker([52.261, 104.293], {
+                            draggable: true
+                        }).addTo(map);
 
+                        marker.on('drag', function(e) {
+                            var lat = e.target._latlng.lat.toFixed(3),
+                                lng = e.target._latlng.lng.toFixed(3);
+
+                            console.log(lat + ', ' + lng);
+                        });
 
                         $(".address a").each(function(index){
                             DG.marker($(this).data('coordinates')).addTo(map).bindPopup($(this).html());
@@ -455,10 +468,10 @@ overflow: hidden;">
                     $('div.calendarMonth[month='+data+']').addClass('active');
                 });
                 
-                var colors = new Array('purple', 'yellow', 'lightBlue', 'blue', 'green', 'salad');
-                $('.menuList div a').each(function(index, value){
-                    var random = Math.floor((Math.random() * colors.length) + 0);
-                    $(this).attr('class', colors[random]+'Hover');
+                //var colors = new Array('purple', 'yellow', 'lightBlue', 'blue', 'green', 'salad');
+                $('.nav-menu:not(.mainMenu) .menuList div a').each(function(index, value){
+                    //var random = Math.floor((Math.random() * colors.length) + 0);
+                    $(this).attr('class', '{{ color }}Hover');
                 });
                 
                 if($("#mainVideoSource").length){

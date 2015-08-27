@@ -30,9 +30,15 @@
         {% endblock %}
     </head>
     <body>
-        
-        {#<img id="preloaderImage" src="{{ asset('bundles/easymain/images/logoMain.png') }}" style="margin-left: 37.6%;margin-top:21%;width:300px;position: fixed;">#}
-        
+        <div id="preloaderBlock" style="">
+            <div>
+                <img id="preloaderImage" src="{{ asset('bundles/easymain/images/logoMain.png') }}" >
+                <p>Выберите город:</p>
+                <a href="#" onclick="hidePreloader()">Иркутск</a>
+                <a href="//uu.e-a-s-y.ru">Улан-удэ</a>
+                <a href="//kr.e-a-s-y.ru/">Красноярск</a>
+            </div>
+        </div>
         {#<div>
             <p>Город</p>
         </div>#}
@@ -50,7 +56,7 @@
                     </a>
                     <div class="menuList">
                         {% for value in mainMenu %}
-                            <div><a class="purpleHover" href="{{ path('easy_main_homepage') }}{{ value.url }}">{{ value.title }}</a></div>
+                            <div><a class="{{ value.color }}Hover" href="{{ path('easy_main_homepage') }}{{ value.url }}">{{ value.title }}</a></div>
                         {% endfor %}
                     </div>
                     {#<div><a class="yellowHover" href="{{ path('easy_main_foreign') }}">иностранные языки</a></div>
@@ -133,25 +139,16 @@
                 //$.cookie('qwe',66, {path: '/'});
                 //console.log($.cookie('cityId'));
                 if(typeof $.cookie('cityId') === 'undefined'){
-                    
-                    var $preloader = $('#page-preloader'),
-                    $spinner = $preloader.find('.spinner');
-                    
-                    setTimeout(function(){
-                        //$spinner.fadeOut();
-                        //$preloader.delay(350).fadeOut('slow');
-                    }, 3000);
-
-                    
-                    
-                    {#$(".inView").inViewport(function(px){
-                        if(px) $(this).addClass("inViewReaction") ;
-                    });#}
+                    Pace.stop();
+                    $('#preloaderBlock').fadeIn();
                 }
             });
             
             
-            
+            function hidePreloader(){
+                $('#preloaderBlock').fadeOut();
+                Pace.start();
+            }
             
             
             function toggleMenu(menuClass){
@@ -437,11 +434,11 @@
                         scrollingSpeed: 1000,
                         scrollOverflow:true
                 });
-                var colors = new Array('purple', 'yellow', 'lightBlue', 'blue', 'green', 'salad');
+                {#var colors = new Array('purple', 'yellow', 'lightBlue', 'blue', 'green', 'salad');
                 $('.menuList div a').each(function(index, value){
                     var random = Math.floor((Math.random() * colors.length) + 0);
                     $(this).attr('class', colors[random]+'Hover');
-                });
+                });#}
                 
                 
                 if($("#mainVideoSource").length){
