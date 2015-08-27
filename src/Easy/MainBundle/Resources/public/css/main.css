@@ -73,7 +73,7 @@ and open the template in the editor.
 }
 .inside strong{
     color: #949699;
-    font-family: sansRoundedLight;
+    font-family: sansRoundedBold;
     font-size: 16px;
 }
 
@@ -2369,5 +2369,5 @@ h4{
     color: #EA2327;
     text-decoration: none;
     border-bottom: 2px solid;
-    font-family: sansRoundedLight;
+    font-family: sansRoundedBold;
 }

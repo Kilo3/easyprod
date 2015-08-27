@@ -12,7 +12,7 @@ class FormController extends Controller
         $name = $request->request->get('name');
         $phone = $request->request->get('phone');
         
-        $to      = 'cubeintocube@gmail.com';
+        $to      = 'irk@e-a-s-y.ru';
         $subject = 'Запрос с сайта';
         $message = "Имя: {$name}, Номер: {$phone}";
         $headers = 'From: webmaster@e-a-s-y.com' . "\r\n" .
