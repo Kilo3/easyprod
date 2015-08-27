@@ -33,10 +33,12 @@
         <div id="preloaderBlock" style="">
             <div>
                 <img id="preloaderImage" src="{{ asset('bundles/easymain/images/logoMain.png') }}" >
-                <p>Выберите город:</p>
+                <p>Пожалуйста, выберите город:</p>
                 <a href="#" onclick="hidePreloader()">Иркутск</a>
-                <a href="//uu.e-a-s-y.ru">Улан-удэ</a>
+                <a href="#" onclick="hidePreloader()">Ангарск</a>
+                <a href="#" onclick="hidePreloader()">Шелехов</a>
                 <a href="//kr.e-a-s-y.ru/">Красноярск</a>
+                <a href="//uu.e-a-s-y.ru">Улан-Удэ</a>
             </div>
         </div>
         {#<div>
@@ -148,6 +150,8 @@
             function hidePreloader(){
                 $('#preloaderBlock').fadeOut();
                 Pace.start();
+                var video = document.getElementById("mainVideoSource");
+                video.play();
             }
             
             
