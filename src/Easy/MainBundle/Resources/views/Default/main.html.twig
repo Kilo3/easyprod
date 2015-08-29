@@ -141,6 +141,8 @@
             $(window).on('load', function () {
                 //$.cookie('qwe',66, {path: '/'});
                 //console.log($.cookie('cityId'));
+                toggleMenu('mainMenu');
+                toggleMenu('mainMenu');
                 if(typeof $.cookie('cityId') === 'undefined'){
                     Pace.stop();
                     $('#preloaderBlock').fadeIn();

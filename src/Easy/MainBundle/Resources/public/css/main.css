@@ -2284,6 +2284,7 @@ h4{
     color: #EB1C24;
     font-size: 25px;
     font-family: sansRoundedBold;
+    font-weight: normal;
 }
 
 .videoPreloader{
@@ -2371,3 +2372,23 @@ h4{
     border-bottom: 2px solid;
     font-family: sansRoundedBold;
 }
+
+
+.info {
+    background:#fff;
+    position:absolute;
+    width:260px;
+    top:10px;
+    right:10px;
+    border-radius:2px;
+    }
+    .info .item {
+      display:block;
+      border-bottom:1px solid #eee;
+      padding:10px;
+      text-decoration:none;
+      }
+      .info .item small { color:#888; }
+      .info .item:hover,
+      .info .item.active { background:#f8f8f8; }
+      .info .item:last-child { border-bottom:none; }
