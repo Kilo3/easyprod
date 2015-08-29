@@ -1,9 +1,11 @@
 {% for menu in menuList %}
     <div class="nav-menu secondLayerMenu{{ loop.index }}">
-        <a href="{{ path('easy_main_homepage') }}">
+        <div style="position: absolute;width: 100%;height: 100%;z-index:99;" onclick="toggleMenu('secondLayerMenu{{ loop.index }}')"></div>
+        
+        <a href="{{ path('easy_main_homepage') }}" style="position: absolute;z-index: 100;top: 4%;left: 4%;">
             <img id="logo" src="{{ asset('/bundles/easymain/images/logoMain.png') }}" >
         </a>
-        <div class="menuList">
+        <div class="menuList" style="position: absolute;z-index: 100;">
             {% if menu.content|length > 24 %}
                 {% set foo = 'col-2' %}
             {% elseif menu.content|length > 18 %}
@@ -26,7 +28,7 @@
             </div>
 
         </div>
-        <div class="menu-button" onclick="toggleMenu('secondLayerMenu{{ loop.index }}');">
+        <div class="menu-button" onclick="toggleMenu('secondLayerMenu{{ loop.index }}');" style="position: absolute;z-index: 100;">
             <span class=""></span>
             <span class=""></span>
             <span class=""></span>

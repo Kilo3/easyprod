@@ -754,6 +754,7 @@ section{
     transition: transform .3s ease-out;
     position: relative;
     display: table;
+    margin: 0 auto;
 }
 #top-header li>a:after{
     display: block;
@@ -2381,14 +2382,18 @@ h4{
     top:10px;
     right:10px;
     border-radius:2px;
-    }
-    .info .item {
-      display:block;
-      border-bottom:1px solid #eee;
-      padding:10px;
-      text-decoration:none;
-      }
-      .info .item small { color:#888; }
-      .info .item:hover,
-      .info .item.active { background:#f8f8f8; }
-      .info .item:last-child { border-bottom:none; }
+}
+.info .item {
+    display:block;
+    border-bottom:1px solid #eee;
+    padding:10px;
+    text-decoration:none;
+}
+.info .item small { color:#888; }
+.info .item:hover,
+.info .item.active { background:#f8f8f8; }
+.info .item:last-child { border-bottom:none; }
+
+.advantage2 img {
+    padding: 10px;
+}
