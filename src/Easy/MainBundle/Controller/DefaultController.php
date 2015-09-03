@@ -194,6 +194,13 @@ class DefaultController extends Controller
                     ));
                     $value->setContent($foo->getContent());
                     break;
+                
+                case 'contacts':
+                    $foo = $this->render('EasyMainBundle:Block:block_contacts.html.twig', array(
+                        'content'   => $value
+                    ));
+                    $value->setContent($foo->getContent());
+                    break;
 
                 default:
                     break;
@@ -331,6 +338,13 @@ class DefaultController extends Controller
                     $value->setContent($foo->getContent());
                     break;
                 
+                case 'contacts':
+                    $foo = $this->render('EasyMainBundle:Block:block_contacts.html.twig', array(
+                        'content'   => $value
+                    ));
+                    $value->setContent($foo->getContent());
+                    break;
+                
                 
 
                 default:
@@ -455,6 +469,26 @@ class DefaultController extends Controller
             'topMenu' => $topMenu,
             'secondLayerMenu' => $secondLayerMenu,
             'color' => 'salad'
+        ));
+    }
+    
+    public function contactsAction($id)
+    {
+        $hp = $this->getDoctrine()->getManager();
+        
+        $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8)); // id = 8 корень меню
+        
+        $content = $hp->getRepository('EasyMainBundle:Content')->findOneBy(array('id' => $id));
+        $color = $content->getUrl()->getColor();
+        
+        $topMenu = "";
+        $secondLayerMenu = "";
+        return $this->render('EasyMainBundle:Block:contacts.html.twig', array(
+            'mainMenu' => $mainMenu,
+            'content' => $content,
+            'topMenu' => $topMenu,
+            'secondLayerMenu' => $secondLayerMenu,
+            'color' => $color
         ));
     }
     

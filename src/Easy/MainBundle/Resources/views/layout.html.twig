@@ -14,6 +14,7 @@
             <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/blueimp-gallery.min.css') }}" type="text/css" media="all" />
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/bootstrap-image-gallery.css') }}" type="text/css" media="all" />
+            <link rel="stylesheet" href="{{ asset('bundles/easymain/css/colorbox.css') }}" type="text/css" media="all" />
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/main.css') }}" type="text/css" media="all" />
         {% endblock %}
         {% block javascripts %}
@@ -29,8 +30,9 @@
             <script src="{{ asset('bundles/easymain/js/jquery.fullPage.js') }}"></script>
             <script src="{{ asset('bundles/easymain/js/jquery.blueimp-gallery.min.js') }}"></script>
             <script src="{{ asset('bundles/easymain/js/bootstrap-image-gallery.js') }}"></script>
+            <script src="{{ asset('bundles/easymain/js/jquery.colorbox.js') }}"></script>
             
-            <script src="http://maps.api.2gis.ru/2.0/loader.js?pkg=full" data-id="dgLoader"></script>
+            <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
             <script src="{{ asset('bundles/easymain/js/main.js') }}" ></script>
         {% endblock %}
     </head>
@@ -270,6 +272,8 @@ overflow: hidden;">
                     
                 });
                 
+                $(".popup").colorbox({inline:true, width:"60%"});
+                
                 $('#nav a+div').on('click', function(){
                     var mark = $(this).parents().attr('data-menuanchor');
                     $.fn.fullpage.moveTo(mark);
@@ -312,39 +316,44 @@ overflow: hidden;">
                 var parallax = new Parallax(scene);#}
                 
                 if($("#map").length){
-                    var map;
-                    DG.then(function() {
-                        var map;
+                    ymaps.ready(init);
 
-                        map = DG.map('map', {
-                            center: [52.261, 104.293],
-                            zoom: 11
+                    function init () {
+                        var myMap = new ymaps.Map("map", {
+                                center: [52.28, 104.29],
+                                zoom: 10
+                            }, {
+                                searchControlProvider: 'yandex#search'
+                            });
+                        $(".address a[address]").each(function(index){
+                            try{
+                                var coor = JSON.parse($(this).attr('data-coordinates'));
+                            }catch(e){
+                                console.log(e);
+                            }
+                           
+                           console.log($(this).attr('data-coordinates'),coor);
+                           myMap.geoObjects
+                                .add(new ymaps.Placemark(coor, {
+                                    balloonContent: $(this).html()
+                                }, {
+                                    preset: 'islands#icon',
+                                    iconColor: '#0095b6'
+                                }));
+                        });         
+                        $(".address a[address]").on('click', function(){
+                            var coor = JSON.parse($(this).attr('data-coordinates'));
+                            myMap.setCenter(coor, 14, {
+                                duration: 500
+                            });
                         });
-                            
-                        marker = DG.marker([52.261, 104.293], {
-                            draggable: true
-                        }).addTo(map);
-
-                        marker.on('drag', function(e) {
-                            var lat = e.target._latlng.lat.toFixed(3),
-                                lng = e.target._latlng.lng.toFixed(3);
-
-                            console.log(lat + ', ' + lng);
+                        
+                        myMap.events.add('click', function (e) {
+                            var coords = e.get('coords');
+                            console.log(coords);
                         });
-
-                        $(".address a").each(function(index){
-                            DG.marker($(this).data('coordinates')).addTo(map).bindPopup($(this).html());
-                        });
-
-                        $('.address a').on('click', function(){
-                            var coordinates = $(this).data('coordinates');
-                            moveTo(coordinates);
-                        });
-
-                        function moveTo(coordinates) {
-                            map.setView(coordinates);
-                        };
-                    });
+                        
+                    }
                 }
                 
                 $(".panel").css({
@@ -376,6 +385,52 @@ overflow: hidden;">
                     vid.pause();
                     $('.play').toggle();
                     $('.pause').toggle();
+                });
+                
+                $('.expand').on('click', function(){
+                    $(".videoContainer").before("<div id='videoZone'><div>");
+                    $(".videoContainer").insertBefore(".pace");
+                    $(".videoContainer").css({
+                        'position':'absolute',
+                        'width':'100%',
+                        'height':'inherit',
+                        'z-index':'10000',
+                        'overflow':'hidden',
+                        'background-color':'white'
+                    });
+                    
+                    var total = window.innerHeight - $('.videoContainer video').height();
+                    var foo = Math.round(total/2);
+                    $('.videoContainer video').css({'padding-top':foo+'px'});
+                    
+                    $('.expand').toggle();
+                    $('.compress').toggle();
+                    
+                    if($('.play').css('display') === 'none'){
+                        var vid = $('.videoContainer video').get(0);
+                        vid.play();
+                    }
+                });
+                
+                $('.compress').on('click', function(){
+                    $(".videoContainer").insertAfter("#videoZone");
+                    $("#videoZone").remove();
+                    $(".videoContainer").css({
+                        'position':'',
+                        'width':'',
+                        'height':'',
+                        'z-index':'',
+                        'overflow':'',
+                        'background-color':''
+                    });
+                    $('.videoContainer video').css({'padding-top':''});
+                    
+                    $('.expand').toggle();
+                    $('.compress').toggle();
+                    if($('.play').css('display') === 'none'){
+                        var vid = $('.videoContainer video').get(0);
+                        vid.play();
+                    }
                 });
                 
                 

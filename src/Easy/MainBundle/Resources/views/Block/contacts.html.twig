@@ -1,0 +1,39 @@
+{% extends 'EasyMainBundle::layout.html.twig' %}
+{% block pageContent %}
+    <div id="fullpage">
+        {% for contacts in content.contacts %}
+            <section class="section">
+                <div class='content'>
+                    <p class='title'>{{ contacts.name}}</p>
+                    <div class='leftBlock'>
+                        <div class='advantage2'>
+                            {% autoescape false %}
+                                {{ contacts.content}}
+                            {% endautoescape %}
+                        </div>
+                    </div>
+                    <div class='rightBlock'>
+                        <div class='slidesCont'>
+                            {% if contacts.gallery.GalleryHasMedias is defined %}
+                                {% for galleryHasMedia in contacts.gallery.GalleryHasMedias %}
+                                    {% media galleryHasMedia.media, 'big' with {'class': ''} %}
+                                {% endfor %}
+                            {% endif %}
+                            <a href='#' class='slidesjs-previous slidesjs-navigation'><i class='fa fa-chevron-left'></i></a>
+                            <a href='#' class='slidesjs-next slidesjs-navigation'><i class='fa fa-chevron-right'></i></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block sideHeader %}
+{% endblock %}
+
+{% block topHeader %}
+    {#<ul style="position: relative;">
+        <li><a href="/life/#section2" class="scroll">Наша жизнь</a></li>
+    </ul>#}
+{% endblock %}

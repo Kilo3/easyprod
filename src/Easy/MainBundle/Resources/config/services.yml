@@ -8,9 +8,12 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: easy, label: Content }
         arguments:
-            - ~
+            - easy.admin.content
             - Easy\MainBundle\Entity\Content
             - 'EasyMainBundle:ContentAdmin'
+            
+            
+            
     easy.admin.team:
         class: Easy\MainBundle\Admin\TeamAdmin
         tags:
@@ -51,6 +54,14 @@ services:
             - ~
             - Easy\MainBundle\Entity\Calendar
             - 'EasyMainBundle:CalendarAdmin'
+    easy.admin.contacts:
+        class: Easy\MainBundle\Admin\ContactsAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: easy, label: Contacts}
+        arguments:
+            - ~
+            - Easy\MainBundle\Entity\Contacts
+            - 'EasyMainBundle:ContactsAdmin'
  
 #    ens.jobeet.admin.job:
 #        class: Ens\JobeetBundle\Admin\JobAdmin

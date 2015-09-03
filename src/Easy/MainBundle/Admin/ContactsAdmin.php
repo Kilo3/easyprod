@@ -5,31 +5,18 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
-use Sonata\AdminBundle\Show\ShowMapper;
+//use Sonata\AdminBundle\Show\ShowMapper;
 
-class TeamAdmin extends Admin
+class ContactsAdmin extends Admin
 {
-    protected $parentAssociationMapping = 'content';
-
-    public function configureShowFields(ShowMapper $showMapper)
-    {
-        $showMapper
-            ->add('name')
-            //->add('quantity')
-            //->add('category')
-        ;
-    }
-
     public function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
             ->add('name')
-            ->add('text', 'ckeditor', array(
-                'config' => array(
-                    'removePlugins' => 'htmldataprocessor'
-                )
-            ))
-            ->add('media', 'sonata_type_model_list', array())
+            ->add('address')
+            ->add('content', 'ckeditor',array('config_name' => 'default'))
+            ->add('gallery')
+            ->add('coordinates','text', array('disabled' => true))
         ;
     }
 
@@ -37,7 +24,6 @@ class TeamAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('name')
-            
         ;
     }
 
@@ -45,7 +31,6 @@ class TeamAdmin extends Admin
     {
         $datagridMapper
             ->add('name')
-            //->add('category')
         ;
     }
 }

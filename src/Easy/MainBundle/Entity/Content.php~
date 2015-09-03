@@ -25,14 +25,9 @@ class Content
     private $type;
 
     /**
-     * @var string
-     */
-    private $content = null;
-
-    /**
      * @var integer
      */
-    private $order_column;
+    private $order_column = null;
 
     /**
      * @var boolean
@@ -124,29 +119,7 @@ class Content
         return $this->type;
     }
 
-    /**
-     * Set content
-     *
-     * @param string $content
-     * @return Content
-     */
-    public function setContent($content)
-    {
-        $this->content = $content;
-
-        return $this;
-    }
-
-    /**
-     * Get content
-     *
-     * @return string 
-     */
-    public function getContent()
-    {
-        return $this->content;
-    }
-
+    
     /**
      * Set order_column
      *
@@ -310,12 +283,13 @@ class Content
             'content' => 'content', 
             'slider' => 'slider', //слайдер, команда, учителя
             'photo' => 'photo', // фотки с попапом
-            'news' => 'news', // блок новости ?
-            'calendar' => 'calendar', // календарь событий в гашей жизни
+            'contacts' => 'contacts', // контакты
+//            'news' => 'news', // блок новости ?
+//            'calendar' => 'calendar', // календарь событий в гашей жизни
             'video_gallery' => 'video_gallery', //видео галлерея
-            'news_all' => 'news_all', //все новости в нашей жизни подробнее
-            'calendar_all' => 'calendar_all', //все события календаря в подробнее
-            'photo_links' => 'photo_links', // ссылки фотогаллерей на фотки непосредственно
+//            'news_all' => 'news_all', //все новости в нашей жизни подробнее
+//            'calendar_all' => 'calendar_all', //все события календаря в подробнее
+//            'photo_links' => 'photo_links', // ссылки фотогаллерей на фотки непосредственно
             );
     }
     /**
@@ -345,5 +319,73 @@ class Content
     public function getSecondMenu()
     {
         return $this->second_menu;
+    }
+    
+    
+    /**
+     * @var string
+     */
+    private $content;
+
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     * @return Content
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string 
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $contacts;
+
+
+    /**
+     * Add contacts
+     *
+     * @param \Easy\MainBundle\Entity\Contacts $contacts
+     * @return Content
+     */
+    public function addContact(\Easy\MainBundle\Entity\Contacts $contacts)
+    {
+        $this->contacts[] = $contacts;
+
+        return $this;
+    }
+
+    /**
+     * Remove contacts
+     *
+     * @param \Easy\MainBundle\Entity\Contacts $contacts
+     */
+    public function removeContact(\Easy\MainBundle\Entity\Contacts $contacts)
+    {
+        $this->contacts->removeElement($contacts);
+    }
+
+    /**
+     * Get contacts
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getContacts()
+    {
+        return $this->contacts;
     }
 }

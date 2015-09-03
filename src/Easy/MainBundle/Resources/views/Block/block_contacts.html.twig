@@ -1,8 +1,17 @@
 <div class="content">
     <p class="title">{{ content.getName() }}</p>
-    <div class="inside">
-        {% autoescape false %}
-            {{ content.getContent()}}
-        {% endautoescape %}
+    <div class="leftBlock">
+        <div class="advantage address purple red" style="text-align: right;">
+            <p>адреса</p>
+            {% for contact in content.contacts %}
+                <a href="javascript:;" address="{{ loop.index }}" data-coordinates="[{{ contact.coordinates }}]">{{ contact.name }}</a>
+            {% endfor %}
+            <div class="buttonSquare">
+                <a href="{{ path('easy_main_contacts', {'id': content.id }) }}">Узнать подробнее</a>
+            </div>
+        </div>
+    </div>
+    <div class="rightBlock">
+        <div id="map" style="width: 570px; height: 400px; position: relative;"></div>
     </div>
 </div>

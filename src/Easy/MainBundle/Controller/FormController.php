@@ -5,6 +5,7 @@ namespace Easy\MainBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class FormController extends Controller
 {
@@ -15,7 +16,7 @@ class FormController extends Controller
         $to      = 'irk@e-a-s-y.ru';
         $subject = 'Запрос с сайта';
         $message = "Имя: {$name}, Номер: {$phone}";
-        $headers = 'From: webmaster@e-a-s-y.com' . "\r\n" .
+        $headers = 'From: irk@e-a-s-y.ru' . "\r\n" .
                    'X-Mailer: PHP/' . phpversion();
         //var_dump(mail($to, $subject, $message, $headers));die();
         if(mail($to, $subject, $message, $headers)){
@@ -23,6 +24,25 @@ class FormController extends Controller
         }else{
             echo "not sended";die();
         }
+        
+    }
+    
+    
+    public function changeFormAction($type)
+    {   
+        $html = ""; // HTML as response
+//        $tag = $this->getDoctrine()
+//            ->getRepository('YourBundle:Tag')
+//            ->find($tagId);
+//
+//        $categories = $tag->getCategories();
+//
+//        foreach($categories as $cat){
+//            $html .= '<option value="'.$cat->getId().'" >'.$cat->getName().'</option>';
+//        }
+        $html .= "<p>ok{$type}</p>";
+
+        return new Response($html, 200);
         
     }
 }

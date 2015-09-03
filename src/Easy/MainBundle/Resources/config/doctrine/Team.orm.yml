@@ -35,6 +35,7 @@ Easy\MainBundle\Entity\Team:
             cascade: ["persist"]
             fetch: LAZY
             
+            
 #    manyToOne:
 #        content:
 #            targetEntity: Content

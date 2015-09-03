@@ -10,19 +10,15 @@ Easy\MainBundle\Entity\News:
             type: string
         type:
             type: string
-#            options:
-#                default: published
-        preview:
-            type: text
+            default: published
         text:
             type: text
         order_column:
             type: integer
         date:
             type: date
-#    oneToMany:
-#        content:
-#            targetEntity: Content
-#            mappedBy: city
-#            
- 
+    manyToOne:
+        media:
+            targetEntity: Application\Sonata\MediaBundle\Entity\Media
+            cascade: ["persist"]
+            fetch: LAZY

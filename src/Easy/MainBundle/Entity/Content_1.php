@@ -15,11 +15,6 @@ class Content
     private $id;
 
     /**
-     * @var integer
-     */
-    private $url_id;
-
-    /**
      * @var string
      */
     private $name;
@@ -32,7 +27,7 @@ class Content
     /**
      * @var string
      */
-    private $content;
+    private $content = null;
 
     /**
      * @var integer
@@ -44,6 +39,34 @@ class Content
      */
     private $top_menu;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $teams;
+
+    /**
+     * @var \Application\Sonata\MediaBundle\Entity\Gallery
+     */
+    private $gallery;
+
+    /**
+     * @var \Easy\MainBundle\Entity\MainMenu
+     */
+    private $url;
+
+    /**
+     * @var \Easy\MainBundle\Entity\City
+     */
+    private $city;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->teams = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->second_menu = 1;
+    }
 
     /**
      * Get id
@@ -53,29 +76,6 @@ class Content
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set url_id
-     *
-     * @param integer $urlId
-     * @return Content
-     */
-    public function setUrlId($urlId)
-    {
-        $this->url_id = $urlId;
-
-        return $this;
-    }
-
-    /**
-     * Get url_id
-     *
-     * @return integer 
-     */
-    public function getUrlId()
-    {
-        return $this->url_id;
     }
 
     /**
@@ -192,12 +192,46 @@ class Content
     {
         return $this->top_menu;
     }
-    
-     /**
-     * @var \Application\Sonata\MediaBundle\Entity\Gallery
-     */
-    private $gallery;
 
+    /**
+     * Add teams
+     *
+     * @param \Easy\MainBundle\Entity\Team $teams
+     * @return Content
+     */
+    public function addTeam(\Easy\MainBundle\Entity\Team $team)
+    {
+        $team->setContent($this);
+        $this->teams->add($team);
+        
+    }
+
+    /**
+     * Remove teams
+     *
+     * @param \Easy\MainBundle\Entity\Team $teams
+     */
+    public function removeTeam(\Easy\MainBundle\Entity\Team $teams)
+    {
+        $this->teams->removeElement($teams);
+    }
+
+    /**
+     * Get teams
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTeams()
+    {
+        return $this->teams;
+    }
+    
+    public function setTeams(\Easy\MainBundle\Entity\Team $teams)
+    {
+        foreach ($teams as $team) {
+            $this->addTeam($team);
+        }
+    }
 
     /**
      * Set gallery
@@ -221,106 +255,95 @@ class Content
     {
         return $this->gallery;
     }
-    
-    public static function getTypes()
-    {
-        return array(
-            'gallery' => 'gallery', 
-            'video' => 'video',
-            'content' => 'content',
-            'slider' => 'slider',
-            'photo' => 'photo',
-            );
-    }
-    
-    
-    
-   
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $team;
 
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->inspections = new ArrayCollection();
-    }
-
-    /**
-     * Add team
+     * Set url
      *
-     * @param \Easy\MainBundle\Entity\Team $team
+     * @param \Easy\MainBundle\Entity\MainMenu $url
      * @return Content
      */
-    public function addTeam(\Easy\MainBundle\Entity\Team $team)
+    public function setUrl(\Easy\MainBundle\Entity\MainMenu $url = null)
     {
-        $this->team[] = $team;
+        $this->url = $url;
 
         return $this;
     }
 
     /**
-     * Remove team
+     * Get url
      *
-     * @param \Easy\MainBundle\Entity\Team $team
+     * @return \Easy\MainBundle\Entity\MainMenu 
      */
-    public function removeTeam(\Easy\MainBundle\Entity\Team $team)
+    public function getUrl()
     {
-        $this->team->removeElement($team);
+        return $this->url;
     }
 
     /**
-     * Get team
+     * Set city
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @param \Easy\MainBundle\Entity\City $city
+     * @return Content
      */
-    public function getTeam()
+    public function setCity(\Easy\MainBundle\Entity\City $city = null)
     {
-        return $this->team;
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return \Easy\MainBundle\Entity\City 
+     */
+    public function getCity()
+    {
+        return $this->city;
     }
     
-    
-    /**
-     * @ORM\OneToMany(targetEntity="Inspection", cascade={"persist", "remove"}, mappedBy="car")
-     * @Assert\Valid
-     */
-    protected $inspections;
-    
-    /**
-     * @param Inspection[] $inspections
-     */
-    public function setInspections($inspections)
+    public static function getTypes()
     {
-        $this->inspections->clear();
-        foreach ($inspections as $inspection) {
-            $this->addInspection($inspection);
-        }
+        return array(
+            'gallery' => 'gallery', // галерея с текстом, 3 шт фотки
+            'video' => 'video', // видео, загружаемое файлом
+            'content' => 'content', 
+            'slider' => 'slider', //слайдер, команда, учителя
+            'photo' => 'photo', // фотки с попапом
+//            'news' => 'news', // блок новости ?
+//            'calendar' => 'calendar', // календарь событий в гашей жизни
+            'video_gallery' => 'video_gallery', //видео галлерея
+//            'news_all' => 'news_all', //все новости в нашей жизни подробнее
+//            'calendar_all' => 'calendar_all', //все события календаря в подробнее
+//            'photo_links' => 'photo_links', // ссылки фотогаллерей на фотки непосредственно
+            );
     }
     /**
-     * @return Inspection[]
+     * @var integer
      */
-    public function getInspections()
-    {
-        return $this->inspections;
-    }
+    private $second_menu;
+
+
     /**
-     * @param Inspection $inspection
-     * @return void
+     * Set second_menu
+     *
+     * @param integer $secondMenu
+     * @return Content
      */
-    public function addInspection(Inspection $inspection)
+    public function setSecondMenu($secondMenu)
     {
-        $inspection->setCar($this);
-        $this->inspections->add($inspection);
+        $this->second_menu = $secondMenu;
+
+        return $this;
     }
+
     /**
-     * @param Inspection $inspection
-     * @return void
+     * Get second_menu
+     *
+     * @return integer 
      */
-    public function removeInspection(Inspection $inspection)
+    public function getSecondMenu()
     {
-        $this->inspections->removeElement($inspection);
+        return $this->second_menu;
     }
 }

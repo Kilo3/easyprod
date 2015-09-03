@@ -73,7 +73,27 @@ sonata_admin:
 #            - assetic/sonata_formatter_js.js
 #            - bundles/sonataformatter/vendor/ckeditor/ckeditor.js
 #            - bundles/sonataadmin/vendor/jquery/dist/jquery.min.js
-            
+    dashboard:
+        blocks:
+            # display a dashboard block
+            - { position: left, type: sonata.admin.block.admin_list, settings: { groups: [Settings, Temp] } }
+            - { position: right, type: sonata.admin.block.admin_list, settings: { groups: [Media] } }
+        groups:
+            Settings:
+                items: 
+                    - easy.admin.content
+                    - easy.admin.mainmenu
+                    - easy.admin.news
+                    - easy.admin.calendar
+                    - easy.admin.city
+            Media: 
+                items:
+                    - sonata.media.admin.gallery
+                    - sonata.media.admin.media
+            Temp:
+                items:
+                    - easy.admin.contacts
+                    - easy.admin.team
 ivory_ck_editor:
     default_config: default
     configs:
@@ -113,7 +133,6 @@ sonata_media:
 
             formats:
                 small: { width: 100 , quality: 70}
-                medium:   { width: 500 , quality: 80}
                 big:   { width: 540 , quality: 100}
                 special:   { width: 440, height: 200, quality: 100}
         gallery:

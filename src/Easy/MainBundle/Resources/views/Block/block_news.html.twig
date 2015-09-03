@@ -6,16 +6,23 @@
     <div class="contentSlider">
         {% for new in news %}
             <figure class="slidesjs-slide" style="margin:0;padding:0;">
-                <div class="rightBlock" style="width:100%;">
-                    <div class="advantage2" style="text-align: right;">
+                <div class="leftBlock">
+                    <div class="advantage2 red" style="text-align: right;">
+                        <strong>{{ new.name }}</strong>
+                        <p>
                         {% autoescape false %}
-                            {{ new.preview }}
+                            {{ new.text|striptags|slice(0, 200) }}...
                         {% endautoescape %}
+                        </p>
+                        <div class="buttonSquare">
+                            <a href="/news/{{ new.getId() }}" style="font-size: 16px;">Узнать подробнее</a>
+                        </div>
                     </div>
                 </div>
-                <div class="buttonSquare">
-                    <a href="/news/{{ new.getId() }}">Узнать подробнее</a>
+                <div class="rightBlock">
+                    {% media new.media, 'big' %}
                 </div>
+                
             </figure>
         {% endfor %}
 

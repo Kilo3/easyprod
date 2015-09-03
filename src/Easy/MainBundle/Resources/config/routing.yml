@@ -34,10 +34,25 @@ easy_main_easy_times:
     path:     /easytimes/
     defaults: { _controller: EasyMainBundle:Default:easyTimes }
     
+easy_main_contacts:
+    path:     /contacts/{id}/
+    defaults: { _controller: EasyMainBundle:Default:contacts }
+    
     
 form_controller:
     path: /ajax/
     defaults: { _controller: EasyMainBundle:Form:index }
+    
+    
+    
+    
+    
+change_form:
+    #pattern: /{_locale}/admin/gd/admin/merchant/get-categories-from-tag/{tagId}
+    path: /ajax/test/{type}
+    defaults: {_controller: EasyMainBundle:Form:changeForm}
+    options:
+        expose: true
 
 
     

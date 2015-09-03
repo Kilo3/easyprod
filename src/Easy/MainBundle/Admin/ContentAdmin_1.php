@@ -30,14 +30,112 @@ class ContentAdmin extends Admin
         '_sort_by' => 'id'
     );
     
+    public function getTemplate($name)
+    {
+        switch ($name) {
+            case 'edit':
+                return 'EasyMainBundle:Content:base_edit.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
+    
     protected function configureFormFields(FormMapper $formMapper)
     {
+        
+        
+        
+//        $builder = $formMapper->getFormBuilder();
+//        
+//        
+//        
+//        
+//        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+//            $product = $event->getData();
+//
+//            if ($product && $product->getType() == 'gallery') {
+//                $form->add('gallery');
+//            }else{
+//                $form->add('name');
+//            }
+//        });
+        
+//        $subject = $this->getSubject();
+//        //dump($subject);die();
+//        if ($subject->getType() == 'gallery') {
+//            // The thumbnail field will only be added when the edited item is created
+//            $formMapper->add('gallery');
+//        }
+        
+        
         $formMapper
             ->with('Important', array('class' => 'col-md-6'))
-                ->add('type', 'choice', array('choices' => Content::getTypes(), 'expanded' => true))
+                ->add('type', 'choice', array('choices' => Content::getTypes(), 'expanded' => false))
                 ->add('name')
             ->end();
         
+        
+        $formModifier = function (FormInterface $form, Content $content = null){
+            $form->add('url');
+        };
+        
+        //
+        //$admin = $this;
+        $formMapper->getFormBuilder()->addEventListener(FormEvents::PRE_SET_DATA,
+            function (FormEvent $event) use ($formModifier) {
+            
+                $data = $event->getData();
+                $formModifier($event->getForm(), $this->getSubject($event->getData()));
+            
+            }
+        );
+        
+        $formMapper->getFormBuilder()->get('type')->addEventListener(
+            FormEvents::POST_SUBMIT,
+            function (FormEvent $event) use ($formModifier) {
+                // It's important here to fetch $event->getForm()->getData(), as
+                // $event->getData() will get you the client data (that is, the ID)
+                //$info = $event->getForm()->getData();
+
+                // since we've added the listener to the child, we'll have to pass on
+                // the parent to the callback functions!
+                $formModifier($event->getForm()->getParent());
+            }
+        );
+        
+        //
+        
+
+        
+        
+        ///----------------
+        
+
+
+        
+
+        
+                
+        
+        
+        
+//        $formMapper
+//            ->with('Important', array('class' => 'col-md-6'))
+//                ->add('type', 'choice', array('choices' => Content::getTypes(), 'expanded' => true))
+//                ->add('name')
+//            ->end()
+//            ->with('General', array('class' => 'col-md-6'))
+//                ->add('url')
+//                ->add('top_menu', null, array('required' => false))
+//                ->add('order_column')
+//                ->add('gallery')
+//            ->end()
+//            ->with('Content', array('class' => 'col-md-12'))
+//                ->add('content', 'ckeditor',array('config_name' => 'default'))
+//            ->end()
+        ;   
         
         $subject = $this->getSubject();
         //выбор меню второго уровня если есть контент для этого
@@ -57,70 +155,18 @@ class ContentAdmin extends Admin
                 ->end();
         }
         
-        switch ($subject->getType()) {
-            case 'gallery':
-            case 'video':
-            case 'content':
-                $formMapper
-                    ->with('General', array('class' => 'col-md-6'))
-                        ->add('url')
-                        ->add('top_menu', null, array('required' => false))
-                        ->add('order_column')
-                        ->add('gallery')
-                    ->end()
-                    ->with('Content', array('class' => 'col-md-12'))
-                        ->add('content', 'ckeditor',array('config_name' => 'default'))
-                    ->end();
-                break;
-            
-            case 'slider':
-                $formMapper
-                    ->with('General', array('class' => 'col-md-6'))
-                        ->add('url')
-                        ->add('top_menu', null, array('required' => false))
-                        ->add('order_column')
-                    ->end()
-                    ->with('Slider', array('class' => 'col-md-12'))
-                        ->add('teams', 'sonata_type_collection', array(
-                            'by_reference'       => false,
-                            'cascade_validation' => true,
-                        ), array(
-                            'edit' => 'inline',
-                            'inline' => 'table'
-                        ))
-                    ->end();
-                break;
-            case 'photo':
-            case 'video_gallery':
-                $formMapper
-                    ->with('General', array('class' => 'col-md-6'))
-                        ->add('url')
-                        ->add('top_menu', null, array('required' => false))
-                        ->add('order_column')
-                        ->add('gallery')
-                    ->end();
-                break;
-            case 'contacts':
-                $formMapper
-                    ->with('General', array('class' => 'col-md-6'))
-                        ->add('url')
-                        ->add('top_menu', null, array('required' => false))
-                        ->add('order_column')
-                    ->end()
-                    ->with('Contacts', array('class' => 'col-md-12'))
-                        ->add('contacts', 'sonata_type_collection', array(
-                            'by_reference'       => false,
-                            'cascade_validation' => true,
-                        ), array(
-                            'edit' => 'inline',
-                            'inline' => 'standard'
-                        ))
-                    ->end();
-                break;
-            default:
-                break;
+        if ($subject->getType() == 'slider') {
+            $formMapper
+                ->with('Slider', array('class' => 'col-md-12'))
+                    ->add('teams', 'sonata_type_collection', array(
+                        'by_reference'       => false,
+                        'cascade_validation' => true,
+                    ), array(
+                        'edit' => 'inline',
+                        'inline' => 'table'
+                    ))
+                ->end();
         }
-        
         
         // работает норм только после update
         

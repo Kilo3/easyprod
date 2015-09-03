@@ -1,20 +1,27 @@
 {% extends 'EasyMainBundle::layout.html.twig' %}
 {% block pageContent %}
     <section class="section">
-        <div class="content" style="">
-            {% for new in content %}
-                <div style="display: table;margin-bottom: 50px;width: 100%;">
-                    <p class="title">{{ new.getName() }}</p>
-                    <div class="inside">
-                        {% autoescape false %}
-                            {{ new.getText()}}
-                        {% endautoescape %}
+        <div class="content">
+            <p class="title">{{ content.getName() }}</p>
+            <div class="links">
+                {% for news in content %}
+                    <a href="#popup{{ loop.index }}" class="popup">
+                        {% if news.media is defined %}
+                            {% media news.media, 'medium' with {'class': ''} %}
+                        {% endif %}
+                        {{ news.name }}
+                    </a>
+                    <div style='display:none;'>
+                        <div id='popup{{ loop.index }}' style='padding:10px; background:#fff;'>
+                            <div class="inside">
+                                {% autoescape false %}
+                                    {{ news.text }}
+                                {% endautoescape %}
+                            </div>
+                        </div>
                     </div>
-                    <div class="buttonSquare">
-                        <a href="/news/{{ new.getId() }}">Узнать подробнее</a>
-                    </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     </section>
 {% endblock %}

@@ -8,23 +8,28 @@ Easy\MainBundle\Entity\Content:
     fields:
         name:
             type: string
+            required: false
+            nullable: true
         type:
             type: string
         content:
             type: text
-            options:
-                nullable: true
+            nullable: true
+            required: false
         order_column:
             type: integer
-            options:
-                default: 500
+            nullable: true
+            required: false
+            default: 500
         top_menu:
             type: boolean
+            required: false
+            nullable: true
         second_menu:
             type: integer
-            options:
-                default: 1
-                nullable: true
+            required: false
+            default: 1
+            nullable: true
             
     manyToOne:
         gallery:
@@ -44,6 +49,13 @@ Easy\MainBundle\Entity\Content:
             mappedBy: content
             cascade: ["persist", "remove"] 
             orphanRemoval: true
+        contacts:
+            targetEntity: Contacts
+            mappedBy: content_reference
+            cascade: ["persist", "remove"] 
+            orphanRemoval: true
+#            cascade: ["persist", "remove"] 
+#            orphanRemoval: true
             
 #    oneToMany:
 #        team:

@@ -1,0 +1,30 @@
+Easy\MainBundle\Entity\Contacts:
+    type: entity
+    table: contacts
+    id:
+        id:
+            type: integer
+            generator: {strategy: AUTO}
+    fields:
+        name:
+            type: string
+        address:
+            type: string
+        coordinates:
+            type: string
+            required: false
+            nullable: true
+        content:
+            type: text
+    manyToOne:
+        gallery:
+            targetEntity: Application\Sonata\MediaBundle\Entity\Gallery
+            joinColumn:
+                name: gallery_id
+                referencedColumnName: id
+        content_reference:
+            targetEntity: Content
+            inversedBy: contacts
+    lifecycleCallbacks:
+        prePersist: [ setCoordinatesValue ]
+        preUpdate: [ setCoordinatesValue ]    

@@ -319,4 +319,32 @@ class MainMenu
             'salad'=>'salad',
         );
     }
+    /**
+     * @var \Easy\MainBundle\Entity\City
+     */
+    private $city;
+
+
+    /**
+     * Set city
+     *
+     * @param \Easy\MainBundle\Entity\City $city
+     * @return MainMenu
+     */
+    public function setCity(\Easy\MainBundle\Entity\City $city = null)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return \Easy\MainBundle\Entity\City 
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
 }
