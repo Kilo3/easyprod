@@ -5,7 +5,7 @@
         <div class="links">
             {% for galleryHasMedia in content.GalleryHasMedias %}
                 {% if galleryHasMedia.media.providerName == 'sonata.media.provider.image' %}
-                    <a href="{% path galleryHasMedia.media, 'big' %}" title="" data-gallery style="background: url('{% path galleryHasMedia.media, 'medium' %}');"></a>
+                    <a href="{% path galleryHasMedia.media, 'big' %}" title="" data-gallery style="background: url('{% path galleryHasMedia.media, 'big' %}');"></a>
                 {% else %}
                     {% media galleryHasMedia.media, 'special' %}
                 {% endif %}

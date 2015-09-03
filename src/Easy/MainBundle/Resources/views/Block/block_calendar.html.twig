@@ -20,7 +20,7 @@
             <div class="calendarMonth {{ active }}" month="{{ loop.index }}">
                 {% for event in monthInfo.content|slice(0, 3) %}
                     <div class="row">
-                         {% media event.media, 'medium' with {'class': ''} %}
+                         {% media event.media, 'big' with {'class': ''} %}
                          <p>{{ event.date|date('d.m') }} {{ event.name }}</p>
                          <div class="buttonSquare">
                             <a href="/calendar/{{ event.id }}">Узнать подробнее</a>

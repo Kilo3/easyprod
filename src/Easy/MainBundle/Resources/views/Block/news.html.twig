@@ -7,7 +7,7 @@
                 {% for news in content %}
                     <a href="#popup{{ loop.index }}" class="popup">
                         {% if news.media is defined %}
-                            {% media news.media, 'medium' with {'class': ''} %}
+                            {% media news.media, 'big' with {'class': ''} %}
                         {% endif %}
                         {{ news.name }}
                     </a>
