@@ -345,7 +345,97 @@ class DefaultController extends Controller
                     $value->setContent($foo->getContent());
                     break;
                 
+                case 'news':
+                    $news = $hp->getRepository('EasyMainBundle:News')->findBy(array(), array('order_column'=>'ASC'), 3);
+                    $foo = $this->render('EasyMainBundle:Block:block_news.html.twig', array(
+                        'content'   => $value,
+                        'news'   => $news
+                    ));
+                    $value->setContent($foo->getContent());
+                    break;
                 
+                case 'calendar':
+                    $em = $this->getDoctrine()->getEntityManager();
+                    $qb = $em->createQueryBuilder();
+                    $qb->select('e.id, e.name, MONTH(e.date) AS month, e.date, e.text, m.id AS mediaId')
+                    ->from( 'EasyMainBundle:Calendar',  'e' )
+//                    ->Where( 
+//                        $qb->expr()->andX(
+//                            $qb->expr()->between('e.dateStart', ':from', ':to')
+//                        )
+//                    )
+                            
+                    //->join('e', 'media__media', 'm', 'e.media_id = m.id')
+                    ->join('e.media','m')
+                            
+                    //->groupBy('month')
+                    ->orderBy('month', 'ASC')
+                    //->setFirstResult( $offset )
+                    //->setMaxResults( $limit );
+                    ;
+                    $month = array();
+                    $calendarItems = $qb->getQuery()->getResult();
+                    foreach ($calendarItems as $itemIndex => $item) {
+                        $media = $hp->getRepository('Application\Sonata\MediaBundle\Entity\Media')->find($item['mediaId']);
+                        $calendarItems[$itemIndex]['media'] = $media;
+                        switch($item['month']){
+                            case 1:
+                                $month[$item['month']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['month']]['monthRus'] = 'Январь';
+                                break;
+                            case 2:
+                                $month[$item['month']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['month']]['monthRus'] = 'Февраль';
+                                break;
+                            case 3:
+                                $month[$item['month']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['month']]['monthRus'] = 'Март';
+                                break;
+                            case 4:
+                                $month[$item['month']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['month']]['monthRus'] = 'Апрель';
+                                break;
+                            case 5:
+                                $month[$item['month']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['month']]['monthRus'] = 'Май';
+                                break;
+                            case 6:
+                                $month[$item['month']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['month']]['monthRus'] = 'Июнь';
+                                break;
+                            case 7:
+                                $month[$item['month']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['month']]['monthRus'] = 'Июль';
+                                break;
+                            case 8:
+                                $month[$item['month']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['month']]['monthRus'] = 'Август';
+                                break;
+                            case 9:
+                                $month[$item['month']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['month']]['monthRus'] = 'Сентябрь';
+                                break;
+                            case 10:
+                                $month[$item['month']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['month']]['monthRus'] = 'Октябрь';
+                                break;
+                            case 11:
+                                $month[$item['month']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['month']]['monthRus'] = 'Ноябрь';
+                                break;
+                            case 12:
+                                $month[$item['month']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['month']]['monthRus'] = 'Декабрь';
+                                break;
+                        }
+                    }
+                    $foo = $this->render('EasyMainBundle:Block:block_calendar.html.twig', array(
+                        'content'   => $month,
+                    ));
+                    
+                    
+                    $value->setContent($foo->getContent());
+                    break;
 
                 default:
                     break;

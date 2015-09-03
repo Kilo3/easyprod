@@ -40,23 +40,6 @@ class ContentAdmin extends Admin
         
         
         $subject = $this->getSubject();
-        //выбор меню второго уровня если есть контент для этого
-        //if ($subject->getUrl() != null && count($subject->getUrl()->getChildren()) > 1) {
-        if ($subject->getUrl() != null) {
-            $choices = array();
-            foreach($subject->getUrl()->getChildren() as $index => $value){
-                $choices[$index+1] = $value->getTitle();
-            }
-//            if(count($choices)>1){
-//                $choices[0] = 'Все меню';
-//            }
-            $choices[-1] = 'Отключить';
-            $formMapper
-                ->with('secondMenu', array('class' => 'col-md-6'))
-                    ->add('second_menu', 'choice', array('choices' => $choices, 'expanded' => true))
-                ->end();
-        }
-        
         switch ($subject->getType()) {
             case 'gallery':
             case 'video':
@@ -119,6 +102,23 @@ class ContentAdmin extends Admin
                 break;
             default:
                 break;
+        }
+        
+        //выбор меню второго уровня если есть контент для этого
+        //if ($subject->getUrl() != null && count($subject->getUrl()->getChildren()) > 1) {
+        if ($subject->getUrl() != null) {
+            $choices = array();
+            foreach($subject->getUrl()->getChildren() as $index => $value){
+                $choices[$index+1] = $value->getTitle();
+            }
+//            if(count($choices)>1){
+//                $choices[0] = 'Все меню';
+//            }
+            $choices[-1] = 'Отключить';
+            $formMapper
+                ->with('secondMenu', array('class' => 'col-md-6'))
+                    ->add('second_menu', 'choice', array('choices' => $choices, 'expanded' => true))
+                ->end();
         }
         
         

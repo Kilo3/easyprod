@@ -4,7 +4,7 @@
         {% if content.getGallery.GalleryHasMedias is defined %}
             {% for galleryHasMedia in content.getGallery.GalleryHasMedias %}
                 <div>
-                    {% media galleryHasMedia.media, 'big' with {'class': ''} %}
+                    {% media galleryHasMedia.media, 'special' with {'class': ''} %}
                 </div>
             {% endfor %}
         {% endif %}

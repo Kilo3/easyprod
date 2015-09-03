@@ -22,10 +22,7 @@ class NewsAdmin extends Admin
     {
         $formMapper
             ->add('name')
-            ->add('media', 'sonata_media_type', array(
-                'provider' => 'sonata.media.provider.image',
-                'context'  => 'default'
-            ))
+            ->add('media', 'sonata_type_model_list', array())
             ->add('type', 'choice', array('choices'=>array('published'=>'published','not published'=>'not published')))
             ->add('text', 'ckeditor', array(
                 'config' => array(
