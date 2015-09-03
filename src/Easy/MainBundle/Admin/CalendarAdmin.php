@@ -32,10 +32,7 @@ class CalendarAdmin extends Admin
                 //'locale' => 'en',
                 //'timezone' => 'Europe/Moscow',
             ))
-            ->add('media', 'sonata_media_type', array(
-                 'provider' => 'sonata.media.provider.image',
-                 'context'  => 'default'
-            ))
+           ->add('media', 'sonata_type_model_list', array())
         ;
     }
 

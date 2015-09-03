@@ -25,10 +25,9 @@ class MainMenuAdmin extends Admin
             ->add('title')
             ->add('order_column')
             ->add('color', 'choice', array('choices'=> MainMenu::getColors(), 'expanded' => true))
-            ->add('parent', null, array(
-                ), array(
-                    'placeholder' => 'No parent selected'
-                ))
+            ->add('parent','sonata_type_model_list',array(
+                'btn_add' => false
+            ))
         ;
     }
 

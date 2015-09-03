@@ -100,6 +100,13 @@ overflow: hidden;">
                     <a href="{{ path('easy_main_homepage') }}" style="position: absolute;z-index: 100;top: 4%;left: 4%;">
                         <img id="logo" src="{{ asset('/bundles/easymain/images/logoMain.png') }}" >
                     </a>
+                    <div class="fastLink menuList" style="position: absolute;z-index: 100;top: 2%;right: 10%;width: initial;">
+                        <div>
+                            <a href="/pay" class="purpleHover" style="width: 130px;">Оплата</a>
+                            <a href="/news" class="purpleHover" style="width: 130px;">Новости</a>
+                        </div>
+                    </div>
+                    
                     <div class="menuList" style="position: absolute;z-index: 100;">
                         {% for value in mainMenu %}
                             <div><a class="{{ value.color }}Hover" href="{{ path('easy_main_homepage') }}{{ value.url }}">{{ value.title }}</a></div>
@@ -507,8 +514,9 @@ overflow: hidden;">
                         anchors: sections,
                         menu: '#menu',
                         css3: true,
-                        scrollingSpeed: 1000,
-                        scrollOverflow:true
+                        scrollingSpeed: 500,
+                        scrollOverflow:true,
+                        normalScrollElements: '#map'
                        
                 });
                 

@@ -25,10 +25,10 @@ use Symfony\Component\Form\FormInterface;
 class ContentAdmin extends Admin
 {
     // setup the default sort column and order
-    protected $datagridValues = array(
-        '_sort_order_column' => 'ASC',
-        '_sort_by' => 'id'
-    );
+//    protected $datagridValues = array(
+//        '_sort_order_column' => 'ASC',
+//        '_sort_by' => 'id'
+//    );
     
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -46,10 +46,14 @@ class ContentAdmin extends Admin
             case 'content':
                 $formMapper
                     ->with('General', array('class' => 'col-md-6'))
-                        ->add('url')
+                        ->add('url','sonata_type_model_list',array(
+                                'btn_add' => false
+                              ))
                         ->add('top_menu', null, array('required' => false))
                         ->add('order_column')
-                        ->add('gallery')
+                        ->add('gallery','sonata_type_model_list',array(
+                            'btn_add' => false
+                        ))
                     ->end()
                     ->with('Content', array('class' => 'col-md-12'))
                         ->add('content', 'ckeditor',array('config_name' => 'default'))
@@ -59,7 +63,9 @@ class ContentAdmin extends Admin
             case 'slider':
                 $formMapper
                     ->with('General', array('class' => 'col-md-6'))
-                        ->add('url')
+                        ->add('url','sonata_type_model_list',array(
+                                'btn_add' => false
+                              ))
                         ->add('top_menu', null, array('required' => false))
                         ->add('order_column')
                     ->end()
@@ -77,16 +83,22 @@ class ContentAdmin extends Admin
             case 'video_gallery':
                 $formMapper
                     ->with('General', array('class' => 'col-md-6'))
-                        ->add('url')
+                        ->add('url','sonata_type_model_list',array(
+                                'btn_add' => false
+                              ))
                         ->add('top_menu', null, array('required' => false))
                         ->add('order_column')
-                        ->add('gallery')
+                        ->add('gallery','sonata_type_model_list',array(
+                            'btn_add' => false
+                        ))
                     ->end();
                 break;
             case 'contacts':
                 $formMapper
                     ->with('General', array('class' => 'col-md-6'))
-                        ->add('url')
+                        ->add('url','sonata_type_model_list',array(
+                                'btn_add' => false
+                              ))
                         ->add('top_menu', null, array('required' => false))
                         ->add('order_column')
                     ->end()

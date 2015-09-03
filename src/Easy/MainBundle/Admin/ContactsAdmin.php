@@ -15,7 +15,9 @@ class ContactsAdmin extends Admin
             ->add('name')
             ->add('address')
             ->add('content', 'ckeditor',array('config_name' => 'default'))
-            ->add('gallery')
+            ->add('gallery','sonata_type_model_list',array(
+                'btn_add' => false
+            ))
             ->add('coordinates','text', array('disabled' => true))
         ;
     }

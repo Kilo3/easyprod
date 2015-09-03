@@ -76,7 +76,7 @@ and open the template in the editor.
     color: #EF7F1A;
 }
 .inside strong{
-    color: #808080;
+    color: #525252;
     font-family: sansRoundedBold;
     font-size: 16px;
 }
@@ -2023,7 +2023,7 @@ opacity: 1;
 }
 .inside{
     font-family: sansRoundedLight;
-    color: #808080;
+    color: #525252;
 }
 .inside span{
     font-family: sansRoundedBold;
@@ -2057,8 +2057,8 @@ opacity: 1;
 }
 .inside{
     font-family: robotoLight;
-    color: #808080;
-    
+    color: #525252;
+    line-height: 1.5em;
     letter-spacing: 0.3px;
     text-align: justify;
 /*    text-indent: 25px;*/

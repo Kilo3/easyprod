@@ -16,8 +16,7 @@ Easy\MainBundle\Entity\MainMenu:
         order_column:
             type: integer
             nullable: false
-            options:
-                default: 0
+            default: 0
         color:
             type: string
             length: 50
