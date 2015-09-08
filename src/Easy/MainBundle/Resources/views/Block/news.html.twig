@@ -2,12 +2,13 @@
 {% block pageContent %}
     <section class="section">
         <div class="content">
-            <p class="title">{{ content.getName() }}</p>
+            <p class="title">Новости</p>
             <div class="links">
                 {% for news in content %}
                     <a href="#popup{{ loop.index }}" class="popup">
                         {% if news.media is defined %}
-                            {% media news.media, 'big' with {'class': ''} %}
+                            <div style="width: 100%; height: 165px; background: url('{% path news.media, 'big' %}'); background-size: cover;">
+                            </div>
                         {% endif %}
                         {{ news.name }}
                     </a>

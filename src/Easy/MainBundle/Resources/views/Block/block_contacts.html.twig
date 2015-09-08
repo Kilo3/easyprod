@@ -6,9 +6,15 @@
             {% for contact in content.contacts %}
                 <a href="javascript:;" address="{{ loop.index }}" data-coordinates="[{{ contact.coordinates }}]">{{ contact.name }}</a>
             {% endfor %}
-            <div class="buttonSquare">
-                <a href="{{ path('easy_main_contacts', {'id': content.id }) }}">Узнать подробнее</a>
-            </div>
+            {% if content.id is not null %}
+                <div class="buttonSquare" style="clear: both;">
+                    <a href="{{ path('easy_main_contacts', {'id': content.id }) }}">Узнать подробнее</a>
+                </div>
+            {% else %}
+                <div class="buttonSquare" style="clear: both;">
+                    <a href="{{ path('easy_main_contacts', {'id': 'all_show' }) }}">Узнать подробнее</a>
+                </div>
+            {% endif %}
         </div>
     </div>
     <div class="rightBlock">

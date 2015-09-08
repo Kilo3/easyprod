@@ -170,7 +170,20 @@ class DefaultController extends Controller
                     break;
                 
                 case 'news':
-                    $news = $hp->getRepository('EasyMainBundle:News')->findBy(array(), array('order_column'=>'ASC'), 3);
+                    
+                    $repository = $this->getDoctrine()->getRepository('EasyMainBundle:News');
+                    $date_from = date('Y-m-d');
+                    $contacts = $repository->createQueryBuilder('s')
+                        ->where('s.date >= :date_from')
+                        ->setParameter('date_from', $date_from)
+                        ->orderBy("s.date", 'ASC')
+                        ->setMaxResults(3)
+                        ->getQuery();
+                    $news = $contacts->getResult();
+                    
+                    if(count($news) < 3 ){
+                        $news = $hp->getRepository('EasyMainBundle:News')->findBy(array(), array('date'=>'ASC'), 3);    
+                    }
                     $foo = $this->render('EasyMainBundle:Block:block_news.html.twig', array(
                         'content'   => $value,
                         'news'   => $news
@@ -565,21 +578,76 @@ class DefaultController extends Controller
     public function contactsAction($id)
     {
         $hp = $this->getDoctrine()->getManager();
-        
         $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8)); // id = 8 корень меню
+        if($id == 'all'){
+            
+            $repository = $this->getDoctrine()->getRepository('EasyMainBundle:Contacts');
+            $contacts = $repository->createQueryBuilder('cc')
+                ->select()
+                ->distinct()
+                ->getQuery();
+            $result = $contacts->getResult();
+            
+            $temp = new \Easy\MainBundle\Entity\Content();
+            $temp->setContacts($result);
+            $temp->setName('Все контакты');
+            
+            //dump($temp);die();
+            
+            $foo = $this->render('EasyMainBundle:Block:block_contacts.html.twig', array(
+                'content'   => $temp
+            ));
+            $content = $foo->getContent();
+            $topMenu = "";
+            $secondLayerMenu = "";
+            return $this->render('EasyMainBundle:BLock:contacts_all.html.twig', array(
+                'mainMenu' => $mainMenu,
+                'content' => $content,
+                'topMenu' => $topMenu,
+                'secondLayerMenu' => $secondLayerMenu,
+                'color' => 'purple'
+            ));
+        }elseif($id == 'all_show'){
+            $repository = $this->getDoctrine()->getRepository('EasyMainBundle:Contacts');
+            $contacts = $repository->createQueryBuilder('cc')
+                ->select()
+                ->distinct()
+                ->getQuery();
+            $result = $contacts->getResult();
+            
+            $temp = new \Easy\MainBundle\Entity\Content();
+            $temp->setContacts($result);
+            
+
+            $topMenu = "";
+            $secondLayerMenu = "";
+            return $this->render('EasyMainBundle:Block:contacts.html.twig', array(
+                'mainMenu' => $mainMenu,
+                'content' => $temp,
+                'topMenu' => $topMenu,
+                'secondLayerMenu' => $secondLayerMenu,
+                'color' => 'purple'
+            ));
+        }else{
+            
         
-        $content = $hp->getRepository('EasyMainBundle:Content')->findOneBy(array('id' => $id));
-        $color = $content->getUrl()->getColor();
+            
+
+            $content = $hp->getRepository('EasyMainBundle:Content')->findOneBy(array('id' => $id));
+            $color = $content->getUrl()->getColor();
+
+            $topMenu = "";
+            $secondLayerMenu = "";
+            return $this->render('EasyMainBundle:Block:contacts.html.twig', array(
+                'mainMenu' => $mainMenu,
+                'content' => $content,
+                'topMenu' => $topMenu,
+                'secondLayerMenu' => $secondLayerMenu,
+                'color' => $color
+            ));
+        }
+        //
         
-        $topMenu = "";
-        $secondLayerMenu = "";
-        return $this->render('EasyMainBundle:Block:contacts.html.twig', array(
-            'mainMenu' => $mainMenu,
-            'content' => $content,
-            'topMenu' => $topMenu,
-            'secondLayerMenu' => $secondLayerMenu,
-            'color' => $color
-        ));
     }
     
     

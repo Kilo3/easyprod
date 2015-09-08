@@ -7,7 +7,8 @@
                 {% for gallery in content %}
                     <a href="{% path gallery.GalleryHasMedias[0].media, 'reference' %}" target="_blank">
                         {% if gallery.GalleryHasMedias[1] is defined %}
-                            {% media gallery.GalleryHasMedias[1].media, 'big' %}
+                            <div style="width: 100%; height: 165px; background: url('{% path gallery.GalleryHasMedias[1].media, 'big' %}'); background-size: cover;">
+                            </div>
                         {% endif %}
                         {{ gallery.name }} 
                     </a>

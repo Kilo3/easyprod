@@ -100,10 +100,11 @@ overflow: hidden;">
                     <a href="{{ path('easy_main_homepage') }}" style="position: absolute;z-index: 100;top: 4%;left: 4%;">
                         <img id="logo" src="{{ asset('/bundles/easymain/images/logoMain.png') }}" >
                     </a>
-                    <div class="fastLink menuList" style="position: absolute;z-index: 100;top: 2%;right: 10%;width: initial;">
+                    <div class="fastLink menuList" style="position: absolute;z-index: 100;top: 2%;right: 10%;width: auto;">
                         <div>
                             <a href="/pay" class="purpleHover" style="width: 130px;">Оплата</a>
                             <a href="/news" class="purpleHover" style="width: 130px;">Новости</a>
+                            <a href="/contacts/all" class="purpleHover" style="width: 130px;">Контакты</a>
                         </div>
                     </div>
                     
@@ -150,7 +151,6 @@ overflow: hidden;">
                     {% else %}
                         <img src="{{ asset('/bundles/easymain/images/logoSchool.png') }}" style="position: relative;">
                     {% endif %}
-                    
                 </a>
                 {% block topHeader %}
                     <ul style="position: relative;">
@@ -295,6 +295,11 @@ overflow: hidden;">
                     height: 350,
                     close: function( event, ui ) {
                         $( "#dialog" ).removeClass("open");
+                    },
+                    open: function() {
+                        $('.ui-widget-overlay').bind('click', function() {
+                            $('#dialog').dialog('close');
+                        })
                     }
                  });
                  
@@ -544,8 +549,9 @@ overflow: hidden;">
                 }
                 
                 
+                
+                
             });
-            
             
             
             

@@ -1045,6 +1045,7 @@ i.dot{
     padding-top: 10px;
     cursor: pointer;
     border: solid 3px #EA2327;
+    text-decoration: none;
 }
 .videoContainer a>i{
     margin: 0 auto;
@@ -1091,7 +1092,7 @@ i.dot{
     overflow-x: hidden;
     overflow-y: hidden;
     width: 100%;
-    height: 100%;
+/*    height: 100%;*/
     z-index: 185;
 }
 
@@ -2328,7 +2329,7 @@ h4{
     z-index: 190;
     font-size: 3em;
     left: 3%;
-    top: 2%;
+    margin-top: 2%;// coz of ie
 }
 
 .inside table{

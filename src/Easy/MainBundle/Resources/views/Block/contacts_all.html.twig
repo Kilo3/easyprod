@@ -1,0 +1,19 @@
+{% extends 'EasyMainBundle::layout.html.twig' %}
+{% block pageContent %}
+    <div id="fullpage">
+        <section class="section">
+            {% autoescape false %}
+                {{ content }}
+            {% endautoescape %}
+        </section>
+    </div>
+{% endblock %}
+
+{% block sideHeader %}
+{% endblock %}
+
+{% block topHeader %}
+    <ul style="position: relative;">
+        
+    </ul>
+{% endblock %}

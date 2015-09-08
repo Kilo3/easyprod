@@ -397,6 +397,13 @@ class Content
         return $this->contacts;
     }
     
+    public function setContacts($contacts)
+    {
+        $this->contacts = $contacts;
+
+        return $this;
+    }
+    
 //    public function setContacts(\Easy\MainBundle\Entity\Contacts $contacts)
 //    {
 //        foreach ($contacts as $contact) {
