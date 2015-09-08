@@ -24,7 +24,6 @@ class DefaultController extends Controller
             ));
         }
         $foo = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent'=>$currentUrl->getId()), array('order_column'=>'ASC'));
-        
         if($foo == NULL){
             $secondLayerMenu = NULL;
         }elseif(count($foo) > 0){

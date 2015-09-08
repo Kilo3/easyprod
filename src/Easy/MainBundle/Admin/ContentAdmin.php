@@ -123,9 +123,9 @@ class ContentAdmin extends Admin
             foreach($subject->getUrl()->getChildren() as $index => $value){
                 $choices[$index+1] = $value->getTitle();
             }
-//            if(count($choices)>1){
-//                $choices[0] = 'Все меню';
-//            }
+            if(count($choices)>1){
+                $choices[0] = 'Все меню';
+            }
             $choices[-1] = 'Отключить';
             $formMapper
                 ->with('secondMenu', array('class' => 'col-md-6'))
