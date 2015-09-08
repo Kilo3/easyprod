@@ -165,12 +165,6 @@
             
             
             $(function(){
-                if(!!navigator.userAgent.match(/Trident.*rv\:11\./)){
-                    {#$('#mainVideo').css('height','auto');#}
-                    $('#fullpage').css('position','static');
-                }
-                
-                
                 $('a.submit').on('click', function(){
                     $( '#dialog' ).dialog( 'close' );
                     $( '#thankyou' ).dialog( 'open' );
@@ -443,6 +437,11 @@
                         scrollingSpeed: 1000,
                         scrollOverflow:true
                 });
+                
+                if(!!navigator.userAgent.match(/Trident.*rv\:11\./)){
+                    {#$('#mainVideo').css('height','auto');#}
+                    $('#fullpage').css('position','static');
+                }
                 {#var colors = new Array('purple', 'yellow', 'lightBlue', 'blue', 'green', 'salad');
                 $('.menuList div a').each(function(index, value){
                     var random = Math.floor((Math.random() * colors.length) + 0);
