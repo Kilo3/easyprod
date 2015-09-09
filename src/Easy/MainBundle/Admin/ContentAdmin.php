@@ -120,8 +120,9 @@ class ContentAdmin extends Admin
         //if ($subject->getUrl() != null && count($subject->getUrl()->getChildren()) > 1) {
         if ($subject->getUrl() != null) {
             $choices = array();
+            //dump();die();
             foreach($subject->getUrl()->getChildren() as $index => $value){
-                $choices[$index+1] = $value->getTitle();
+                $choices[$value->getId()] = $value->getTitle();
             }
             if(count($choices)>1){
                 $choices[0] = 'Все меню';

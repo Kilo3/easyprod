@@ -175,13 +175,13 @@ class DefaultController extends Controller
                     $contacts = $repository->createQueryBuilder('s')
                         ->where('s.date >= :date_from')
                         ->setParameter('date_from', $date_from)
-                        ->orderBy("s.date", 'ASC')
+                        ->orderBy("s.date", 'DESC')
                         ->setMaxResults(3)
                         ->getQuery();
                     $news = $contacts->getResult();
                     
                     if(count($news) < 3 ){
-                        $news = $hp->getRepository('EasyMainBundle:News')->findBy(array(), array('date'=>'ASC'), 3);    
+                        $news = $hp->getRepository('EasyMainBundle:News')->findBy(array(), array('date'=>'DESC'), 3);    
                     }
                     $foo = $this->render('EasyMainBundle:Block:block_news.html.twig', array(
                         'content'   => $value,

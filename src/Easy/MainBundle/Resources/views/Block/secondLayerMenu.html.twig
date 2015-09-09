@@ -1,7 +1,8 @@
 {% set count = 0 %}
+
 {% for menu in menuList %}
     {% set count = count + menu.content|length %}
-    <div class="nav-menu secondLayerMenu{{ loop.index }}">
+    <div class="nav-menu secondLayerMenu{{ menu.id }}">
         <div style="position: absolute;width: 100%;height: 100%;z-index:99;" onclick="toggleMenu('secondLayerMenu{{ loop.index }}')"></div>
         
         <a href="{{ path('easy_main_homepage') }}" style="position: absolute;z-index: 100;top: 4%;left: 4%;">
@@ -30,13 +31,14 @@
             </div>
 
         </div>
-        <div class="menu-button" onclick="toggleMenu('secondLayerMenu{{ loop.index }}');" style="position: absolute;z-index: 100;">
+        <div class="menu-button" onclick="toggleMenu('secondLayerMenu{{ menu.id }}');" style="position: absolute;z-index: 100;">
             <span class=""></span>
             <span class=""></span>
             <span class=""></span>
         </div>
     </div>
 {% endfor %}
+
 {% if menuList|length > 1 %}
         <div class="nav-menu secondLayerMenu0">
             <div style="position: absolute;width: 100%;height: 100%;z-index:99;" onclick="toggleMenu('secondLayerMenu0')"></div>
