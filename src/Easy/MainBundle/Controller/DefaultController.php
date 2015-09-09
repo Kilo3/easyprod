@@ -599,7 +599,7 @@ class DefaultController extends Controller
             $content = $foo->getContent();
             $topMenu = "";
             $secondLayerMenu = "";
-            return $this->render('EasyMainBundle:BLock:contacts_all.html.twig', array(
+            return $this->render('EasyMainBundle:Block:contacts_all.html.twig', array(
                 'mainMenu' => $mainMenu,
                 'content' => $content,
                 'topMenu' => $topMenu,
