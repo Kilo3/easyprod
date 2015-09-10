@@ -4,7 +4,7 @@ namespace Easy\MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
-
+use Easy\MainBundle\Entity\Stuff;
 
 class DefaultController extends Controller
 {
@@ -213,13 +213,33 @@ class DefaultController extends Controller
                     ));
                     $value->setContent($foo->getContent());
                     break;
+                
+                case 'stuff':
+                    
+                    $repository = $this->getDoctrine()->getRepository('EasyMainBundle:Stuff');
+                    $query = $repository->createQueryBuilder('s')
+                        ->where('s.type = :type')
+                        ->setParameter('type', $value->getStuff())
+                        ->orderBy("s.name", 'ASC')
+                        ->getQuery();
+                    $stuff = $query->getResult();
+                    
+                    shuffle($stuff);
+
+                    $stuff = array_slice($stuff, 0, 3, true);
+                    
+                    $foo = $this->render('EasyMainBundle:Block:block_stuff.html.twig', array(
+                        'content'   => $value,
+                        'stuff'   => $stuff
+                    ));
+                    $value->setContent($foo->getContent());
+                    break;
 
                 default:
                     break;
             }
         }
-        //echo "<pre>";var_dump($content);die();
-        
+        $teacherMenu = Stuff::getTypes();
         
         
         return $this->render('EasyMainBundle::layout.html.twig', array(
@@ -227,6 +247,7 @@ class DefaultController extends Controller
             'content' => $content,
             'topMenu' => $topMenu,
             'secondLayerMenu' => $secondLayerMenu,
+            'teacherMenu' => $teacherMenu,
             'color' => $currentUrl->getColor()
         ));
     }
@@ -454,13 +475,14 @@ class DefaultController extends Controller
             }
         }
         
-        
+        $teacherMenu = Stuff::getTypes();
         
         return $this->render('EasyMainBundle::layout.html.twig', array(
             'mainMenu' => $mainMenu,
             'content' => $content,
             'topMenu' => $topMenu,
             //'secondLayerMenu' => $secondLayerMenu,
+            'teacherMenu' => $teacherMenu,
             'color' => $currentUrl->getColor()
         ));
     }
@@ -646,6 +668,40 @@ class DefaultController extends Controller
             ));
         }
         //
+        
+    }
+    
+    
+    public function stuffAction($type)
+    {
+        $hp = $this->getDoctrine()->getManager();
+        $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8)); // id = 8 корень меню
+        $title = Stuff::getTypes();
+        
+        $stuff = $hp->getRepository('EasyMainBundle:Stuff')->findBy(array('type' => $type));
+        $teacherMenu = Stuff::getTypes();
+        
+        if(count($stuff) > 0){
+            $topMenu = "";
+            $secondLayerMenu = "";
+            return $this->render('EasyMainBundle:Default:stuff.html.twig', array(
+                'mainMenu' => $mainMenu,
+                'content' => $stuff,
+                'topMenu' => $topMenu,
+                'secondLayerMenu' => $secondLayerMenu,
+                'teacherMenu' => $teacherMenu,
+                'color' => 'purple',
+                'title' => $title
+            ));
+        }else{
+            $topMenu = "";
+            return $this->render('EasyMainBundle:Block:404.html.twig', array(
+                'mainMenu' => $mainMenu,
+                'topMenu' => $topMenu,
+                'color' => 'purple'
+            ));
+        }
+        
         
     }
     

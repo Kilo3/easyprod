@@ -10,6 +10,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 //use Doctrine\ORM\EntityRepository;
 //use Sonata\MediaBundle\Entity\Gallery;
 use Easy\MainBundle\Entity\Content;
+use Easy\MainBundle\Entity\Stuff;
 use Sonata\AdminBundle\Route\RouteCollection;
 
 
@@ -110,6 +111,18 @@ class ContentAdmin extends Admin
                             'edit' => 'inline',
                             'inline' => 'standard'
                         ))
+                    ->end();
+                break;
+            
+            case 'stuff':
+                $formMapper
+                    ->with('General', array('class' => 'col-md-6'))
+                        ->add('url','sonata_type_model_list',array(
+                                'btn_add' => false
+                              ))
+                        ->add('top_menu', null, array('required' => false))
+                        ->add('order_column')
+                        ->add('stuff', 'choice', array('choices' => Stuff::getTypes(), 'expanded' => true))
                     ->end();
                 break;
             default:

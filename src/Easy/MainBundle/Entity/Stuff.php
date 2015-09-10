@@ -5,9 +5,9 @@ namespace Easy\MainBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * News
+ * Stuff
  */
-class News
+class Stuff
 {
     /**
      * @var integer
@@ -22,24 +22,14 @@ class News
     /**
      * @var string
      */
-    private $type;
+    private $text;
 
     /**
      * @var string
      */
-    private $text;
+    private $type;
 
-    /**
-     * @var integer
-     */
-    private $order_column;
-
-    /**
-     * @var \DateTime
-     */
-    private $date;
-
-
+   
     /**
      * Get id
      *
@@ -54,7 +44,7 @@ class News
      * Set name
      *
      * @param string $name
-     * @return News
+     * @return Stuff
      */
     public function setName($name)
     {
@@ -74,33 +64,10 @@ class News
     }
 
     /**
-     * Set type
-     *
-     * @param string $type
-     * @return News
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string 
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
      * Set text
      *
      * @param string $text
-     * @return News
+     * @return Stuff
      */
     public function setText($text)
     {
@@ -120,78 +87,40 @@ class News
     }
 
     /**
-     * Set order_column
+     * Set type
      *
-     * @param integer $orderColumn
-     * @return News
+     * @param string $type
+     * @return Stuff
      */
-    public function setOrderColumn($orderColumn)
+    public function setType($type)
     {
-        $this->order_column = $orderColumn;
+        $this->type = $type;
 
         return $this;
     }
 
     /**
-     * Get order_column
-     *
-     * @return integer 
-     */
-    public function getOrderColumn()
-    {
-        return $this->order_column;
-    }
-
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     * @return News
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime 
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
-    /**
-     * @var string
-     */
-    private $preview;
-
-
-    /**
-     * Set preview
-     *
-     * @param string $preview
-     * @return News
-     */
-    public function setPreview($preview)
-    {
-        $this->preview = $preview;
-
-        return $this;
-    }
-
-    /**
-     * Get preview
+     * Get type
      *
      * @return string 
      */
-    public function getPreview()
+    public function getType()
     {
-        return $this->preview;
+        return $this->type;
     }
+
+    public static function getTypes()
+    {
+        return array(
+            'adult_teacher' => 'взрослые учителя',
+            'kid_teacher' => 'детские учителя',
+            'kid_kendergarden' => 'детский сад',
+            'tsrr' => 'ЦРР',
+            'tsdo' => 'ЦДО',
+            'coordinators' => 'координаторы',
+        );
+    }
+    
     /**
      * @var \Application\Sonata\MediaBundle\Entity\Media
      */
@@ -202,7 +131,7 @@ class News
      * Set media
      *
      * @param \Application\Sonata\MediaBundle\Entity\Media $media
-     * @return News
+     * @return Stuff
      */
     public function setMedia(\Application\Sonata\MediaBundle\Entity\Media $media = null)
     {

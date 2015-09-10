@@ -1,0 +1,29 @@
+<div class="content">
+    <div class="content">
+        <p class="title">{{ content.getName() }}</p>
+        <div class="contentSlider">
+            {% for value in stuff %}
+            <figure class="slidesjs-slide" style="margin:0;padding:0;">
+                <div class="rightBlock" style="width:45%;">
+                    <div class="advantage2 red" style="text-align: right;">
+                        <strong>{{ value.name }}</strong>
+                        {% autoescape false %}
+                            {{ value.text }}
+                        {% endautoescape %}
+                        
+                        <div class="buttonSquare">
+                            <a href="javascript:;" onclick="toggleMenu('secondLayerMenuStuff');">Узнать подробнее</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="leftBlock" style="width: 52%;margin-left: 3%;margin-right: 0;margin-top: 5px;">
+                    {% media value.media, 'big' with {'class': ''} %}
+                </div>
+            </figure>
+            {% endfor %}
+
+            <a href="#" class="slidesjs-previous slidesjs-navigation"><i class="fa fa-chevron-left"></i></a>
+            <a href="#" class="slidesjs-next slidesjs-navigation"><i class="fa fa-chevron-right"></i></a>
+        </div>
+    </div>
+</div>

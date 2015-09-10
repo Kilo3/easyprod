@@ -1,0 +1,47 @@
+{% extends 'EasyMainBundle::layout.html.twig' %}
+{% block pageContent %}
+    <section class="section">
+        <div class="content">
+            <p class="title">{{ title[content[0].type] }}</p>
+            <div class="links">
+                {% for stuff in content %}
+                    <a href="#popup{{ loop.index }}" class="popup">
+                        {% if stuff.media is defined %}
+                            <div style="width: 100%; height: 165px; background: url('{% path stuff.media, 'big' %}'); background-size: cover;">
+                            </div>
+                        {% endif %}
+                        {{ stuff.name }}
+                    </a>
+                    <div style='display:none;'>
+                        <div id='popup{{ loop.index }}' style='padding:10px; background:#fff;'>
+                            <div class="rightBlock" style="width:45%;">
+                                <div class="advantage2 red" style="text-align: right;">
+                                    <strong>{{ stuff.name }}</strong>
+                                    {% autoescape false %}
+                                        {{ stuff.text }}
+                                    {% endautoescape %}
+
+                                    <div class="buttonSquare">
+                                        <a href="javascript:;" onclick="$.colorbox.close();toggleMenu('secondLayerMenuStuff');">Узнать подробнее</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="leftBlock" style="width: 52%;margin-left: 3%;margin-right: 0;margin-top: 5px;">
+                                {% media stuff.media, 'big' with {'style': 'width: 100%;height: initial;'} %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block sideHeader %}
+{% endblock %}
+
+{% block topHeader %}
+    <ul style="position: relative;">
+        {#<li><a href="/life/#section2" class="scroll">Наша жизнь</a></li>#}
+    </ul>
+{% endblock %}

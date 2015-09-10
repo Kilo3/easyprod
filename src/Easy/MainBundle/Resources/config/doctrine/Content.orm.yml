@@ -30,6 +30,8 @@ Easy\MainBundle\Entity\Content:
             required: false
             default: 1
             nullable: true
+        stuff:
+            type: string
             
     manyToOne:
         gallery:

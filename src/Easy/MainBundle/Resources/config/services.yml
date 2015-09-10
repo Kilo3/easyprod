@@ -62,6 +62,15 @@ services:
             - ~
             - Easy\MainBundle\Entity\Contacts
             - 'EasyMainBundle:ContactsAdmin'
+            
+    easy.admin.stuff:
+        class: Easy\MainBundle\Admin\StuffAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: easy, label: Stuff}
+        arguments:
+            - ~
+            - Easy\MainBundle\Entity\Stuff
+            - 'EasyMainBundle:StuffAdmin'
  
 #    ens.jobeet.admin.job:
 #        class: Ens\JobeetBundle\Admin\JobAdmin

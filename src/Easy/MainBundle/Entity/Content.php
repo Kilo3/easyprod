@@ -290,7 +290,8 @@ class Content
 //            'news_all' => 'news_all', //все новости в нашей жизни подробнее
 //            'calendar_all' => 'calendar_all', //все события календаря в подробнее
 //            'photo_links' => 'photo_links', // ссылки фотогаллерей на фотки непосредственно
-            );
+            'stuff' => 'stuff', // преподователи
+        );
     }
     /**
      * @var integer
@@ -411,4 +412,32 @@ class Content
 //        }
 //    }
     
+    /**
+     * @var string
+     */
+    private $stuff;
+
+
+    /**
+     * Set stuff
+     *
+     * @param string $stuff
+     * @return Content
+     */
+    public function setStuff($stuff)
+    {
+        $this->stuff = $stuff;
+
+        return $this;
+    }
+
+    /**
+     * Get stuff
+     *
+     * @return string 
+     */
+    public function getStuff()
+    {
+        return $this->stuff;
+    }
 }

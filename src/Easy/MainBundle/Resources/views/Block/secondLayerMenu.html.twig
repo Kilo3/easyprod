@@ -1,9 +1,6 @@
-{% set count = 0 %}
-
 {% for menu in menuList %}
-    {% set count = count + menu.content|length %}
     <div class="nav-menu secondLayerMenu{{ menu.id }}">
-        <div style="position: absolute;width: 100%;height: 100%;z-index:99;" onclick="toggleMenu('secondLayerMenu{{ loop.index }}')"></div>
+        <div style="position: absolute;width: 100%;height: 100%;z-index:99;" onclick="toggleMenu('secondLayerMenu{{ menu.id }}')"></div>
         
         <a href="{{ path('easy_main_homepage') }}" style="position: absolute;z-index: 100;top: 4%;left: 4%;">
             <img id="logo" src="{{ asset('/bundles/easymain/images/logoMain.png') }}" >
@@ -40,44 +37,39 @@
 {% endfor %}
 
 {% if menuList|length > 1 %}
-        <div class="nav-menu secondLayerMenu0">
-            <div style="position: absolute;width: 100%;height: 100%;z-index:99;" onclick="toggleMenu('secondLayerMenu0')"></div>
+    <div class="nav-menu secondLayerMenu0">
+        <div style="position: absolute;width: 100%;height: 100%;z-index:99;" onclick="toggleMenu('secondLayerMenu0')"></div>
 
-            <a href="{{ path('easy_main_homepage') }}" style="position: absolute;z-index: 100;top: 4%;left: 4%;">
-                <img id="logo" src="{{ asset('/bundles/easymain/images/logoMain.png') }}" >
-            </a>
-            <div class="menuList" style="position: absolute;z-index: 100;">
-                {% if count > 24 %}
-                    {% set foo = 'col-2' %}
-                {% elseif count > 18 %}
-                    {% set foo = 'col-3' %}
-                {% elseif count > 12 %}
-                    {% set foo = 'col-4' %}
-                {% elseif count > 6 %}
-                    {% set foo = 'col-6' %}
-                {% else %}
-                    {% set foo = 'col-12' %}
-                {% endif %}
-                {% set boo = 0 %}
+        <a href="{{ path('easy_main_homepage') }}" style="position: absolute;z-index: 100;top: 4%;left: 4%;">
+            <img id="logo" src="{{ asset('/bundles/easymain/images/logoMain.png') }}" >
+        </a>
+        <div class="menuList" style="position: absolute;z-index: 100;">
+            {% if menuList|length == 1 %}
+                {% set foo = 'col-12' %}
+            {% elseif menuList|length == 2 %}
+                {% set foo = 'col-6' %}
+            {% elseif menuList|length == 3 %}
+                {% set foo = 'col-4' %}
+            {% elseif menuList|length == 4 %}
+                {% set foo = 'col-3' %}
+            {% else %}
+                {% set foo = 'col-12' %}
+            {% endif %}
+            {% for menu in menuList %}
                 <div class="{{ foo }}">
-                    {% for menu in menuList %}
-                        {% for content in menu.content %}
-                            {% set boo = boo+1 %}
-                            <div><a class="yellowHover" href="{{ app.request.uri }}{{ menu.url }}#section{{ loop.index }}">{{ content.getName() }}</a></div>
-                            {% if boo == 6 or boo == 12 or boo == 18 or foo == 24 %}
-                                </div>
-                                <div class="{{ foo }}">
-                            {% endif%}
-                        {% endfor %}
+                    {% for content in menu.content|slice(0, 6) %}
+                        <div><a class="yellowHover" href="{{ app.request.uri }}{{ menu.url }}#section{{ loop.index }}">{{ content.getName() }}</a></div>
                     {% endfor %}
                 </div>
+            {% endfor %}
+            
 
-            </div>
-            <div class="menu-button" onclick="toggleMenu('secondLayerMenu0');" style="position: absolute;z-index: 100;">
-                <span class=""></span>
-                <span class=""></span>
-                <span class=""></span>
-            </div>
         </div>
+        <div class="menu-button" onclick="toggleMenu('secondLayerMenu0');" style="position: absolute;z-index: 100;">
+            <span class=""></span>
+            <span class=""></span>
+            <span class=""></span>
+        </div>
+    </div>
     
 {% endif %}

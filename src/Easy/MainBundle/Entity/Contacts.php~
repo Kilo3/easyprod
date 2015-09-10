@@ -211,8 +211,8 @@ class Contacts
         return $this->content_reference;
     }
     
-    public function __toString()
-    {
-        return (string) $this->getName();
-    }
+//    public function __toString()
+//    {
+//        return (string) $this->getName();
+//    }
 }

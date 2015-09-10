@@ -38,6 +38,10 @@ easy_main_contacts:
     path:     /contacts/{id}/
     defaults: { _controller: EasyMainBundle:Default:contacts }
     
+easy_main_stuff:
+    path:     /stuff/{type}/
+    defaults: { _controller: EasyMainBundle:Default:stuff }
+    
     
 form_controller:
     path: /ajax/

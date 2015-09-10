@@ -86,6 +86,7 @@ sonata_admin:
                     - easy.admin.news
                     - easy.admin.calendar
                     - easy.admin.city
+                    - easy.admin.stuff
             Media: 
                 items:
                     - sonata.media.admin.gallery

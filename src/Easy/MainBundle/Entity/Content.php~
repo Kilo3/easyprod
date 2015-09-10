@@ -199,12 +199,12 @@ class Content
         return $this->teams;
     }
     
-    public function setTeams(\Easy\MainBundle\Entity\Team $teams)
-    {
-        foreach ($teams as $team) {
-            $this->addTeam($team);
-        }
-    }
+//    public function setTeams(\Easy\MainBundle\Entity\Team $teams)
+//    {
+//        foreach ($teams as $team) {
+//            $this->addTeam($team);
+//        }
+//    }
 
     /**
      * Set gallery
@@ -290,7 +290,8 @@ class Content
 //            'news_all' => 'news_all', //все новости в нашей жизни подробнее
 //            'calendar_all' => 'calendar_all', //все события календаря в подробнее
 //            'photo_links' => 'photo_links', // ссылки фотогаллерей на фотки непосредственно
-            );
+            'stuff' => 'stuff', // преподователи
+        );
     }
     /**
      * @var integer
@@ -364,10 +365,17 @@ class Content
      */
     public function addContact(\Easy\MainBundle\Entity\Contacts $contacts)
     {
-        $this->contacts[] = $contacts;
+        $contacts->setContentReference($this);
+        $this->contacts->add($contacts);
 
-        return $this;
+        //return $this;
     }
+//    public function addTeam(\Easy\MainBundle\Entity\Team $team)
+//    {
+//        $team->setContent($this);
+//        $this->teams->add($team);
+//        
+//    }
 
     /**
      * Remove contacts
@@ -376,6 +384,7 @@ class Content
      */
     public function removeContact(\Easy\MainBundle\Entity\Contacts $contacts)
     {
+        //dump($contacts,$this->contacts,$this->contacts->removeElement($contacts));die();
         $this->contacts->removeElement($contacts);
     }
 
@@ -388,4 +397,19 @@ class Content
     {
         return $this->contacts;
     }
+    
+    public function setContacts($contacts)
+    {
+        $this->contacts = $contacts;
+
+        return $this;
+    }
+    
+//    public function setContacts(\Easy\MainBundle\Entity\Contacts $contacts)
+//    {
+//        foreach ($contacts as $contact) {
+//            $this->addContact($contact);
+//        }
+//    }
+    
 }

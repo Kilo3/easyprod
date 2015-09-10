@@ -1,0 +1,28 @@
+Easy\MainBundle\Entity\Stuff:
+    type: entity
+    table: stuff
+    
+    fields:
+        id: 
+            id: true
+            type: bigint
+            nullable: false
+            generator:
+                strategy: IDENTITY
+                
+        name:
+            type: string
+            required: false
+            nullable: true
+        text:
+            type: text
+            nullable: true
+            required: false
+        type:
+            type:string
+            
+    manyToOne:
+        media:
+            targetEntity: Application\Sonata\MediaBundle\Entity\Media
+            cascade: ["persist"]
+            fetch: LAZY
