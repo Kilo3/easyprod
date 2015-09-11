@@ -347,4 +347,60 @@ class MainMenu
     {
         return $this->city;
     }
+    /**
+     * @var string
+     */
+    private $seo_title;
+
+    /**
+     * @var string
+     */
+    private $seo_description;
+
+
+    /**
+     * Set seo_title
+     *
+     * @param string $seoTitle
+     * @return MainMenu
+     */
+    public function setSeoTitle($seoTitle)
+    {
+        $this->seo_title = $seoTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get seo_title
+     *
+     * @return string 
+     */
+    public function getSeoTitle()
+    {
+        return $this->seo_title;
+    }
+
+    /**
+     * Set seo_description
+     *
+     * @param string $seoDescription
+     * @return MainMenu
+     */
+    public function setSeoDescription($seoDescription)
+    {
+        $this->seo_description = $seoDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get seo_description
+     *
+     * @return string 
+     */
+    public function getSeoDescription()
+    {
+        return $this->seo_description;
+    }
 }

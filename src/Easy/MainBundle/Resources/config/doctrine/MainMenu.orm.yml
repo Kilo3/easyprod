@@ -20,6 +20,10 @@ Easy\MainBundle\Entity\MainMenu:
         color:
             type: string
             length: 50
+        seo_title:
+            type: text
+        seo_description:
+            type: text
     oneToMany:
         children:
             targetEntity: MainMenu

@@ -28,6 +28,8 @@ class MainMenuAdmin extends Admin
             ->add('parent','sonata_type_model_list',array(
                 'btn_add' => false
             ))
+            ->add('seo_title')
+            ->add('seo_description')
         ;
     }
 
