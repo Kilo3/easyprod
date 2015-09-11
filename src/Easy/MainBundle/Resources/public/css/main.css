@@ -1744,6 +1744,7 @@ opacity: 1;
     display: block;
     cursor: pointer;
     border: none !important;
+    line-height: normal;
 }
 .ui-dialog-titlebar-close {
   display: none;
@@ -1860,14 +1861,14 @@ opacity: 1;
     bottom: -22px;
     right: 20px;
 }
-#dialog input[type=text]{
+#dialog input[type=text], #dialog textarea{
     font-size: 18px;
     font-family: sansRoundedLight;
     letter-spacing: 0.1em;
     border: none;
-    text-align: center;
-    width: 100%;
-    padding: 7px 0px;
+    text-align: left;
+    width: 300px;
+    padding: 7px 10px;
     border-radius: 5px;
     margin-bottom: 10px;
 }

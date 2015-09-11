@@ -18,7 +18,7 @@
                 {% set active = '' %}
             {% endif %}
             <div class="calendarMonth {{ active }}" month="{{ loop.index }}">
-                {% for event in monthInfo.content|slice(0, 3) %}
+                {% for event in monthInfo.content|slice(0, 2) %}
                     <div class="row">
                          {% media event.media, 'big' with {'class': ''} %}
                          <p>{{ event.date|date('d.m') }} {{ event.name }}</p>
@@ -27,6 +27,9 @@
                         </div>
                     </div>
                 {% endfor %}
+                <div class="buttonSquare" style="margin: 70px auto 0 auto;display: table;float: none;padding: 6px 14px;">
+                    <a href="/calendar/all" style="font-size:22px;">Все события</a>
+                </div>
             </div>
         {% endfor %}
         

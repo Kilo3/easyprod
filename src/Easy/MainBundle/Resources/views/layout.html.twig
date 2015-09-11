@@ -202,10 +202,17 @@ overflow: hidden;">
             </a>
             
             <div id="dialog">
-                <form id="callback">
+                <form id="callback" style="color: #fff;font-family: sansRoundedLight;">
                     <input type="text" name="name" placeholder="Ваше имя">
                     <input type="text" name="phone" placeholder="Ваш номер телефона">
-                    <a class="submit">жду звонка</a>
+                    <textarea name="time" placeholder="Время, удобное для занятий" style="resize: none;height: 120px;"></textarea>
+                    
+                    <p style="margin: 0;font-size: 20px;">Как вы хотите заниматься?</p>
+                    <input type="radio" name="type" value="group">В группе<br/>
+                    <input type="radio" name="type" value="individ">Индивидуально<br/>
+                    <input type="radio" name="type" value="company">Корпоративно
+                    
+                    <a class="submit" style="margin-top:20px;">жду звонка</a>
                     <a class='close' onclick="$( '#dialog' ).dialog( 'close' )">
                         <span class=""></span>
                         <span class=""></span>
@@ -301,8 +308,12 @@ overflow: hidden;">
                 });
                 
                 $(".popup").colorbox({
-                    inline:true,
-                    width:"auto"
+                    inline: true,
+                    width: "auto",
+                    height: "auto",
+                    maxWidth: "85%",
+                    maxHeight: "85%"
+                    
                 });
                 
                 $('#nav a+div').on('click', function(){

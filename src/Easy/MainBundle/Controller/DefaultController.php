@@ -579,21 +579,37 @@ class DefaultController extends Controller
     
     public function calendarAction($id)
     {
-        $hp = $this->getDoctrine()->getManager();
-        
-        $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8)); // id = 8 корень меню
-        
-        $content = $hp->getRepository('EasyMainBundle:Calendar')->findOneBy(array('id' => $id));
-        
-        $topMenu = "";
-        $secondLayerMenu = "";
-        return $this->render('EasyMainBundle:Block:calendar_show.html.twig', array(
-            'mainMenu' => $mainMenu,
-            'content' => $content,
-            'topMenu' => $topMenu,
-            'secondLayerMenu' => $secondLayerMenu,
-            'color' => 'salad'
-        ));
+        if($id == 'all'){
+            $hp = $this->getDoctrine()->getManager();
+            $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8));
+            $content = $hp->getRepository('EasyMainBundle:Calendar')->findAll();
+
+            $topMenu = "";
+            $secondLayerMenu = "";
+            return $this->render('EasyMainBundle:Block:calendar_all.html.twig', array(
+                'mainMenu' => $mainMenu,
+                'calendar' => $content,
+                'topMenu' => $topMenu,
+                'secondLayerMenu' => $secondLayerMenu,
+                'color' => 'salad'
+            ));
+        }else{
+            $hp = $this->getDoctrine()->getManager();
+
+            $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8)); // id = 8 корень меню
+
+            $content = $hp->getRepository('EasyMainBundle:Calendar')->findOneBy(array('id' => $id));
+
+            $topMenu = "";
+            $secondLayerMenu = "";
+            return $this->render('EasyMainBundle:Block:calendar_show.html.twig', array(
+                'mainMenu' => $mainMenu,
+                'content' => $content,
+                'topMenu' => $topMenu,
+                'secondLayerMenu' => $secondLayerMenu,
+                'color' => 'salad'
+            ));
+        }
     }
     
     public function contactsAction($id)

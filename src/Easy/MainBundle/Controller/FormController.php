@@ -12,10 +12,28 @@ class FormController extends Controller
     public function indexAction(Request $request){
         $name = $request->request->get('name');
         $phone = $request->request->get('phone');
+        $time = $request->request->get('time');
+        $type = $request->request->get('type');
+        
+        switch ($type) {
+            case 'group':
+                $typeInfo = "в группе";
+                break;
+            case 'individ':
+                $typeInfo = "индивидуально";
+                break;
+            case 'company':
+                $typeInfo = "корпоративно";
+                break;
+
+            default:
+                $typeInfo = "";
+                break;
+        }
         
         $to      = 'irk@e-a-s-y.ru';
         $subject = 'Запрос с сайта';
-        $message = "Имя: {$name}, Номер: {$phone}";
+        $message = "Имя: {$name}, Номер: {$phone}, Время: {$time}, Тип занятий:{$typeInfo}";
         $headers = 'From: irk@e-a-s-y.ru' . "\r\n" .
                    'X-Mailer: PHP/' . phpversion();
         //var_dump(mail($to, $subject, $message, $headers));die();
