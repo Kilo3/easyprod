@@ -28,6 +28,16 @@
             </div>
 
         </div>
+        {% if '/kid/' in app.request.uri %}
+            <div class="socialIcons" style="position: absolute;z-index: 100;">
+                <a href="http://vk.com/easyschoolkids" target="_blank"><i class="fa fa-vk"></i></a>
+                <a href="https://instagram.com/english_kindergarten/" target="_blank"><i class="fa fa-instagram"></i></a>
+            </div>
+        {% elseif '/tsdo/' in app.request.uri %}
+            <div class="socialIcons" style="position: absolute;z-index: 100;">
+                <a href="http://vk.com/educationitseasy" target="_blank"><i class="fa fa-vk"></i></a>
+            </div>
+        {% endif %}
         <div class="menu-button" onclick="toggleMenu('secondLayerMenu{{ menu.id }}');" style="position: absolute;z-index: 100;">
             <span class=""></span>
             <span class=""></span>
@@ -65,6 +75,16 @@
             
 
         </div>
+        {% if '/kid/' in app.request.uri %}
+            <div class="socialIcons" style="position: absolute;z-index: 100;">
+                <a href="http://vk.com/easyschoolkids" target="_blank"><i class="fa fa-vk"></i></a>
+                <a href="https://instagram.com/english_kindergarten/" target="_blank"><i class="fa fa-instagram"></i></a>
+            </div>
+        {% elseif '/tsdo/' in app.request.uri %}
+            <div class="socialIcons" style="position: absolute;z-index: 100;">
+                <a href="http://vk.com/educationitseasy" target="_blank"><i class="fa fa-vk"></i></a>
+            </div>
+        {% endif %}
         <div class="menu-button" onclick="toggleMenu('secondLayerMenu0');" style="position: absolute;z-index: 100;">
             <span class=""></span>
             <span class=""></span>

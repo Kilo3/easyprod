@@ -42,6 +42,8 @@
 
 {% block topHeader %}
     <ul style="position: relative;">
-        {#<li><a href="/life/#section2" class="scroll">Наша жизнь</a></li>#}
+        {% for key,value in teacherMenu %}
+            <li><a href="/stuff/{{ key }}" class="scroll">{{ value }}</a></li>
+        {% endfor %}
     </ul>
 {% endblock %}

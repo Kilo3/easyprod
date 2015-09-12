@@ -694,7 +694,7 @@ class DefaultController extends Controller
         $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8)); // id = 8 корень меню
         $title = Stuff::getTypes();
         
-        $stuff = $hp->getRepository('EasyMainBundle:Stuff')->findBy(array('type' => $type));
+        $stuff = $hp->getRepository('EasyMainBundle:Stuff')->findBy(array('type' => $type),array('name'=>'ASC'));
         $teacherMenu = Stuff::getTypes();
         
         if(count($stuff) > 0){
