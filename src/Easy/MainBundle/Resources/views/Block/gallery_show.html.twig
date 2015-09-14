@@ -1,17 +1,19 @@
 {% extends 'EasyMainBundle::layout.html.twig' %}
 {% block pageContent %}
-    <div class="content" style="margin-top: 160px;">
-        <p class="title" style="">Галерея</p>
-        <div class="links">
-            {% for galleryHasMedia in content.GalleryHasMedias %}
-                {% if galleryHasMedia.media.providerName == 'sonata.media.provider.image' %}
-                    <a href="{% path galleryHasMedia.media, 'big' %}" title="" data-gallery style="background: url('{% path galleryHasMedia.media, 'big' %}');"></a>
-                {% else %}
-                    {% media galleryHasMedia.media, 'special' %}
-                {% endif %}
-            {% endfor %}
+    <section class="section">
+        <div class="content" style="margin-top: 160px;">
+            <p class="title" style="">Галерея</p>
+            <div class="links">
+                {% for galleryHasMedia in content.GalleryHasMedias %}
+                    {% if galleryHasMedia.media.providerName == 'sonata.media.provider.image' %}
+                        <a href="{% path galleryHasMedia.media, 'big' %}" title="" data-gallery style="background: url('{% path galleryHasMedia.media, 'big' %}');"></a>
+                    {% else %}
+                        {% media galleryHasMedia.media, 'special' %}
+                    {% endif %}
+                {% endfor %}
+            </div>
         </div>
-    </div>
+    </section>
 {% endblock %}
 
 {% block sideHeader %}
