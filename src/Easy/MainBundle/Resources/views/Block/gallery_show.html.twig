@@ -1,8 +1,8 @@
 {% extends 'EasyMainBundle::layout.html.twig' %}
 {% block pageContent %}
     <section class="section">
-        <div class="content" style="margin-top: 160px;">
-            <p class="title" style="">Галерея</p>
+        <div class="content">
+            <p class="title">Галерея</p>
             <div class="links">
                 {% for galleryHasMedia in content.GalleryHasMedias %}
                     {% if galleryHasMedia.media.providerName == 'sonata.media.provider.image' %}
