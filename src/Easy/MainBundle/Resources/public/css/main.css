@@ -2463,3 +2463,56 @@ h4{
 .expand, .compress{
     right: 70px !important;
 }
+#cboxCurrent{
+    display: none !important;
+}
+#cboxPrevious{
+    display: block;
+    top: 44%;
+    left: -9%;
+    z-index: 10000;
+    position: absolute;
+    font-size: 0px;
+    background: none !important;
+    width: initial !important;
+    height: 47px !important;
+    text-indent: 0px;
+}
+#cboxPrevious:before{
+    display: table;
+    font-family: FontAwesome;
+    content: "\f053";
+    color: #EE2A31;
+    font-size: 47px;
+}
+#cboxPrevious:hover:before{
+    color: #939598;
+}
+
+#cboxNext{
+    display: block;
+    top: 44%;
+    left: initial;
+    right: -9%;
+    z-index: 10000;
+    position: absolute;
+    font-size: 0px;
+    background: none !important;
+    width: initial !important;
+    height: 47px !important;
+    text-indent: 0px;
+}
+#cboxNext:before{
+    display: table;
+    font-family: FontAwesome;
+    content: "\f054";
+    color: #EE2A31;
+    font-size: 47px;
+}
+#cboxNext:hover:before{
+    color: #939598;
+}
+
+#colorbox, #cboxContent, #cboxWrapper{
+    overflow: visible !important;
+}
