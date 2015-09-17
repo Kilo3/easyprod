@@ -40,6 +40,7 @@
             <script src="{{ asset('bundles/easymain/js/jquery.colorbox.js') }}"></script>
             
             <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+            <script type="text/javascript" src="http://vk.com/js/api/share.js?92" charset="windows-1251"></script>
             <script src="{{ asset('bundles/easymain/js/main.js') }}" ></script>
         {% endblock %}
     </head>
@@ -70,12 +71,22 @@
                         <div class="modal-body next"></div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default pull-left prev">
-                                <i class="glyphicon glyphicon-chevron-left"></i>
-                                Предыдущий
+                                <i class="fa fa-chevron-left"></i>
+                                Предыдущая
                             </button>
+                            <div style="position:absolute;right: 35%;">
+                                <script type="text/javascript"><!--
+                                document.write(VK.Share.button(false,{type: "round_nocount", text: "Share"}));
+                                --></script>
+                                
+                                <a href="#" target="_blank" download onclick="$(this).attr('href',$(this).parents('.modal-content').find('img').attr('src'));" type="button" class="btn btn-default" style="position: absolute;top: 0;left: 65px; text-decoration:none;">
+                                    <i class="fa fa-download"></i>
+                                    Скачать
+                                </a>
+                            </div>
                             <button type="button" class="btn btn-primary next">
-                                Следующий
-                                <i class="glyphicon glyphicon-chevron-right"></i>
+                                Следующая
+                                <i class="fa fa-chevron-right"></i>
                             </button>
                         </div>
                     </div>
@@ -279,6 +290,18 @@ overflow: hidden;">
                 $('#thankyou').addClass(color);
             }
             
+            function download(){
+                {#$('.modal-dialog img').each( function(index, Element){
+                    console.log(Element);
+                });#}
+                        console.log(123);
+                //var foo = $(this).parents('.modal-content').find('img').attr('src');
+                //$(this).attr('href') = $(this).parents('.modal-content').find('img').attr('src');
+                
+                //$(this).click();
+                //$(this).attr('href') = '#';
+            }
+            
             
             $(function(){
                 {% if color is defined %}
@@ -329,6 +352,10 @@ overflow: hidden;">
                     var mark = $(this).parents().attr('data-menuanchor');
                     $.fn.fullpage.moveTo(mark);
                 });
+                
+                if($('section.section').length <= 1){
+                    $('#scrolldown-button').css('display','none');
+                }
                 
                 $( "#dialog" ).dialog({
                     autoOpen: false,

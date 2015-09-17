@@ -2,7 +2,7 @@
 {% block pageContent %}
     <section class="section">
         <div class="content">
-            <p class="title">Галерея</p>
+            <p class="title">{{ content.name }}</p>
             <div class="links">
                 {% for galleryHasMedia in content.GalleryHasMedias %}
                     {% if galleryHasMedia.media.providerName == 'sonata.media.provider.image' %}

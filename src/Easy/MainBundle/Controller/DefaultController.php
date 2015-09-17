@@ -13,9 +13,12 @@ class DefaultController extends Controller
         $hp = $this->getDoctrine()->getManager();
         $currentUrl = $hp->getRepository('EasyMainBundle:MainMenu')->findOneBy(array('url'=>$part1));
         
-        
         $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8)); // id = 8 корень меню
         if(!isset($currentUrl)){
+            if($part1 == 'irk'){ // временная чушь для старой выдачи яндекса
+                header("Location:/");
+                die();
+            }
             $topMenu = "";
             return $this->render('EasyMainBundle:Block:404.html.twig', array(
                 'mainMenu' => $mainMenu,
