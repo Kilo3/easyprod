@@ -290,19 +290,6 @@ overflow: hidden;">
                 $('#thankyou').addClass(color);
             }
             
-            function download(){
-                {#$('.modal-dialog img').each( function(index, Element){
-                    console.log(Element);
-                });#}
-                        console.log(123);
-                //var foo = $(this).parents('.modal-content').find('img').attr('src');
-                //$(this).attr('href') = $(this).parents('.modal-content').find('img').attr('src');
-                
-                //$(this).click();
-                //$(this).attr('href') = '#';
-            }
-            
-            
             $(function(){
                 {% if color is defined %}
                     coloring('{{ color }}');
@@ -345,7 +332,11 @@ overflow: hidden;">
                     rel: "stuff",
                     closeButton: true,
                     previous: "previous",
-                    next: "next"
+                    next: "next",
+                    onComplete: function(){
+                        $('#cboxLoadedContent').slimScroll({});
+                    }
+                             
                 });
                 
                 $('#nav a+div').on('click', function(){
