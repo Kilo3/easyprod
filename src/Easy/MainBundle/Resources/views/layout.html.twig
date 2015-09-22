@@ -28,7 +28,7 @@
             <script src="{{ asset('bundles/easymain/js/jquery-2.1.4.min.js') }}"></script>
             <script src="{{ asset('bundles/easymain/js/jquery.cookie.js') }}"></script>
             <script src="{{ asset('bundles/easymain/js/jquery.slimscroll.min.js') }}"></script>
-            <script src="{{ asset('bundles/easymain/js/pace.min.js') }}"></script>
+            {#<script src="{{ asset('bundles/easymain/js/pace.min.js') }}"></script>#}
             <script src="{{ asset('bundles/easymain/js/jquery.slides.min.js') }}"></script>
             {#<script src="{{ asset('bundles/easymain/js/in-viewport.min.js') }}"></script>#}
             <script src="{{ asset('bundles/easymain/js/jquery-ui.js') }}" ></script>
@@ -41,6 +41,7 @@
             
             <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
             <script type="text/javascript" src="http://vk.com/js/api/share.js?92" charset="windows-1251"></script>
+            
             <script src="{{ asset('bundles/easymain/js/main.js') }}" ></script>
         {% endblock %}
     </head>
@@ -556,7 +557,7 @@ overflow: hidden;">
                               // You cannot use your own buttons. Sorry.
                             effect: "slide",
                               // [string] Can be either "slide" or "fade".
-                            interval: 10000,
+                            interval: 12000,
                               // [number] Time spent on each slide in milliseconds.
                             auto: true,
                               // [boolean] Start playing the slideshow on load.
@@ -564,7 +565,7 @@ overflow: hidden;">
                               // [boolean] show/hide stop and play buttons
                             pauseOnHover: true,
                               // [boolean] pause a playing slideshow on hover
-                            restartDelay: 5000
+                            restartDelay: 8000
                               // [number] restart delay on inactive slideshow
                         },
                         width: 940,
@@ -625,9 +626,12 @@ overflow: hidden;">
                     var video = document.getElementById("mainVideoSource");
                     video.volume = 0.5;
                 }
-                if($('.slidesjs-control').length > 0){
-                    $('.slidesjs-control').slimScroll({});
-                }
+                {#if($('.slidesjs-control').length > 0){
+                    $('.slidesjs-control').slimScroll({
+                        //railVisible: true,
+                        alwaysVisible: true
+                    });
+                }#}
                 
             });
             
@@ -674,5 +678,11 @@ overflow: hidden;">
         ga('send', 'pageview');
 
         </script>
+        
+        <!-- BEGIN JIVOSITE CODE {literal} -->
+        <script type='text/javascript'>
+        (function(){ var widget_id = 'XRvGlrqE68';
+        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);})();</script>
+        <!-- {/literal} END JIVOSITE CODE -->
     </body>
 </html>
