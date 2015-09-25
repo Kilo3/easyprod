@@ -87,6 +87,7 @@ and open the template in the editor.
 body {
   margin: 0;
   //opacity: 0;
+  overflow-x: hidden;
 }
 body.pace-done, body.pace-progress, body.pace-running{
     //opacity: 1;
@@ -476,9 +477,18 @@ opacity: 1;
 }
 section{
     position: relative;
-    width: 90%;
-    padding-top: 150px;
+    width: 100%;
+    margin-top: 130px;
+    padding-top: 10px;
+/*    border-top: 2px solid #fff;*/
+/*    border-bottom: 2px solid #fff;*/
 }
+/*section:hover{
+    background: #f5f5f5;
+    border-top: 2px solid #ddd;
+    border-bottom: 2px solid #ddd;
+}*/
+
 .bgRed{
     background: #EB1C24 !important;
 }
@@ -555,46 +565,55 @@ section{
     position: absolute;
     white-space: nowrap;
     right: 2px;
-    background: #EA2327;
-    color: #FFF;
-    font-family: sansRoundedBold;
     border-radius: 10px;
-    padding: 0px 24px 0px 9px;
-    margin-top: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.4);
+    background: #FFF;
+    color: #EA2327;
+    font-family: robotoLight;
+    font-size: 0.9em;
+    font-weight: bold;
+    padding: 2px 26px 4px 10px;
+    text-transform: lowercase;
+    margin-top: 0px;
+    margin-right: -1px;
+    letter-spacing: 0.05em;
+    
     
     cursor:pointer;
-    transform: rotateY(90deg);
+/*    transform: rotateY(90deg);
     -webkit-transition: transform 0.2s ease-in-out;
     -moz-transition: transform 0.2s ease-in-out;
     -o-transition: transform 0.2s ease-in-out;
-    transition: transform 0.2s ease-in-out;
-    display: table;
+    transition: transform 0.2s ease-in-out;*/
+    display: none;
     transform-origin: 100% 0% -70px;
 }
 #nav a+div:hover{
-    -moz-transform: rotateY(0deg);
+    display: table;
+/*    -moz-transform: rotateY(0deg);
     -ms-transform: rotateY(0deg);
     -webkit-transform: rotateY(0deg);
     -o-transform: rotateY(0deg);
-    transform: rotateY(0deg);
+    transform: rotateY(0deg);*/
 }
 #nav a:hover+div{
-    -moz-transform: rotateY(0deg);
+/*    -moz-transform: rotateY(0deg);
     -ms-transform: rotateY(0deg);
     -webkit-transform: rotateY(0deg);
     -o-transform: rotateY(0deg);
-    transform: rotateY(0deg);
+    transform: rotateY(0deg);*/
+    display: table;
 }
 #nav a{
     position: relative;
     z-index: 1000;
     border-radius: 32px;
-    width: 16px;
-    height: 16px;
+    width: 13px;
+    height: 13px;
     display: table;
     float: left;
     margin: 6px;
-    background: #fff;
+    
     border: 2px solid #ed1c24;
 }
 
@@ -626,10 +645,12 @@ section{
 }
 #top-header{
     position: fixed;
-    width: 90%;
+    width: 100%;
     top: 0;
     min-width: 1000px;
     z-index: 180;
+    background: #FFF;
+    padding-right: 9%;
 }
 #top-header>a{
     float: left;
@@ -975,6 +996,7 @@ i.dot{
     display: table;
     position: relative;
     padding-bottom: 50px;
+/*    border-bottom: 1px solid #d5d5d5;*/
 }
 .title{
     text-align: right;
@@ -986,21 +1008,21 @@ i.dot{
     margin-top: 4%;
 }
 .leftBlock{
-    width: 41%;
+    width: 35%;
     height: 100%;
     display: block;
     float: left;
     margin-right: 4%;
 }
 .advantage, .advantage2{
-    text-align: right;
+    text-align: left;
 }
 .advantage p{
     display: block;
-    font-size: 25px;
-    font-family: sansRoundedBold;
-    text-transform: uppercase;
+    font-size: 1em;
     margin: 0;
+    color: #2D2D2D;
+    font-family: robotoLight;
 }
 .advantage2 p{
     font-family: robotoLight;
@@ -1018,24 +1040,26 @@ i.dot{
 
 .advantage strong, .advantage2 strong {
     display: block;
-    font-size: 25px;
+    font-size: 1em;
     font-family: sansRoundedBold;
     text-transform: uppercase;
+    margin: 0;
+    color: #2D2D2D;
     font-weight: normal;
 }
 
 
 
 .rightBlock{
-    width: 55%;
+    width: 61%;
     height: 100%;
     display: block;
     float: left;
+    
 }
 .videoContainer{
     overflow-x: hidden;
     overflow-y: hidden;
-    width: 575px; 
     height: 330px;
     position: relative;
 /*    border: 2px solid #EA2327;*/
@@ -1051,26 +1075,28 @@ i.dot{
     width: 100%;
     height: 100%;
 }
-.videoContainer a{
+
+
+.play{
     position: absolute;
     z-index: 100;
     display: table;
-    bottom: 3%;
-    right: 10px;
-    width: 50px;
+    top: 46%;
+    right: 27%;
+    width: 85px;
     background: transparent;
-    height: 50px;
-    border-radius: 10px;
-    padding-top: 10px;
+    height: 85px;
+    border-radius: 70px;
+    padding-top: 28px;
     cursor: pointer;
-    border: solid 3px #EA2327;
+    border: solid 3px #724EA0;
     text-decoration: none;
 }
-.videoContainer a>i{
+.play>i{
     margin: 0 auto;
     display: table;
     font-size: 26px;
-    color: #EA2327;
+    color: #724EA0;
 }
 
 
@@ -1584,11 +1610,11 @@ opacity: 1;
 
 .purpleSquare{
     background: #724ea0;
-    border-radius: 9px;
+    border-radius: 6px;
     position: relative;
     float: right;
 }
-.purpleSquare:after{
+/*.purpleSquare:after{
     content: "";
     background: url("../images/purpleSmall.png");
     width: 25px;
@@ -1596,7 +1622,7 @@ opacity: 1;
     position: absolute;
     right: 0;
     bottom: -14px;
-}
+}*/
 
 .blueSquare{
     background: #393185;
@@ -1663,51 +1689,72 @@ opacity: 1;
 
 
 
+.slidesCont2 .slidesjs-navigation {
+    top: 190px;
+    position: absolute;
+    right: 647px;
+    font-size: 40px;
+}
+
+.slidesCont2 .slidesjs-previous {
+    margin-right: 5px;
+    float: left;
+}
+
+.slidesCont2 .slidesjs-next {
+    right: -10px;
+    left: initial;
+}
+
 
 .slidesCont {
-      display: none
-    }
+    display: none
+}
 
-    .slidesCont .slidesjs-navigation {
-      margin-top:3px;
-    }
+.slidesCont .slidesjs-navigation {
+    top: 190px;
+    position: absolute;
+    left: -30px;
+    font-size: 40px;
+}
 
-    .slidesCont .slidesjs-previous {
-      margin-right: 5px;
-      float: left;
-    }
+.slidesCont .slidesjs-previous {
+    margin-right: 5px;
+    float: left;
+}
 
-    .slidesCont .slidesjs-next {
-      margin-right: 5px;
-      float: left;
-    }
+.slidesCont .slidesjs-next {
+    right: -30px;
+    left: initial;
+}
 
-    .slidesjs-pagination {
-      margin: 6px 0 0;
-      float: right;
-      list-style: none;
-    }
+.slidesjs-pagination {
+    display: table;
+    margin: 15px auto 0px auto;
+    padding: 0;
+    list-style: none;
+}
 
-    .slidesjs-pagination li {
-      float: left;
-      margin: 0 1px;
-    }
+.slidesjs-pagination li {
+    float: left;
+    margin: 0 3px;
+}
 
-    .slidesjs-pagination li a {
-        display: block;
-        width: 13px;
-        height: 13px;
-        padding-top: 8px;
-        float: left;
-        overflow: hidden;
-        border: 2px solid #EE2A31;
-        border-radius: 40px;
-        margin-left: 3px;
-    }
+.slidesjs-pagination li a {
+    display: block;
+    width: 13px;
+    height: 13px;
+    padding-top: 8px;
+    float: left;
+    overflow: hidden;
+    border: 2px solid #724EA0;
+    border-radius: 40px;
+    margin-left: 3px;
+}
 
     .slidesjs-pagination li a.active,
     .slidesjs-pagination li a:hover.active {
-      background: #EE2A31;
+      background: #724EA0;
     }
 
     .slidesjs-pagination li a:hover {
@@ -1716,7 +1763,7 @@ opacity: 1;
 
     .slidesCont a:link,
     .slidesCont a:visited {
-      color: #EE2A31
+/*      color: #EE2A31*/
     }
 
     .slidesCont a:hover,
@@ -1737,10 +1784,10 @@ opacity: 1;
 .yellowSquare a, .redSquare a, .greenSquare a, .purpleSquare a, .blueSquare a, .lightBlueSquare a, .orangeSquare a, .saladSquare a{
     font-family: sansRoundedBold;
     color: #fff !important;
-    font-size: 29px;
+    font-size: 1em;
     letter-spacing: 0.5px;
     text-decoration: none;
-    padding: 8px 25px;
+    padding: 8px 20px 8px 25px;
     display: block;
     cursor: pointer;
     border: none !important;
@@ -2514,4 +2561,24 @@ h4{
 
 #colorbox, #cboxContent, #cboxWrapper{
     overflow: visible !important;
+}
+#fullpage{
+    padding-top: 85px;
+}
+
+.angleBlock{
+    height: 490px;
+    width: 120%;
+    background: #724EA0;
+    opacity: 1;
+    transform: rotateZ(4deg);
+    left: -5%;
+    position: absolute;
+    z-index: -1000;
+    top: -15px;
+    overflow: hidden;
+}
+
+.slidesCont img{
+    height: initial;
 }
