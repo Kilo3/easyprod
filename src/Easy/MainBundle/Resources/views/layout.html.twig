@@ -626,12 +626,12 @@ overflow: hidden;">
                     var video = document.getElementById("mainVideoSource");
                     video.volume = 0.5;
                 }
-                {#if($('.slidesjs-control').length > 0){
-                    $('.slidesjs-control').slimScroll({
+                if($('.contentSlider').length > 0){
+                    $('.contentSlider .slidesjs-control').slimScroll({
                         //railVisible: true,
                         alwaysVisible: true
                     });
-                }#}
+                }
                 
             });
             

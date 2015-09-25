@@ -1063,14 +1063,14 @@ i.dot{
     border-radius: 10px;
     padding-top: 10px;
     cursor: pointer;
-    border: solid 3px #EA2327;
+    border: solid 3px #fff;
     text-decoration: none;
 }
 .videoContainer a>i{
     margin: 0 auto;
     display: table;
     font-size: 26px;
-    color: #EA2327;
+    color: #fff;
 }
 
 
@@ -2514,4 +2514,8 @@ h4{
 
 #colorbox, #cboxContent, #cboxWrapper{
     overflow: visible !important;
+}
+
+.contentSlider .slimScrollBar{
+    margin-right: 0px !important;
 }
