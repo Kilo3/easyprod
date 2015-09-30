@@ -2563,15 +2563,15 @@ h4{
     overflow: visible !important;
 }
 #fullpage{
-    padding-top: 85px;
+    padding-top: 65px;
 }
 
 .angleBlock{
-    height: 490px;
+    height: 440px;
     width: 120%;
     background: #724EA0;
     opacity: 1;
-    transform: rotateZ(4deg);
+    transform: rotateZ(3deg);
     left: -5%;
     position: absolute;
     z-index: -1000;
