@@ -2131,6 +2131,7 @@ opacity: 1;
     margin: 10px 1%;
     display: inline-table;
     background-size: cover;
+    background-position: center center;
 }
 .links iframe{
     margin: 10px 1%;
@@ -2344,7 +2345,7 @@ h4{
     top: 254px;
     left: 24px;
     font-size: 19px;
-    color: #EA2327;
+    color: #fff;
     bottom: 2px;
     top: initial;
 /*    text-shadow: -1px -1px 3px #FFF, 1px 1px 3px #FFF;*/

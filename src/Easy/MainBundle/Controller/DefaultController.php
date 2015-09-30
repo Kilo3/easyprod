@@ -366,7 +366,7 @@ class DefaultController extends Controller
                     break;
                 
                 case 'photo_links':
-                    $galleries = $hp->getRepository('Application\Sonata\MediaBundle\Entity\Gallery')->findBy(array('context' => 'gallery'));
+                    $galleries = $hp->getRepository('Application\Sonata\MediaBundle\Entity\Gallery')->findBy(array('context' => 'gallery'), array('id'=>'DESC'));
                     $foo = $this->render('EasyMainBundle:Block:photo_links.html.twig', array(
                         'content'   => $value,
                         'galleries'   => $galleries,
