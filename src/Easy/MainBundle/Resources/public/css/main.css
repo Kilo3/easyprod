@@ -92,9 +92,13 @@ body {
 body.pace-done, body.pace-progress, body.pace-running{
     //opacity: 1;
 }
-.container {
-    margin-top: 100px;
+.container{
     position: relative;
+}
+.container>.col-md-11 {
+    margin-top: 150px;
+    margin-bottom: 100px;
+    
 }
 /*@media (min-width: 768px) {
   .container {
@@ -2646,15 +2650,14 @@ table>thead>tr>th{
 }
 
 .angleBlock{
-    height: 390px;
+    height: 515px;
     width: 200%;
     background: #724EA0;
     opacity: 1;
-    transform: rotateZ(2deg);
     left: -40%;
     position: absolute;
     z-index: -1000;
-    top: -15px;
+    top: 55px;
     overflow: hidden;
 }
 
@@ -2663,7 +2666,8 @@ table>thead>tr>th{
 }
 
 #page .container:first-child{
-    margin-top: 35px;
+    margin-top: 100px;
+    margin-bottom: 100px;
 }
 .menuList>.row:first-child{
     margin-top: 0;
