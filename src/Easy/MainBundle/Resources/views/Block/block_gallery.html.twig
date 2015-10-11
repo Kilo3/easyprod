@@ -52,15 +52,13 @@
         </div>
     </div>
     {#<div class="angleBlock" style="background: url('{% path gallery.GalleryHasMedias[0].media, 'big' %}');background-size: cover;background-position: center center;"></div>#}
-    {% set foo = random(3) %}
+    {% set foo = random(2) %}
     {% if foo == 1 %}
         <div class="angleBlock" style="background: url('{{ asset('/bundles/easymain/images/leto.jpg') }}');background-size: cover;background-position: center center;"></div>
     {% elseif foo == 2 %}
         <div class="angleBlock" style="background: url('{{ asset('/bundles/easymain/images/tsrr.jpg') }}');background-size: cover;background-position: center center;"></div>
-    {% elseif foo == 3 %}
-        <div class="angleBlock" style="background: url('{{ asset('/bundles/easymain/images/det.jpg') }}');background-size: cover;background-position: center center;"></div>
     {% elseif foo == 0 %}
-        <div class="angleBlock" style="background: url('{{ asset('/bundles/easymain/images/individ.jpg') }}');background-size: cover;background-position: center center;"></div>
+        <div class="angleBlock" style="background: url('{{ asset('/bundles/easymain/images/det.jpg') }}');background-size: cover;background-position: center center;"></div>
     {% endif %}
     
     
