@@ -1,17 +1,7 @@
 {% if random(2) == 1 %}
-    <div class='content'>
-        <p class='title' style="text-align:left;color: #724EA0;font-size:1.8em;display: block;
-    float: left;
-    margin-top: 18px;">{{ content.getName()}}</p>
-        <div class="buttonSquare purpleSquare" style="float: right;">
-                <a href="javascript:;" onclick="toggleMenu('secondLayerMenu11');">Узнать подробнее<i class="fa fa-angle-right" style="font-size: 1.4em;
-    float: right;
-    clear: both;
-    display: table;
-    margin-left: 8px;
-    margin-top: -1px;"></i></a>
-        </div>
-
+    <div class='col-md-11'>
+        <a name="anchor{{ content.id }}" style="position: absolute;top: -115px;"></a>
+        <p class='title'>{{ content.getName()}}</p>
         <div class="row" style="clear:both;margin: 50px 0;text-align: center;font-family: sansRoundedBold;">
             <div class="col-md-4" style="border-right: 2px solid #724EA0;">
                 <p>СТАНДАРТНЫЕ</p>
@@ -41,46 +31,36 @@
         </div>
     </div>
 {% else %}
-    <div class='content' style="border-bottom: none;">
-        <div style="width: 34px;
-        height: 4px;
-        border-radius: 2px;
-        background-color: #FFF;
-        border: none;
-        margin: 0;
-        background: #724EA0;margin-bottom: 10px;
-    margin-left: 2px;"></div>
-
-        <div class='leftBlock'>
-            <p class='title' style="text-align:left;color: #724EA0;font-size:1.8em;">{{ content.getName()}}</p>
-            <div class='advantage'>
-                {% autoescape false %}
-                    {{ content.getContent()}}
-                {% endautoescape %}
-            </div>
-            <div class="buttonSquare purpleSquare" style="float:left;">
-                <a href="javascript:;" onclick="toggleMenu('secondLayerMenu11');">Узнать подробнее<i class="fa fa-angle-right" style="font-size: 1.4em;
-    float: right;
-    clear: both;
-    display: table;
-    margin-left: 8px;
-    margin-top: -1px;"></i></a>
-            </div>
-            {% if content.secondMenu !=  -1%}
-                {#<div class='buttonSquare'>
-                    <a href='javascript:;' onclick="toggleMenu('secondLayerMenu{{ content.getSecondMenu()}}');">Узнать подробнее</a>
-                </div>#}
-            {% endif %}
-        </div>
-        <div class='rightBlock' style="padding-top: 25px;padding-right: 35px;">
-            <div class='slidesCont2'>
-                {% if gallery.GalleryHasMedias is defined %}
-                    {% for galleryHasMedia in gallery.GalleryHasMedias %}
-                        {% media galleryHasMedia.media, 'big' with {'class': ''} %}
-                    {% endfor %}
+    <div class='col-md-11' style="border-bottom: none;">
+        <a name="anchor{{ content.id }}" style="position: absolute;top: -115px;"></a>
+        <div class="stick"></div>
+        <div class="row">
+            <div class='col-md-4'>
+                <p class='title'>{{ content.getName()}}</p>
+                <div class='advantage'>
+                    {% autoescape false %}
+                        {{ content.getContent()}}
+                    {% endautoescape %}
+                </div>
+                <div class="buttonSquare" style="float:left;">
+                    <a href="javascript:;" onclick="toggleMenu('secondLayerMenu11');">Узнать подробнее<i class="fa fa-angle-right"></i></a>
+                </div>
+                {% if content.secondMenu !=  -1%}
+                    {#<div class='buttonSquare'>
+                        <a href='javascript:;' onclick="toggleMenu('secondLayerMenu{{ content.getSecondMenu()}}');">Узнать подробнее</a>
+                    </div>#}
                 {% endif %}
-                <a href='#' class='slidesjs-previous slidesjs-navigation'><i class='fa fa-chevron-left'></i></a>
-                <a href='#' class='slidesjs-next slidesjs-navigation'><i class='fa fa-chevron-right'></i></a>
+            </div>
+            <div class='col-md-8'>
+                <div class='slidesCont2'>
+                    {% if gallery.GalleryHasMedias is defined %}
+                        {% for galleryHasMedia in gallery.GalleryHasMedias %}
+                            {% media galleryHasMedia.media, 'big' with {'class': ''} %}
+                        {% endfor %}
+                    {% endif %}
+                    <a href='#' class='slidesjs-previous slidesjs-navigation'><i class='fa fa-chevron-left'></i></a>
+                    <a href='#' class='slidesjs-next slidesjs-navigation'><i class='fa fa-chevron-right'></i></a>
+                </div>
             </div>
         </div>
     </div>

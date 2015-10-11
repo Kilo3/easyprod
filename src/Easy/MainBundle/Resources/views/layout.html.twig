@@ -22,6 +22,9 @@
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/blueimp-gallery.min.css') }}" type="text/css" media="all" />
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/bootstrap-image-gallery.css') }}" type="text/css" media="all" />
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/colorbox.css') }}" type="text/css" media="all" />
+            
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+            
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/main.css') }}" type="text/css" media="all" />
         {% endblock %}
         {% block javascripts %}
@@ -93,7 +96,7 @@
                 </div>
             </div>
         </div>
-        <div class="contentLoader">
+        <div class="contentLoader" style="overflow: hidden;">
             <div style="width: 1px;
 height: 1px;
 display: block;
@@ -113,23 +116,36 @@ overflow: hidden;">
                     <span class=""></span>
                     <span class=""></span>
                 </div>
+                
                 <div class="nav-menu mainMenu">
                     <div style="position: absolute;width: 100%;height: 100%;z-index:99;" onclick="toggleMenu('mainMenu')"></div>
-                    <a href="{{ path('easy_main_homepage') }}" style="position: absolute;z-index: 100;top: 4%;left: 4%;">
+                    <a href="{{ path('easy_main_homepage') }}" style="position: absolute;z-index: 100;top: 3%;left: 5%;">
                         <img id="logo" src="{{ asset('/bundles/easymain/images/logoMain.png') }}" >
                     </a>
-                    <div class="fastLink menuList" style="position: absolute;z-index: 100;top: 2%;right: 10%;width: auto;">
+                    {#<div class="fastLink menuList" style="position: absolute;z-index: 100;top: 2%;right: 10%;width: auto;">
                         <div>
                             <a href="/pay" class="purpleHover" style="width: 130px;">Оплата</a>
                             <a href="/news" class="purpleHover" style="width: 130px;">Новости</a>
                             <a href="/contacts/all" class="purpleHover" style="width: 130px;">Контакты</a>
                         </div>
-                    </div>
+                    </div>#}
                     
-                    <div class="menuList" style="position: absolute;z-index: 100;">
-                        {% for value in mainMenu %}
-                            <div><a class="{{ value.color }}Hover" href="{{ path('easy_main_homepage') }}{{ value.url }}">{{ value.title }}</a></div>
-                        {% endfor %}
+                    <div class="menuList" style="position: relative;z-index: 100;">
+                        <div class="row">
+                            {% for value in mainMenu %}
+                                <div class="col-md-4">
+                                    <a style="display: table;margin: 0 auto;" 
+                                       class="{{ value.color }}Hover header-title" href="{{ path('easy_main_homepage') }}{{ value.url }}">{{ value.title }}</a>
+                                    {% for children in value.children %}
+                                        <a class="" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}">{{ children.title }}</a>
+                                    {% endfor %}
+                                </div>
+                                {% if loop.index%3 == 0 %}
+                                </div><div class="row">
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        
                     </div>
                     <div class="menuInfo" style="position: absolute;z-index: 100;">
                         <p style="margin-bottom: 5px;">2000-2015 Сеть образовательных центров Easy School</p>
@@ -142,15 +158,17 @@ overflow: hidden;">
                         <a href="https://www.facebook.com/easyschool1" target="_blank"><i class="fa fa-facebook"></i></a>
                     </div>
                 </div>
-                {% block sideHeader %}
-                    <nav id="nav">
-                        <ul id="menu">
-                            {% for value in content %}
-                                <li data-menuanchor="section{{ loop.index }}"><a href="#section{{ loop.index }}"></a><div>{{ value.getName() }}</div></li>
-                            {% endfor %}
-                        </ul>
-                    </nav>
-                {% endblock %}
+                <nav id="nav">
+                    <a href="javascript:;" class="special"><i class="fa fa-expand"></i>навигация по разделу</a>
+                    <div style="position: absolute;
+                        top: 39%;
+                        left: 80px;
+                        display: block;">
+                        {% for value in content %}
+                            <a href="#anchor{{ value.id }}">{{ value.name }}</a>
+                        {% endfor %}
+                    </div>
+                </nav>
             </div>
             {% if secondLayerMenu is defined %}
                 {% autoescape false %}
@@ -184,39 +202,40 @@ overflow: hidden;">
 
 
             <div id="top-header">
-                <a href="{{ path('easy_main_homepage') }}">
-                    {% if '/kid/' in app.request.uri %}
-                        <img src="{{ asset('/bundles/easymain/images/logoKindergarten.png') }}" style="position: relative;">
-                    {% else %}
-                        <img src="{{ asset('/bundles/easymain/images/logoSchool.png') }}" style="position: relative;">
-                    {% endif %}
-                </a>
-                {% block topHeader %}
-                    <ul style="position: relative;">
-                        {% for value in topMenu %}
-                            <li><a href="#section{{ value.section }}" class="scroll">{{ value.title }}</a></li>
-                        {% endfor %}
-                    </ul>
-                {% endblock %}
-                <div class="contact" style="position: relative;">
-                    <a id="opener" class="buttonHover">записаться</a>
-                    <p><span style="font-size: 17px;">(3952)</span> 72-36-72</p>
+                <div class="container" style="margin-top: 3px;">
+                    <div class="col-md-11">
+                        <a href="{{ path('easy_main_homepage') }}">
+                            {% if '/kid/' in app.request.uri %}
+                                <img src="{{ asset('/bundles/easymain/images/logoKindergarten.png') }}" style="position: relative;width: 110px;margin-top: 10px;">
+                            {% else %}
+                                <img src="{{ asset('/bundles/easymain/images/logoSchool.png') }}" style="position: relative;width: 110px;margin-top: 10px;">
+                            {% endif %}
+                        </a>
+                        {#{% block topHeader %}
+                            <ul style="position: relative;">
+                                {% for value in topMenu %}
+                                    <li><a href="#section{{ value.section }}" class="scroll">{{ value.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        {% endblock %}#}
+                        <div class="contact" style="position: relative;">
+                            <a id="opener" class="buttonHover">записаться</a>
+                            <p><span style="font-size: 0.9em;">(3952)</span> 72-36-72</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             {% block pageContent %}
-                <div id="fullpage">
+                <div id="page">
                     {% for value in content %}
-                        <section class="section">
+                        <div class="container">
                             {% autoescape false %}
                                 {{ value.content }}
                             {% endautoescape %}
-                        </section>
+                        </div>
                     {% endfor %}
                 </div>
             {% endblock %}
-            <a id="scrolldown-button" style="bottom: 30px;">
-                <i class="fa fa-chevron-down"></i>
-            </a>
             
             <div id="dialog">
                 <form id="callback" style="color: #fff;font-family: sansRoundedLight;">
@@ -281,6 +300,7 @@ overflow: hidden;">
             }
             
             function coloring(color){
+                colorCapitalize = color.charAt(0).toUpperCase() + color.slice(1);
                 $('.title').addClass(color);
                 //$('.advantage').addClass(color);
                 $('.advantage').addClass('red');
@@ -288,9 +308,17 @@ overflow: hidden;">
                 $('.buttonSquare').addClass(color+'Square');
                 $('#dialog').addClass(color);
                 $('#thankyou').addClass(color);
+                $('.stick').addClass('bg'+colorCapitalize);
             }
             
             $(function(){
+                
+                $('#nav>a').on('click', function(){
+                   var navigation = $('#nav');
+                   navigation.toggleClass('open');
+                   //navigation.css({'left':'-170px'});
+                });
+                
                 $('a[href*=#]:not([href=#])').click(function() {
                     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
                       var target = $(this.hash);
@@ -353,15 +381,6 @@ overflow: hidden;">
                              
                 });
                 
-                {#$('#nav a+div').on('click', function(){
-                    var mark = $(this).parents().attr('data-menuanchor');
-                    $.fn.fullpage.moveTo(mark);
-                });#}
-                
-                if($('section.section').length <= 1){
-                    $('#scrolldown-button').css('display','none');
-                }
-                
                 $( "#dialog" ).dialog({
                     autoOpen: false,
                     modal: true,
@@ -400,8 +419,6 @@ overflow: hidden;">
                     $( "#dialog" ).addClass("open");
                   });
                 
-                {#var scene = document.getElementById('scene');
-                var parallax = new Parallax(scene);#}
                 if($("#map").length){
                     ymaps.ready(init);
 
@@ -574,36 +591,52 @@ overflow: hidden;">
                   });
                   
                   if($(".contentSlider").length){  
-                    $(".contentSlider").slidesjs({
-                        play: {
-                            active: false,
-                              // [boolean] Generate the play and stop buttons.
-                              // You cannot use your own buttons. Sorry.
-                            effect: "slide",
-                              // [string] Can be either "slide" or "fade".
-                            interval: 10000,
-                              // [number] Time spent on each slide in milliseconds.
-                            auto: true,
-                              // [boolean] Start playing the slideshow on load.
-                            swap: false,
-                              // [boolean] show/hide stop and play buttons
-                            pauseOnHover: true,
-                              // [boolean] pause a playing slideshow on hover
-                            restartDelay: 5000
-                              // [number] restart delay on inactive slideshow
-                        },
-                        width: 940,
-                        height: 428,
-                        navigation: false,
-                        pagination: false,
-                        callback: {
-                          complete: function(number) {
-                            // Do something awesome!
-                            // Passes slide number at start of animation
-                            console.log(number);
-                          }
-                        }
-                    });
+                        $(".contentSlider").slidesjs({
+                            play: {
+                                active: false,
+                                  // [boolean] Generate the play and stop buttons.
+                                  // You cannot use your own buttons. Sorry.
+                                effect: "slide",
+                                  // [string] Can be either "slide" or "fade".
+                                interval: 10000,
+                                  // [number] Time spent on each slide in milliseconds.
+                                auto: true,
+                                  // [boolean] Start playing the slideshow on load.
+                                swap: false,
+                                  // [boolean] show/hide stop and play buttons
+                                pauseOnHover: true,
+                                  // [boolean] pause a playing slideshow on hover
+                                restartDelay: 5000
+                                  // [number] restart delay on inactive slideshow
+                            },
+                            autoHeight: true,
+                            navigation: false,
+                            pagination: false,
+                            callback: {
+                                complete: function(current) {
+                                    $('.contentSlider').each(function() {
+                                        var maxHeight = 0;
+                                        $(this).find('figure.slidesjs-slide').each(function() {
+                                            if($(this).css('left') == '0px') {
+                                                maxHeight = $(this).height();  
+                                            }
+                                        });
+                                        $(this).find(".slidesjs-container").animate({height: maxHeight});
+                                    });
+                                }
+                            }
+                        });
+                        
+                        $('.contentSlider').each(function() {
+                            var maxHeight = 0;
+                            $(this).find('figure.slidesjs-slide').each(function() {
+                                if($(this).css('left') == '0px') {
+                                    maxHeight = $(this).height();  
+                                }
+                            });
+                            $(this).find(".slidesjs-container").animate({height: maxHeight});
+                        });
+                    
                 }
                 
                 {#var sections = new Array();
@@ -650,8 +683,10 @@ overflow: hidden;">
                     var video = document.getElementById("mainVideoSource");
                     video.volume = 0.5;
                 }
-                if($('.slidesjs-control').length > 0){
-                    $('.slidesjs-control').slimScroll({});
+                
+                if($(window).height() <= 970){
+                    var foo = (970-$(window).height())/2;
+                    $('#nav').css({'top':'-'+foo+'px'});
                 }
                 
             });

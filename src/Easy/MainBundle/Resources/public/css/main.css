@@ -93,11 +93,8 @@ body.pace-done, body.pace-progress, body.pace-running{
     //opacity: 1;
 }
 .container {
-/*  padding-right: 15px;
-  padding-left: 15px;*/
-  margin-right: auto;
-  margin-left: auto;
-  width: 1170px;
+    margin-top: 100px;
+    position: relative;
 }
 /*@media (min-width: 768px) {
   .container {
@@ -501,6 +498,12 @@ section{
 .bgBlue{
     background: #393185 !important;
 }
+.bgYellow{
+    background: #fbb516 !important;
+}
+.bgLightBlue{
+    background: #008DD2 !important;
+}
 
 .bgDottedRed{
     background: radial-gradient(#FF4048 5%, transparent 20%) 0px 0px;
@@ -519,7 +522,7 @@ section{
 
 #site-header{
     width: 130px;
-    height: 100%;
+    height: 10%;
     position: fixed;
     right: 0;
     top: 0;
@@ -539,10 +542,16 @@ section{
   color: #fff;
 }*/
 #nav{
-    top: 20%;
-    margin: 0 auto;
+    top: 0px;
+    z-index: 140;
     display: table;
-    position: relative;
+    position: absolute;
+    background: #724EA0;
+    height: 1000px;
+    padding: 39px;
+    border-top-left-radius: 999px;
+    width: 530px;
+    border-bottom-left-radius: 999px;
 }
 
 #nav ul{
@@ -561,7 +570,7 @@ section{
 #nav ul>li.active a{
     background: #EB1C24;
 }
-#nav a+div{
+/*#nav a+div{
     position: absolute;
     white-space: nowrap;
     right: 2px;
@@ -580,51 +589,84 @@ section{
     
     
     cursor:pointer;
-/*    transform: rotateY(90deg);
+    transform: rotateY(90deg);
     -webkit-transition: transform 0.2s ease-in-out;
     -moz-transition: transform 0.2s ease-in-out;
     -o-transition: transform 0.2s ease-in-out;
-    transition: transform 0.2s ease-in-out;*/
+    transition: transform 0.2s ease-in-out;
     display: none;
     transform-origin: 100% 0% -70px;
 }
 #nav a+div:hover{
     display: table;
-/*    -moz-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
     -ms-transform: rotateY(0deg);
     -webkit-transform: rotateY(0deg);
     -o-transform: rotateY(0deg);
-    transform: rotateY(0deg);*/
+    transform: rotateY(0deg);
 }
 #nav a:hover+div{
-/*    -moz-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
     -ms-transform: rotateY(0deg);
     -webkit-transform: rotateY(0deg);
     -o-transform: rotateY(0deg);
-    transform: rotateY(0deg);*/
+    transform: rotateY(0deg);
     display: table;
+}*/
+#nav>a.special{
+    position: absolute;
+    text-decoration: none;
+    color: #fff;
+    top: 48%;
+    font-family: robotoLight;
+    transform: rotateZ(90deg);
+    left: -80px;
+    z-index: 10000;
+    display: table;
+    letter-spacing: 1px;
+    font-size: 1em;
+    height: 50px;
+    width: 315px;
+    margin-left: -45px;
+    text-align: center;
+    padding: 12px 0;
+}
+#nav>a.special>i{
+    margin-right: 7px;
+    font-size: 1.2em;
+    line-height: 20px;
+    transform: rotateZ(-45deg);
 }
 #nav a{
-    position: relative;
-    z-index: 1000;
-    border-radius: 32px;
-    width: 13px;
-    height: 13px;
+    text-decoration: none;
     display: table;
-    float: left;
-    margin: 6px;
-    
-    border: 2px solid #ed1c24;
+    color: #FFF;
+    font-family: robotoLight;
+    letter-spacing: 0.5px;
+    font-size: 1em;
+    cursor: pointer;
+    margin: 8px 0;
+}
+#nav{
+    right: -470px;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+}
+#nav.open{
+    right: -230px;
 }
 
 
-#nav a:before{
+/*#nav a:before{
     content: " ";
     
-}
-#nav a:hover{
+}*/
+/*#nav a:hover{
     background: #EB1C24;
-}
+}*/
 
 .menuHelper{
     position: absolute;
@@ -649,12 +691,13 @@ section{
     top: 0;
     min-width: 1000px;
     z-index: 180;
-    background: #FFF;
-    padding-right: 9%;
+    background: rgba(255, 255, 255, 0.9);
+/*    padding-right: 10%;*/
+    height: 115px;
 }
 #top-header>a{
     float: left;
-    margin-top: 25px;
+    margin-top: 15px;
     margin-left: 5%;
     
     transform-style: preserve-3d;
@@ -662,7 +705,7 @@ section{
     perspective: 400px;
 }
 #top-header>a img{
-    width: 130px;
+    width: 110px;
     transition: transform .3s ease-out;
 }
 #top-header>a:hover img{
@@ -680,7 +723,7 @@ section{
     position: fixed;
     width: 100%;
     height: 100%;
-    padding: 14px 25px 25px 105px;
+/*    padding: 14px 25px 25px 105px;*/
     right: 0;
     top: 0;
     z-index: 200;
@@ -736,10 +779,10 @@ section{
 .menuList{
     display: block;
     width: 85%;
-    top: 20%;
-    position: absolute;
+    margin: 0 auto;
+    margin-top: 17%;
     font-family: robotoLight;
-      -moz-transform: perspective(600px) rotateX(10deg);
+    -moz-transform: perspective(600px) rotateX(10deg);
     -webkit-transform: perspective(600px) rotateX(10deg);
     transform: perspective(600px) rotateX(10deg);
     -moz-transition: all 0.5s cubic-bezier(0.7, 0, 0.36, 0.63);
@@ -749,8 +792,8 @@ section{
 }
 
 .menuList div.col-12>div , .menuList>div , .menuList div.col-4>div , .menuList div.col-3>div, .menuList div.col-6>div, .menuList div.col-2>div{
-    text-align: center;
-    height: 75px;
+/*    text-align: center;*/
+/*    height: 75px;*/
 }
 .menuList .col-6{
     width: 50%;
@@ -772,23 +815,52 @@ section{
     width: 100%;
     float: left;
 }
-
-.menuList a {
+.menuList a{
+    color: #9EA0A3;
+    margin-top: 10px;
+    display: block;
     text-decoration: none;
-    color: #939598;
-    font-size: 20px;
-    text-transform: uppercase;
-    padding: 14px;
+    font-size: 1.1em;
+    float: left;
+    padding-left: 10px;
     position: relative;
-    display: inline-table;
-/*    width: 230px;*/
+    transition: transform .3s ease-out;
+    clear: both;
+}
+.menuList a:not(.header-title):after{
+    display: block;
+    position: absolute;
+    left: 9px;
+    bottom: -2px;
+    width: 0;
+    height: 1px;
+    background-color: #EA2327;
+    content: "";
+    transition: width 0.2s;
+}
+.menuList a:not(.header-title):hover:after{
+    width: 100%;
 }
 
-.menuList a:hover{
+.menuList a.header-title {
+    text-decoration: none;
+    color: #939598;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    padding: 6px;
+    position: relative;
+    letter-spacing: 0.04em;
+    font-family: sansRoundedBold;
+    float: none;
+    text-align: center;
+
+}
+
+.menuList a.header-title:hover{
     font-family: sansRoundedBold;
     background: #fbb516;
     color: #fff;
-    border-radius: 12px;
+    border-radius: 5px;
 }
 #top-header li>a{
     text-decoration: none;
@@ -939,10 +1011,9 @@ i.dot{
     border-radius: 10px;
 }
 #logo{
-    width: 125px;
+    width: 110px;
     position: absolute;
-    left: 4%;
-    top: 4%;
+    
 }
 .menuInfo{
     font-family: robotoLight;
@@ -970,21 +1041,22 @@ i.dot{
 .contact{
     font-family: sansRoundedBold;
     display: table;
-    margin: 30px auto 0 auto;   
+    margin: 30px;
+    float: right;
 }
 .contact a{
-    padding: 6px 12px;
+    padding: 4px 12px;
     background: #ea2327;
     color: #fff;
     text-transform: uppercase;
-    display: block;
-    font-size: 18px;
+    display: table;
+    font-size: 1em;
     border-radius: 6px;
     text-decoration: none;
     cursor: pointer;
 }
 .contact p{
-    font-size: 22px;
+    font-size: 1.3em;
     display: table;
     margin-top: 5px;
     letter-spacing: -0.3px;
@@ -999,21 +1071,20 @@ i.dot{
 /*    border-bottom: 1px solid #d5d5d5;*/
 }
 .title{
-    text-align: right;
     font-family: sansRoundedBold;
-    font-size: 45px;
     margin-top: 20px;
     margin-bottom: 15px;
     text-transform: uppercase;
-    margin-top: 4%;
+    text-align:left;
+    font-size:1.7em;
 }
-.leftBlock{
+/*.leftBlock{
     width: 35%;
     height: 100%;
     display: block;
     float: left;
     margin-right: 4%;
-}
+}*/
 .advantage, .advantage2{
     text-align: left;
 }
@@ -1026,8 +1097,8 @@ i.dot{
 }
 .advantage2 p{
     font-family: robotoLight;
-    color: #939598;
-    font-size: 18px;
+    color: #2D2D2D;
+    font-size: 1.1em;
     margin: 0;
 }
 .advantage2 span{
@@ -1050,13 +1121,13 @@ i.dot{
 
 
 
-.rightBlock{
+/*.rightBlock{
     width: 61%;
     height: 100%;
     display: block;
     float: left;
     
-}
+}*/
 .videoContainer{
     overflow-x: hidden;
     overflow-y: hidden;
@@ -1078,25 +1149,22 @@ i.dot{
 
 
 .play{
-    position: absolute;
-    z-index: 100;
     display: table;
-    top: 46%;
-    right: 27%;
     width: 85px;
     background: transparent;
     height: 85px;
     border-radius: 70px;
     padding-top: 28px;
     cursor: pointer;
-    border: solid 3px #724EA0;
+    border: solid 3px #ea2327;
     text-decoration: none;
+    margin: 120px 33%;
 }
 .play>i{
     margin: 0 auto;
     display: table;
     font-size: 26px;
-    color: #724EA0;
+    color: #ea2327;
 }
 
 
@@ -1124,7 +1192,8 @@ i.dot{
     border-bottom: 1px dotted #58717E;
     cursor: pointer;
     display: table;
-    float: right;
+    float: left;
+    text-align: left;
     clear: both;
     margin-bottom: 8px;
 }
@@ -1565,7 +1634,7 @@ opacity: 1;
     position: relative;
     float: right;
 }
-.redSquare:after{
+/*.redSquare:after{
     content: "";
     background: url("../images/redSmall.png");
     width: 25px;
@@ -1573,7 +1642,7 @@ opacity: 1;
     position: absolute;
     right: 0;
     bottom: -14px;
-}
+}*/
 
 .yellowSquare{
     background: #fbb516;
@@ -1581,7 +1650,7 @@ opacity: 1;
     position: relative;
     float: right;
 }
-.yellowSquare:after{
+/*.yellowSquare:after{
     content: "";
     background: url("../images/yellowSmall.png");
     width: 25px;
@@ -1589,7 +1658,7 @@ opacity: 1;
     position: absolute;
     right: 0;
     bottom: -14px;
-}
+}*/
 
 .greenSquare{
     background: #009846;
@@ -1597,7 +1666,7 @@ opacity: 1;
     position: relative;
     float: right;
 }
-.greenSquare:after{
+/*.greenSquare:after{
     content: "";
     background: url("../images/greenSmall.png");
     width: 25px;
@@ -1605,7 +1674,7 @@ opacity: 1;
     position: absolute;
     right: 0;
     bottom: -14px;
-}
+}*/
 
 
 .purpleSquare{
@@ -1630,7 +1699,7 @@ opacity: 1;
     position: relative;
     float: right;
 }
-.blueSquare:after{
+/*.blueSquare:after{
     content: "";
     background: url("../images/blueSmall.png");
     width: 25px;
@@ -1638,7 +1707,7 @@ opacity: 1;
     position: absolute;
     right: 0;
     bottom: -14px;
-}
+}*/
 
 .lightBlueSquare{
     background: #008DD2;
@@ -1646,7 +1715,7 @@ opacity: 1;
     position: relative;
     float: right;
 }
-.lightBlueSquare:after{
+/*.lightBlueSquare:after{
     content: "";
     background: url("../images/lightBlueSmall.png");
     width: 25px;
@@ -1654,14 +1723,14 @@ opacity: 1;
     position: absolute;
     right: 0;
     bottom: -14px;
-}
+}*/
 .orangeSquare{
     background: #EF7F1A;
     border-radius: 9px;
     position: relative;
     float: right;
 }
-.orangeSquare:after{
+/*.orangeSquare:after{
     content: "";
     background: url("../images/orangeSmall.png");
     width: 25px;
@@ -1669,7 +1738,7 @@ opacity: 1;
     position: absolute;
     right: 0;
     bottom: -14px;
-}
+}*/
 
 .saladSquare{
     background: #57C7B3;
@@ -1677,7 +1746,7 @@ opacity: 1;
     position: relative;
     float: right;
 }
-.saladSquare:after{
+/*.saladSquare:after{
     content: "";
     background: url("../images/saladSmall.png");
     width: 25px;
@@ -1685,14 +1754,14 @@ opacity: 1;
     position: absolute;
     right: 0;
     bottom: -14px;
-}
+}*/
 
 
 
 .slidesCont2 .slidesjs-navigation {
-    top: 190px;
+    top: 130px;
     position: absolute;
-    right: 647px;
+    left: -30px;
     font-size: 40px;
 }
 
@@ -1702,7 +1771,7 @@ opacity: 1;
 }
 
 .slidesCont2 .slidesjs-next {
-    right: -10px;
+    right: -25px;
     left: initial;
 }
 
@@ -1712,10 +1781,10 @@ opacity: 1;
 }
 
 .slidesCont .slidesjs-navigation {
-    top: 190px;
+    top: 135px;
     position: absolute;
     left: -30px;
-    font-size: 40px;
+    font-size: 3em;
 }
 
 .slidesCont .slidesjs-previous {
@@ -1767,7 +1836,9 @@ opacity: 1;
     }
 
     .slidesCont a:hover,
-    .slidesCont a:active {
+    .slidesCont a:active,
+    .slidesCont2 a:hover,
+    .slidesCont2 a:active{
       color: #939598
     }
     
@@ -2125,13 +2196,13 @@ opacity: 1;
   color: #939598
 }
 .contentSlider a.slidesjs-navigation{
-    top: 320px;
+    top: 230px;
     position: absolute;
-    font-size: 42px;
+    font-size: 3em;
     z-index: 200;
 }
 .contentSlider a.slidesjs-next{
-    right: -45px;
+    right: -25px;
 }
 
 .inside img.solo{
@@ -2151,16 +2222,16 @@ opacity: 1;
     font-family: sansRoundedBold;
 }
 
-.section table{
+table{
     border: 1px solid #ddd;
     border-spacing: 0;
     border-collapse: collapse;
 }
-.section table>thead>tr>th{
+table>thead>tr>th{
     border-bottom-width: 2px;
     border: 1px solid #ddd;
 }
-.section table>tbody>tr>td{
+table>tbody>tr>td{
     padding: 12px;
     line-height: 1.42857143;
     vertical-align: top;
@@ -2269,8 +2340,6 @@ h4{
     color: #EB1C24;
 }
 .calendar .leftBlock{
-    display: block;
-    width: 20%;
     min-height: 500px;
     background: #57C7B3;
     border-radius: 10px;
@@ -2290,7 +2359,6 @@ h4{
     font-family: sansRoundedBold;
 }
 .calendar .rightBlock{
-    width: 76%;
     padding: 15px 0;
 }
 .calendar .rightBlock img{
@@ -2333,6 +2401,15 @@ h4{
 .buttonSquare{
     margin-top: 20px;
 }
+.buttonSquare>a>i{
+    font-size: 1.4em;
+    float: right;
+    clear: both;
+    display: table;
+    margin-left: 8px;
+    margin-top: -1px;
+}
+
 #scrolldown-button{
     left: 50%;
     color: #EA2327;
@@ -2414,15 +2491,16 @@ h4{
     margin-top: 2%;// coz of ie
 }
 
-.inside table{
+table{
     width: 100%;
+    letter-spacing: 0px;
 }
-.inside table thead{
-    text-align: center;
+table>thead>tr>th{
+    text-align: center !important;
     color:#ea2327;
 /*    font-family: sansRoundedBold;*/
 }
-.inside table>thead>tr>th{
+table>thead>tr>th{
     padding: 10px 0;
 }
 
@@ -2562,17 +2640,18 @@ h4{
 #colorbox, #cboxContent, #cboxWrapper{
     overflow: visible !important;
 }
-#fullpage{
-    padding-top: 65px;
+#page{
+    padding-top: 115px;
+    padding-bottom: 70px;
 }
 
 .angleBlock{
-    height: 440px;
-    width: 120%;
+    height: 390px;
+    width: 200%;
     background: #724EA0;
     opacity: 1;
-    transform: rotateZ(3deg);
-    left: -5%;
+    transform: rotateZ(2deg);
+    left: -40%;
     position: absolute;
     z-index: -1000;
     top: -15px;
@@ -2581,4 +2660,27 @@ h4{
 
 .slidesCont img{
     height: initial;
+}
+
+#page .container:first-child{
+    margin-top: 35px;
+}
+.menuList>.row:first-child{
+    margin-top: 0;
+}
+.menuList>.row{
+    margin-top: 40px;
+}
+.stick{
+    width: 34px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #FFF;
+    border: none;
+    margin: 0;
+    margin-bottom: 10px;
+    margin-left: 2px;
+}
+.slidesCont a, .slidesCont2 a{
+    color: #724EA0;
 }

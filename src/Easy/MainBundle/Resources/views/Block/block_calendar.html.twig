@@ -1,9 +1,9 @@
-<div class="content calendar">
-    <div class="buttonSquare" style="position: absolute;right: 520px;top: 35px;">
-        <a href="/calendar/all" style="font-size: 20px;padding: 4px 20px;">Все события</a>
+<div class="col-md-11 calendar">
+    <div class="buttonSquare" style="position: absolute;right: 5px;top: -3px;">
+        <a href="/calendar/all">Все события<i class="fa fa-angle-right"></i></a>
     </div>
     <p class="title">Календарь событий</p>
-    <div class="leftBlock">
+    <div class="col-md-3 leftBlock">
         {% for monthInfo in content %}
             {% if loop.index == 1 %}
                 <a href="#" data="{{ loop.index }}" class="active">{{ monthInfo.monthRus }}</a>
@@ -12,7 +12,7 @@
             {% endif %}
         {% endfor %}
     </div>
-    <div class="rightBlock">
+    <div class="col-md-9 rightBlock">
         
         {% for monthInfo in content %}
             {% if loop.index == 1 %}
