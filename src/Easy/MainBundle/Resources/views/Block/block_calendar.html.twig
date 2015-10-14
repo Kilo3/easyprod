@@ -5,7 +5,7 @@
     <p class="title">Календарь событий</p>
     <div class="leftBlock">
         {% for monthInfo in content %}
-            {% if loop.index == 1 %}
+            {% if loop.index == content|length %}
                 <a href="#" data="{{ loop.index }}" class="active">{{ monthInfo.monthRus }}</a>
             {% else %}
                 <a href="#" data="{{ loop.index }}" class="">{{ monthInfo.monthRus }}</a>
@@ -13,9 +13,8 @@
         {% endfor %}
     </div>
     <div class="rightBlock">
-        
         {% for monthInfo in content %}
-            {% if loop.index == 1 %}
+            {% if loop.index == content|length %}
                 {% set active = 'active' %}
             {% else %}
                 {% set active = '' %}

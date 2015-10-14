@@ -15,7 +15,7 @@
     <div class='rightBlock'>
         <div class='videoContainer'>
             <div class="videoPreloader">
-                 <p>Пожалуйста, посмотрите наше видео</p>
+                 {#<p>Пожалуйста, посмотрите наше видео</p>#}
                 {% if gallery.GalleryHasMedias[1] is defined %}
                     {% media gallery.GalleryHasMedias[1].media, 'big' %}
                 {% endif %}

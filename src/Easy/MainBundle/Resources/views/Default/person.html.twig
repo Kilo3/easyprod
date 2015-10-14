@@ -1,0 +1,29 @@
+{% extends 'EasyMainBundle::layout.html.twig' %}
+{% block pageContent %}
+    <section class="section">
+        <div class="content">
+            <div class="rightBlock" style="width:45%;">
+                <div class="advantage2 red" style="text-align: right;">
+                    <strong>{{ content.name }}</strong>
+                    {% autoescape false %}
+                        {{ content.text }}
+                    {% endautoescape %}
+                </div>
+            </div>
+            <div class="leftBlock" style="width: 52%;margin-left: 3%;margin-right: 0;margin-top: 5px;">
+                {% media content.media, 'big' with {'style': 'width: 100%;height: initial;'} %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block sideHeader %}
+{% endblock %}
+
+{% block topHeader %}
+    <ul style="position: relative;">
+        {% for key,value in teacherMenu %}
+            <li><a href="/stuff/{{ key }}" class="scroll">{{ value }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

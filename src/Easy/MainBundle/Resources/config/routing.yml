@@ -12,6 +12,14 @@ easy_main_news:
     path:     /news/
     defaults: { _controller: EasyMainBundle:Default:news }
     
+easy_team_all:
+    path:     /team/
+    defaults: { _controller: EasyMainBundle:Default:teamAll }
+    
+easy_team_name:
+    path:     /team/{name}/
+    defaults: { _controller: EasyMainBundle:Default:team }
+    
 login:
     pattern:   /login/
     defaults:  { _controller: EasyMainBundle:Default:login }

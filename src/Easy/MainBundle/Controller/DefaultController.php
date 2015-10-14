@@ -615,6 +615,42 @@ class DefaultController extends Controller
         }
     }
     
+    public function teamAllAction(){
+        $hp = $this->getDoctrine()->getManager();
+        $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8));
+        $stuff = $hp->getRepository('EasyMainBundle:Stuff')->findBy(array(),array('name'=>'ASC'));
+        
+        $teacherMenu = Stuff::getTypes();
+        $topMenu = "";
+        $secondLayerMenu = "";
+        return $this->render('EasyMainBundle:Default:team.html.twig', array(
+            'mainMenu' => $mainMenu,
+            'content' => $stuff,
+            'topMenu' => $topMenu,
+            'secondLayerMenu' => $secondLayerMenu,
+            'teacherMenu' => $teacherMenu,
+            'color' => 'purple',
+        ));
+    }
+    public function teamAction($name)
+    {
+        $hp = $this->getDoctrine()->getManager();
+        $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8));
+        $stuff = $hp->getRepository('EasyMainBundle:Stuff')->findOneBy(array('name' => $name));
+        
+        $teacherMenu = Stuff::getTypes();
+        $topMenu = "";
+        $secondLayerMenu = "";
+        return $this->render('EasyMainBundle:Default:person.html.twig', array(
+            'mainMenu' => $mainMenu,
+            'content' => $stuff,
+            'topMenu' => $topMenu,
+            'secondLayerMenu' => $secondLayerMenu,
+            'teacherMenu' => $teacherMenu,
+            'color' => 'purple',
+        ));
+    }
+    
     public function contactsAction($id)
     {
         $hp = $this->getDoctrine()->getManager();
