@@ -1,4 +1,5 @@
-{% if random(2) == 1 %}
+{% set foo = random(4) %}
+{% if foo == 0 %}
     <div class='col-md-11'>
         <a name="anchor{{ content.id }}" style="position: absolute;top: -115px;"></a>
         <p class='title' style='text-align:center;'>{{ content.getName()}}</p>
@@ -21,6 +22,33 @@
                 </div>
                 <img src="{{ asset('/bundles/easymain/images/cat.jpg') }}" style="position: absolute;width: 110px;right: 70px;top: -245px;">
                 <img src="{{ asset('/bundles/easymain/images/ghost.jpg') }}" style="position: absolute;width: 110px;left: 0;top: 40px;">
+            </div>
+        </div>
+        
+    </div>
+{% elseif foo == 1 %}
+    <div class='col-md-11'>
+        <a name="anchor{{ content.id }}" style="position: absolute;top: -115px;"></a>
+        <p class='title' style='text-align:center;'>{{ content.getName()}}</p>
+        <div class="row" style="clear:both;margin: 50px 0;text-align: center;font-family: sansRoundedBold;">
+            <div class="col-md-4" style="border-right: 2px solid #724EA0;">
+                <p>ПОГРУЖЕНИЕ В ЯЗЫК</p>
+                <p style="font-family: robotoLight;">дополнительные, бесплатные занятия и мероприятия</p>
+            </div>
+            <div class="col-md-4" style="border-right: 2px solid #724EA0;">
+                <p>РЕАЛЬНЫЕ СИТУАЦИИ</p>
+                <p style="font-family: robotoLight;">применение полученных знаний на практике</p>
+            </div>
+            <div class="col-md-4" style="">
+                <p>РАЗНООБРАЗНЫЕ ВСТРЕЧИ</p>
+                <p style="font-family: robotoLight;">здесь каждый найдет что-то интересное для себя</p>
+            </div>
+            <div class='col-md-12'>
+                <div class="buttonSquare" style="float:right;">
+                    <a href="javascript:;" onclick="toggleMenu('secondLayerMenu11');">Подробнее<i class="fa fa-angle-right"></i></a>
+                </div>
+                <img src="{{ asset('/bundles/easymain/images/tiger.png') }}" style="position: absolute;width: 110px;right: 130px;top: 65px;">
+                <img src="{{ asset('/bundles/easymain/images/ghost2.png') }}" style="position: absolute;width: 110px;left: 100px;top: -265px;">
             </div>
         </div>
         
@@ -52,13 +80,11 @@
         </div>
     </div>
     {#<div class="angleBlock" style="background: url('{% path gallery.GalleryHasMedias[0].media, 'big' %}');background-size: cover;background-position: center center;"></div>#}
-    {% set foo = random(2) %}
-    {% if foo == 1 %}
-        <div class="angleBlock" style="background: url('{{ asset('/bundles/easymain/images/leto.jpg') }}');background-size: cover;background-position: center center;"></div>
-    {% elseif foo == 2 %}
-        <div class="angleBlock" style="background: url('{{ asset('/bundles/easymain/images/tsrr.jpg') }}');background-size: cover;background-position: center center;"></div>
-    {% elseif foo == 0 %}
-        <div class="angleBlock" style="background: url('{{ asset('/bundles/easymain/images/det.jpg') }}');background-size: cover;background-position: center center;"></div>
+    {% set boo = random(1) %}
+    {% if boo == 1 %}
+        <div class="angleBlock" style="background: url('{{ asset('/bundles/easymain/images/sw_bg_1.jpg') }}');background-size: cover;background-position: center center;"></div>
+    {% else%}
+        <div class="angleBlock" style="background: url('{{ asset('/bundles/easymain/images/sw_bg_2.jpg') }}');background-size: cover;background-position: center center;"></div>
     {% endif %}
     
     
@@ -84,16 +110,14 @@
     <div class="angleBlock" style="
 
     opacity: 1;
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+22,ffffff+48&amp;0.9+0,0.9+22,0+48 */
-    background: -moz-linear-gradient(left,  rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.9) 22%, rgba(255,255,255,0) 48%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,0.9)), color-stop(22%,rgba(255,255,255,0.9)), color-stop(48%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(left,  rgba(255,255,255,0.9) 0%,rgba(255,255,255,0.9) 22%,rgba(255,255,255,0) 48%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(left,  rgba(255,255,255,0.9) 0%,rgba(255,255,255,0.9) 22%,rgba(255,255,255,0) 48%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(left,  rgba(255,255,255,0.9) 0%,rgba(255,255,255,0.9) 22%,rgba(255,255,255,0) 48%); /* IE10+ */
-    background: linear-gradient(to right,  rgba(255,255,255,0.9) 0%,rgba(255,255,255,0.9) 22%,rgba(255,255,255,0) 48%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
-
-
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+20,ffffff+32,ffffff+100&amp;0+0,0.85+20,0.85+32,0+50,0+100 */
+background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(255,255,255,0.85) 20%, rgba(255,255,255,0.85) 32%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,0)), color-stop(20%,rgba(255,255,255,0.85)), color-stop(32%,rgba(255,255,255,0.85)), color-stop(50%,rgba(255,255,255,0)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.85) 20%,rgba(255,255,255,0.85) 32%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.85) 20%,rgba(255,255,255,0.85) 32%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.85) 20%,rgba(255,255,255,0.85) 32%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%); /* IE10+ */
+background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.85) 20%,rgba(255,255,255,0.85) 32%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
 
 
     ">

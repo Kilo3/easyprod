@@ -97,7 +97,7 @@ body.pace-done, body.pace-progress, body.pace-running{
 }
 .container>.col-md-11 {
     margin-top: 150px;
-    margin-bottom: 100px;
+    margin-bottom: 250px;
     
 }
 /*@media (min-width: 768px) {
@@ -1682,7 +1682,7 @@ opacity: 1;
 
 
 .purpleSquare{
-    background: #724ea0;
+    background: none;
     border-radius: 6px;
     position: relative;
     float: right;
@@ -1858,15 +1858,16 @@ opacity: 1;
     
 .yellowSquare a, .redSquare a, .greenSquare a, .purpleSquare a, .blueSquare a, .lightBlueSquare a, .orangeSquare a, .saladSquare a{
     font-family: sansRoundedBold;
-    color: #fff !important;
-    font-size: 1em;
+    color: #724ea0 !important;
+    font-size: 1.1em;
     letter-spacing: 0.5px;
     text-decoration: none;
-    padding: 8px 20px 8px 25px;
+    padding: 8px 20px 8px 5px;
     display: block;
     cursor: pointer;
     border: none !important;
     line-height: normal;
+    text-transform: uppercase;
 }
 .ui-dialog-titlebar-close {
   display: none;
@@ -2650,14 +2651,14 @@ table>thead>tr>th{
 }
 
 .angleBlock{
-    height: 515px;
+    height: 750px;
     width: 200%;
     background: #724EA0;
     opacity: 1;
     left: -40%;
     position: absolute;
     z-index: -1000;
-    top: 55px;
+    top: -55px;
     overflow: hidden;
 }
 
