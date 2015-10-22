@@ -1,13 +1,14 @@
-    <div class="content">
-        <p class="title purple" style="">Фото</p>
-        <div class="links">
-            {% if content.getGallery.GalleryHasMedias is defined %}
-                {% for galleryHasMedia in content.getGallery.GalleryHasMedias %}
-                    <a href="{% path galleryHasMedia.media, 'big' %}" title="" data-gallery style="background: url('{% path galleryHasMedia.media, 'big' %}');">
-                        
-                    </a>
-                {% endfor %}
-            {% endif %}
-        </div>
+<div class="col-md-11">
+    <a name="anchor{{ content.id }}" style="position: absolute;top: -115px;"></a>
+    <p class="title purple" style="">Фото</p>
+    <div class="links">
+        {% if content.getGallery.GalleryHasMedias is defined %}
+            {% for galleryHasMedia in content.getGallery.GalleryHasMedias %}
+                <a href="{% path galleryHasMedia.media, 'big' %}" title="" data-gallery style="background: url('{% path galleryHasMedia.media, 'big' %}');">
+
+                </a>
+            {% endfor %}
+        {% endif %}
     </div>
+</div>
 

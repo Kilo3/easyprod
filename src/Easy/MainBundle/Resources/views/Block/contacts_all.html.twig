@@ -1,11 +1,13 @@
 {% extends 'EasyMainBundle::layout.html.twig' %}
 {% block pageContent %}
-    <div id="fullpage">
-        <section class="section">
-            {% autoescape false %}
-                {{ content }}
-            {% endautoescape %}
-        </section>
+    <div id="page">
+        <div class="container">
+            <div class="col-md-12">
+                {% autoescape false %}
+                    {{ content }}
+                {% endautoescape %}
+            </div>
+        </div>
     </div>
 {% endblock %}
 

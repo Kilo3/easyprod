@@ -1,10 +1,11 @@
-<div class="content">
+<div class="col-md-11">
+    <a name="anchor{{ content.id }}" style="position: absolute;top: -115px;"></a>
     <div class="content">
         <p class="title">{{ content.getName() }}</p>
         <div class="contentSlider">
             {% for value in stuff %}
             <figure class="slidesjs-slide" style="margin:0;padding:0;">
-                <div class="rightBlock" style="width:45%;">
+                <div class="col-md-5 col-md-offset-1">
                     <div class="advantage2 red" style="text-align: right;">
                         <strong>{{ value.name }}</strong>
                         {% autoescape false %}
@@ -16,8 +17,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="leftBlock" style="width: 52%;margin-left: 3%;margin-right: 0;margin-top: 5px;">
-                    {% media value.media, 'big' with {'class': ''} %}
+                <div class="col-md-6">
+                    {% media value.media, 'big' with {'style': 'width: 100%;'} %}
                 </div>
             </figure>
             {% endfor %}

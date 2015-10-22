@@ -504,6 +504,9 @@ section{
 .bgLightBlue{
     background: #008DD2 !important;
 }
+.bgSalad{
+    background: #57C7B3 !important;
+}
 
 .bgDottedRed{
     background: radial-gradient(#FF4048 5%, transparent 20%) 0px 0px;
@@ -820,7 +823,7 @@ section{
     margin-top: 10px;
     display: block;
     text-decoration: none;
-    font-size: 1.1em;
+    font-size: 1.3em;
     float: left;
     padding-left: 10px;
     position: relative;
@@ -853,7 +856,8 @@ section{
     font-family: sansRoundedBold;
     float: none;
     text-align: center;
-
+/*    border: 3px solid #ddd;
+    border-radius:5px;*/
 }
 
 .menuList a.header-title:hover{
@@ -891,7 +895,7 @@ section{
 a.yellowHover:hover{
     background: #fbb516!important;
 }
-a.yellowHover:hover:after{
+/*a.yellowHover:hover:after{
     content: "";
     background: url("../images/yellowSmall.png");
     width: 25px;
@@ -900,13 +904,13 @@ a.yellowHover:hover:after{
     right: 0;
     bottom: -14px;
     right: 1px;
-}
+}*/
 
 a.purpleHover:hover{
     background: #724ea0!important;
 }
 
-a.purpleHover:hover:after{
+/*a.purpleHover:hover:after{
     content: "";
     background: url("../images/purpleSmall.png");
     width: 25px;
@@ -915,12 +919,12 @@ a.purpleHover:hover:after{
     right: 0;
     bottom: -14px;
     right: 1px;
-}
+}*/
 
 a.redHover:hover{
     background: #ea2327!important;
 }
-a.redHover:hover:after{
+/*a.redHover:hover:after{
     content: "";
     background: url("../images/redSmall.png");
     width: 25px;
@@ -929,11 +933,11 @@ a.redHover:hover:after{
     right: 0;
     bottom: -14px;
     right: 1px;
-}
+}*/
 a.blueHover:hover{
     background: #393185!important;
 }
-a.blueHover:hover:after{
+/*a.blueHover:hover:after{
     content: "";
     background: url("../images/blueSmall.png");
     width: 25px;
@@ -942,11 +946,11 @@ a.blueHover:hover:after{
     right: 0;
     bottom: -14px;
     right: 1px;
-}
+}*/
 a.lightBlueHover:hover{
     background: #008CD1!important;
 }
-a.lightBlueHover:hover:after{
+/*a.lightBlueHover:hover:after{
     content: "";
     background: url("../images/lightBlueSmall.png");
     width: 25px;
@@ -955,12 +959,12 @@ a.lightBlueHover:hover:after{
     right: 0;
     bottom: -14px;
     right: 1px;
-}
+}*/
 
 a.greenHover:hover{
     background: #009945!important;
 }
-a.greenHover:hover:after{
+/*a.greenHover:hover:after{
     content: "";
     background: url("../images/greenSmall.png");
     width: 25px;
@@ -969,12 +973,12 @@ a.greenHover:hover:after{
     right: 0;
     bottom: -14px;
     right: 1px;
-}
+}*/
 
 a.saladHover:hover{
     background: #57C7B3!important;
 }
-a.saladHover:hover:after{
+/*a.saladHover:hover:after{
     content: "";
     background: url("../images/saladSmall.png");
     width: 25px;
@@ -983,7 +987,7 @@ a.saladHover:hover:after{
     right: 0;
     bottom: -14px;
     right: 1px;
-}
+}*/
 
 
 .socialIcons{
@@ -1040,8 +1044,15 @@ i.dot{
 }
 .contact{
     font-family: sansRoundedBold;
-    display: table;
-    margin: 30px;
+    position: relative;
+    border: 3px solid #EA2327;
+    margin-left: -20px;
+    height: 45px;
+    padding-left: 22px;
+    z-index: 10;
+    padding-right: 11px;
+    border-bottom-right-radius: 100px;
+    border-top-right-radius: 100px;
     float: right;
 }
 .contact a{
@@ -1056,10 +1067,11 @@ i.dot{
     cursor: pointer;
 }
 .contact p{
-    font-size: 1.3em;
+    font-size: 1.4em;
     display: table;
-    margin-top: 5px;
+    margin: 0;
     letter-spacing: -0.3px;
+    padding: 5px 0;
 }
 .content{
     width: 1040px;
@@ -1630,7 +1642,7 @@ opacity: 1;
 
 .redSquare{
     background: #ea2327;
-    border-radius: 9px;
+    border-radius: 5px;
     position: relative;
     float: right;
 }
@@ -1646,7 +1658,7 @@ opacity: 1;
 
 .yellowSquare{
     background: #fbb516;
-    border-radius: 9px;
+    border-radius: 5px;
     position: relative;
     float: right;
 }
@@ -1662,7 +1674,7 @@ opacity: 1;
 
 .greenSquare{
     background: #009846;
-    border-radius: 9px;
+    border-radius: 5px;
     position: relative;
     float: right;
 }
@@ -1695,7 +1707,7 @@ opacity: 1;
 
 .blueSquare{
     background: #393185;
-    border-radius: 9px;
+    border-radius: 5px;
     position: relative;
     float: right;
 }
@@ -1711,7 +1723,7 @@ opacity: 1;
 
 .lightBlueSquare{
     background: #008DD2;
-    border-radius: 9px;
+    border-radius: 5px;
     position: relative;
     float: right;
 }
@@ -1726,7 +1738,7 @@ opacity: 1;
 }*/
 .orangeSquare{
     background: #EF7F1A;
-    border-radius: 9px;
+    border-radius: 5px;
     position: relative;
     float: right;
 }
@@ -1742,7 +1754,7 @@ opacity: 1;
 
 .saladSquare{
     background: #57C7B3;
-    border-radius: 9px;
+    border-radius: 5px;
     position: relative;
     float: right;
 }
@@ -2358,9 +2370,7 @@ h4{
 .calendar .leftBlock a.active{
     font-family: sansRoundedBold;
 }
-.calendar .rightBlock{
-    padding: 15px 0;
-}
+
 .calendar .rightBlock img{
     float: left;
     width: 200px;
@@ -2368,12 +2378,11 @@ h4{
 }
 .calendar .rightBlock p{
     font-family: robotoLight;
-    font-size: 22px;
+    font-size: 1.2em;
     color: #939598;
     display: block;
     float: left;
-    width: 355px;
-    padding: 30px 0;
+    padding: 25px 5px;
     text-align: center;
 }
 .calendar .rightBlock div.row{
@@ -2386,10 +2395,10 @@ h4{
 .calendar .rightBlock div.row>div{
     float: left;
     display: block;
-    margin-top: 45px;
+    margin-top: 27px;
 }
 .calendar .rightBlock div>a{
-    font-size: 20px;
+    font-size: 1em;
     padding: 5px 20px;
 }
 .calendarMonth{
@@ -2682,5 +2691,60 @@ table>thead>tr>th{
     margin-left: 2px;
 }
 .slidesCont a, .slidesCont2 a{
-    color: #724EA0;
+    color: #EA2327;
+}
+.top {
+    display: block;
+    float: right;
+    margin-top: 25px;
+}
+.top a {
+    height: 45px;
+    width: 45px;
+    display: block;
+    float: left;
+    background: #EA2327;
+    color: #FFF;
+    font-size: 1.3em;
+    margin-left: 10px;
+    border-radius: 40px;
+    padding: 12px 0;
+    text-align: center;
+    position: relative;
+}
+.top a:hover div{
+    display: block;
+}
+.top a div:hover{
+    display: block;
+}
+.top a div{
+    position: absolute;
+    background: #FFFFFF;
+    color: #2D2D2D;
+    font-family: robotoLight;
+    font-size: 0.7em;
+    border-top: 2px solid #EA2327;
+    padding: 0px 5px 2px 5px;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-left: -9px;
+    left: 0;
+/*    border-radius: 5px;*/
+    display: none;
+}
+/*.top a div::before{
+    content:" ";
+    width: 0; 
+    height: 0; 
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid rgb(234, 35, 39);
+    margin: 0 auto;
+    display: block;
+    margin-top: -7px;
+}*/
+
+.menu-section-content{
+    display: none;
 }

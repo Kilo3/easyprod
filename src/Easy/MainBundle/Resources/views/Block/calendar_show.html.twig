@@ -1,8 +1,8 @@
 {% extends 'EasyMainBundle::layout.html.twig' %}
 {% block pageContent %}
-    <section class="section">
-        <div class="content">
-            <div style="display: table;margin-bottom: 50px;width: 100%;">
+    <div id="page">
+        <div class="container">
+            <div class="col-md-11">
                 <p class="title">{{ content.getName() }}</p>
                 <div class="inside">
                     {% autoescape false %}
@@ -11,7 +11,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 {% endblock %}
 
 {% block sideHeader %}
