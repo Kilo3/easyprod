@@ -14,6 +14,7 @@
             <meta name="descripttion" content="{{ content[0].url.seodescription }}" />
        {% endif %}
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link rel="shortcut icon" href="/favicon.ico?v=1" type="image/x-icon">
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/jquery-ui.css') }}" type="text/css" media="all" />
@@ -22,8 +23,7 @@
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/blueimp-gallery.min.css') }}" type="text/css" media="all" />
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/bootstrap-image-gallery.css') }}" type="text/css" media="all" />
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/colorbox.css') }}" type="text/css" media="all" />
-            
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+            <link rel="stylesheet" href="{{ asset('bundles/easymain/css/bootstrap.css') }}" type="text/css" media="all" />
             
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/main.css') }}" type="text/css" media="all" />
         {% endblock %}
@@ -342,7 +342,8 @@ overflow: hidden;">
                    //navigation.css({'left':'-170px'});
                 });
                 
-                $('a[href*=#]:not([href=#])').click(function() {
+                //$('a[href*=#]:not([href=#])').click(function() {
+                $('a[href*=#anchor]').click(function() {
                     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
                       var target = $(this.hash);
                       target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
