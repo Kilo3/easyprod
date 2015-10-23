@@ -820,7 +820,7 @@ section{
     float: left;
 }
 .menuList a{
-    color: #9EA0A3;
+    color: #7B7B7C;
     margin-top: 10px;
     display: block;
     text-decoration: none;
@@ -834,7 +834,7 @@ section{
 .menuList a:not(.header-title):after{
     display: block;
     position: absolute;
-    left: 9px;
+    left: 0px;
     bottom: -2px;
     width: 0;
     height: 1px;
@@ -2688,4 +2688,45 @@ table>thead>tr>th{
 }
 .slidesCont a, .slidesCont2 a{
     color: #724EA0;
+}
+.bottom-menu div a{
+    text-align: center;
+    float:center;
+}
+.bottom-menu div{
+    border-left: 3px solid #724EA0;
+}
+.bottom-menu div:first-child{
+    border-left: none;
+}
+
+.bottom-menu a:first-child{
+    font-weight: bold;
+    
+}
+.bottom-menu a{
+    color: #7B7B7C;
+    margin-top: 10px;
+    display: block;
+    text-decoration: none;
+    font-size: 1.1em;
+    float: left;
+    padding-left: 10px;
+    position: relative;
+    transition: transform .3s ease-out;
+    clear: both;
+}
+.bottom-menu a:not(.header-title):after{
+    display: block;
+    position: absolute;
+    left: 0px;
+    bottom: -2px;
+    width: 0;
+    height: 1px;
+    background-color: #EA2327;
+    content: "";
+    transition: width 0.2s;
+}
+.bottom-menu a:not(.header-title):hover:after{
+    width: 100%;
 }

@@ -234,6 +234,25 @@ overflow: hidden;">
                             {% endautoescape %}
                         </div>
                     {% endfor %}
+                    <div class="container">
+                        <div class="col-md-11 bottom-menu" style="height: 220px;margin-top: 50px;margin-bottom: 0px;">
+                            {% for value in mainMenu|slice(0, 4) %}
+                                <div class="col-md-3" style="height: 100%;">
+                                    <a style="" class="" href="{{ path('easy_main_homepage') }}{{ value.url }}">{{ value.title }}</a>
+                                    {% for children in value.children %}
+                                        <a class="" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}">{{ children.title }}</a>
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-11" style="margin-bottom: 0;margin-top: 80px;">
+                            <div class="socialIcons" style="position: absolute;z-index: 100;">
+                                <a href="http://vk.com/easyschool" target="_blank"><i class="fa fa-vk" style="background: #724ea0;"></i></a>
+                                <a href="https://instagram.com/easy_school/" target="_blank"><i class="fa fa-instagram" style="background: #724ea0;"></i></a>
+                                <a href="https://www.facebook.com/easyschool1" target="_blank"><i class="fa fa-facebook" style="background: #724ea0;"></i></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             {% endblock %}
             
