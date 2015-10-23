@@ -7,6 +7,47 @@ and open the template in the editor.
     Created on : Jun 15, 2015, 5:24:09 PM
     Author     : Den
 */
+
+
+
+
+
+
+
+
+
+
+
+/* ------------ common css ------------ */
+
+a[name*='#anchor']{
+    position: absolute;
+    top: -115px;
+}
+
+.content a{
+    color: #F04E51;
+    text-decoration: none;
+    font-size: 1em;
+    font-family: sansRoundedBold;
+    text-decoration: none;
+    border-bottom: 2px solid #F04E51;
+}
+.content a:hover{
+    text-decoration: none;
+    border-bottom: none;
+}
+
+
+
+
+
+
+
+
+
+
+
 *:focus {
     outline: 0;
 }
@@ -442,8 +483,8 @@ opacity: 1;
 
 .menu-button span {
   display: block;
-  height: 2px;
-  width: 35px;
+  height: 3px;
+  width: 38px;
   background: #EB1C24;
   margin-bottom: 10px; 
   transition: .2s linear;
@@ -829,6 +870,7 @@ section{
     position: relative;
     transition: transform .3s ease-out;
     clear: both;
+    font-family: sansRoundedLight;
 }
 .menuList a:not(.header-title):after{
     display: block;
@@ -836,7 +878,7 @@ section{
     left: 9px;
     bottom: -2px;
     width: 0;
-    height: 1px;
+    height: 2px;
     background-color: #EA2327;
     content: "";
     transition: width 0.2s;
@@ -1073,15 +1115,15 @@ i.dot{
     letter-spacing: -0.3px;
     padding: 5px 0;
 }
-.content{
+/*.content{
     width: 1040px;
     
     margin: 0 auto;
     display: table;
     position: relative;
     padding-bottom: 50px;
-/*    border-bottom: 1px solid #d5d5d5;*/
-}
+    border-bottom: 1px solid #d5d5d5;
+}*/
 .title{
     font-family: sansRoundedBold;
     margin-top: 20px;
@@ -1629,7 +1671,7 @@ opacity: 1;
 }
 
 .pace-running .contentLoader {
-    opacity: 0;
+/*    opacity: 0;*/
     //display: none; //!! 2gis тупит из-за этого
 }
 
@@ -1642,9 +1684,6 @@ opacity: 1;
 
 .redSquare{
     background: #ea2327;
-    border-radius: 5px;
-    position: relative;
-    float: right;
 }
 /*.redSquare:after{
     content: "";
@@ -1658,9 +1697,6 @@ opacity: 1;
 
 .yellowSquare{
     background: #fbb516;
-    border-radius: 5px;
-    position: relative;
-    float: right;
 }
 /*.yellowSquare:after{
     content: "";
@@ -1674,9 +1710,6 @@ opacity: 1;
 
 .greenSquare{
     background: #009846;
-    border-radius: 5px;
-    position: relative;
-    float: right;
 }
 /*.greenSquare:after{
     content: "";
@@ -1691,9 +1724,6 @@ opacity: 1;
 
 .purpleSquare{
     background: #724ea0;
-    border-radius: 6px;
-    position: relative;
-    float: right;
 }
 /*.purpleSquare:after{
     content: "";
@@ -1707,9 +1737,6 @@ opacity: 1;
 
 .blueSquare{
     background: #393185;
-    border-radius: 5px;
-    position: relative;
-    float: right;
 }
 /*.blueSquare:after{
     content: "";
@@ -1723,9 +1750,6 @@ opacity: 1;
 
 .lightBlueSquare{
     background: #008DD2;
-    border-radius: 5px;
-    position: relative;
-    float: right;
 }
 /*.lightBlueSquare:after{
     content: "";
@@ -1738,9 +1762,6 @@ opacity: 1;
 }*/
 .orangeSquare{
     background: #EF7F1A;
-    border-radius: 5px;
-    position: relative;
-    float: right;
 }
 /*.orangeSquare:after{
     content: "";
@@ -1754,9 +1775,6 @@ opacity: 1;
 
 .saladSquare{
     background: #57C7B3;
-    border-radius: 5px;
-    position: relative;
-    float: right;
 }
 /*.saladSquare:after{
     content: "";
@@ -1770,19 +1788,19 @@ opacity: 1;
 
 
 
-.slidesCont2 .slidesjs-navigation {
-    top: 130px;
+.slides-container .slidesjs-navigation {
+    top: 37%;
     position: absolute;
     left: -30px;
     font-size: 40px;
 }
 
-.slidesCont2 .slidesjs-previous {
+.slides-container .slidesjs-previous {
     margin-right: 5px;
     float: left;
 }
 
-.slidesCont2 .slidesjs-next {
+.slides-container .slidesjs-next {
     right: -25px;
     left: initial;
 }
@@ -1849,8 +1867,8 @@ opacity: 1;
 
     .slidesCont a:hover,
     .slidesCont a:active,
-    .slidesCont2 a:hover,
-    .slidesCont2 a:active{
+    .slides-container a:hover,
+    .slides-container a:active{
       color: #939598
     }
     
@@ -1864,7 +1882,7 @@ opacity: 1;
   color: #939598
 }
     
-.yellowSquare a, .redSquare a, .greenSquare a, .purpleSquare a, .blueSquare a, .lightBlueSquare a, .orangeSquare a, .saladSquare a{
+a.button-square{
     font-family: sansRoundedBold;
     color: #fff !important;
     font-size: 1em;
@@ -1875,6 +1893,21 @@ opacity: 1;
     cursor: pointer;
     border: none !important;
     line-height: normal;
+    border-radius: 5px;
+    position: relative;
+    float: left;
+    margin-top: 15px;
+    clear: both;
+}
+a.button-square::after{
+    content: "\f105";
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 1.4em;
+    float: right;
+    clear: both;
+    display: table;
+    margin-left: 8px;
+    margin-top: -1px;
 }
 .ui-dialog-titlebar-close {
   display: none;
@@ -2198,23 +2231,28 @@ opacity: 1;
 .inside img{
     padding: 15px;
 }
-.contentSlider a.slidesjs-navigation:link,
-.contentSlider a.slidesjs-navigation:visited {
+.content-slider a.slidesjs-navigation:link,
+.content-slider a.slidesjs-navigation:visited {
   color: #EE2A31
 }
 
-.contentSlider a.slidesjs-navigation:hover,
-.contentSlider a.slidesjs-navigation:active {
+.content-slider a.slidesjs-navigation:hover,
+.content-slider a.slidesjs-navigation:active {
   color: #939598
 }
-.contentSlider a.slidesjs-navigation{
+.content-slider a.slidesjs-navigation{
     top: 230px;
     position: absolute;
     font-size: 3em;
-    z-index: 200;
+    z-index: 10;
+    
 }
-.contentSlider a.slidesjs-next{
+.content-slider a.slidesjs-next{
     right: -25px;
+}
+
+.content-slider .slidesjs-container{
+    max-height: 370px;
 }
 
 .inside img.solo{
@@ -2654,7 +2692,10 @@ table>thead>tr>th{
     padding-bottom: 70px;
 }
 
-.angleBlock{
+
+/* ---------- block video ------------ */
+
+.angle-block-video{
     height: 390px;
     width: 200%;
     background: #724EA0;
@@ -2666,6 +2707,38 @@ table>thead>tr>th{
     top: -15px;
     overflow: hidden;
 }
+.angle-block-video video{
+    width: 100%;
+    transform: rotateZ(-2deg);
+    position: absolute;
+    top: -37%;
+}
+.angle-block-bg{
+    width: 200%;
+    background: #724EA0;
+    opacity: 1;
+    transform: rotateZ(2deg);
+    left: -40%;
+    position: absolute;
+    z-index: -1000;
+    overflow: hidden;
+    top: -16px;
+    height: 392px;
+    opacity: 1;
+    
+/*    box-shadow: inset 0px 0px 23px 5px rgba(103, 61, 141, 0.27);*/
+    background: -moz-linear-gradient(left,  rgba(255,255,255,0.9) 23%, rgba(255,255,255,0.9) 27%, rgba(255,255,255,0.03) 59%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.9) 85%, rgba(255,255,255,0.9) 90%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(23%,rgba(255,255,255,0.9)), color-stop(27%,rgba(255,255,255,0.9)), color-stop(59%,rgba(255,255,255,0.03)), color-stop(60%,rgba(255,255,255,0)), color-stop(85%,rgba(255,255,255,0.9)), color-stop(90%,rgba(255,255,255,0.9))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left,  rgba(255,255,255,0.9) 23%,rgba(255,255,255,0.9) 27%,rgba(255,255,255,0.03) 59%,rgba(255,255,255,0) 60%,rgba(255,255,255,0.9) 85%,rgba(255,255,255,0.9) 90%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  rgba(255,255,255,0.9) 23%,rgba(255,255,255,0.9) 27%,rgba(255,255,255,0.03) 59%,rgba(255,255,255,0) 60%,rgba(255,255,255,0.9) 85%,rgba(255,255,255,0.9) 90%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  rgba(255,255,255,0.9) 23%,rgba(255,255,255,0.9) 27%,rgba(255,255,255,0.03) 59%,rgba(255,255,255,0) 60%,rgba(255,255,255,0.9) 85%,rgba(255,255,255,0.9) 90%); /* IE10+ */
+    background: linear-gradient(to right,  rgba(255,255,255,0.9) 23%,rgba(255,255,255,0.9) 27%,rgba(255,255,255,0.03) 59%,rgba(255,255,255,0) 60%,rgba(255,255,255,0.9) 85%,rgba(255,255,255,0.9) 90%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6ffffff', endColorstr='#e6ffffff',GradientType=1 ); /* IE6-9 */
+
+}
+
+
+
 
 .slidesCont img{
     height: initial;
@@ -2690,7 +2763,7 @@ table>thead>tr>th{
     margin-bottom: 10px;
     margin-left: 2px;
 }
-.slidesCont a, .slidesCont2 a{
+.slidesCont a, .slides-container a{
     color: #EA2327;
 }
 .top {

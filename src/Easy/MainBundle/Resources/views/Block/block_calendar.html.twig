@@ -1,15 +1,19 @@
 <div class="col-md-11 calendar">
     <a name="anchor{{ content.id }}" style="position: absolute;top: -115px;"></a>
-    <div class="buttonSquare" style="position: absolute;right: 5px;top: -3px;">
-        <a href="/calendar/all">Все события<i class="fa fa-angle-right"></i></a>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="title">алендарь событий</p>
+        </div>
+        <div class="col-md-6">
+            <a class="button-square" href="/calendar/all" style="float:right;">Все события</a>
+        </div>
     </div>
-    <p class="title">Календарь событий</p>
     <div class="col-md-3 leftBlock">
         {% for monthInfo in content %}
             {% if loop.index == 1 %}
-                <a href="#" data="{{ loop.index }}" class="active">{{ monthInfo.monthRus }}</a>
+                <a href="javascript:;" data="{{ loop.index }}" class="active">{{ monthInfo.monthRus }}</a>
             {% else %}
-                <a href="#" data="{{ loop.index }}" class="">{{ monthInfo.monthRus }}</a>
+                <a href="javascript:;" data="{{ loop.index }}" class="">{{ monthInfo.monthRus }}</a>
             {% endif %}
         {% endfor %}
     </div>
@@ -25,10 +29,8 @@
                 {% for event in monthInfo.content|slice(0, 3) %}
                     <div class="col-md-12" style="height: 155px;margin-bottom: 10px;">
                          {% media event.media, 'big' with {'class': ''} %}
-                         <p>{{ event.date|date('d.m') }} {{ event.name }}</p>
-                         <div class="buttonSquare">
-                            <a href="/calendar/{{ event.id }}">Узнать подробнее</a>
-                        </div>
+                        <p>{{ event.date|date('d.m') }} {{ event.name }}</p>
+                        <a class="button-square" href="/calendar/{{ event.id }}" style="float:right;">Узнать подробнее</a>
                     </div>
                 {% endfor %}
             </div>

@@ -1,4 +1,4 @@
-<div class='col-md-12' name="video" style="border-bottom: none;">
+<div class='col-md-12' name="video" style="min-height: 300px;">
     <a name="anchor{{ content.id }}" style="position: absolute;top: -115px;"></a>
     <div class="stick"></div>
     <div class="row">
@@ -9,45 +9,20 @@
                     {{ content.getContent()}}
                 {% endautoescape %}
             </div>
-            <div class="buttonSquare" style="float:left;">
-                <a href="javascript:;" onclick="toggleMenu('secondLayerMenu11');">Узнать подробнее<i class="fa fa-angle-right"></i></a>
-            </div>
-            {% if content.secondMenu !=  -1%}
-                {#<div class='buttonSquare'>
-                    <a href='javascript:;' onclick="toggleMenu('secondLayerMenu{{ content.getSecondMenu()}}');">Узнать подробнее</a>
-                </div>#}
-            {% endif %}
         </div>
-        <div class='col-md-8' style="">
+        <div class='col-md-8'>
+                {#
                 <a class='play'><i class='fa fa-play'></i></a>
                 <a class='pause' href='#' style='display: none;'><i class='fa fa-pause'></i></a>
-                {#
                 <a class='expand'><i class='fa fa-expand'></i></a>
                 <a class='compress' href='#' style='display: none;'><i class='fa fa-compress'></i></a>#}
         </div>
     </div>
 </div>
 
-<div class="angleBlock">
-    <video loop='' autoplay="autoplay" muted style="width: 100%;
-transform: rotateZ(-2deg);
-position: absolute;
-top: -37%;">
+<div class="angle-block-video">
+    <video loop='' autoplay="autoplay" muted>
         <source src='{% path gallery.GalleryHasMedias[0].media, 'reference' %}' type='video/mp4'>
     </video>
 </div>
-<div class="angleBlock" style="top: -16px;
-height: 392px;
-opacity: 1;
-{#box-shadow: inset 0px 0px 23px 5px rgba(103, 61, 141, 0.27);#}
-background: -moz-linear-gradient(left,  rgba(255,255,255,0.9) 23%, rgba(255,255,255,0.9) 27%, rgba(255,255,255,0.03) 59%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.9) 85%, rgba(255,255,255,0.9) 90%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, right top, color-stop(23%,rgba(255,255,255,0.9)), color-stop(27%,rgba(255,255,255,0.9)), color-stop(59%,rgba(255,255,255,0.03)), color-stop(60%,rgba(255,255,255,0)), color-stop(85%,rgba(255,255,255,0.9)), color-stop(90%,rgba(255,255,255,0.9))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(left,  rgba(255,255,255,0.9) 23%,rgba(255,255,255,0.9) 27%,rgba(255,255,255,0.03) 59%,rgba(255,255,255,0) 60%,rgba(255,255,255,0.9) 85%,rgba(255,255,255,0.9) 90%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(left,  rgba(255,255,255,0.9) 23%,rgba(255,255,255,0.9) 27%,rgba(255,255,255,0.03) 59%,rgba(255,255,255,0) 60%,rgba(255,255,255,0.9) 85%,rgba(255,255,255,0.9) 90%); /* Opera 11.10+ */
-background: -ms-linear-gradient(left,  rgba(255,255,255,0.9) 23%,rgba(255,255,255,0.9) 27%,rgba(255,255,255,0.03) 59%,rgba(255,255,255,0) 60%,rgba(255,255,255,0.9) 85%,rgba(255,255,255,0.9) 90%); /* IE10+ */
-background: linear-gradient(to right,  rgba(255,255,255,0.9) 23%,rgba(255,255,255,0.9) 27%,rgba(255,255,255,0.03) 59%,rgba(255,255,255,0) 60%,rgba(255,255,255,0.9) 85%,rgba(255,255,255,0.9) 90%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6ffffff', endColorstr='#e6ffffff',GradientType=1 ); /* IE6-9 */
-
-">
-    
-</div>
+<div class="angle-block-bg"></div>

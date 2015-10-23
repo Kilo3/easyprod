@@ -1,4 +1,4 @@
-{% if random(2) == 1 %}
+{% if random(2) == 3 %}
     <div class='col-md-11'>
         <a name="anchor{{ content.id }}" style="position: absolute;top: -115px;"></a>
         <p class='title'>{{ content.getName()}}</p>
@@ -32,27 +32,19 @@
     </div>
 {% else %}
     <div class='col-md-11' style="border-bottom: none;">
-        <a name="anchor{{ content.id }}" style="position: absolute;top: -115px;"></a>
+        <a name="anchor{{ content.id }}"></a>
         <div class="stick"></div>
         <div class="row">
-            <div class='col-md-4'>
+            <div class='col-md-4 content'>
                 <p class='title'>{{ content.getName()}}</p>
                 <div class='advantage'>
                     {% autoescape false %}
                         {{ content.getContent()}}
                     {% endautoescape %}
                 </div>
-                <div class="buttonSquare" style="float:left;">
-                    <a href="javascript:;" onclick="toggleMenu('secondLayerMenu11');">Узнать подробнее<i class="fa fa-angle-right"></i></a>
-                </div>
-                {% if content.secondMenu !=  -1%}
-                    {#<div class='buttonSquare'>
-                        <a href='javascript:;' onclick="toggleMenu('secondLayerMenu{{ content.getSecondMenu()}}');">Узнать подробнее</a>
-                    </div>#}
-                {% endif %}
             </div>
             <div class='col-md-8'>
-                <div class='slidesCont2'>
+                <div class='slides-container'>
                     {% if gallery.GalleryHasMedias is defined %}
                         {% for galleryHasMedia in gallery.GalleryHasMedias %}
                             <div style="background:url('{% path galleryHasMedia.media, 'big' %}');background-size: cover;background-position: center center; height: 100%;"></div>

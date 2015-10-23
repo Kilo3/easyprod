@@ -57,27 +57,65 @@
                     <a href="{{ path('easy_main_homepage') }}" style="position: absolute;z-index: 100;top: 4%;left: 4%;">
                         <img id="logo" src="{{ asset('/bundles/easymain/images/logoMain.png') }}" >
                     </a>
-                    <div class="fastLink menuList" style="position: absolute;z-index: 100;top: 2%;right: 10%;width: auto;">
-                        <div>
-                            <a href="/pay" class="purpleHover" style="width: 130px;">Оплата</a>
-                            <a href="/news" class="purpleHover" style="width: 130px;">Новости</a>
-                            <a href="/contacts/all" class="purpleHover" style="width: 130px;">Контакты</a>
+                    <div class="top" style="z-index: 500;position: relative;margin-right: 120px;margin-top: 27px;">
+                        <a href="/news/" class="">
+                            <i class="fa fa-newspaper-o"></i>
+                            <div style="margin-left: -6px;">новости</div>
+                        </a>
+                        <a href="/pay/">
+                            <i class="fa fa-credit-card"></i>
+                            <div style="margin-left: -2px;">оплата</div>
+                        </a>
+                        <a href="/contacts/all">
+                            <i class="fa fa-map-marker"></i>
+                            <div style="margin-left: -10px;">контакты</div>
+                        </a>
+                        <a href="javascript:;" style="position: relative;z-index: 100;">
+                            <i class="fa fa-phone"></i>
+                        </a>
+                        <div class="contact" style="position: relative;">
+                            <p><span style="font-size: 0.9em;">(3952)</span> 72-36-72</p>
                         </div>
+                        {#<a id="opener" class="buttonHover">записаться</a>#}
                     </div>
-                    <div class="menuList" style="position: absolute;z-index: 100;">
-                        {% for value in mainMenu %}
-                            <div><a class="{{ value.color }}Hover" href="{{ path('easy_main_homepage') }}{{ value.url }}">{{ value.title }}</a></div>
-                        {% endfor %}
-                    </div>
-                    <div class="menuInfo" style="position: absolute;z-index: 100;">
-                        <p style="margin-bottom: 5px;">2000-2015 Сеть образовательных центров Easy School</p>
-                        <span style="margin-right: 20px;"><i class="dot"></i>info@e-a-s-y.ru</span>
-                        <span><i class="dot"></i>7(3952)72-36-72</span>
-                    </div>
-                    <div class="socialIcons" style="position: absolute;z-index: 100;">
-                        <a href="http://vk.com/easyschool" target="_blank"><i class="fa fa-vk"></i></a>
-                        <a href="https://instagram.com/easy_school/" target="_blank"><i class="fa fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/easyschool1" target="_blank"><i class="fa fa-facebook"></i></a>
+                    <div class="menuList" style="position: relative;z-index: 100;">
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-2 menu-section-link">
+                                {% for value in mainMenu %}
+                                    {% if '/'~value.url~'/' in path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+                                        <a info="{{ loop.index }}" style="display: table;margin: 10px 0;float: left;text-align: left;" class="{{ value.color }}Hover header-title active" href="#">{{ value.title }}</a>
+                                    {% else%}
+                                        <a info="{{ loop.index }}" style="display: table;margin: 10px 0;float: left;text-align: left;" class="{{ value.color }}Hover header-title" href="#">{{ value.title }}</a>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            {% for value in mainMenu %}
+                                {% if '/'~value.url~'/' in path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+                                    <div class="col-md-6 menu-section-content" info="{{ loop.index }}" style="display:block;">
+                                {% else%}
+                                    <div class="col-md-6 menu-section-content" info="{{ loop.index }}">
+                                {% endif %}
+                                    <a class="" href="{{ path('easy_main_homepage') }}{{ value.url }}">{{ value.title }}</a>
+                                    {% for children in value.children %}
+                                        <a style="margin-left:20px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}">{{ children.title }}</a>
+                                        {% for lastchildren in children %}
+                                            <a style="margin-left:40px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}/{{ lastchildren.url }}">{{ lastchildren.title }}</a>
+                                        {% endfor %}
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                        <div class="menuInfo" style="position: absolute;z-index: 100;">
+                            <p style="margin-bottom: 5px;">2000-2015 Сеть образовательных центров Easy School</p>
+                            <span style="margin-right: 20px;"><i class="dot"></i>info@e-a-s-y.ru</span>
+                            <span><i class="dot"></i>7(3952)72-36-72</span>
+                        </div>
+                        <div class="socialIcons" style="position: absolute;z-index: 100;">
+                            <a href="http://vk.com/easyschool" target="_blank"><i class="fa fa-vk"></i></a>
+                            <a href="https://instagram.com/easy_school/" target="_blank"><i class="fa fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/easyschool1" target="_blank"><i class="fa fa-facebook"></i></a>
+                        </div>
                     </div>
                 </div>
                 
@@ -464,6 +502,12 @@
                         video.volume = 0;
                     }
                     
+                });
+                
+                $('.menu-section-link a').on('click', function(){
+                    $('.menu-section-content').css({'display':'none'});
+                   var section = $(this).attr('info');
+                   $('.menu-section-content[info='+section+']').css({'display':'block'});
                 });
                 
             });

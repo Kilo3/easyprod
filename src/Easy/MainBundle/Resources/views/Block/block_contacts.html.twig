@@ -9,13 +9,9 @@
                     <a href="javascript:;" address="{{ loop.index }}" data-coordinates="[{{ contact.coordinates }}]">{{ contact.name }}</a>
                 {% endfor %}
                 {% if content.id is not null %}
-                    <div class="buttonSquare" style="clear: both;float: left;">
-                        <a href="{{ path('easy_main_contacts', {'id': content.id }) }}">Узнать подробнее</a>
-                    </div>
+                    <a class="button-square" href="{{ path('easy_main_contacts', {'id': content.id }) }}">Узнать подробнее</a>
                 {% else %}
-                    <div class="buttonSquare" style="clear: both;float: left;">
-                        <a href="{{ path('easy_main_contacts', {'id': 'all_show' }) }}">Узнать подробнее</a>
-                    </div>
+                    <a class="button-square" href="{{ path('easy_main_contacts', {'id': 'all_show' }) }}">Узнать подробнее</a>
                 {% endif %}
             </div>
         </div>

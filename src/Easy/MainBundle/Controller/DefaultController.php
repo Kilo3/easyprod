@@ -20,7 +20,7 @@ class DefaultController extends Controller
                 die();
             }
             $topMenu = "";
-            return $this->render('EasyMainBundle:Block:404.html.twig', array(
+            return $this->render('EasyMainBundle:Page:404.html.twig', array(
                 'mainMenu' => $mainMenu,
                 'topMenu' => $topMenu,
                 'color' => 'purple'
@@ -265,7 +265,7 @@ class DefaultController extends Controller
             $content = $hp->getRepository('EasyMainBundle:Content')->findBy(array('url'=>$foo->getId()), array('order_column'=>'ASC'));
         }else{
             $topMenu = "";
-            return $this->render('EasyMainBundle:Block:404.html.twig', array(
+            return $this->render('EasyMainBundle:Page:404.html.twig', array(
                 'mainMenu' => $mainMenu,
                 'topMenu' => $topMenu,
                 'color' => 'purple'
@@ -349,7 +349,7 @@ class DefaultController extends Controller
                 
                 case 'news_all':
                     $news = $hp->getRepository('EasyMainBundle:News')->findBy(array(), array('order_column'=>'ASC'));
-                    $foo = $this->render('EasyMainBundle:Block:news_all.html.twig', array(
+                    $foo = $this->render('EasyMainBundle:Page:block_news_all.html.twig', array(
                         'content'   => $value,
                         'news'   => $news,
                     ));
@@ -358,7 +358,7 @@ class DefaultController extends Controller
                 
                 case 'calendar_all':
                     $calendar = $hp->getRepository('EasyMainBundle:Calendar')->findBy(array(), array('date'=>'DESC'));
-                    $foo = $this->render('EasyMainBundle:Block:calendar_all.html.twig', array(
+                    $foo = $this->render('EasyMainBundle:Block:block_calendar_all.html.twig', array(
                         'content'   => $value,
                         'calendar'   => $calendar,
                     ));
@@ -367,7 +367,7 @@ class DefaultController extends Controller
                 
                 case 'photo_links':
                     $galleries = $hp->getRepository('Application\Sonata\MediaBundle\Entity\Gallery')->findBy(array('context' => 'gallery'));
-                    $foo = $this->render('EasyMainBundle:Block:photo_links.html.twig', array(
+                    $foo = $this->render('EasyMainBundle:Block:block_photo_links.html.twig', array(
                         'content'   => $value,
                         'galleries'   => $galleries,
                     ));
@@ -512,7 +512,7 @@ class DefaultController extends Controller
         
         $topMenu = "";
         $secondLayerMenu = "";
-        return $this->render('EasyMainBundle:Block:news.html.twig', array(
+        return $this->render('EasyMainBundle:Page:news.html.twig', array(
             'mainMenu' => $mainMenu,
             'content' => $content,
             'topMenu' => $topMenu,
@@ -532,7 +532,7 @@ class DefaultController extends Controller
         
         $topMenu = "";
         $secondLayerMenu = "";
-        return $this->render('EasyMainBundle:Block:easy_times.html.twig', array(
+        return $this->render('EasyMainBundle:Page:easy_times.html.twig', array(
             'mainMenu' => $mainMenu,
             'content' => $content,
             'topMenu' => $topMenu,
@@ -552,7 +552,7 @@ class DefaultController extends Controller
         $topMenu = "";
         $secondLayerMenu = "";
         
-        return $this->render('EasyMainBundle:Block:news_show.html.twig', array(
+        return $this->render('EasyMainBundle:Page:news_show.html.twig', array(
             'mainMenu' => $mainMenu,
             'content' => $content,
             'topMenu' => $topMenu,
@@ -571,7 +571,7 @@ class DefaultController extends Controller
         
         $topMenu = "";
         $secondLayerMenu = "";
-        return $this->render('EasyMainBundle:Block:gallery_show.html.twig', array(
+        return $this->render('EasyMainBundle:Page:gallery_show.html.twig', array(
             'mainMenu' => $mainMenu,
             'content' => $content,
             'topMenu' => $topMenu,
@@ -605,7 +605,7 @@ class DefaultController extends Controller
 
             $topMenu = "";
             $secondLayerMenu = "";
-            return $this->render('EasyMainBundle:Block:calendar_show.html.twig', array(
+            return $this->render('EasyMainBundle:Page:calendar_show.html.twig', array(
                 'mainMenu' => $mainMenu,
                 'content' => $content,
                 'topMenu' => $topMenu,
@@ -640,7 +640,7 @@ class DefaultController extends Controller
             $content = $foo->getContent();
             $topMenu = "";
             $secondLayerMenu = "";
-            return $this->render('EasyMainBundle:Block:contacts_all.html.twig', array(
+            return $this->render('EasyMainBundle:Page:contacts_all.html.twig', array(
                 'mainMenu' => $mainMenu,
                 'content' => $content,
                 'topMenu' => $topMenu,
@@ -661,7 +661,7 @@ class DefaultController extends Controller
 
             $topMenu = "";
             $secondLayerMenu = "";
-            return $this->render('EasyMainBundle:Block:contacts.html.twig', array(
+            return $this->render('EasyMainBundle:Page:contacts.html.twig', array(
                 'mainMenu' => $mainMenu,
                 'content' => $temp,
                 'topMenu' => $topMenu,
@@ -678,7 +678,7 @@ class DefaultController extends Controller
 
             $topMenu = "";
             $secondLayerMenu = "";
-            return $this->render('EasyMainBundle:Block:contacts.html.twig', array(
+            return $this->render('EasyMainBundle:Page:contacts.html.twig', array(
                 'mainMenu' => $mainMenu,
                 'content' => $content,
                 'topMenu' => $topMenu,
@@ -714,7 +714,7 @@ class DefaultController extends Controller
             ));
         }else{
             $topMenu = "";
-            return $this->render('EasyMainBundle:Block:404.html.twig', array(
+            return $this->render('EasyMainBundle:Page:404.html.twig', array(
                 'mainMenu' => $mainMenu,
                 'topMenu' => $topMenu,
                 'color' => 'purple'
