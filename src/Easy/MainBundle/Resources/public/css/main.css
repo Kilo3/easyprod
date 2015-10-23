@@ -589,7 +589,7 @@ section{
     top: 0px;
     z-index: 140;
     display: table;
-    position: absolute;
+    position: fixed;
     background: #724EA0;
     height: 1000px;
     padding: 39px;
