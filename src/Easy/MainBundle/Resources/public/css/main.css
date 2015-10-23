@@ -2691,7 +2691,7 @@ table>thead>tr>th{
 }
 .bottom-menu div a{
     text-align: center;
-    float:center;
+    float: none;
 }
 .bottom-menu div{
     border-left: 3px solid #724EA0;
