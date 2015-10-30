@@ -1,10 +1,10 @@
 <div class="col-md-11">
     <a name="anchor{{ content.id }}" style="position: absolute;top: -115px;"></a>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 col-xs-4">
             <p class="title">{{ content.getName() }}</p>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 col-xs-8">
             <a class="button-square" href="javascript:;" onclick="toggleMenu('secondLayerMenuStuff');" style="float:right;">Все преподаватели</a>
         </div>
     </div>
@@ -12,7 +12,7 @@
     <div class="content-slider">
         {% for value in stuff %}
         <figure class="slidesjs-slide" style="margin:0;padding:0;">
-            <div class="col-md-5 col-md-offset-1">
+            <div class="col-md-5 col-md-offset-1 col-xs-7">
                 <div class="advantage2 red" style="text-align: right;">
                     <strong>{{ value.name }}</strong>
                     {% autoescape false %}
@@ -20,7 +20,7 @@
                     {% endautoescape %}
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 col-xs-5">
                 {% media value.media, 'big' with {'style': 'width: 100%;'} %}
             </div>
         </figure>

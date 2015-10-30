@@ -1,21 +1,32 @@
 <div class="col-md-11">
     <a name="anchor{{ content.id }}" style="position: absolute;top: -115px;"></a>
     <div class="stick"></div>
-    <p class='title'>{{ content.getName()}}</p>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-12 col-xs-5">
+            <p class='title'>{{ content.getName()}}</p>
+        </div>
+        <div class="col-xs-7 visible-xs-block">
+            {% if content.id is not null %}
+                <a class="button-square" style="padding: 8px 10px 8px 15px;" href="{{ path('easy_main_contacts', {'id': content.id }) }}">Узнать подробнее</a>
+            {% else %}
+                <a class="button-square" style="padding: 8px 10px 8px 15px;" href="{{ path('easy_main_contacts', {'id': 'all_show' }) }}">Узнать подробнее</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-xs-12">
             <div class="advantage address purple red" style="text-align: right;">
                 {% for contact in content.contacts %}
                     <a href="javascript:;" address="{{ loop.index }}" data-coordinates="[{{ contact.coordinates }}]">{{ contact.name }}</a>
                 {% endfor %}
                 {% if content.id is not null %}
-                    <a class="button-square" href="{{ path('easy_main_contacts', {'id': content.id }) }}">Узнать подробнее</a>
+                    <a class="button-square hidden-xs" href="{{ path('easy_main_contacts', {'id': content.id }) }}">Узнать подробнее</a>
                 {% else %}
-                    <a class="button-square" href="{{ path('easy_main_contacts', {'id': 'all_show' }) }}">Узнать подробнее</a>
+                    <a class="button-square hidden-xs" href="{{ path('easy_main_contacts', {'id': 'all_show' }) }}">Узнать подробнее</a>
                 {% endif %}
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8 col-xs-12">
             <div id="map" style="width: 100%; height: 320px; position: relative;"></div>
         </div>
     </div>

@@ -173,7 +173,7 @@ body.pace-done, body.pace-progress, body.pace-running{
   clear: both;
 }
 
-@media (min-width: 1px) {
+/*@media (min-width: 1px) {
   .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
     float: left;
   }
@@ -330,7 +330,7 @@ body.pace-done, body.pace-progress, body.pace-running{
   .col-md-offset-0 {
     margin-left: 0;
   }
-}
+}*/
 
 .btn-group-vertical>.btn-group:after, .btn-group-vertical>.btn-group:before, .btn-toolbar:after, .btn-toolbar:before, .clearfix:after, .clearfix:before, .container-fluid:after, .container-fluid:before, .container:after, .container:before, .dl-horizontal dd:after, .dl-horizontal dd:before, .form-horizontal .form-group:after, .form-horizontal .form-group:before, .modal-footer:after, .modal-footer:before, .nav:after, .nav:before, .navbar-collapse:after, .navbar-collapse:before, .navbar-header:after, .navbar-header:before, .navbar:after, .navbar:before, .pager:after, .pager:before, .panel-body:after, .panel-body:before, .row:after, .row:before{
     display: table;
@@ -570,7 +570,7 @@ section{
     position: fixed;
     right: 0;
     top: 0;
-    z-index: 200;
+    z-index: 210;
 }
 
 #smallLogo{
@@ -585,6 +585,126 @@ section{
   background: #e6842c;
   color: #fff;
 }*/
+
+
+/*
+
+[class*="col-md"] .content-slider .slidesjs-navigation {
+    top: 37%;
+    position: absolute;
+    left: -30px;
+    font-size: 3em;
+    z-index: 30;
+    
+}
+.content-slider .slidesjs-container{
+    max-height: 370px;
+}
+
+[class*="col-md"] .content-slider .slidesjs-previous {
+    margin-right: 5px;
+    float: left;
+}
+
+[class*="col-xs"] .content-slider .slidesjs-navigation {
+    right: 15px;
+    left: initial;
+}
+[class*="col-xs"] .content-slider .slidesjs-previous {
+    left: 15px;
+}
+
+.content-slider a.slidesjs-navigation:link,
+.content-slider a.slidesjs-navigation:visited {
+  color: #EE2A31
+}
+
+.content-slider a.slidesjs-navigation:hover,
+.content-slider a.slidesjs-navigation:active {
+  color: #939598
+}*/
+
+.slides-container a.slidesjs-navigation{
+    top: 37%;
+    position: absolute;
+    left: -30px;
+    font-size: 40px;
+    z-index: 30;
+}
+
+.slides-container .slidesjs-previous {
+    margin-right: 5px;
+    float: left;
+}
+
+.slides-container .slidesjs-next {
+    right: -25px;
+    left: initial !important;
+}
+
+
+.content-slider a.slidesjs-navigation{
+    top: 50%;
+    position: absolute;
+    font-size: 40px;
+    z-index: 30;
+}
+.content-slider .slidesjs-container{
+    max-height: 370px;
+}
+
+.content-slider .slidesjs-previous {
+    right: initial;
+    left: 10px;
+}
+
+.content-slider .slidesjs-next {
+    right: -25px;
+    left: initial !important;
+}
+
+
+
+@media (min-width: 1px) {
+    #nav{
+        right: -470px;
+    }
+}
+@media (max-width: 480px) {
+    #nav{
+        right: -490px;
+    }
+    #nav>a.special{
+        left: -90px !important;
+    }
+    .slides-container .slidesjs-navigation {
+        right: 15px;
+        left: initial;
+    }
+    .slides-container .slidesjs-previous {
+        left: 15px !important;
+        right: initial !important;
+    }
+    
+    .content-slider .slidesjs-previous {
+        right: initial;
+        left: 10px;
+    }
+
+    .content-slider .slidesjs-next {
+        right: 30px;
+        left: initial !important;
+    }
+    
+    .menuList a{
+        font-size: 1em !important;
+    }
+    .menuList a.header-title{
+        font-size: 0.9em !important;
+        padding: 5px !important;
+    }
+    
+}
 #nav{
     top: 0px;
     z-index: 140;
@@ -596,6 +716,11 @@ section{
     border-top-left-radius: 999px;
     width: 530px;
     border-bottom-left-radius: 999px;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
 }
 
 #nav ul{
@@ -691,14 +816,7 @@ section{
     cursor: pointer;
     margin: 8px 0;
 }
-#nav{
-    right: -470px;
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-}
+
 #nav.open{
     right: -230px;
 }
@@ -824,7 +942,7 @@ section{
     display: block;
     width: 85%;
     margin: 0 auto;
-    margin-top: 17%;
+    top: 17%;
     font-family: robotoLight;
     -moz-transform: perspective(600px) rotateX(10deg);
     -webkit-transform: perspective(600px) rotateX(10deg);
@@ -896,8 +1014,9 @@ section{
     position: relative;
     letter-spacing: 0.04em;
     font-family: sansRoundedBold;
-    float: none;
-    text-align: center;
+    display: table;
+    margin: 10px 0;
+    text-align: left;
 /*    border: 3px solid #ddd;
     border-radius:5px;*/
 }
@@ -1788,22 +1907,8 @@ opacity: 1;
 
 
 
-.slides-container .slidesjs-navigation {
-    top: 37%;
-    position: absolute;
-    left: -30px;
-    font-size: 40px;
-}
 
-.slides-container .slidesjs-previous {
-    margin-right: 5px;
-    float: left;
-}
 
-.slides-container .slidesjs-next {
-    right: -25px;
-    left: initial;
-}
 
 
 .slidesCont {
@@ -1832,6 +1937,8 @@ opacity: 1;
     margin: 15px auto 0px auto;
     padding: 0;
     list-style: none;
+    height: 13px;
+    overflow: hidden;
 }
 
 .slidesjs-pagination li {
@@ -2231,30 +2338,6 @@ a.button-square::after{
 .inside img{
     padding: 15px;
 }
-.content-slider a.slidesjs-navigation:link,
-.content-slider a.slidesjs-navigation:visited {
-  color: #EE2A31
-}
-
-.content-slider a.slidesjs-navigation:hover,
-.content-slider a.slidesjs-navigation:active {
-  color: #939598
-}
-.content-slider a.slidesjs-navigation{
-    top: 230px;
-    position: absolute;
-    font-size: 3em;
-    z-index: 10;
-    
-}
-.content-slider a.slidesjs-next{
-    right: -25px;
-}
-
-.content-slider .slidesjs-container{
-    max-height: 370px;
-}
-
 .inside img.solo{
     width: 450px;
     float: left;
@@ -2438,6 +2521,7 @@ h4{
 .calendar .rightBlock div>a{
     font-size: 1em;
     padding: 5px 20px;
+    clear: right;
 }
 .calendarMonth{
     display: none;
@@ -2690,6 +2774,7 @@ table>thead>tr>th{
 #page{
     padding-top: 115px;
     padding-bottom: 70px;
+    overflow-x: hidden;
 }
 
 
@@ -2711,7 +2796,7 @@ table>thead>tr>th{
     width: 100%;
     transform: rotateZ(-2deg);
     position: absolute;
-    top: -37%;
+    top: -15%;
 }
 .angle-block-bg{
     width: 200%;
@@ -2763,7 +2848,7 @@ table>thead>tr>th{
     margin-bottom: 10px;
     margin-left: 2px;
 }
-.slidesCont a, .slides-container a{
+.content-slider a, .slides-container a{
     color: #EA2327;
 }
 .top {

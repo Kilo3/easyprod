@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="col-md-3 leftBlock">
-        {% for monthInfo in content %}
+        {% for monthInfo in month %}
             {% if loop.index == 1 %}
                 <a href="javascript:;" data="{{ loop.index }}" class="active">{{ monthInfo.monthRus }}</a>
             {% else %}
@@ -19,7 +19,7 @@
     </div>
     <div class="col-md-9 rightBlock">
         
-        {% for monthInfo in content %}
+        {% for monthInfo in month %}
             {% if loop.index == 1 %}
                 {% set active = 'active' %}
             {% else %}

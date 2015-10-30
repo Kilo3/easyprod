@@ -157,7 +157,8 @@ class DefaultController extends Controller
                         }
                     }
                     $foo = $this->render('EasyMainBundle:Block:block_calendar.html.twig', array(
-                        'content'   => $month,
+                        'month'   => $month,
+                        'content'   => $value,
                     ));
                     
                     
@@ -466,7 +467,8 @@ class DefaultController extends Controller
                         }
                     }
                     $foo = $this->render('EasyMainBundle:Block:block_calendar.html.twig', array(
-                        'content'   => $month,
+                        'month'   => $month,
+                        'content'   => $value,
                     ));
                     
                     

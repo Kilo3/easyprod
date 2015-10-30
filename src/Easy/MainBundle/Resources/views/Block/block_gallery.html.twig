@@ -35,7 +35,7 @@
         <a name="anchor{{ content.id }}"></a>
         <div class="stick"></div>
         <div class="row">
-            <div class='col-md-4 content'>
+            <div class='col-md-4 col-xs-12 content'>
                 <p class='title'>{{ content.getName()}}</p>
                 <div class='advantage'>
                     {% autoescape false %}
@@ -43,7 +43,7 @@
                     {% endautoescape %}
                 </div>
             </div>
-            <div class='col-md-8'>
+            <div class='col-md-8 col-xs-12'>
                 <div class='slides-container'>
                     {% if gallery.GalleryHasMedias is defined %}
                         {% for galleryHasMedia in gallery.GalleryHasMedias %}
