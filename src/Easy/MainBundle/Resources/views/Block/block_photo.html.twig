@@ -4,9 +4,11 @@
     <div class="links">
         {% if content.getGallery.GalleryHasMedias is defined %}
             {% for galleryHasMedia in content.getGallery.GalleryHasMedias %}
-                <a href="{% path galleryHasMedia.media, 'big' %}" title="" data-gallery style="background: url('{% path galleryHasMedia.media, 'big' %}');">
+                <div class="col-md-3 col-xs-4">
+                    <a href="{% path galleryHasMedia.media, 'big' %}" title="" data-gallery style="background: url('{% path galleryHasMedia.media, 'big' %}');">
 
-                </a>
+                    </a>
+                </div>
             {% endfor %}
         {% endif %}
     </div>

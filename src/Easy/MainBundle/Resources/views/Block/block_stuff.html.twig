@@ -1,11 +1,14 @@
 <div class="col-md-11">
     <a name="anchor{{ content.id }}" style="position: absolute;top: -115px;"></a>
     <div class="row">
-        <div class="col-md-6 col-xs-4">
+        <div class="col-md-6 col-xs-6">
             <p class="title">{{ content.getName() }}</p>
         </div>
-        <div class="col-md-6 col-xs-8">
+        <div class="col-md-6 hidden-xs">
             <a class="button-square" href="javascript:;" onclick="toggleMenu('secondLayerMenuStuff');" style="float:right;">Все преподаватели</a>
+        </div>
+        <div class="visible-xs col-xs-6">
+            <a class="button-square" href="javascript:;" onclick="toggleMenu('secondLayerMenuStuff');" style="float:right;">Все</a>
         </div>
     </div>
     

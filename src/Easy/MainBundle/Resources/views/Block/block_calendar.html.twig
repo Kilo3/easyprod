@@ -1,14 +1,15 @@
 <div class="col-md-11 calendar">
     <a name="anchor{{ content.id }}" style="position: absolute;top: -115px;"></a>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 col-xs-8">
             <p class="title">алендарь событий</p>
         </div>
-        <div class="col-md-6">
-            <a class="button-square" href="/calendar/all" style="float:right;">Все события</a>
+        <div class="col-md-6 col-xs-4">
+            <a class="button-square hidden-xs" href="/calendar/all" style="float:right;">Все события</a>
+            <a class="button-square visible-xs" href="/calendar/all" style="float:right;">Все</a>
         </div>
     </div>
-    <div class="col-md-3 leftBlock">
+    <div class="col-md-3 leftBlock col-xs-4">
         {% for monthInfo in month %}
             {% if loop.index == 1 %}
                 <a href="javascript:;" data="{{ loop.index }}" class="active">{{ monthInfo.monthRus }}</a>
@@ -17,7 +18,7 @@
             {% endif %}
         {% endfor %}
     </div>
-    <div class="col-md-9 rightBlock">
+    <div class="col-md-9 rightBlock col-xs-8">
         
         {% for monthInfo in month %}
             {% if loop.index == 1 %}
@@ -27,10 +28,15 @@
             {% endif %}
             <div class="calendarMonth {{ active }}" month="{{ loop.index }}">
                 {% for event in monthInfo.content|slice(0, 3) %}
-                    <div class="col-md-12" style="height: 155px;margin-bottom: 10px;">
+                    <div class="col-md-12 hidden-xs" style="height: 155px;margin-bottom: 10px;">
                          {% media event.media, 'big' with {'class': ''} %}
                         <p>{{ event.date|date('d.m') }} {{ event.name }}</p>
                         <a class="button-square" href="/calendar/{{ event.id }}" style="float:right;">Узнать подробнее</a>
+                    </div>
+                    <div class="col-xs-12 visible-xs" style="height: 155px;margin-bottom: 10px;">
+                        <p style="padding: 0;">{{ event.date|date('d.m') }} {{ event.name }}</p>
+                        {% media event.media, 'big' with {'style': 'width: 60px;'} %}
+                        <a class="button-square" href="/calendar/{{ event.id }}" style="float:left;padding: 5px;">Подробнее</a>
                     </div>
                 {% endfor %}
             </div>
