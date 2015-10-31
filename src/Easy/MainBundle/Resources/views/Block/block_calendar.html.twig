@@ -1,12 +1,12 @@
 <div class="col-md-11 calendar">
     <a name="anchor{{ content.id }}" style="position: absolute;top: -115px;"></a>
     <div class="row">
-        <div class="col-md-6 col-xs-8">
-            <p class="title">алендарь событий</p>
+        <div class="col-md-6 col-xs-10">
+            <p class="title">Календарь событий</p>
         </div>
-        <div class="col-md-6 col-xs-4">
+        <div class="col-md-6 col-xs-2">
             <a class="button-square hidden-xs" href="/calendar/all" style="float:right;">Все события</a>
-            <a class="button-square visible-xs" href="/calendar/all" style="float:right;">Все</a>
+            <a class="button-square visible-xs" href="/calendar/all" style="float:right;"></a>
         </div>
     </div>
     <div class="col-md-3 leftBlock col-xs-4">
@@ -19,7 +19,6 @@
         {% endfor %}
     </div>
     <div class="col-md-9 rightBlock col-xs-8">
-        
         {% for monthInfo in month %}
             {% if loop.index == 1 %}
                 {% set active = 'active' %}
@@ -33,10 +32,10 @@
                         <p>{{ event.date|date('d.m') }} {{ event.name }}</p>
                         <a class="button-square" href="/calendar/{{ event.id }}" style="float:right;">Узнать подробнее</a>
                     </div>
-                    <div class="col-xs-12 visible-xs" style="height: 155px;margin-bottom: 10px;">
+                    <div class="col-xs-12 visible-xs no-padding" style="height: 155px;margin-bottom: 10px;">
                         <p style="padding: 0;">{{ event.date|date('d.m') }} {{ event.name }}</p>
                         {% media event.media, 'big' with {'style': 'width: 60px;'} %}
-                        <a class="button-square" href="/calendar/{{ event.id }}" style="float:left;padding: 5px;">Подробнее</a>
+                        <a class="button-square" href="/calendar/{{ event.id }}" style="float:right;padding: 5px;">Узнать</a>
                     </div>
                 {% endfor %}
             </div>

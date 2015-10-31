@@ -18,7 +18,7 @@
         </div>
         <div class='row'>
             <div class="col-md-10 col-md-offset-1">
-                <div class='slidesCont'>
+                <div class='slides-container'>
                     {% if gallery.GalleryHasMedias is defined %}
                         {% for galleryHasMedia in gallery.GalleryHasMedias %}
                             {% media galleryHasMedia.media, 'big' with {'class': ''} %}

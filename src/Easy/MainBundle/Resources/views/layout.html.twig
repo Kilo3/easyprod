@@ -110,141 +110,159 @@ overflow: hidden;">
                 <img src="{{ asset('/bundles/easymain/images/greenSmall.png') }}">
                 <img src="{{ asset('/bundles/easymain/images/saladSmall.png') }}">
             </div>
+
             <div id="site-header">
                 <div class="menu-button" onclick="toggleMenu('mainMenu');">
                     <span class=""></span>
                     <span class=""></span>
                     <span class=""></span>
                 </div>
-            </div>    
-                <div class="nav-menu mainMenu">
-                        <div style="position: absolute;width: 100%;height: 100%;z-index:99;" onclick="toggleMenu('mainMenu')"></div>
-                        <a href="{{ path('easy_main_homepage') }}" style="position: absolute;z-index: 100;top: 3%;left: 5%;">
-                            <img id="logo" src="{{ asset('/bundles/easymain/images/logoMain.png') }}" >
+            </div>
+            <div class="nav-menu mainMenu">
+                    <div style="position: absolute;width: 100%;height: 100%;z-index:99;" onclick="toggleMenu('mainMenu')"></div>
+                    <div class="container" style="margin-top: 0;">
+                        <div class="col-md-4 col-xs-4">
+                            <a href="{{ path('easy_main_homepage') }}" class="header-logo">
+                                <img src="{{ asset('/bundles/easymain/images/logoMain.png') }}" >
+                            </a>
+                        </div>
+                    </div>
+                    <div class="top top-menu">
+                        <a href="/news/" class="">
+                            <i class="fa fa-newspaper-o"></i>
+                            <div style="margin-left: -6px;">новости</div>
                         </a>
-                        {#<div class="fastLink menuList" style="position: absolute;z-index: 100;top: 2%;right: 10%;width: auto;">
-                            <div>
-                                <a href="/pay" class="purpleHover" style="width: 130px;">Оплата</a>
-                                <a href="/news" class="purpleHover" style="width: 130px;">Новости</a>
-                                <a href="/contacts/all" class="purpleHover" style="width: 130px;">Контакты</a>
-                            </div>
-                        </div>#}
+                        <a href="/pay/">
+                            <i class="fa fa-credit-card"></i>
+                            <div style="margin-left: -2px;">оплата</div>
+                        </a>
+                        <a href="/contacts/all">
+                            <i class="fa fa-map-marker"></i>
+                            <div style="margin-left: -10px;">контакты</div>
+                        </a>
+                    </div>
+                    {#<div class="fastLink menuList" style="position: absolute;z-index: 100;top: 2%;right: 10%;width: auto;">
+                        <div>
+                            <a href="/pay" class="purpleHover" style="width: 130px;">Оплата</a>
+                            <a href="/news" class="purpleHover" style="width: 130px;">Новости</a>
+                            <a href="/contacts/all" class="purpleHover" style="width: 130px;">Контакты</a>
+                        </div>
+                    </div>#}
 
-                    <div class="menuList" style="position: relative;z-index: 100;">
-                        <div class="row">
-                            <div class="col-md-4 col-md-offset-2 col-xs-5 col-xs-offset-0 menu-section-link">
-                                {% for value in mainMenu %}
-                                    {% if '/'~value.url~'/' in path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
-                                        <a info="{{ loop.index }}" class="{{ value.color }}Hover header-title active" href="javascript:;">{{ value.title }}</a>
-                                    {% else%}
-                                        <a info="{{ loop.index }}" class="{{ value.color }}Hover header-title" href="javascript:;">{{ value.title }}</a>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
+                <div class="menuList" style="position: relative;z-index: 100;">
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-2 col-xs-5 col-xs-offset-0 menu-section-link">
                             {% for value in mainMenu %}
                                 {% if '/'~value.url~'/' in path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
-                                    <div class="col-md-6 col-xs-7 menu-section-content" info="{{ loop.index }}" style="display:block;">
+                                    <a info="{{ loop.index }}" class="{{ value.color }}Hover header-title active" href="javascript:;">{{ value.title }}</a>
                                 {% else%}
-                                    <div class="col-md-6 col-xs-7 menu-section-content" info="{{ loop.index }}">
+                                    <a info="{{ loop.index }}" class="{{ value.color }}Hover header-title" href="javascript:;">{{ value.title }}</a>
                                 {% endif %}
-                                    <a class="" href="{{ path('easy_main_homepage') }}{{ value.url }}">{{ value.title }}</a>
-                                    {% for children in value.children %}
-                                        <a style="margin-left:20px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}">{{ children.title }}</a>
-                                        {% for lastchildren in children %}
-                                            <a style="margin-left:40px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}/{{ lastchildren.url }}">{{ lastchildren.title }}</a>
-                                        {% endfor %}
+                            {% endfor %}
+                        </div>
+                        {% for value in mainMenu %}
+                            {% if '/'~value.url~'/' in path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+                                <div class="col-md-6 col-xs-7 menu-section-content" info="{{ loop.index }}" style="display:block;">
+                            {% else%}
+                                <div class="col-md-6 col-xs-7 menu-section-content" info="{{ loop.index }}">
+                            {% endif %}
+                                <a class="" href="{{ path('easy_main_homepage') }}{{ value.url }}">{{ value.title }}</a>
+                                {% for children in value.children %}
+                                    <a style="margin-left:20px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}">{{ children.title }}</a>
+                                    {% for lastchildren in children %}
+                                        <a style="margin-left:40px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}/{{ lastchildren.url }}">{{ lastchildren.title }}</a>
                                     {% endfor %}
-                                </div>
-                            {% endfor %}
-                            </div>
-                        </div>
-                        <div class="menuInfo col-md-8 col-xs-8" style="position: absolute;z-index: 100;">
-                            <p style="margin-bottom: 5px;">2000-2015 Сеть образовательных центров Easy School</p>
-                            <span style="margin-right: 20px;"><i class="dot"></i>info@e-a-s-y.ru</span>
-                            <span><i class="dot"></i>7(3952)72-36-72</span>
-                        </div>
-                        <div class="socialIcons col-md-4" style="position: absolute;z-index: 100;">
-                            <a href="http://vk.com/easyschool" target="_blank"><i class="fa fa-vk"></i></a>
-                            <a href="https://instagram.com/easy_school/" target="_blank"><i class="fa fa-instagram"></i></a>
-                            <a href="https://www.facebook.com/easyschool1" target="_blank"><i class="fa fa-facebook"></i></a>
-                        </div>
-                    </div>
-                    <nav id="nav">
-                        <a href="javascript:;" class="special"><i class="fa fa-expand"></i>навигация по разделу</a>
-                        <div style="position: absolute;
-                            top: 39%;
-                            left: 80px;
-                            display: block;">
-                            {% for value in content %}
-                                <a href="#anchor{{ value.id }}">{{ value.name }}</a>
-                            {% endfor %}
-                        </div>
-                    </nav>
-                </div>
-                {% if secondLayerMenu is defined %}
-                    {% autoescape false %}
-                        {{ secondLayerMenu }}
-                    {% endautoescape %}
-                {% endif %}
-
-                {% if teacherMenu is defined %}
-                    <div class="nav-menu secondLayerMenuStuff">
-                        <div style="position: absolute;width: 100%;height: 100%;z-index:99;" onclick="toggleMenu('secondLayerMenuStuff')"></div>
-
-                        <a href="{{ path('easy_main_homepage') }}" style="position: absolute;z-index: 100;top: 4%;left: 4%;">
-                            <img id="logo" src="{{ asset('/bundles/easymain/images/logoMain.png') }}" >
-                        </a>
-                        <div class="menuList" style="position: absolute;z-index: 100;">
-                            <div class="col-12">
-                                {% for key, menu in teacherMenu %}
-                                    <div><a class="yellowHover" href="/stuff/{{ key }}">{{ menu }}</a></div>
                                 {% endfor %}
                             </div>
-
-                        </div>
-                        <div class="menu-button" onclick="toggleMenu('secondLayerMenuStuff');" style="position: absolute;z-index: 100;">
-                            <span class=""></span>
-                            <span class=""></span>
-                            <span class=""></span>
+                        {% endfor %}
                         </div>
                     </div>
-                {% endif %}
+                    <div class="menuInfo col-md-8 col-xs-8" style="position: absolute;z-index: 100;">
+                        <p class="hidden-xs" style="margin-bottom: 5px;">2000-2015 Сеть образовательных центров Easy School</p>
+                        <span style="margin-right: 20px;"><i class="dot"></i>info@e-a-s-y.ru</span>
+                        <span><i class="dot"></i>7(3952)72-36-72</span>
+                    </div>
+                    <div class="socialIcons col-md-4" style="position: absolute;z-index: 100;">
+                        <a href="http://vk.com/easyschool" target="_blank"><i class="fa fa-vk"></i></a>
+                        <a href="https://instagram.com/easy_school/" target="_blank"><i class="fa fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/easyschool1" target="_blank"><i class="fa fa-facebook"></i></a>
+                    </div>
+                </div>
+                <nav id="nav">
+                    <a href="javascript:;" class="special"><i class="fa fa-expand"></i><span class="hidden-xs">навигация по разделу</span></a>
+                    <div>
+                        {% for value in content %}
+                            <a href="#anchor{{ value.id }}">{{ value.name }}</a>
+                        {% endfor %}
+                    </div>
+                </nav>
+            </div>
+            {% if secondLayerMenu is defined %}
+                {% autoescape false %}
+                    {{ secondLayerMenu }}
+                {% endautoescape %}
+            {% endif %}
+
+            {% if teacherMenu is defined %}
+                <div class="nav-menu secondLayerMenuStuff">
+                    <div style="position: absolute;width: 100%;height: 100%;z-index:99;" onclick="toggleMenu('secondLayerMenuStuff')"></div>
+
+                    <a href="{{ path('easy_main_homepage') }}" style="position: absolute;z-index: 100;top: 4%;left: 4%;">
+                        <img id="logo" src="{{ asset('/bundles/easymain/images/logoMain.png') }}" >
+                    </a>
+                    <div class="menuList" style="position: absolute;z-index: 100;">
+                        <div class="col-12">
+                            {% for key, menu in teacherMenu %}
+                                <div><a class="yellowHover" href="/stuff/{{ key }}">{{ menu }}</a></div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                    <div class="menu-button" onclick="toggleMenu('secondLayerMenuStuff');" style="position: absolute;z-index: 100;">
+                        <span class=""></span>
+                        <span class=""></span>
+                        <span class=""></span>
+                    </div>
+                </div>
+            {% endif %}
             
 
 
                 <div id="top-header">
                     <div class="container" style="margin-top: 3px;">
-                        <div class="col-md-11">
-                            <a href="{{ path('easy_main_homepage') }}" style="display: table;float: left;">
-                                {% if '/kid/' in app.request.uri %}
-                                    <img src="{{ asset('/bundles/easymain/images/logoKindergarten.png') }}" style="position: relative;width: 110px;margin-top: 10px;">
-                                {% else %}
-                                    <img src="{{ asset('/bundles/easymain/images/logoSchool.png') }}" style="position: relative;width: 110px;margin-top: 10px;">
-                                {% endif %}
-                            </a>
-                            <div class="top">
-                                <a href="/news/" class="">
-                                    <i class="fa fa-newspaper-o"></i>
-                                    <div style="margin-left: -6px;">новости</div>
+                        <div class="row">
+                            <div class="col-md-11">
+                                <a href="{{ path('easy_main_homepage') }}" class="header-logo">
+                                    {% if '/kid/' in app.request.uri %}
+                                        <img src="{{ asset('/bundles/easymain/images/logoKindergarten.png') }}">
+                                    {% else %}
+                                        <img src="{{ asset('/bundles/easymain/images/logoSchool.png') }}">
+                                    {% endif %}
                                 </a>
-                                <a href="/pay/">
-                                    <i class="fa fa-credit-card"></i>
-                                    <div style="margin-left: -2px;">оплата</div>
-                                </a>
-                                <a href="/contacts/all">
-                                    <i class="fa fa-map-marker"></i>
-                                    <div style="margin-left: -10px;">контакты</div>
-                                </a>
-                                <a href="javascript:;" id="opener" style="position: relative;z-index: 100;">
-                                    <i class="fa fa-phone"></i>
-                                    <div style="margin-left: -14px;">записаться</div>
-                                </a>
-                                <div class="contact" style="position: relative;">
-                                    <p><span style="font-size: 0.9em;">(3952)</span> 72-36-72</p>
+                                <div class="top">
+                                    <a href="/news/" class="">
+                                        <i class="fa fa-newspaper-o"></i>
+                                        <div style="margin-left: -6px;">новости</div>
+                                    </a>
+                                    <a href="/pay/">
+                                        <i class="fa fa-credit-card"></i>
+                                        <div style="margin-left: -2px;">оплата</div>
+                                    </a>
+                                    <a href="/contacts/all">
+                                        <i class="fa fa-map-marker"></i>
+                                        <div style="margin-left: -10px;">контакты</div>
+                                    </a>
+                                    <a href="javascript:;" id="opener" style="position: relative;z-index: 100;">
+                                        <i class="fa fa-phone"></i>
+                                        <div style="margin-left: -14px;">записаться</div>
+                                    </a>
+                                    <div class="contact" style="position: relative;">
+                                        <p><span style="font-size: 0.9em;">(3952)</span> 72-36-72</p>
+                                    </div>
+                                    {#<a id="opener" class="buttonHover">записаться</a>#}
                                 </div>
-                                {#<a id="opener" class="buttonHover">записаться</a>#}
-                            </div>
 
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -252,21 +270,23 @@ overflow: hidden;">
                     <div id="page">
                         {% for value in content %}
                             <div class="container">
-                                {% autoescape false %}
-                                    {{ value.content }}
-                                {% endautoescape %}
+                                <div class="row">
+                                    {% autoescape false %}
+                                        {{ value.content }}
+                                    {% endautoescape %}
+                                </div>
                             </div>
                         {% endfor %}
                     </div>
                 {% endblock %}
             
                 <div id="dialog">
-                    <form id="callback" style="color: #fff;font-family: sansRoundedLight;">
+                    <form id="callback">
                         <input type="text" name="name" placeholder="Ваше имя">
                         <input type="text" name="phone" placeholder="Ваш номер телефона">
                         <textarea name="time" placeholder="Время, удобное для занятий" style="resize: none;height: 120px;"></textarea>
 
-                        <p style="margin: 0;font-size: 20px;">Как вы хотите заниматься?</p>
+                        <p style="margin: 0;font-size: 1.1em;">Как вы хотите заниматься?</p>
                         <input type="radio" name="type" value="group">В группе<br/>
                         <input type="radio" name="type" value="individ">Индивидуально<br/>
                         <input type="radio" name="type" value="company">Корпоративно
@@ -397,12 +417,11 @@ overflow: hidden;">
                     inline: true,
                     width: "auto",
                     height: "auto",
-                    maxWidth: "75%",
-                    maxHeight: "85%",
+                    maxWidth: "90%",
+                    maxHeight: "100%",
                     rel: "stuff",
                     closeButton: true,
-                    previous: "previous",
-                    next: "next",
+                    arrowKey : false,
                     onComplete: function(){
                         $('#cboxLoadedContent').slimScroll({});
                     }

@@ -15,7 +15,7 @@
                                 </div>
                             </div>
                             <div class='col-md-6 col-md-offset-1'>
-                                <div class='slidesCont'>
+                                <div class='slides-container'>
                                     {% if contacts.gallery.GalleryHasMedias is defined %}
                                         {% for galleryHasMedia in contacts.gallery.GalleryHasMedias %}
                                             {% media galleryHasMedia.media, 'big' with {'class': ''} %}

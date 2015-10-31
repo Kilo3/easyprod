@@ -1,16 +1,18 @@
-<div class="col-md-11">
+<div class="col-md-11 col-xs-12">
     <a name="anchor{{ content.id }}" style="position: absolute;top: -115px;"></a>
     <div class="stick"></div>
     <p class='title'>{{ content.getName()}}</p>
-    <div class='col-md-5'>
-        <div class='advantage2'>
-            {% for gallery in galleries %}
-                <a style="text-decoration: none;font-family: sansRoundedBold;color: #EA2327;font-size: 1.5em;border-bottom: 2px solid;clear: both;display: table;float: right;" target="_blank" href="{% path gallery.GalleryHasMedias[0].media, 'reference' %}">{{ gallery.name }}</a>
-            {% endfor %}
+    <div class="row">
+        <div class='col-md-5 col-xs-7'>
+            <div class='advantage2 easy-times'>
+                {% for gallery in galleries %}
+                    <a target="_blank" href="{% path gallery.GalleryHasMedias[0].media, 'reference' %}">{{ gallery.name }}</a>
+                {% endfor %}
+            </div>
+            <a class="button-square" href='/easytimes/' style="float:right;">Все выпуски</a>
         </div>
-        <a class="button-square" href='/easytimes/' style="float:right;">Все выпуски</a>
-    </div>
-    <div class='col-md-7'>
-        <img src="{{ asset('/bundles/easymain/images/easy_times.jpg') }}" style="width: 100%;">
+        <div class='col-md-7 col-xs-5'>
+            <img src="{{ asset('/bundles/easymain/images/easy_times.jpg') }}" style="width: 100%;">
+        </div>
     </div>
 </div>
