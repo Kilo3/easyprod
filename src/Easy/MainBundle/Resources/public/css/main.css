@@ -2843,6 +2843,7 @@ table>thead>tr>th{
         z-index: 300;
         top: 4px;
         right: 75px;
+        display: block;
     }
     .top-menu a{
         height: 30px;
