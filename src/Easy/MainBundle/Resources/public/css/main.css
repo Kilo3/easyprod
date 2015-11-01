@@ -463,7 +463,7 @@ section{
 
 
 #nav{
-    top: 0px;
+    top: -250px;
     z-index: 140;
     display: table;
     position: fixed;
@@ -1538,18 +1538,7 @@ opacity: 1;
 }
 
 
-.pace-done .contentLoader {
-    opacity: 1;
-    -webkit-transition:all 1s;
-    -moz-transition:all 1s; 
-    -o-transition:all 1s; 
-    transition:all 1s;
-}
 
-.pace-running .contentLoader {
-/*    opacity: 0;*/
-    //display: none; //!! 2gis тупит из-за этого
-}
 
 /*.pace-running #preloaderBlock{
     display: table;
@@ -2253,6 +2242,7 @@ h4{
     float: left;
     width: 200px;
     height: initial;
+    clear: both;
 }
 .calendar .rightBlock p{
     font-family: robotoLight;
@@ -2746,10 +2736,12 @@ table>thead>tr>th{
     .slides-container .slidesjs-navigation {
         right: 15px;
         left: initial;
+        display:none;
     }
     .slides-container .slidesjs-previous {
         left: 15px !important;
-        right: initial ;
+        right: initial;
+        display:none;
     }
 
     .content-slider .slidesjs-previous {
@@ -2849,7 +2841,7 @@ table>thead>tr>th{
         height: 30px;
         width: 30px;
         font-size: 1em;
-        padding: 5px 0;
+        padding: 6px 0;
         margin-left: 15px;
         display: block !important;
     }

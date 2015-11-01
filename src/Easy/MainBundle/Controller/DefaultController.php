@@ -591,7 +591,7 @@ class DefaultController extends Controller
 
             $topMenu = "";
             $secondLayerMenu = "";
-            return $this->render('EasyMainBundle:Block:calendar_all.html.twig', array(
+            return $this->render('EasyMainBundle:Block:block_calendar_all.html.twig', array(
                 'mainMenu' => $mainMenu,
                 'calendar' => $content,
                 'topMenu' => $topMenu,

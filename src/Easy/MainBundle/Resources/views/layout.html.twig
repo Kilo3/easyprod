@@ -188,14 +188,16 @@ overflow: hidden;">
                         <a href="https://www.facebook.com/easyschool1" target="_blank"><i class="fa fa-facebook"></i></a>
                     </div>
                 </div>
-                <nav id="nav">
-                    <a href="javascript:;" class="special"><i class="fa fa-expand"></i><span class="hidden-xs">навигация по разделу</span></a>
-                    <div>
-                        {% for value in content %}
-                            <a href="#anchor{{ value.id }}">{{ value.name }}</a>
-                        {% endfor %}
-                    </div>
-                </nav>
+                {% if content is defined %}
+                    <nav id="nav">
+                        <a href="javascript:;" class="special"><i class="fa fa-expand"></i><span class="hidden-xs">навигация по разделу</span></a>
+                        <div>
+                            {% for value in content %}
+                                <a href="#anchor{{ value.id }}">{{ value.name }}</a>
+                            {% endfor %}
+                        </div>
+                    </nav>
+                {% endif %}
             </div>
             {% if secondLayerMenu is defined %}
                 {% autoescape false %}
@@ -422,6 +424,9 @@ overflow: hidden;">
                     rel: "stuff",
                     closeButton: true,
                     arrowKey : false,
+                    previous: '',
+                    next: '',
+                    close: '',
                     onComplete: function(){
                         $('#cboxLoadedContent').slimScroll({});
                     }
@@ -462,8 +467,8 @@ overflow: hidden;">
                  
 
                   $( "#opener" ).click(function() {
-                    $( "#dialog" ).dialog( "open" );
-                    $( "#dialog" ).addClass("open");
+                        $( "#dialog" ).dialog( "open" );
+                        $( "#dialog" ).addClass("open");
                   });
                 
                 if($("#map").length){
@@ -653,7 +658,7 @@ overflow: hidden;">
                             pagination: false,
                             callback: {
                                 complete: function(current) {
-                                    $('.content-slider').each(function() {
+                                    /*$('.content-slider').each(function() {
                                         var maxHeight = 0;
                                         $(this).find('figure.slidesjs-slide').each(function() {
                                             if($(this).css('left') == '0px') {
@@ -661,19 +666,19 @@ overflow: hidden;">
                                             }
                                         });
                                         $(this).find(".slidesjs-container").animate({height: maxHeight});
-                                    });
+                                    });*/
                                 }
                             }
                         });
                         
                         $('.content-slider').each(function() {
-                            var maxHeight = 0;
+                            /*var maxHeight = 0;
                             $(this).find('figure.slidesjs-slide').each(function() {
                                 if($(this).css('left') == '0px') {
                                     maxHeight = $(this).height();  
                                 }
                             });
-                            $(this).find(".slidesjs-container").animate({height: maxHeight});
+                            $(this).find(".slidesjs-container").animate({height: maxHeight});*/
                         });
                     
                 }
@@ -723,7 +728,7 @@ overflow: hidden;">
                     video.volume = 0.5;
                 }
                 
-                if($(window).height() <= 970){
+                if($(window).height() <= 970 && $(window).width() > 480){
                     var foo = (970-$(window).height())/2;
                     $('#nav').css({'top':'-'+foo+'px'});
                 }
