@@ -39,9 +39,11 @@ easy_main_contacts:
     defaults: { _controller: EasyMainBundle:Default:contacts }
     
 easy_main_stuff:
-    path:     /stuff/{type}/
-    defaults: { _controller: EasyMainBundle:Default:stuff }
-    
+    path:     /stuff/{type}
+    defaults: { _controller: EasyMainBundle:Default:stuff, type: all }
+    requirements:
+        type: .+
+
     
 form_controller:
     path: /ajax/
@@ -64,10 +66,11 @@ change_form:
 easy_main_controller:
     pattern: /{part1}/
     defaults: { _controller: EasyMainBundle:Default:index}
-    
+
 easy_main_controller_part2:
     pattern: /{part1}/{part2}/
     defaults: { _controller: EasyMainBundle:Default:indexPart2}
+
 #    
 
 #easy_main_kid:

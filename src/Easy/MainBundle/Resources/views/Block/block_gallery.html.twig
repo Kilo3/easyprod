@@ -1,27 +1,22 @@
-{% if random(2) == 3 %}
+{% if splitted is defined and random(1) == 1 %}
     <div class='col-md-11'>
-        <a name="anchor{{ content.id }}" style="position: absolute;top: -115px;"></a>
+        <a name="anchor{{ content.id }}"></a>
         <p class='title'>{{ content.getName()}}</p>
-        <div class="row" style="clear:both;margin: 50px 0;text-align: center;font-family: sansRoundedBold;">
-            <div class="col-md-4" style="border-right: 2px solid #724EA0;">
-                <p>СТАНДАРТНЫЕ</p>
-                <p style="font-family: robotoLight;">2 раза в неделю по 75 минут</p>
-            </div>
-            <div class="col-md-4" style="border-right: 2px solid #724EA0;">
-                <p>ИНТЕНСИВНЫЕ</p>
-                <p style="font-family: robotoLight;">3 раза в неделю по 4 часа</p>
-            </div>
-            <div class="col-md-4" style="">
-                <p>ДЕТСКИЕ</p>
-                <p style="font-family: robotoLight;">2 раза в неделю по 60 минут</p>
-            </div>
+        <div class="row splitted">
+            {% for split in splitted %}
+                <div class="col-md-4 col-xs-12">
+                    {% autoescape false %}
+                        {{ split }}
+                    {% endautoescape %}
+                </div>
+            {% endfor %}
         </div>
         <div class='row'>
             <div class="col-md-10 col-md-offset-1">
                 <div class='slides-container'>
                     {% if gallery.GalleryHasMedias is defined %}
                         {% for galleryHasMedia in gallery.GalleryHasMedias %}
-                            {% media galleryHasMedia.media, 'big' with {'class': ''} %}
+                            <div style="background:url('{% path galleryHasMedia.media, 'big' %}');background-size: cover;background-position: center center; height: 100%;"></div>
                         {% endfor %}
                     {% endif %}
                     <a href='#' class='slidesjs-previous slidesjs-navigation'><i class='fa fa-chevron-left'></i></a>
@@ -31,7 +26,7 @@
         </div>
     </div>
 {% else %}
-    <div class='col-md-11' style="border-bottom: none;">
+    <div class='col-md-11'>
         <a name="anchor{{ content.id }}"></a>
         <div class="stick"></div>
         <div class="row">

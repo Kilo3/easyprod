@@ -15,10 +15,10 @@ class DefaultController extends Controller
         
         $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8)); // id = 8 корень меню
         if(!isset($currentUrl)){
-            if($part1 == 'irk'){ // временная чушь для старой выдачи яндекса
+            /*if($part1 == 'irk'){ // временная чушь для старой выдачи яндекса
                 header("Location:/");
                 die();
-            }
+            }*/
             $topMenu = "";
             return $this->render('EasyMainBundle:Page:404.html.twig', array(
                 'mainMenu' => $mainMenu,
@@ -55,11 +55,24 @@ class DefaultController extends Controller
                     break;
                 
                 case 'gallery':
+
+                    $foo = explode("<p>&nbsp;</p>\r\n",$value->getContent());
+
+                    if(count($foo) == 3){
+                        $foo = $this->render('EasyMainBundle:Block:block_gallery.html.twig', array(
+                            'content'   => $value,
+                            'splitted' => $foo,
+                            'gallery'   => $value->getGallery(),
+                        ));
+                    }else{
+                        $foo = $this->render('EasyMainBundle:Block:block_gallery.html.twig', array(
+                            'content'   => $value,
+                            'gallery'   => $value->getGallery(),
+                        ));
+                    }
+
                  
-                    $foo = $this->render('EasyMainBundle:Block:block_gallery.html.twig', array(
-                        'content'   => $value,
-                        'gallery'   => $value->getGallery(),
-                    ));
+
                     $value->setContent($foo->getContent());
                     break;
                 
@@ -695,24 +708,25 @@ class DefaultController extends Controller
     
     public function stuffAction($type)
     {
+        $type = str_replace('/','',$type); // некорректно, нужно через routing работать
         $hp = $this->getDoctrine()->getManager();
         $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8)); // id = 8 корень меню
         $title = Stuff::getTypes();
-        
-        $stuff = $hp->getRepository('EasyMainBundle:Stuff')->findBy(array('type' => $type),array('name'=>'ASC'));
-        $teacherMenu = Stuff::getTypes();
-        
+        if($type == 'all'){
+            $stuff = $hp->getRepository('EasyMainBundle:Stuff')->findAll();
+            $all = 1;
+        }else{
+            $stuff = $hp->getRepository('EasyMainBundle:Stuff')->findBy(array('type' => $type),array('name'=>'ASC'));
+            $all = 0;
+        }
+
         if(count($stuff) > 0){
-            $topMenu = "";
-            $secondLayerMenu = "";
             return $this->render('EasyMainBundle:Default:stuff.html.twig', array(
                 'mainMenu' => $mainMenu,
                 'content' => $stuff,
-                'topMenu' => $topMenu,
-                'secondLayerMenu' => $secondLayerMenu,
-                'teacherMenu' => $teacherMenu,
                 'color' => 'purple',
-                'title' => $title
+                'title' => $title,
+                'all' => $all,
             ));
         }else{
             $topMenu = "";

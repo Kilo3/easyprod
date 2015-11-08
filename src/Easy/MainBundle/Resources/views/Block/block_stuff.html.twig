@@ -5,10 +5,10 @@
             <p class="title">{{ content.getName() }}</p>
         </div>
         <div class="col-md-6 hidden-xs">
-            <a class="button-square" href="javascript:;" onclick="toggleMenu('secondLayerMenuStuff');" style="float:right;">Все преподаватели</a>
+            <a class="button-square" href="{{ path('easy_main_stuff', {'type': null}) }}" style="float:right;">Все преподаватели</a>
         </div>
         <div class="visible-xs col-xs-6">
-            <a class="button-square" href="javascript:;" onclick="toggleMenu('secondLayerMenuStuff');" style="float:right;">Все</a>
+            <a class="button-square" href="{{ path('easy_main_stuff', {'type': null}) }}" style="float:right;">Все</a>
         </div>
     </div>
     

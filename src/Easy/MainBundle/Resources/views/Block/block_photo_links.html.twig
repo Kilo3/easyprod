@@ -1,13 +1,21 @@
 <div class="col-md-11">
     <p class="title">{{ content.getName() }}</p>
     <div class="links">
-        {% for gallery in galleries %}
-            <a href="/gallery/{{ gallery.id }}">
-                {% if gallery.galleryHasMedias[0] is defined %}
-                    {% media gallery.galleryHasMedias[0].media, 'big' with {'class': ''} %}
+        <div class="row" style="margin-bottom: 30px;">
+            {% for gallery in galleries %}
+                <div class="col-md-3 col-xs-3">
+                    <a href="/gallery/{{ gallery.id }}">
+                        {% if gallery.galleryHasMedias[0] is defined %}
+                            {% media gallery.galleryHasMedias[0].media, 'big' with {'class': ''} %}
+                        {% endif %}
+                        {{ gallery.name }}
+                    </a>
+                </div>
+                {% if loop.index%4 == 0 %}
+                    </div>
+                     <div class="row" style="margin-bottom: 30px;">
                 {% endif %}
-                {{ gallery.name }}
-            </a>
-        {% endfor %}
+            {% endfor %}
+         </div>
     </div>
 </div>

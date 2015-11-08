@@ -908,14 +908,15 @@ a.saladHover:hover{
 }*/
 
 
-.socialIcons{
+.social-icons{
     position: absolute;
     right: 3%;
     bottom: 5%;
     font-size: 25px;
+    z-index: 100;
 }
 
-.socialIcons i {
+.social-icons    i {
     background: #9395A4;
     color: #fff;
     width: 35px;
@@ -2129,9 +2130,43 @@ table>tbody>tr>td{
     height: 165px;
     background-size: cover;
 }
+.links img{
+    max-width: 100%;
+    height: initial;
+}
+#video-container a.close{
+    position: absolute;
+    right: 40px;
+    top: 40px;
+    font-size: 4em !important;
+}
+.splitted{
+    clear:both;margin: 50px 0;text-align: center;
+}
+.splitted p{
+    font-family: robotoLight;
+}
+.splitted strong{
+    font-family: sansRoundedBold;
+}
+.splitted>div{
+    border-right: 2px solid #724EA0;
+}
+.splitted>div:last-child{
+    border-right: none;
+}
 .blueimp-gallery .modal-dialog{
     margin: 0 auto;
     margin-top: 5%;
+}
+
+#video-container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
 }
 .modal-content {
     position: relative;
@@ -2911,5 +2946,11 @@ table>thead>tr>th{
     .preloader .main-button{
         font-size: 0.9em;
         width: 275px;
+    }
+    .splitted{
+        margin: 0;
+    }
+    .splitted>div{
+        border-right: none;
     }
 }

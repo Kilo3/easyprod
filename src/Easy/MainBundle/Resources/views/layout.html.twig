@@ -182,13 +182,13 @@ overflow: hidden;">
                         <span style="margin-right: 20px;"><i class="dot"></i>info@e-a-s-y.ru</span>
                         <span><i class="dot"></i>7(3952)72-36-72</span>
                     </div>
-                    <div class="socialIcons col-md-4" style="position: absolute;z-index: 100;">
+                    <div class="social-icons">
                         <a href="http://vk.com/easyschool" target="_blank"><i class="fa fa-vk"></i></a>
                         <a href="https://instagram.com/easy_school/" target="_blank"><i class="fa fa-instagram"></i></a>
                         <a href="https://www.facebook.com/easyschool1" target="_blank"><i class="fa fa-facebook"></i></a>
                     </div>
                 </div>
-                {% if content is defined %}
+                {% if content is defined and content is iterable and content|length > 1 and content[0].url is defined %}
                     <nav id="nav">
                         <a href="javascript:;" class="special"><i class="fa fa-expand"></i><span class="hidden-xs">навигация по разделу</span></a>
                         <div>
@@ -355,6 +355,16 @@ overflow: hidden;">
                 $('#thankyou').addClass(color);
                 $('.stick').addClass('bg'+colorCapitalize);
             }
+            function closeVideo(){
+                $("#angle-video").css({
+                    'width':'100%',
+                    'padding-top':'0'
+                });
+                $('#angle-video').appendTo('.angle-block-video');
+                $("#video-container").remove();
+                var video = document.getElementById('angle-video');
+                video.play();
+            };
             
             $(function(){
 
@@ -526,68 +536,49 @@ overflow: hidden;">
                     },40);
                 });
 
-                
-                
-                $('.play').on('click', function(){
-                    $('.videoPreloader').fadeOut();
-                    var vid = $('.videoContainer video').get(0);
-                    vid.play();
-                    $('.play').toggle();
-                    $('.pause').toggle();
-                });
-                
-                $('.pause').on('click', function(){
-                    var vid = $('.videoContainer video').get(0);
-                    vid.pause();
-                    $('.play').toggle();
-                    $('.pause').toggle();
-                });
-                
-                $('.expand').on('click', function(){
-                    $(".videoContainer").before("<div id='videoZone'><div>");
-                    $(".videoContainer").insertBefore(".pace");
-                    $(".videoContainer").css({
-                        'position':'absolute',
-                        'width':'100%',
-                        'height':'inherit',
-                        'z-index':'10000',
-                        'overflow':'hidden',
-                        'background-color':'white'
+
+                //angle-video start play and loop
+                if($('#angle-video').length) {
+                    var video = document.getElementById('angle-video');
+                    video.defaultMuted = true;
+                    video.controls = true;
+                    var videoStartTime = 0;
+                    var durationTime = 0;
+
+                    video.addEventListener('loadedmetadata', function () {
+                        videoStartTime = 3;
+                        durationTime = 4;
+                        this.currentTime = videoStartTime;
+                    }, false);
+
+                    video.addEventListener('timeupdate', function () {
+                        if (this.currentTime > videoStartTime + durationTime && $('#video-container').length == 0) {
+                            this.currentTime = videoStartTime;
+                        }
                     });
-                    
-                    var total = window.innerHeight - $('.videoContainer video').height();
-                    var foo = Math.round(total/2);
-                    $('.videoContainer video').css({'padding-top':foo+'px'});
-                    
-                    $('.expand').toggle();
-                    $('.compress').toggle();
-                    
-                    if($('.play').css('display') === 'none'){
-                        var vid = $('.videoContainer video').get(0);
-                        vid.play();
-                    }
-                });
-                
-                $('.compress').on('click', function(){
-                    $(".videoContainer").insertAfter("#videoZone");
-                    $("#videoZone").remove();
-                    $(".videoContainer").css({
-                        'position':'',
-                        'width':'',
-                        'height':'',
-                        'z-index':'',
-                        'overflow':'',
-                        'background-color':''
+
+                    //play and expand
+
+                    $('.play').on('click', function () {
+                        $("#page").before("<div id='video-container'></div>");
+                        $("#video-container").html("<a href='#' onclick='closeVideo()' class='close'><i class='fa fa-times-circle-o'></i></a>");
+                        $("#angle-video").css({
+                            'width': '95%',
+                            'margin': '0 auto',
+                            'display': 'block'
+                        });
+                        $("#angle-video").appendTo("#video-container");
+
+                        var total = window.innerHeight - $('#video-container video').height();
+                        var foo = Math.round(total / 2);
+                        $('#video-container video').css({'padding-top': foo + 'px'});
+
+                        video.currentTime = 1;
                     });
-                    $('.videoContainer video').css({'padding-top':''});
-                    
-                    $('.expand').toggle();
-                    $('.compress').toggle();
-                    if($('.play').css('display') === 'none'){
-                        var vid = $('.videoContainer video').get(0);
-                        vid.play();
-                    }
-                });
+                }
+
+                
+
                 
                 
                 $('body').mousemove(function(e){
@@ -728,9 +719,9 @@ overflow: hidden;">
                     video.volume = 0.5;
                 }
                 
-                if($(window).height() <= 970 && $(window).width() > 480){
+                if($(window).width() > 480){
                     var foo = (970-$(window).height())/2;
-                    $('#nav').css({'top':'-'+foo+'px'});
+                    $('#nav').css({'top':foo+'px'});
                 }
                 
                 
