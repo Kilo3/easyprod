@@ -364,6 +364,7 @@ overflow: hidden;">
                 $("#video-container").remove();
                 var video = document.getElementById('angle-video');
                 video.volume = 0;
+                video.controls = false;
                 video.play();
             };
             
@@ -542,8 +543,9 @@ overflow: hidden;">
                 if($('#angle-video').length) {
                     var video = document.getElementById('angle-video');
                     video.defaultMuted = false;
-                    video.controls = true;
+                    video.controls = false;
                     video.volume = 0;
+                    video.play;
                     var videoStartTime = 0;
                     var durationTime = 0;
 
@@ -569,6 +571,7 @@ overflow: hidden;">
                         var total = window.innerHeight - $('#video-container video').height();
                         var foo = Math.round(total / 2);
                         $('#video-container video').css({'padding-top': foo + 'px'});
+                        video.controls = true;
                         video.volume = 0.7;
                         video.currentTime = 1;
                     });
