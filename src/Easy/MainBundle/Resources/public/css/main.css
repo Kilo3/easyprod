@@ -1091,6 +1091,9 @@ i.dot{
     text-decoration: none;
     margin: 120px 33%;
 }
+.play:hover, .play:focus{
+    color: transparent;
+}
 .play>i{
     margin: 0 auto;
     display: table;
@@ -2139,6 +2142,15 @@ table>tbody>tr>td{
     right: 40px;
     top: 40px;
     font-size: 4em !important;
+    z-index: 15;
+}
+#video-container video{
+    width: 95%;
+    margin: 0px auto;
+    display: block;
+    max-height: 80%;
+    z-index: 10;
+    position: relative;
 }
 .splitted{
     clear:both;margin: 50px 0;text-align: center;
@@ -2161,7 +2173,7 @@ table>tbody>tr>td{
 }
 
 #video-container{
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     z-index: 10000;

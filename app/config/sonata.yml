@@ -133,9 +133,7 @@ sonata_media:
                 - sonata.media.provider.vimeo
 
             formats:
-                small: { width: 100 , quality: 70}
-                big:   { width: 540 , quality: 100}
-                special:   { width: 440, height: 200, quality: 100}
+                big:   { width: 865 , quality: 100}
         gallery:
             providers:
                 - sonata.media.provider.youtube
@@ -143,16 +141,13 @@ sonata_media:
                 - sonata.media.provider.file
                 - sonata.media.provider.vimeo
             formats:
-                small: { width: 100 , quality: 70}
-                medium:   { width: 500 , quality: 80}
-                big:   { width: 540 , quality: 100}
-                special:   { width: 440, height: 200, quality: 100}
+               big:   { width: 865 , quality: 100}
         easy_times:
             providers:
                 - sonata.media.provider.image
                 - sonata.media.provider.file
             formats:
-                big:   { width: 540 , quality: 100}
+                big:   { width: 865 , quality: 100}
             
 
     cdn:
