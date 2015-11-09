@@ -37,3 +37,10 @@
 /composer.phar
 /src/Easy/MainBundle/Resources/public/video/*
 /src/Easy/MainBundle/Resources/public/video/
+
+# IDEA
+.idea/
+
+# specific
+Apache-2.4+Nginx-1.7_vhosta.conf
+Apache-2.4+Nginx-1.7_vhostn.conf

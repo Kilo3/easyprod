@@ -11,7 +11,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/jquery-ui.css') }}" type="text/css" media="all" />
-            <link rel="stylesheet" href="{{ asset('bundles/easymain/css/jquery.fullPage.css') }}" type="text/css" media="all" />
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/font-awesome.min.css') }}" type="text/css" media="all" />
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/bootstrap.css') }}" type="text/css" media="all" />
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/main.css') }}" type="text/css" media="all" />
@@ -19,35 +18,22 @@
         {% block javascripts %}
             <script src="{{ asset('bundles/easymain/js/jquery-2.1.4.min.js') }}"></script>
             <script src="{{ asset('bundles/easymain/js/jquery.cookie.js') }}"></script>
-            <script src="{{ asset('bundles/easymain/js/jquery.slimscroll.min.js') }}"></script>
             <script src="{{ asset('bundles/easymain/js/pace.min.js') }}"></script>
-            <script src="{{ asset('bundles/easymain/js/jquery.slides.min.js') }}"></script>
-            {#<script src="{{ asset('bundles/easymain/js/in-viewport.min.js') }}"></script>#}
             <script src="{{ asset('bundles/easymain/js/jquery-ui.js') }}" ></script>
-            <script src="{{ asset('bundles/easymain/js/jquery.easing.1.3.js') }}"></script>
-
-            <script src="{{ asset('bundles/easymain/js/jquery.fullPage.js') }}"></script>
-
-            
-            <script src="http://maps.api.2gis.ru/2.0/loader.js?pkg=full" data-id="dgLoader"></script>
-            <script src="{{ asset('bundles/easymain/js/main.js') }}" ></script>
         {% endblock %}
     </head>
     <body>
-        <div id="preloaderBlock" style="">
-            <div>
-                <img id="preloaderImage" src="{{ asset('bundles/easymain/images/logoMain.png') }}" >
-                <p>Пожалуйста, выберите город:</p>
-                <a href="#" onclick="hidePreloader()">Иркутск</a>
-                <a href="#" onclick="hidePreloader()">Ангарск</a>
-                <a href="//kr.e-a-s-y.ru/">Красноярск</a>
-                <a href="//uu.e-a-s-y.ru">Улан-Удэ</a>
-            </div>
-        </div>
-        {#<div>
-            <p>Город</p>
-        </div>#}
         <div class="contentLoader">
+            <div id="preloaderBlock" style="">
+                <div>
+                    <img id="preloaderImage" src="{{ asset('bundles/easymain/images/logoMain.png') }}" >
+                    <p>Пожалуйста, выберите город:</p>
+                    <a href="#" onclick="hidePreloader()">Иркутск</a>
+                    <a href="#" onclick="hidePreloader()">Ангарск</a>
+                    <a href="//kr.e-a-s-y.ru/">Красноярск</a>
+                    <a href="//uu.e-a-s-y.ru">Улан-Удэ</a>
+                </div>
+            </div>
             
             <div id="site-header">
                 <div class="menu-button" onclick="toggleMenu('mainMenu');">
@@ -78,14 +64,6 @@
                             <div style="margin-left: -10px;">контакты</div>
                         </a>
                     </div>
-                    {#<div class="fastLink menuList" style="position: absolute;z-index: 100;top: 2%;right: 10%;width: auto;">
-                        <div>
-                            <a href="/pay" class="purpleHover" style="width: 130px;">Оплата</a>
-                            <a href="/news" class="purpleHover" style="width: 130px;">Новости</a>
-                            <a href="/contacts/all" class="purpleHover" style="width: 130px;">Контакты</a>
-                        </div>
-                    </div>#}
-
                     <div class="menuList" style="position: relative;z-index: 100;">
                         <div class="row">
                             <div class="col-md-4 col-md-offset-2 col-xs-5 col-xs-offset-0 menu-section-link">
@@ -98,11 +76,11 @@
                                 {% endfor %}
                             </div>
                             {% for value in mainMenu %}
-                            {% if '/'~value.url~'/' in path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
-                            <div class="col-md-6 col-xs-7 menu-section-content" info="{{ loop.index }}" style="display:block;">
-                                {% else%}
-                                <div class="col-md-6 col-xs-7 menu-section-content" info="{{ loop.index }}">
-                                    {% endif %}
+                                {% if '/'~value.url~'/' in path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+                                    <div class="col-md-6 col-xs-7 menu-section-content" info="{{ loop.index }}" style="display:block;">
+                                {% else %}
+                                    <div class="col-md-6 col-xs-7 menu-section-content" info="{{ loop.index }}">
+                                {% endif %}
                                     <a class="" href="{{ path('easy_main_homepage') }}{{ value.url }}">{{ value.title }}</a>
                                     {% for children in value.children %}
                                         <a style="margin-left:20px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}">{{ children.title }}</a>
@@ -110,81 +88,38 @@
                                             <a style="margin-left:40px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}/{{ lastchildren.url }}">{{ lastchildren.title }}</a>
                                         {% endfor %}
                                     {% endfor %}
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <div class="menuInfo col-md-8 col-xs-8" style="position: absolute;z-index: 100;">
-                            <p class="hidden-xs" style="margin-bottom: 5px;">2000-2015 Сеть образовательных центров Easy School</p>
-                            <span style="margin-right: 20px;"><i class="dot"></i>info@e-a-s-y.ru</span>
-                            <span><i class="dot"></i>7(3952)72-36-72</span>
-                        </div>
-                        <div class="socialIcons col-md-4" style="position: absolute;z-index: 100;">
-                            <a href="http://vk.com/easyschool" target="_blank"><i class="fa fa-vk"></i></a>
-                            <a href="https://instagram.com/easy_school/" target="_blank"><i class="fa fa-instagram"></i></a>
-                            <a href="https://www.facebook.com/easyschool1" target="_blank"><i class="fa fa-facebook"></i></a>
+                                    </div>
+                            {% endfor %}
                         </div>
                     </div>
+                    <div class="menuInfo col-md-8 col-xs-8" style="position: absolute;z-index: 100;">
+                        <p class="hidden-xs" style="margin-bottom: 5px;">2000-2015 Сеть образовательных центров Easy School</p>
+                        <span style="margin-right: 20px;"><i class="dot"></i>info@e-a-s-y.ru</span>
+                        <span><i class="dot"></i>7(3952)72-36-72</span>
+                    </div>
+                    <div class="social-icons">
+                        <a href="http://vk.com/easyschool" target="_blank"><i class="fa fa-vk"></i></a>
+                        <a href="https://instagram.com/easy_school/" target="_blank"><i class="fa fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/easyschool1" target="_blank"><i class="fa fa-facebook"></i></a>
+                    </div>
                 </div>
-                
             </div>
-            
-            
-            
-
 
             <div id="top-header">
                 <a href="{{ path('easy_main_homepage') }}">
                     <img src="{{ asset('/bundles/easymain/images/logoSchool.png') }}" style="position: relative;">
                 </a>
-                {#{% block topHeader %}
-                {% endblock %}#}
-                <ul style="position: relative;">
-                    
-                    {#<li><a href="#section1" class="scroll">групповые занятия</a></li>
-                    <li><a href="#section2" class="scroll">методика</a></li>
-                    <li><a href="#section3" class="scroll">компаниям</a></li>
-                    <li><a href="#section6" class="scroll">контакты</a></li>#}
-                </ul>
                 <div class="contact" style="position: relative;">
                     <a id="opener" class="buttonHover">записаться</a>
                     <p><span style="font-size: 17px;">(3952)</span> 72-36-72</p>
                 </div>
             </div>
 
-            <div id="fullpage">
-                {% block content %}
-                {% endblock %}
-            </div>
-            
-            <div id="dialog">
-                <form id="callback">
-                    <input type="text" name="name" placeholder="Ваше имя">
-                    <input type="text" name="phone" placeholder="Ваш номер телефона">
-                    <a class="submit">жду звонка</a>
-                    <a class='close' onclick="$( '#dialog' ).dialog( 'close' )">
-                        <span class=""></span>
-                        <span class=""></span>
-                    </a>
-                </form>
-            </div>
-            <div id="thankyou">
-                <p style='font-size: 42px;margin: 0;'>СПАСИБО!</p>
-                <p style='font-size: 22px;'>Мы свяжемся с вами<br/>в ближайшее время</p>
-                <a href="#" class='close' onclick="$( '#thankyou' ).dialog( 'close' )">
-                    <span class=""></span>
-                    <span class=""></span>
-                </a>
-            </div>
+            {% block content %}
+            {% endblock %}
         </div>
         <script>
-           
-            
             $(window).on('load', function () {
-                //$.cookie('qwe',66, {path: '/'});
-                //console.log($.cookie('cityId'));
-                toggleMenu('mainMenu');
-                toggleMenu('mainMenu');
                 if(typeof $.cookie('cityId') === 'undefined'){
                     Pace.stop();
                     $('#preloaderBlock').fadeIn();
@@ -208,290 +143,6 @@
             
             
             $(function(){
-                $('a.submit').on('click', function(){
-                    $( '#dialog' ).dialog( 'close' );
-                    $( '#thankyou' ).dialog( 'open' );
-                });
-                
-                $('#nav a+div').on('click', function(){
-                    var mark = $(this).parents().attr('data-menuanchor');
-                    $.fn.fullpage.moveTo(mark);
-                });
-                
-                $( "#dialog" ).dialog({
-                    autoOpen: false,
-                    modal: true,
-                    resizable: false,
-                    draggable: false,
-                    minWidth: 450,
-                    height: 350,
-                    close: function( event, ui ) {
-                        $( "#dialog" ).removeClass("open");
-                    }
-                 });
-                 
-                 $( "#thankyou" ).dialog({
-                    autoOpen: false,
-                    modal: true,
-                    resizable: false,
-                    draggable: false,
-                    height: 300,
-                    minWidth: 400,
-                    open: function( event, ui ) {
-                        $( "#thankyou" ).addClass("open");
-                    },
-                    close: function( event, ui ) {
-                        $( "#thankyou" ).removeClass("open");
-                    }
-                 });
-                 
-
-                  $( "#opener" ).click(function() {
-                    $( "#dialog" ).dialog( "open" );
-                    $( "#dialog" ).addClass("open");
-                  });
-                
-                {#var scene = document.getElementById('scene');
-                var parallax = new Parallax(scene);#}
-                
-                if($("#map").length){
-                    var map;
-                    DG.then(function() {
-                        var map;
-
-                        map = DG.map('map', {
-                            center: [52.261, 104.293],
-                            zoom: 11
-                        });
-
-
-                        $(".address a").each(function(index){
-                            DG.marker($(this).data('coordinates')).addTo(map).bindPopup('Вы кликнули по мне!'+index);
-                        });
-
-                        $('.address a').on('click', function(){
-                            var coordinates = $(this).data('coordinates');
-                            moveTo(coordinates);
-                        });
-
-                        function moveTo(coordinates) {
-                            map.setView(coordinates);
-                        };
-                    });
-                }
-                
-                $(".panel").css({
-                    "height":$(window).height()
-                });
-                var timer;
-
-                $(window).resize(function() {
-                    clearTimeout(timer);
-                    timer = setTimeout(function() {
-                            $(".panel").css({
-                                    "height":$(window).height()
-                            });
-                    },40);
-                });
-
-                
-
-
-                {#$(".scroll").click(function(e) {
-                        e.preventDefault();
-                        $.scrollify("move",$(this).attr("href"));
-                });#}
-                
-                
-                
-                {#var canvas = $('#canvasMainMenu1 canvas').get(0);
-                var context = canvas.getContext('2d');
-
-                var rectX = 20;
-                var rectY = 10;
-
-                var rectWidth = 315;
-                var rectHeight = 55;
-
-                rectWidth = rectWidth-rectX;
-
-                context.beginPath();
-                context.moveTo(rectX, rectY);
-                context.lineTo(rectX+rectWidth, rectY);
-                context.quadraticCurveTo(rectX+rectWidth+10, 10, rectX+rectWidth+10, 20);
-                context.lineTo(rectX+rectWidth+10, rectHeight);
-                context.quadraticCurveTo(rectX+rectWidth+10, rectHeight+10, rectX+rectWidth, rectHeight+10);
-
-                context.lineTo(rectX+16, rectHeight+rectY);
-
-                context.bezierCurveTo(rectX, rectHeight+rectY+16, rectX, rectHeight+rectY+16, rectX, rectHeight+rectY);
-                context.quadraticCurveTo(10, rectHeight+10, 10, rectHeight);
-                context.lineTo(10, 20);
-                context.quadraticCurveTo(10, 10, rectX, rectY);
-
-                context.fillStyle = '#724EA0';
-                context.fill();
-                context.lineWidth = 1;
-                context.strokeStyle = 'transparent';
-
-                context.stroke();#}
-
-                {#setTimeout(function() { 
-
-                    var canvas = document.getElementById('canvasMainMenu1');
-                    var context = canvas.getContext('2d');
-
-                    var rectX = 20;
-                    var rectY = 10;
-
-                    var rectWidth = 315;
-                    var rectHeight = 55;
-
-                    rectWidth = rectWidth-rectX;
-
-                    context.beginPath();
-                    context.moveTo(rectX, rectY);
-                    context.lineTo(rectX+rectWidth, rectY);
-                    context.quadraticCurveTo(rectX+rectWidth+10, 10, rectX+rectWidth+10, 20);
-                    context.lineTo(rectX+rectWidth+10, rectHeight);
-                    context.quadraticCurveTo(rectX+rectWidth+10, rectHeight+10, rectX+rectWidth, rectHeight+10);
-
-                    context.lineTo(rectX+16, rectHeight+rectY);
-
-                    context.bezierCurveTo(rectX, rectHeight+rectY+16, rectX, rectHeight+rectY+16, rectX, rectHeight+rectY);
-                    context.quadraticCurveTo(10, rectHeight+10, 10, rectHeight);
-                    context.lineTo(10, 20);
-                    context.quadraticCurveTo(10, 10, rectX, rectY);
-
-                    context.fillStyle = '#724EA0';
-                    context.fill();
-                    context.lineWidth = 1;
-                    context.strokeStyle = 'transparent';
-
-                    context.stroke();
-
-                    context.fillStyle = "#FFF";
-                    context.font = '29px sansRoundedBold';
-                    context.fillText("Узнать подробнее", rectX+18, rectY+37);
-                    
-                    
-                    
-                    
-                    var canvas = document.getElementById('canvasMainMenu2');
-                    var context = canvas.getContext('2d');
-
-                    var rectX = 20;
-                    var rectY = 10;
-
-                    var rectWidth = 315;
-                    var rectHeight = 55;
-
-                    rectWidth = rectWidth-rectX;
-
-                    context.beginPath();
-                    context.moveTo(rectX, rectY);
-                    context.lineTo(rectX+rectWidth, rectY);
-                    context.quadraticCurveTo(rectX+rectWidth+10, 10, rectX+rectWidth+10, 20);
-                    context.lineTo(rectX+rectWidth+10, rectHeight);
-                    context.quadraticCurveTo(rectX+rectWidth+10, rectHeight+10, rectX+rectWidth, rectHeight+10);
-
-                    context.lineTo(rectX+16, rectHeight+rectY);
-
-                    context.bezierCurveTo(rectX, rectHeight+rectY+16, rectX, rectHeight+rectY+16, rectX, rectHeight+rectY);
-                    context.quadraticCurveTo(10, rectHeight+10, 10, rectHeight);
-                    context.lineTo(10, 20);
-                    context.quadraticCurveTo(10, 10, rectX, rectY);
-
-                    context.fillStyle = '#724EA0';
-                    context.fill();
-                    context.lineWidth = 1;
-                    context.strokeStyle = 'transparent';
-
-                    context.stroke();
-
-                    context.fillStyle = "#FFF";
-                    context.font = '29px sansRoundedBold';
-                    context.fillText("Узнать подробнее", rectX+18, rectY+37);
-
-                }, 100);#}
-                
-                
-                $('.play').on('click', function(){
-                    //var vid = document.getElementById("mainVideo");
-                    var vid = $('.videoContainer video').get(0);
-                    vid.play();
-                    $('.play').toggle();
-                    $('.pause').toggle();
-                });
-                
-                $('.pause').on('click', function(){
-                    var vid = $('.videoContainer video').get(0);
-                    vid.pause();
-                    $('.play').toggle();
-                    $('.pause').toggle();
-                });
-                
-                
-                $('body').mousemove(function(e){
-                    {#var middle = 0;
-                    var amountMovedX = middle + (e.pageX * -1 / 30);
-                    $('#top-header ul').css({'left':amountMovedX+'px'});
-                    
-                    amountMovedX = middle + (e.pageX * -1 / 100);
-                    $('#top-header img').css({'left':amountMovedX+'px'});
-                    
-                    amountMovedX = middle + (e.pageX * -1 / 50);
-                    $('#top-header .contact').css({'left':amountMovedX+'px'});
-                    
-                    amountMovedX = middle + (e.pageX * -1 / 120);
-                    $('.content').css({'left':amountMovedX+'px'});#}
-                });
-
-
-                {#;(function($, win) {
-                    $.fn.inViewport = function(cb) {
-                       return this.each(function(i,el){
-                         function visPx(){
-                           var H = $(this).height(),
-                               r = el.getBoundingClientRect(), t=r.top, b=r.bottom;
-                           return cb.call(el, Math.max(0, t>0? H-t : (b<H?b:H)));  
-                         } visPx();
-                         $(win).on("resize scroll", visPx);
-                       });
-                    };
-                  }(jQuery, window));#}
-
-
-                $('.slidesCont').slidesjs({
-                    width: 940,
-                    height: 528,
-                    navigation: false
-                  });
-                
-                var sections = new Array();
-                var count = $('.section').length;
-                for(var i=1;i<=count;i++){
-                    sections.push('section'+i);
-                }
-                $('#fullpage').fullpage({
-                        anchors: sections,
-                        menu: '#menu',
-                        css3: true,
-                        scrollingSpeed: 1000,
-                        scrollOverflow:true
-                });
-                
-                if(!!navigator.userAgent.match(/Trident.*rv\:11\./)){
-                    {#$('#mainVideo').css('height','auto');#}
-                    $('#fullpage').css('position','static');
-                }
-                {#var colors = new Array('purple', 'yellow', 'lightBlue', 'blue', 'green', 'salad');
-                $('.menuList div a').each(function(index, value){
-                    var random = Math.floor((Math.random() * colors.length) + 0);
-                    $(this).attr('class', colors[random]+'Hover');
-                });#}
-                
-                
                 if($("#mainVideoSource").length){
                     var video = document.getElementById("mainVideoSource");
                     video.volume = 0.10;
@@ -511,13 +162,11 @@
                     }
                     
                 });
-                
                 $('.menu-section-link a').on('click', function(){
                     $('.menu-section-content').css({'display':'none'});
                    var section = $(this).attr('info');
                    $('.menu-section-content[info='+section+']').css({'display':'block'});
                 });
-                
             });
             
             
@@ -527,7 +176,6 @@
         {% block videoFullScreenFix %}
         {% endblock %}
         
-        </script>
         <!— Yandex.Metrika counter —>
         <script type="text/javascript">
         (function (d, w, c) {

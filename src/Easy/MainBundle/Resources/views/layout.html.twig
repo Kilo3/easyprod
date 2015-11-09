@@ -11,48 +11,39 @@
             {% endblock %}
         </title>
        {% if content[0].url.seodescription is defined %}
-            <meta name="descripttion" content="{{ content[0].url.seodescription }}" />
+            <meta name="description" content="{{ content[0].url.seodescription }}" />
        {% endif %}
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link rel="shortcut icon" href="/favicon.ico?v=1" type="image/x-icon">
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/jquery-ui.css') }}" type="text/css" media="all" />
-            {#<link rel="stylesheet" href="{{ asset('bundles/easymain/css/jquery.fullPage.css') }}" type="text/css" media="all" />#}
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/font-awesome.min.css') }}" type="text/css" media="all" />
+
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/blueimp-gallery.min.css') }}" type="text/css" media="all" />
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/bootstrap-image-gallery.css') }}" type="text/css" media="all" />
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/colorbox.css') }}" type="text/css" media="all" />
+
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/bootstrap.css') }}" type="text/css" media="all" />
-            
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/main.css') }}" type="text/css" media="all" />
         {% endblock %}
+
         {% block javascripts %}
             <script src="{{ asset('bundles/easymain/js/jquery-2.1.4.min.js') }}"></script>
             <script src="{{ asset('bundles/easymain/js/jquery.cookie.js') }}"></script>
-            {#<script src="{{ asset('bundles/easymain/js/jquery.slimscroll.min.js') }}"></script>#}
-            
-            <script src="{{ asset('bundles/easymain/js/jquery.slides.min.js') }}"></script>
-            
             <script src="{{ asset('bundles/easymain/js/jquery-ui.js') }}" ></script>
-            {#<script src="{{ asset('bundles/easymain/js/jquery.easing.1.3.js') }}"></script>#}
-            
-            {#<script src="{{ asset('bundles/easymain/js/jquery.fullPage.js') }}"></script>#}
+
+            <script src="{{ asset('bundles/easymain/js/jquery.slides.min.js') }}"></script>
             <script src="{{ asset('bundles/easymain/js/jquery.blueimp-gallery.min.js') }}"></script>
             <script src="{{ asset('bundles/easymain/js/bootstrap-image-gallery.js') }}"></script>
             <script src="{{ asset('bundles/easymain/js/jquery.colorbox.js') }}"></script>
+            <script src="{{ asset('bundles/easymain/js/main.js') }}" ></script>
 
             <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
             <script type="text/javascript" src="http://vk.com/js/api/share.js?92" charset="windows-1251"></script>
-            <script src="{{ asset('bundles/easymain/js/main.js') }}" ></script>
         {% endblock %}
     </head>
     <body>
-        {#<img id="preloaderImage" src="{{ asset('bundles/easymain/images/logoMain.png') }}" style="margin-left: 37.6%;margin-top:21%;width:300px;position: fixed;">#}
-        
-        {#<div>
-            <p>Город</p>
-        </div>#}
         <div id="blueimp-gallery" class="blueimp-gallery">
             <!-- The container for the modal slides -->
             <div class="slides"></div>
@@ -141,40 +132,32 @@ overflow: hidden;">
                             <div style="margin-left: -10px;">контакты</div>
                         </a>
                     </div>
-                    {#<div class="fastLink menuList" style="position: absolute;z-index: 100;top: 2%;right: 10%;width: auto;">
-                        <div>
-                            <a href="/pay" class="purpleHover" style="width: 130px;">Оплата</a>
-                            <a href="/news" class="purpleHover" style="width: 130px;">Новости</a>
-                            <a href="/contacts/all" class="purpleHover" style="width: 130px;">Контакты</a>
-                        </div>
-                    </div>#}
-
-                <div class="menuList" style="position: relative;z-index: 100;">
-                    <div class="row">
-                        <div class="col-md-4 col-md-offset-2 col-xs-5 col-xs-offset-0 menu-section-link">
-                            {% for value in mainMenu %}
-                                {% if '/'~value.url~'/' in path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
-                                    <a info="{{ loop.index }}" class="{{ value.color }}Hover header-title active" href="javascript:;">{{ value.title }}</a>
-                                {% else%}
-                                    <a info="{{ loop.index }}" class="{{ value.color }}Hover header-title" href="javascript:;">{{ value.title }}</a>
-                                {% endif %}
-                            {% endfor %}
-                        </div>
-                        {% for value in mainMenu %}
-                            {% if '/'~value.url~'/' in path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
-                                <div class="col-md-6 col-xs-7 menu-section-content" info="{{ loop.index }}" style="display:block;">
-                            {% else%}
-                                <div class="col-md-6 col-xs-7 menu-section-content" info="{{ loop.index }}">
-                            {% endif %}
-                                <a class="" href="{{ path('easy_main_homepage') }}{{ value.url }}">{{ value.title }}</a>
-                                {% for children in value.children %}
-                                    <a style="margin-left:20px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}">{{ children.title }}</a>
-                                    {% for lastchildren in children %}
-                                        <a style="margin-left:40px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}/{{ lastchildren.url }}">{{ lastchildren.title }}</a>
-                                    {% endfor %}
+                    <div class="menuList" style="position: relative;z-index: 100;">
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-2 col-xs-5 col-xs-offset-0 menu-section-link">
+                                {% for value in mainMenu %}
+                                    {% if '/'~value.url~'/' in path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+                                        <a info="{{ loop.index }}" class="{{ value.color }}Hover header-title active" href="javascript:;">{{ value.title }}</a>
+                                    {% else%}
+                                        <a info="{{ loop.index }}" class="{{ value.color }}Hover header-title" href="javascript:;">{{ value.title }}</a>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
-                        {% endfor %}
+                            {% for value in mainMenu %}
+                                {% if '/'~value.url~'/' in path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+                                    <div class="col-md-6 col-xs-7 menu-section-content" info="{{ loop.index }}" style="display:block;">
+                                {% else %}
+                                    <div class="col-md-6 col-xs-7 menu-section-content" info="{{ loop.index }}">
+                                {% endif %}
+                                    <a class="" href="{{ path('easy_main_homepage') }}{{ value.url }}">{{ value.title }}</a>
+                                    {% for children in value.children %}
+                                        <a style="margin-left:20px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}">{{ children.title }}</a>
+                                        {% for lastchildren in children %}
+                                            <a style="margin-left:40px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}/{{ lastchildren.url }}">{{ lastchildren.title }}</a>
+                                        {% endfor %}
+                                    {% endfor %}
+                                    </div>
+                            {% endfor %}
                         </div>
                     </div>
                     <div class="menuInfo col-md-8 col-xs-8" style="position: absolute;z-index: 100;">
@@ -187,17 +170,9 @@ overflow: hidden;">
                         <a href="https://instagram.com/easy_school/" target="_blank"><i class="fa fa-instagram"></i></a>
                         <a href="https://www.facebook.com/easyschool1" target="_blank"><i class="fa fa-facebook"></i></a>
                     </div>
-                </div>
-                {% if content is defined and content is iterable and content|length > 1 and content[0].url is defined %}
-                    <nav id="nav">
-                        <a href="javascript:;" class="special"><i class="fa fa-expand"></i><span class="hidden-xs">навигация по разделу</span></a>
-                        <div>
-                            {% for value in content %}
-                                <a href="#anchor{{ value.id }}">{{ value.name }}</a>
-                            {% endfor %}
-                        </div>
-                    </nav>
-                {% endif %}
+
+
+
             </div>
             {% if secondLayerMenu is defined %}
                 {% autoescape false %}
@@ -230,512 +205,104 @@ overflow: hidden;">
             
 
 
-                <div id="top-header">
-                    <div class="container" style="margin-top: 3px;">
-                        <div class="row">
-                            <div class="col-md-11">
-                                <a href="{{ path('easy_main_homepage') }}" class="header-logo">
-                                    {% if '/kid/' in app.request.uri %}
-                                        <img src="{{ asset('/bundles/easymain/images/logoKindergarten.png') }}">
-                                    {% else %}
-                                        <img src="{{ asset('/bundles/easymain/images/logoSchool.png') }}">
-                                    {% endif %}
+            <div id="top-header">
+                <div class="container" style="margin-top: 3px;">
+                    <div class="row">
+                        <div class="col-md-11">
+                            <a href="{{ path('easy_main_homepage') }}" class="header-logo">
+                                {% if '/kid/' in app.request.uri %}
+                                    <img src="{{ asset('/bundles/easymain/images/logoKindergarten.png') }}">
+                                {% else %}
+                                    <img src="{{ asset('/bundles/easymain/images/logoSchool.png') }}">
+                                {% endif %}
+                            </a>
+                            <div class="top">
+                                <a href="/news/" class="">
+                                    <i class="fa fa-newspaper-o"></i>
+                                    <div style="margin-left: -6px;">новости</div>
                                 </a>
-                                <div class="top">
-                                    <a href="/news/" class="">
-                                        <i class="fa fa-newspaper-o"></i>
-                                        <div style="margin-left: -6px;">новости</div>
-                                    </a>
-                                    <a href="/pay/">
-                                        <i class="fa fa-credit-card"></i>
-                                        <div style="margin-left: -2px;">оплата</div>
-                                    </a>
-                                    <a href="/contacts/all">
-                                        <i class="fa fa-map-marker"></i>
-                                        <div style="margin-left: -10px;">контакты</div>
-                                    </a>
-                                    <a href="javascript:;" id="opener" style="position: relative;z-index: 100;">
-                                        <i class="fa fa-phone"></i>
-                                        <div style="margin-left: -14px;">записаться</div>
-                                    </a>
-                                    <div class="contact" style="position: relative;">
-                                        <p><span style="font-size: 0.9em;">(3952)</span> 72-36-72</p>
-                                    </div>
-                                    {#<a id="opener" class="buttonHover">записаться</a>#}
+                                <a href="/pay/">
+                                    <i class="fa fa-credit-card"></i>
+                                    <div style="margin-left: -2px;">оплата</div>
+                                </a>
+                                <a href="/contacts/all">
+                                    <i class="fa fa-map-marker"></i>
+                                    <div style="margin-left: -10px;">контакты</div>
+                                </a>
+                                <a href="javascript:;" id="opener" style="position: relative;z-index: 100;">
+                                    <i class="fa fa-phone"></i>
+                                    <div style="margin-left: -14px;">записаться</div>
+                                </a>
+                                <div class="contact" style="position: relative;">
+                                    <p><span style="font-size: 0.9em;">(3952)</span> 72-36-72</p>
                                 </div>
-
                             </div>
+
                         </div>
                     </div>
                 </div>
-                {% block pageContent %}
-                    <div id="page">
+            </div>
+            {% if content is defined and content is iterable and content|length > 1 and content[0].url is defined %}
+                <nav id="nav">
+                    <a href="javascript:;" class="special"><i class="fa fa-expand"></i><span class="hidden-xs">навигация по разделу</span></a>
+                    <div>
                         {% for value in content %}
-                            <div class="container">
-                                <div class="row">
-                                    {% autoescape false %}
-                                        {{ value.content }}
-                                    {% endautoescape %}
-                                </div>
-                            </div>
+                            <a href="#anchor{{ value.id }}">{{ value.name }}</a>
                         {% endfor %}
                     </div>
-                {% endblock %}
-            
-                <div id="dialog">
-                    <form id="callback">
-                        <input type="text" name="name" placeholder="Ваше имя">
-                        <input type="text" name="phone" placeholder="Ваш номер телефона">
-                        <textarea name="time" placeholder="Время, удобное для занятий" style="resize: none;height: 120px;"></textarea>
-
-                        <p style="margin: 0;font-size: 1.1em;">Как вы хотите заниматься?</p>
-                        <input type="radio" name="type" value="group">В группе<br/>
-                        <input type="radio" name="type" value="individ">Индивидуально<br/>
-                        <input type="radio" name="type" value="company">Корпоративно
-
-                        <a class="submit" style="margin-top:20px;">жду звонка</a>
-                        <a class='close' onclick="$( '#dialog' ).dialog( 'close' )">
-                            <span class=""></span>
-                            <span class=""></span>
-                        </a>
-                    </form>
+                </nav>
+            {% endif %}
+            {% block pageContent %}
+                <div id="page">
+                    {% for value in content %}
+                        <div class="container">
+                            <div class="row">
+                                {% autoescape false %}
+                                    {{ value.content }}
+                                {% endautoescape %}
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
-                <div id="thankyou">
-                    <p style='font-size: 42px;margin: 0;'>СПАСИБО!</p>
-                    <p style='font-size: 22px;'>Мы свяжемся с вами<br/>в ближайшее время</p>
-                    <a href="#" class='close' onclick="$( '#thankyou' ).dialog( 'close' )">
+            {% endblock %}
+
+
+            <div id="dialog">
+                <form id="callback">
+                    <input type="text" name="name" placeholder="Ваше имя">
+                    <input type="text" name="phone" placeholder="Ваш номер телефона">
+                    <textarea name="time" placeholder="Время, удобное для занятий" style="resize: none;height: 120px;"></textarea>
+
+                    <p style="margin: 0;font-size: 1.1em;">Как вы хотите заниматься?</p>
+                    <input type="radio" name="type" value="group">В группе<br/>
+                    <input type="radio" name="type" value="individ">Индивидуально<br/>
+                    <input type="radio" name="type" value="company">Корпоративно
+
+                    <a class="submit" style="margin-top:20px;">жду звонка</a>
+                    <a class='close' onclick="$( '#dialog' ).dialog( 'close' )">
                         <span class=""></span>
                         <span class=""></span>
                     </a>
-                </div>
+                </form>
+            </div>
+            <div id="thankyou">
+                <p style='font-size: 42px;margin: 0;'>СПАСИБО!</p>
+                <p style='font-size: 22px;'>Мы свяжемся с вами<br/>в ближайшее время</p>
+                <a href="#" class='close' onclick="$( '#thankyou' ).dialog( 'close' )">
+                    <span class=""></span>
+                    <span class=""></span>
+                </a>
+            </div>
         </div>
+
         <script>
-           
-            
-            $(window).on('load', function () {
-                //$.cookie('qwe',66, {path: '/'});
-                //console.log($.cookie('cityId'));
-                if(typeof $.cookie('cityId') === 'undefined'){
-                    
-                    var $preloader = $('#page-preloader'),
-                    $spinner = $preloader.find('.spinner');
-                    
-                    setTimeout(function(){
-                        //$spinner.fadeOut();
-                        //$preloader.delay(350).fadeOut('slow');
-                    }, 3000);
-
-                    
-                    
-                    {#$(".inView").inViewport(function(px){
-                        if(px) $(this).addClass("inViewReaction") ;
-                    });#}
-                }
-            });
-            
-            
-            
-            
-            
-            function toggleMenu(menuClass){
-                $('.'+menuClass).fadeToggle(200);
-                $('.'+menuClass).toggleClass('open');
-                console.log(menuClass);
-                $('.menu-button').toggleClass('activeNavMenuButton');
-            }
-            
-            function coloring(color){
-                colorCapitalize = color.charAt(0).toUpperCase() + color.slice(1);
-                $('.title').addClass(color);
-                //$('.advantage').addClass(color);
-                $('.advantage').addClass('red');
-                $('.contact p').addClass(color);
-                $('.button-square').addClass(color+'Square');
-                $('#dialog').addClass(color);
-                $('#thankyou').addClass(color);
-                $('.stick').addClass('bg'+colorCapitalize);
-            }
-            function closeVideo(){
-                $("#angle-video").css({
-                    'width':'100%',
-                    'padding-top':'0'
-                });
-                $('#angle-video').appendTo('.angle-block-video');
-                $("#video-container").remove();
-                var video = document.getElementById('angle-video');
-                video.volume = 0;
-                video.controls = false;
-                video.play();
-            };
-            
-            $(function(){
-
-
-                $('.inside table').closest('.inside').css({'overflow-x':'scroll'});
-
-                
-                $('#nav>a').on('click', function(){
-                   var navigation = $('#nav');
-                   navigation.toggleClass('open');
-                   //navigation.css({'left':'-170px'});
-                });
-                
-                //$('a[href*=#]:not([href=#])').click(function() {
-                $('a[href*=#anchor]').click(function() {
-                    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-                      var target = $(this.hash);
-                      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-                      if (target.length) {
-                        $('html,body').animate({
-                          scrollTop: target.offset().top
-                        }, 300);
-                        return false;
-                      }
-                    }
-                  });
-                
-                
-                {% if color is defined %}
-                    coloring('{{ color }}');
-                {% else %}
-                    coloring('purple');
-                {% endif %}
-                
-                $('a.submit').on('click', function(){
-                    //отправка
-                    //var data = {request : $('#request').val()};
-                    var data = $('#callback').serializeArray();
-                    $.ajax({
-                        type: "POST",
-                        url: "{{ path('form_controller') }}",
-                        data: data,
-                        success: function(data, dataType)
-                        {
-                            console.log(data);
-                            if(data == 'sended'){
-                                $( '#dialog' ).dialog( 'close' );
-                                $( '#thankyou' ).dialog( 'open' );
-                            }
-                        },
-
-                        error: function(XMLHttpRequest, textStatus, errorThrown)
-                        {
-                            alert('Error : ' + errorThrown);
-                        }
-                    });
-                    
-                    
-                });
-                
-                $(".popup").colorbox({
-                    inline: true,
-                    width: "auto",
-                    height: "auto",
-                    maxWidth: "90%",
-                    maxHeight: "100%",
-                    rel: "stuff",
-                    closeButton: true,
-                    arrowKey : false,
-                    previous: '',
-                    next: '',
-                    close: '',
-                    onComplete: function(){
-                        $('#cboxLoadedContent').slimScroll({});
-                    }
-                             
-                });
-                
-                $( "#dialog" ).dialog({
-                    autoOpen: false,
-                    modal: true,
-                    resizable: false,
-                    draggable: false,
-                    minWidth: 450,
-                    height: 350,
-                    close: function( event, ui ) {
-                        $( "#dialog" ).removeClass("open");
-                    },
-                    open: function() {
-                        $('.ui-widget-overlay').bind('click', function() {
-                            $('#dialog').dialog('close');
-                        })
-                    }
-                 });
-                 
-                 $( "#thankyou" ).dialog({
-                    autoOpen: false,
-                    modal: true,
-                    resizable: false,
-                    draggable: false,
-                    height: 300,
-                    minWidth: 400,
-                    open: function( event, ui ) {
-                        $( "#thankyou" ).addClass("open");
-                    },
-                    close: function( event, ui ) {
-                        $( "#thankyou" ).removeClass("open");
-                    }
-                 });
-                 
-
-                  $( "#opener" ).click(function() {
-                        $( "#dialog" ).dialog( "open" );
-                        $( "#dialog" ).addClass("open");
-                  });
-                
-                if($("#map").length){
-                    ymaps.ready(init);
-
-                    function init () {
-                        var myMap = new ymaps.Map("map", {
-                                center: [52.28, 104.29],
-                                zoom: 10
-                            }, {
-                                searchControlProvider: 'yandex#search'
-                            });
-                        $(".address a[address]").each(function(index){
-                            try{
-                                var coor = JSON.parse($(this).attr('data-coordinates'));
-                            }catch(e){
-                                console.log(e);
-                            }
-                           
-                           console.log($(this).attr('data-coordinates'),coor);
-                           myMap.geoObjects
-                                .add(new ymaps.Placemark(coor, {
-                                    balloonContent: $(this).html()
-                                }, {
-                                    preset: 'islands#icon',
-                                    iconColor: '#0095b6'
-                                }));
-                        });         
-                        $(".address a[address]").on('click', function(){
-                            var coor = JSON.parse($(this).attr('data-coordinates'));
-                            myMap.setCenter(coor, 14, {
-                                duration: 500
-                            });
-                        });
-                        
-                        myMap.events.add('click', function (e) {
-                            var coords = e.get('coords');
-                            console.log(coords);
-                        });
-                        
-                    }
-                }
-                
-                $(".panel").css({
-                    "height":$(window).height()
-                });
-                var timer;
-
-                $(window).resize(function() {
-                    clearTimeout(timer);
-                    timer = setTimeout(function() {
-                            $(".panel").css({
-                                    "height":$(window).height()
-                            });
-                    },40);
-                });
-
-
-                //angle-video start play and loop
-                if($('#angle-video').length) {
-                    var video = document.getElementById('angle-video');
-                    video.defaultMuted = false;
-                    video.controls = false;
-                    video.volume = 0;
-                    video.play;
-                    var videoStartTime = 0;
-                    var durationTime = 0;
-
-                    video.addEventListener('loadedmetadata', function () {
-                        videoStartTime = 3;
-                        durationTime = 4;
-                        this.currentTime = videoStartTime;
-                    }, false);
-
-                    video.addEventListener('timeupdate', function () {
-                        if (this.currentTime > videoStartTime + durationTime && $('#video-container').length == 0) {
-                            this.currentTime = videoStartTime;
-                        }
-                    });
-
-                    //play and expand
-
-                    $('.play').on('click', function () {
-                        $("#page").before("<div id='video-container'></div>");
-                        $("#video-container").html("<a href='#' onclick='closeVideo()' class='close'><i class='fa fa-times-circle-o'></i></a>");
-                        $("#angle-video").appendTo("#video-container");
-
-                        var total = window.innerHeight - $('#video-container video').height();
-                        var foo = Math.round(total / 2);
-                        $('#video-container video').css({'padding-top': foo + 'px'});
-                        video.controls = true;
-                        video.volume = 0.7;
-                        video.currentTime = 1;
-                    });
-                }
-
-                
-
-                
-                
-                $('body').mousemove(function(e){
-                    {#var middle = 0;
-                    var amountMovedX = middle + (e.pageX * -1 / 30);
-                    $('#top-header ul').css({'left':amountMovedX+'px'});
-                    
-                    amountMovedX = middle + (e.pageX * -1 / 100);
-                    $('#top-header img').css({'left':amountMovedX+'px'});
-                    
-                    amountMovedX = middle + (e.pageX * -1 / 50);
-                    $('#top-header .contact').css({'left':amountMovedX+'px'});
-                    
-                    amountMovedX = middle + (e.pageX * -1 / 120);
-                    $('.content').css({'left':amountMovedX+'px'});#}
-                });
-
-
-                {#;(function($, win) {
-                    $.fn.inViewport = function(cb) {
-                       return this.each(function(i,el){
-                         function visPx(){
-                           var H = $(this).height(),
-                               r = el.getBoundingClientRect(), t=r.top, b=r.bottom;
-                           return cb.call(el, Math.max(0, t>0? H-t : (b<H?b:H)));  
-                         } visPx();
-                         $(win).on("resize scroll", visPx);
-                       });
-                    };
-                  }(jQuery, window));#}
-
-
-                $('.slidesCont').slidesjs({
-                    width: 940,
-                    height: 450,
-                    navigation: false,
-                    play:{
-                        auto: false,
-                        interval: 5000
-                    },
-                    pauseOnHover: true
-                  });
-                  
-                  $('.slides-container').slidesjs({
-                        width: 940,
-                        height: 540,
-                        navigation: false,
-                        play:{
-                            auto: false,
-                            interval: 5000
-                        },
-                        pauseOnHover: true
-                  });
-                  
-                  if($(".content-slider").length){  
-                        $(".content-slider").slidesjs({
-                            play: {
-                                active: false,
-                                effect: "slide",
-                                interval: 10000,
-                                auto: false,
-                                swap: false,
-                                pauseOnHover: true,
-                                restartDelay: 5000
-                            },
-                            autoHeight: true,
-                            navigation: false,
-                            pagination: false,
-                            callback: {
-                                complete: function(current) {
-                                    /*$('.content-slider').each(function() {
-                                        var maxHeight = 0;
-                                        $(this).find('figure.slidesjs-slide').each(function() {
-                                            if($(this).css('left') == '0px') {
-                                                maxHeight = $(this).height();  
-                                            }
-                                        });
-                                        $(this).find(".slidesjs-container").animate({height: maxHeight});
-                                    });*/
-                                }
-                            }
-                        });
-                        
-                        $('.content-slider').each(function() {
-                            /*var maxHeight = 0;
-                            $(this).find('figure.slidesjs-slide').each(function() {
-                                if($(this).css('left') == '0px') {
-                                    maxHeight = $(this).height();  
-                                }
-                            });
-                            $(this).find(".slidesjs-container").animate({height: maxHeight});*/
-                        });
-                    
-                }
-                
-                {#var sections = new Array();
-                var count = $('.section').length;
-                for(var i=1;i<=count;i++){
-                    sections.push('section'+i);
-                }
-                $('#fullpage').fullpage({
-                        onLeave: function(index, nextIndex, direction){
-                            if(nextIndex == count){
-                                $('#scrolldown-button').fadeOut();
-                            }else{
-                                $('#scrolldown-button').fadeIn();
-                            }
-                        },
-                        anchors: sections,
-                        menu: '#menu',
-                        css3: true,
-                        scrollingSpeed: 500,
-                        scrollOverflow:true,
-                        normalScrollElements: '#map, .slidesjs-control'
-                       
-                });
-                
-                $(document).on('click', '#scrolldown-button', function(){
-                    $.fn.fullpage.moveSectionDown();
-                });#}
-                
-                $('.calendar div.leftBlock a').on('click', function(){
-                    $('.calendar div.leftBlock a').removeClass('active');
-                    $(this).addClass('active');
-                    var data = $(this).attr('data');
-                    $('div.calendarMonth').removeClass('active');
-                    $('div.calendarMonth[month='+data+']').addClass('active');
-                });
-                
-                //var colors = new Array('purple', 'yellow', 'lightBlue', 'blue', 'green', 'salad');
-                $('.nav-menu:not(.mainMenu) .menuList div a').each(function(index, value){
-                    //var random = Math.floor((Math.random() * colors.length) + 0);
-                    $(this).attr('class', '{{ color }}Hover');
-                });
-                
-                if($("#mainVideoSource").length){
-                    var video = document.getElementById("mainVideoSource");
-                    video.volume = 0.5;
-                }
-                
-                if($(window).width() > 480){
-                    var foo = (970-$(window).height())/2;
-                    $('#nav').css({'top':foo+'px'});
-                }
-                
-                
-                $('.menu-section-link a').on('click', function(){
-                    $('.menu-section-content').css({'display':'none'});
-                   var section = $(this).attr('info');
-                   $('.menu-section-content[info='+section+']').css({'display':'block'});
-                });
-                
-            });
-            
-            
-            
+            {% if color is defined %}
+                coloring('{{ color }}');
+            {% else %}
+                coloring('purple');
+            {% endif %}
         </script>
+
         <!— Yandex.Metrika counter —>
         <script type="text/javascript">
         (function (d, w, c) {
