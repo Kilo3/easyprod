@@ -10,7 +10,7 @@ class DefaultController extends Controller
 {
     public function indexAction($part1=NULL, $part2 = NULL)
     {
-        if($_SERVER['REMOTE_ADDR'] != '127.0.0.1' || $_SERVER['REMOTE_ADDR'] != '178.217.68.239'){
+        if($_SERVER['REMOTE_ADDR'] != '127.0.0.1' && $_SERVER['REMOTE_ADDR'] != '178.217.68.239'){
             header("Location:/");
             die();
         }
@@ -275,7 +275,7 @@ class DefaultController extends Controller
     
     public function indexPart2Action($part1=NULL, $part2 = NULL)
     {
-        if($_SERVER['REMOTE_ADDR'] != '127.0.0.1' || $_SERVER['REMOTE_ADDR'] != '178.217.68.239'){
+        if($_SERVER['REMOTE_ADDR'] != '127.0.0.1' && $_SERVER['REMOTE_ADDR'] != '178.217.68.239'){
             header("Location:/");
             die();
         }
