@@ -11,7 +11,8 @@ parameters:
 
 framework:
     #esi:             ~
-    translator:      { fallbacks: ["%locale%"] }
+    #translator:      { fallbacks: ["%locale%"] }
+    translator: ~
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -39,8 +40,7 @@ twig:
     strict_variables: "%kernel.debug%"
     form:
         resources:
-#            - 'SonataFormatterBundle:Form:formatter.html.twig'
-#            - 'SonataMediaBundle::edit.html.twig'
+            - 'EasyMainBundle:Admin:fields.html.twig'
 
 # Assetic Configuration
 assetic:
@@ -76,16 +76,24 @@ doctrine:
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-        naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: true
-        mappings:
-            #ApplicationSonataMediaBundle: ~
-            SonataMediaBundle: ~
-            EasyMainBundle: ~
-        dql:
-            string_functions:
-                MONTH: DoctrineExtensions\Query\Mysql\Month
-                YEAR: DoctrineExtensions\Query\Mysql\Year
+        #naming_strategy: doctrine.orm.naming_strategy.underscore
+        entity_managers:
+            default:
+                auto_mapping: true
+                dql:
+                    string_functions:
+                        MONTH: DoctrineExtensions\Query\Mysql\Month
+                        YEAR: DoctrineExtensions\Query\Mysql\Year
+                mappings:
+                    SonataMediaBundle: ~
+                    EasyMainBundle: ~
+                    StofDoctrineExtensionsBundle: ~
+                    gedmo_tree:
+                        type: annotation
+                        prefix: Gedmo\Tree\Entity
+                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
+                        alias: GedmoTree # (optional) it will default to the name set for the mapping
+                        is_bundle: false
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -94,6 +102,11 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+oneup_uploader:
+    mappings:
+        gallery:
+            frontend: blueimp # or any uploader you use in the frontend
     
 #sonata_admin:
 #    title: Easy Admin

@@ -1,18 +1,40 @@
 Easy\MainBundle\Entity\MainMenu:
     type: entity
+    repositoryClass: Gedmo\Tree\Entity\Repository\NestedTreeRepository
     table: main_menu
+    gedmo:
+        tree:
+            type: nested
     id:
         id:
             type: integer
             generator: {strategy: AUTO}
     fields:
+        title:
+            type: string
+            length: 255
+        lft:
+            type: integer
+            gedmo:
+                - treeLeft
+        rgt:
+            type: integer
+            gedmo:
+                - treeRight
+        root:
+            type: integer
+            nullable: true
+            gedmo:
+                - treeRoot
+        lvl:
+            type: integer
+            gedmo:
+                - treeLevel
         url:
             type: string
             length: 255
             nullable: true
-        title:
-            type: string
-            length: 255
+
         order_column:
             type: integer
             nullable: false
@@ -24,25 +46,32 @@ Easy\MainBundle\Entity\MainMenu:
             type: text
         seo_description:
             type: text
-    oneToMany:
-        children:
-            targetEntity: MainMenu
-            mappedBy: parent
-        content:
-            targetEntity: Content
-            mappedBy: url
-            orderBy:
-                order_column: ASC
     manyToOne:
         parent:
             targetEntity: MainMenu
             inversedBy: children
             joinColumn:
-                name: parent
+                name: parent_id
                 referencedColumnName: id
+                onDelete: CASCADE
+            nullable: true
+            gedmo:
+                - treeParent
         city:
             targetEntity: City
             joinColumn:
                 name: city_id
                 referencedColumnName: id
+    oneToMany:
+        children:
+            targetEntity: MainMenu
+            mappedBy: parent
+            orderBy:
+                lft: ASC
+        content:
+            targetEntity: Content
+            mappedBy: url
+            orderBy:
+                order_column: ASC
+
         

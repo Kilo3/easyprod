@@ -3,21 +3,18 @@
 namespace Easy\MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * MainMenu
  */
 class MainMenu
 {
+
     /**
      * @var integer
      */
     private $id;
-
-    /**
-     * @var string
-     */
-    private $url;
 
     /**
      * @var string
@@ -27,8 +24,76 @@ class MainMenu
     /**
      * @var integer
      */
-    private $order;
+    private $lft;
 
+    /**
+     * @var integer
+     */
+    private $rgt;
+
+    /**
+     * @var integer
+     */
+    private $root;
+
+    /**
+     * @var integer
+     */
+    private $lvl;
+
+    /**
+     * @var string
+     */
+    private $url;
+
+    /**
+     * @var integer
+     */
+    private $order_column;
+
+    /**
+     * @var string
+     */
+    private $color;
+
+    /**
+     * @var string
+     */
+    private $seo_title;
+
+    /**
+     * @var string
+     */
+    private $seo_description;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $children;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $content;
+
+    /**
+     * @var \Easy\MainBundle\Entity\MainMenu
+     */
+    private $parent;
+
+    /**
+     * @var \Easy\MainBundle\Entity\City
+     */
+    private $city;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->content = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -38,29 +103,6 @@ class MainMenu
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set url
-     *
-     * @param string $url
-     * @return MainMenu
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * Get url
-     *
-     * @return string 
-     */
-    public function getUrl()
-    {
-        return $this->url;
     }
 
     /**
@@ -87,59 +129,118 @@ class MainMenu
     }
 
     /**
-     * Set order
+     * Set lft
      *
-     * @param integer $order
+     * @param integer $lft
      * @return MainMenu
      */
-    public function setOrder($order)
+    public function setLft($lft)
     {
-        $this->order = $order;
+        $this->lft = $lft;
 
         return $this;
     }
 
     /**
-     * Get order
+     * Get lft
      *
      * @return integer 
      */
-    public function getOrder()
+    public function getLft()
     {
-        return $this->order;
+        return $this->lft;
     }
-    /**
-     * @var integer
-     */
-    private $parent_id;
 
     /**
-     * @var integer
-     */
-    private $order_column;
-
-
-    /**
-     * Set parent_id
+     * Set rgt
      *
-     * @param integer $parentId
+     * @param integer $rgt
      * @return MainMenu
      */
-    public function setParentId($parentId)
+    public function setRgt($rgt)
     {
-        $this->parent_id = $parentId;
+        $this->rgt = $rgt;
 
         return $this;
     }
 
     /**
-     * Get parent_id
+     * Get rgt
      *
      * @return integer 
      */
-    public function getParentId()
+    public function getRgt()
     {
-        return $this->parent_id;
+        return $this->rgt;
+    }
+
+    /**
+     * Set root
+     *
+     * @param integer $root
+     * @return MainMenu
+     */
+    public function setRoot($root)
+    {
+        $this->root = $root;
+
+        return $this;
+    }
+
+    /**
+     * Get root
+     *
+     * @return integer 
+     */
+    public function getRoot()
+    {
+        return $this->root;
+    }
+
+    /**
+     * Set lvl
+     *
+     * @param integer $lvl
+     * @return MainMenu
+     */
+    public function setLvl($lvl)
+    {
+        $this->lvl = $lvl;
+
+        return $this;
+    }
+
+    /**
+     * Get lvl
+     *
+     * @return integer 
+     */
+    public function getLvl()
+    {
+        return $this->lvl;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     * @return MainMenu
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string 
+     */
+    public function getUrl()
+    {
+        return $this->url;
     }
 
     /**
@@ -164,11 +265,6 @@ class MainMenu
     {
         return $this->order_column;
     }
-    /**
-     * @var string
-     */
-    private $color;
-
 
     /**
      * Set color
@@ -192,171 +288,6 @@ class MainMenu
     {
         return $this->color;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $children;
-
-    /**
-     * @var \Easy\MainBundle\Entity\MainMenu
-     */
-    private $parent;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add children
-     *
-     * @param \Easy\MainBundle\Entity\MainMenu $children
-     * @return MainMenu
-     */
-    public function addChild(\Easy\MainBundle\Entity\MainMenu $children)
-    {
-        $this->children[] = $children;
-
-        return $this;
-    }
-
-    /**
-     * Remove children
-     *
-     * @param \Easy\MainBundle\Entity\MainMenu $children
-     */
-    public function removeChild(\Easy\MainBundle\Entity\MainMenu $children)
-    {
-        $this->children->removeElement($children);
-    }
-
-    /**
-     * Get children
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getChildren()
-    {
-        return $this->children;
-    }
-
-    /**
-     * Set parent
-     *
-     * @param \Easy\MainBundle\Entity\MainMenu $parent
-     * @return MainMenu
-     */
-    public function setParent(\Easy\MainBundle\Entity\MainMenu $parent = null)
-    {
-        $this->parent = $parent;
-
-        return $this;
-    }
-
-    /**
-     * Get parent
-     *
-     * @return \Easy\MainBundle\Entity\MainMenu 
-     */
-    public function getParent()
-    {
-        return $this->parent;
-    }
-    
-    public function __toString()
-    {
-        return (string) $this->getTitle();
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $content;
-
-
-    /**
-     * Add content
-     *
-     * @param \Easy\MainBundle\Entity\Content $content
-     * @return MainMenu
-     */
-    public function addContent(\Easy\MainBundle\Entity\Content $content)
-    {
-        $this->content[] = $content;
-
-        return $this;
-    }
-
-    /**
-     * Remove content
-     *
-     * @param \Easy\MainBundle\Entity\Content $content
-     */
-    public function removeContent(\Easy\MainBundle\Entity\Content $content)
-    {
-        $this->content->removeElement($content);
-    }
-
-    /**
-     * Get content
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getContent()
-    {
-        return $this->content;
-    }
-    
-    public static function getColors(){
-        return array(
-            'purple'=>'purple',
-            'yellow'=>'yellow',
-            'lightBlue'=>'lightBlue',
-            'blue'=>'blue',
-            'green'=>'green',
-            'salad'=>'salad',
-        );
-    }
-    /**
-     * @var \Easy\MainBundle\Entity\City
-     */
-    private $city;
-
-
-    /**
-     * Set city
-     *
-     * @param \Easy\MainBundle\Entity\City $city
-     * @return MainMenu
-     */
-    public function setCity(\Easy\MainBundle\Entity\City $city = null)
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    /**
-     * Get city
-     *
-     * @return \Easy\MainBundle\Entity\City 
-     */
-    public function getCity()
-    {
-        return $this->city;
-    }
-    /**
-     * @var string
-     */
-    private $seo_title;
-
-    /**
-     * @var string
-     */
-    private $seo_description;
-
 
     /**
      * Set seo_title
@@ -402,5 +333,140 @@ class MainMenu
     public function getSeoDescription()
     {
         return $this->seo_description;
+    }
+
+    /**
+     * Add children
+     *
+     * @param \Easy\MainBundle\Entity\MainMenu $children
+     * @return MainMenu
+     */
+    public function addChild(\Easy\MainBundle\Entity\MainMenu $children)
+    {
+        $this->children[] = $children;
+
+        return $this;
+    }
+
+    /**
+     * Remove children
+     *
+     * @param \Easy\MainBundle\Entity\MainMenu $children
+     */
+    public function removeChild(\Easy\MainBundle\Entity\MainMenu $children)
+    {
+        $this->children->removeElement($children);
+    }
+
+    /**
+     * Get children
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * Add content
+     *
+     * @param \Easy\MainBundle\Entity\Content $content
+     * @return MainMenu
+     */
+    public function addContent(\Easy\MainBundle\Entity\Content $content)
+    {
+        $this->content[] = $content;
+
+        return $this;
+    }
+
+    /**
+     * Remove content
+     *
+     * @param \Easy\MainBundle\Entity\Content $content
+     */
+    public function removeContent(\Easy\MainBundle\Entity\Content $content)
+    {
+        $this->content->removeElement($content);
+    }
+
+    /**
+     * Get content
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Set parent
+     *
+     * @param \Easy\MainBundle\Entity\MainMenu $parent
+     * @return MainMenu
+     */
+    public function setParent(\Easy\MainBundle\Entity\MainMenu $parent = null)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return \Easy\MainBundle\Entity\MainMenu 
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * Set city
+     *
+     * @param \Easy\MainBundle\Entity\City $city
+     * @return MainMenu
+     */
+    public function setCity(\Easy\MainBundle\Entity\City $city = null)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return \Easy\MainBundle\Entity\City 
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    public function __toString()
+    {
+        $prefix = "";
+        for($i = 2; $i <= $this->lvl; $i++){
+            $prefix .= " --- ";
+        }
+        return (string) $prefix.$this->getTitle();
+    }
+    public function getLaveledTitle()
+    {
+        return (string)$this;
+    }
+    public static function getColors(){
+        return array(
+            'purple'=>'purple',
+            'yellow'=>'yellow',
+            'lightBlue'=>'lightBlue',
+            'blue'=>'blue',
+            'green'=>'green',
+            'salad'=>'salad',
+        );
     }
 }

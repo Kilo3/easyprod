@@ -1,9 +1,139 @@
 # Learn more about services, parameters and containers at
 # http://symfony.com/doc/current/book/service_container.html
 parameters:
-#    parameter_name: value
+    sonata.media.admin.media.class: Application\Sonata\MediaBundle\Admin\MediaAdmin
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    gedmo.listener.tree:
+        class: Gedmo\Tree\TreeListener
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+        calls:
+            - [ setAnnotationReader, [ "@annotation_reader" ] ]
+
+    easy.admin.content:
+        class: Easy\MainBundle\Admin\ContentAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: easy, label: Content }
+        arguments:
+            - easy.admin.content
+            - Easy\MainBundle\Entity\Content
+            - 'EasyMainBundle:ContentAdmin'
+
+
+
+    easy.admin.team:
+        class: Easy\MainBundle\Admin\TeamAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: easy, label: Team }
+        arguments:
+            - ~
+            - Easy\MainBundle\Entity\Team
+            - 'EasyMainBundle:TeamAdmin'
+    easy.admin.mainmenu:
+        class: Easy\MainBundle\Admin\MainMenuAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: easy, label: MainMenu }
+        arguments:
+            - ~
+            - Easy\MainBundle\Entity\MainMenu
+            - 'EasyMainBundle:MainMenuAdmin'
+    easy.admin.city:
+        class: Easy\MainBundle\Admin\CityAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: easy, label: City }
+        arguments:
+            - ~
+            - Easy\MainBundle\Entity\City
+            - 'EasyMainBundle:CityAdmin'
+    easy.admin.news:
+        class: Easy\MainBundle\Admin\NewsAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: easy, label: News }
+        arguments:
+            - ~
+            - Easy\MainBundle\Entity\News
+            - 'EasyMainBundle:NewsAdmin'
+    easy.admin.calendar:
+        class: Easy\MainBundle\Admin\CalendarAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: easy, label: Calendar }
+        arguments:
+            - ~
+            - Easy\MainBundle\Entity\Calendar
+            - 'EasyMainBundle:CalendarAdmin'
+    easy.admin.contacts:
+        class: Easy\MainBundle\Admin\ContactsAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: easy, label: Contacts}
+        arguments:
+            - ~
+            - Easy\MainBundle\Entity\Contacts
+            - 'EasyMainBundle:ContactsAdmin'
+
+    easy.admin.stuff:
+        class: Easy\MainBundle\Admin\StuffAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: easy, label: Stuff}
+        arguments:
+            - ~
+            - Easy\MainBundle\Entity\Stuff
+            - 'EasyMainBundle:StuffAdmin'
+
+    easy.admin.photo_gallery:
+        class: Easy\MainBundle\Admin\PhotoGalleryAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: easy, label: PhotoGallery}
+        arguments:
+            - ~
+            - Easy\MainBundle\Entity\PhotoGallery
+            - 'EasyMainBundle:PhotoGalleryAdmin'
+    easy.admin.times:
+        class: Easy\MainBundle\Admin\TimesAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: easy, label: Times}
+        arguments:
+            - ~
+            - Easy\MainBundle\Entity\Times
+            - 'EasyMainBundle:TimesAdmin'
+
+    custom_name.admin.media:
+        class: %sonata.media.admin.media.class%
+        arguments:
+            - ~
+            - Application\Sonata\MediaBundle\Entity\Media
+            - ApplicationSonataMediaBundle:MediaAdmin
+            - @sonata.media.pool
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: media2}
+        #calls:
+            #- [ getTemplate, [ApplicationSonataMediaBundle:MediaAdmin:edit.html.twig]
+            #- [ setTemplate, [edit, ApplicationSonataMediaBundle:MediaAdmin:edit.html.twig]]
+
+
+    easy.main.upload_listener:
+        class: Easy\MainBundle\Admin\UploaderListener
+        tags:
+            - { name: "kernel.event_listener", event: "oneup_uploader.post_persist.gallery", method: "onUpload" }
+            - { name: "kernel.event_listener", event: "oneup_uploader.pre_upload.gallery", method: "preUpload" }
+        arguments:
+            - ['@doctrine']
+            #- @doctrine.orm.entity_manager
+
+    sonata.media.provider.custom:
+        class: Application\Sonata\MediaBundle\Provider\CustomProvider
+        tags:
+            - { name: sonata.media.provider }
+        arguments:
+            - sonata.media.provider.custom
+            - '@sonata.media.filesystem.local'
+            - '@sonata.media.cdn.server'
+            - '@sonata.media.generator.default'
+            - '@sonata.media.thumbnail.format'
+            - ['jpg', 'jpeg']
+            - ['image/jpeg']
+        calls:
+            #- [setTemplates, [{ helper_thumbnail: 'SonataMediaBundle:Provider:thumbnail.html.twig', helper_view: 'SonataMediaBundle:Provider:view_custom.html.twig' }]]
+            #- [setResizer, ['@sonata.media.resizer.simple']]
+
+

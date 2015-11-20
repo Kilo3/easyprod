@@ -41,6 +41,43 @@ function closeVideo(){
     video.play();
 };
 
+function init () {
+    var myMap = new ymaps.Map("map", {
+        center: [52.28, 104.29],
+        zoom: 10
+    }, {
+        searchControlProvider: 'yandex#search'
+    });
+    $(".address a[address]").each(function(index){
+        try{
+            var coor = JSON.parse($(this).attr('data-coordinates'));
+        }catch(e){
+            console.log(e);
+        }
+
+        console.log($(this).attr('data-coordinates'),coor);
+        myMap.geoObjects
+            .add(new ymaps.Placemark(coor, {
+                balloonContent: $(this).html()
+            }, {
+                preset: 'islands#icon',
+                iconColor: '#0095b6'
+            }));
+    });
+    $(".address a[address]").on('click', function(){
+        var coor = JSON.parse($(this).attr('data-coordinates'));
+        myMap.setCenter(coor, 14, {
+            duration: 500
+        });
+    });
+
+    myMap.events.add('click', function (e) {
+        var coords = e.get('coords');
+        console.log(coords);
+    });
+
+}
+
 $(function(){
 
 
@@ -154,43 +191,6 @@ $(function(){
 
     if($("#map").length){
         ymaps.ready(init);
-
-        function init () {
-            var myMap = new ymaps.Map("map", {
-                center: [52.28, 104.29],
-                zoom: 10
-            }, {
-                searchControlProvider: 'yandex#search'
-            });
-            $(".address a[address]").each(function(index){
-                try{
-                    var coor = JSON.parse($(this).attr('data-coordinates'));
-                }catch(e){
-                    console.log(e);
-                }
-
-                console.log($(this).attr('data-coordinates'),coor);
-                myMap.geoObjects
-                    .add(new ymaps.Placemark(coor, {
-                        balloonContent: $(this).html()
-                    }, {
-                        preset: 'islands#icon',
-                        iconColor: '#0095b6'
-                    }));
-            });
-            $(".address a[address]").on('click', function(){
-                var coor = JSON.parse($(this).attr('data-coordinates'));
-                myMap.setCenter(coor, 14, {
-                    duration: 500
-                });
-            });
-
-            myMap.events.add('click', function (e) {
-                var coords = e.get('coords');
-                console.log(coords);
-            });
-
-        }
     }
 
 

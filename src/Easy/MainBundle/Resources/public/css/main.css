@@ -445,7 +445,7 @@ section{
 
 .slides-container .slidesjs-next {
     right: -25px;
-    left: initial !important;
+    left: auto !important;
 }
 
 
@@ -466,7 +466,7 @@ section{
 
 .content-slider .slidesjs-next {
     right: -25px;
-    left: initial !important;
+    left: auto !important;
 }
 
 
@@ -571,7 +571,6 @@ section{
     margin-right: 7px;
     font-size: 1.2em;
     line-height: 20px;
-    transform: rotateZ(-45deg);
 }
 #nav a{
     text-decoration: none;
@@ -695,12 +694,20 @@ section{
 }
 .activeNavMenuButton span:first-child{
     visibility: visible;
+    -moz-transform: rotate(-44deg);
+    -ms-transform: rotate(-44deg);
+    -webkit-transform: rotate(-44deg);
+    -o-transform: rotate(-44deg);
     transform: rotate(-44deg);
     transform-origin: 100% 0;
     opacity:1;
 }
 .activeNavMenuButton span:last-child{
     visibility: visible;
+    -moz-transform: rotate(44deg);
+    -ms-transform: rotate(44deg);
+    -webkit-transform: rotate(44deg);
+    -o-transform: rotate(44deg);
     transform: rotate(44deg);
     transform-origin: 100% 0;
     opacity:1;
@@ -1689,7 +1696,7 @@ opacity: 1;
 
 .slidesCont .slidesjs-next {
     right: -30px;
-    left: initial;
+    left: auto !important;
 }
 
 .slidesjs-pagination {
@@ -2673,9 +2680,12 @@ table>thead>tr>th{
     font-size: 1.3em;
     margin-left: 10px;
     border-radius: 40px;
-    padding: 12px 0;
     text-align: center;
     position: relative;
+}
+.top a>i{
+    margin: 14px auto 0 auto;
+    display: table;
 }
 .top a:hover div{
     display: block;
@@ -2787,7 +2797,7 @@ table>thead>tr>th{
     #nav>a.special i{
         margin-right: 0px ;
         font-size: 1.4em ;
-        transform: rotateZ(45deg) ;
+        transform: rotateZ(90deg);
         margin-top: 4px ;
     }
     .slides-container .slidesjs-navigation {
@@ -2808,7 +2818,7 @@ table>thead>tr>th{
 
     .content-slider .slidesjs-next {
         right: 8px;
-        left: initial ;
+        left: auto !important;
     }
     .menuList{
         top:0;
@@ -2898,20 +2908,21 @@ table>thead>tr>th{
         height: 30px;
         width: 30px;
         font-size: 1em;
-        padding: 6px 0;
         margin-left: 15px;
         display: block !important;
+    }
+    .top-menu a>i{
+        margin: 9px auto 0 auto;
     }
     #opener{
         height: 35px;
         width: 35px;
         font-size: 1em;
-        padding: 8px 0;
         margin-left: 15px;
         display: block !important;
     }
-    #opener{
-
+    #opener i{
+        margin: 12px auto 0 auto;
     }
     .contact{
         height: 35px;

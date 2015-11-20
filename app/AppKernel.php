@@ -43,6 +43,8 @@ class AppKernel extends Kernel
 //            new JMS\SerializerBundle\JMSSerializerBundle(),
 //            
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Oneup\UploaderBundle\OneupUploaderBundle(),
             
         );
 

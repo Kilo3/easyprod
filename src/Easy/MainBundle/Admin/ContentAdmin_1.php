@@ -16,7 +16,7 @@ use Sonata\AdminBundle\Route\RouteCollection;
 
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilderInterface;
+/*use Symfony\Component\Form\FormBuilderInterface;*/
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
@@ -86,7 +86,7 @@ class ContentAdmin extends Admin
         $formMapper->getFormBuilder()->addEventListener(FormEvents::PRE_SET_DATA,
             function (FormEvent $event) use ($formModifier) {
             
-                $data = $event->getData();
+                //$data = $event->getData();
                 $formModifier($event->getForm(), $this->getSubject($event->getData()));
             
             }

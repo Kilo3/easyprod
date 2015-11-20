@@ -10,6 +10,10 @@ class DefaultController extends Controller
 {
     public function indexAction($part1=NULL, $part2 = NULL)
     {
+        if($_SERVER['REMOTE_ADDR'] != '127.0.0.1' || $_SERVER['REMOTE_ADDR'] != '178.217.68.239'){
+            header("Location:/");
+            die();
+        }
         $hp = $this->getDoctrine()->getManager();
         $currentUrl = $hp->getRepository('EasyMainBundle:MainMenu')->findOneBy(array('url'=>$part1));
         
@@ -271,6 +275,10 @@ class DefaultController extends Controller
     
     public function indexPart2Action($part1=NULL, $part2 = NULL)
     {
+        if($_SERVER['REMOTE_ADDR'] != '127.0.0.1' || $_SERVER['REMOTE_ADDR'] != '178.217.68.239'){
+            header("Location:/");
+            die();
+        }
         $hp = $this->getDoctrine()->getManager();
         $boo = $hp->getRepository('EasyMainBundle:MainMenu')->findOneBy(array('url'=>$part1));
         $foo = $hp->getRepository('EasyMainBundle:MainMenu')->findOneBy(array('url'=>$part2, 'parent' => $boo->getId()));
@@ -511,7 +519,10 @@ class DefaultController extends Controller
         
         $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8)); // id = 8 корень меню
         
-        return $this->render('EasyMainBundle:Default:index.html.twig', array(
+        /*return $this->render('EasyMainBundle:Default:index.html.twig', array(
+            'mainMenu' => $mainMenu
+        ));*/
+        return $this->render('EasyMainBundle:Default:maintaince.html.twig', array(
             'mainMenu' => $mainMenu
         ));
     }

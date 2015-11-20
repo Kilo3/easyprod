@@ -278,19 +278,19 @@ class Content
     public static function getTypes()
     {
         return array(
-            'gallery' => 'gallery', // галерея с текстом, 3 шт фотки
-            'video' => 'video', // видео, загружаемое файлом
-            'content' => 'content', 
-            'slider' => 'slider', //слайдер, команда, учителя
-            'photo' => 'photo', // фотки с попапом
-            'contacts' => 'contacts', // контакты
+            'content' => 'Текст',
+            'gallery' => 'Текст с небольшой фотогалерей', // галерея с текстом, 3 шт фотки
+            'video' => 'Видеоблок', // видео, загружаемое файлом
+            'slider' => 'Слайдер', //слайдер, команда, учителя
+            'photo' => 'Фотографии', // фотки с попапом
+            'contacts' => 'Контакты (карта)', // контакты
 //            'news' => 'news', // блок новости ?
 //            'calendar' => 'calendar', // календарь событий в гашей жизни
-            'video_gallery' => 'video_gallery', //видео галлерея
+//            'video_gallery' => 'video_gallery', //видео галлерея
 //            'news_all' => 'news_all', //все новости в нашей жизни подробнее
 //            'calendar_all' => 'calendar_all', //все события календаря в подробнее
 //            'photo_links' => 'photo_links', // ссылки фотогаллерей на фотки непосредственно
-            'stuff' => 'stuff', // преподователи
+            'stuff' => 'Преподаватели', // преподователи
         );
     }
     /**
@@ -440,4 +440,12 @@ class Content
     {
         return $this->stuff;
     }
+
+    public function __toString(){
+        return $this->getName();
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+
 }

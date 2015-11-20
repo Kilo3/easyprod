@@ -21,20 +21,10 @@ Easy\MainBundle\Entity\Content:
             nullable: true
             required: false
             default: 500
-        top_menu:
-            type: boolean
-            required: false
-            nullable: true
-        second_menu:
-            type: integer
-            required: false
-            default: 1
-            nullable: true
         stuff:
             type: string
             nullable: true
             required: false
-            
     manyToOne:
         gallery:
             targetEntity: Application\Sonata\MediaBundle\Entity\Gallery
@@ -46,7 +36,10 @@ Easy\MainBundle\Entity\Content:
             joinColumn:
                 name: url_id
                 referencedColumnName: id
-                
+        #media:
+         #   targetEntity: Application\Sonata\MediaBundle\Entity\Media
+          #  cascade: ["persist"]
+           # fetch: LAZY
     oneToMany:
         teams:
             targetEntity: Team
@@ -58,48 +51,3 @@ Easy\MainBundle\Entity\Content:
             mappedBy: content_reference
             cascade: ["persist", "remove"] 
             orphanRemoval: true
-#            cascade: ["persist", "remove"] 
-#            orphanRemoval: true
-            
-#    oneToMany:
-#        team:
-#            targetEntity: Team
-#            mappedBy: content
-#            cascade: ["all"]
-#            orphanRemoval: true
-#    manyToMany:
-#        team:
-#          targetEntity: Team
-#          joinTable:
-#                name: team
-#                joinColumns:
-#                    content_id:
-#                        referencedColumnName: id
-#                inverseJoinColumns:
-#                    team_id:
-#                        referencedColumnName: id
-#                        unique: true
-#    oneToMany:
-#        team:
-#            targetEntity: Team
-#            mappedBy: content
-#    manyToOne:
-#        content:
-#            targetEntity: Content
-#            inversedBy: team
-#           
-                
-                
-        
-#    oneToMany:
-#        inspections:
-#            targetEntity: Inspection
-#            mappedBy: content
-#            cascade: ["all"]
-#            orphanRemoval: true
-#            
-#    manyToOne:
-#        images:
-#            targetEntity: Application\Sonata\MediaBundle\Entity\Media
-            
-        

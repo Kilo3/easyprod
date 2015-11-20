@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e4055a3f42062de717c6555d47a1cb51",
+    "hash": "2340594f2e21da3b7fea7dbe1f2778c4",
     "packages": [
         {
             "name": "beberlei/DoctrineExtensions",
@@ -67,6 +67,46 @@
                 "orm"
             ],
             "time": "2015-08-06 13:16:43"
+        },
+        {
+            "name": "behat/transliterator",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Behat/Transliterator.git",
+                "reference": "868e05be3a9f25ba6424c2dd4849567f50715003"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Behat/Transliterator/zipball/868e05be3a9f25ba6424c2dd4849567f50715003",
+                "reference": "868e05be3a9f25ba6424c2dd4849567f50715003",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Behat\\Transliterator": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Artistic-1.0"
+            ],
+            "description": "String transliterator",
+            "keywords": [
+                "i18n",
+                "slug",
+                "transliterator"
+            ],
+            "time": "2015-09-28 16:26:35"
         },
         {
             "name": "cocur/slugify",
@@ -1133,6 +1173,85 @@
             "time": "2015-06-16 08:39:26"
         },
         {
+            "name": "gedmo/doctrine-extensions",
+            "version": "v2.4.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Atlantic18/DoctrineExtensions.git",
+                "reference": "1a86ba1c7426238b4f765089e0af51174a38af7f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Atlantic18/DoctrineExtensions/zipball/1a86ba1c7426238b4f765089e0af51174a38af7f",
+                "reference": "1a86ba1c7426238b4f765089e0af51174a38af7f",
+                "shasum": ""
+            },
+            "require": {
+                "behat/transliterator": "~1.0",
+                "doctrine/common": "~2.4",
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "doctrine/common": ">=2.5.0",
+                "doctrine/mongodb-odm": ">=1.0.2",
+                "doctrine/orm": ">=2.5.0",
+                "phpunit/phpunit": "~4.4",
+                "phpunit/phpunit-mock-objects": "~2.3",
+                "symfony/yaml": "~2.6"
+            },
+            "suggest": {
+                "doctrine/mongodb-odm": "to use the extensions with the MongoDB ODM",
+                "doctrine/orm": "to use the extensions with the ORM"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Gedmo\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Buchmann",
+                    "email": "david@liip.ch"
+                },
+                {
+                    "name": "Gediminas Morkevicius",
+                    "email": "gediminas.morkevicius@gmail.com"
+                },
+                {
+                    "name": "Gustavo Falco",
+                    "email": "comfortablynumb84@gmail.com"
+                }
+            ],
+            "description": "Doctrine2 behavioral extensions",
+            "homepage": "http://gediminasm.org/",
+            "keywords": [
+                "Blameable",
+                "behaviors",
+                "doctrine2",
+                "extensions",
+                "gedmo",
+                "loggable",
+                "nestedset",
+                "sluggable",
+                "sortable",
+                "timestampable",
+                "translatable",
+                "tree",
+                "uploadable"
+            ],
+            "time": "2015-09-28 16:39:27"
+        },
+        {
             "name": "imagine/imagine",
             "version": "0.6.2",
             "source": {
@@ -2105,6 +2224,72 @@
             "time": "2015-05-16 17:16:14"
         },
         {
+            "name": "oneup/uploader-bundle",
+            "version": "v1.3.1",
+            "target-dir": "Oneup/UploaderBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/1up-lab/OneupUploaderBundle.git",
+                "reference": "00bff0181fc1592134f1aa36469ea44d69585a9a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/1up-lab/OneupUploaderBundle/zipball/00bff0181fc1592134f1aa36469ea44d69585a9a",
+                "reference": "00bff0181fc1592134f1aa36469ea44d69585a9a",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/finder": ">=2.2.0",
+                "symfony/framework-bundle": ">=2.2"
+            },
+            "require-dev": {
+                "amazonwebservices/aws-sdk-for-php": "1.5.*",
+                "knplabs/gaufrette": "0.2.*@dev",
+                "phpunit/phpunit": "~4.1",
+                "sensio/framework-extra-bundle": "2.*",
+                "symfony/browser-kit": "2.*",
+                "symfony/class-loader": "2.*",
+                "symfony/security-bundle": "2.*"
+            },
+            "suggest": {
+                "knplabs/knp-gaufrette-bundle": "0.1.*"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Oneup\\UploaderBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Schmid",
+                    "email": "js@1up.io",
+                    "homepage": "http://1up.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Handles multi file uploads in Symfony2. Features included: Chunked upload, Orphans management, Gaufrette support.",
+            "homepage": "http://1up.io",
+            "keywords": [
+                "FancyUpload",
+                "FineUploader",
+                "MooUpload",
+                "Uploadify",
+                "YUI3 Uploader",
+                "blueimp",
+                "dropzone",
+                "fileupload",
+                "jQuery File Uploader",
+                "plupload",
+                "upload"
+            ],
+            "time": "2014-07-04 14:58:01"
+        },
+        {
             "name": "phpcollection/phpcollection",
             "version": "0.4.0",
             "source": {
@@ -2252,7 +2437,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/3a900814bd57bf20f9453ae81ff8772bc95d7fff",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/2ebf27cd9064adbb1ec34d904b7ba3aa6fe29a16",
                 "reference": "3a900814bd57bf20f9453ae81ff8772bc95d7fff",
                 "shasum": ""
             },
@@ -2729,7 +2914,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/69217cd11f1771137d3a3d7bfd4c115ed82919f0",
+                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/414287970af7c0054ba06d7708d337f3fa182a23",
                 "reference": "69217cd11f1771137d3a3d7bfd4c115ed82919f0",
                 "shasum": ""
             },
@@ -2798,7 +2983,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDatagridBundle/zipball/cc42f2801011d7ebc65edda451a2efa4b4d1fbb9",
+                "url": "https://api.github.com/repos/sonata-project/SonataDatagridBundle/zipball/88d12865c186ac4822fb8c3462db278f96c90678",
                 "reference": "cc42f2801011d7ebc65edda451a2efa4b4d1fbb9",
                 "shasum": ""
             },
@@ -3386,7 +3571,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stfalcon/TinymceBundle/zipball/758c19947b04d93d9d79e0ae8432beaccc0097f2",
+                "url": "https://api.github.com/repos/stfalcon/TinymceBundle/zipball/0a2bbac6ea6bcfdfb36eab5b471bb225a063b4c5",
                 "reference": "758c19947b04d93d9d79e0ae8432beaccc0097f2",
                 "shasum": ""
             },
@@ -3432,6 +3617,67 @@
                 "wysiwyg"
             ],
             "time": "2014-09-15 12:37:07"
+        },
+        {
+            "name": "stof/doctrine-extensions-bundle",
+            "version": "v1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stof/StofDoctrineExtensionsBundle.git",
+                "reference": "7b3144572617b0555f9a443317dbc2f9cf5b524e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stof/StofDoctrineExtensionsBundle/zipball/7b3144572617b0555f9a443317dbc2f9cf5b524e",
+                "reference": "7b3144572617b0555f9a443317dbc2f9cf5b524e",
+                "shasum": ""
+            },
+            "require": {
+                "gedmo/doctrine-extensions": "^2.3.1",
+                "php": ">=5.3.2",
+                "symfony/framework-bundle": "~2.1"
+            },
+            "suggest": {
+                "doctrine/doctrine-bundle": "to use the ORM extensions",
+                "doctrine/mongodb-odm-bundle": "to use the MongoDB ODM extensions"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Stof\\DoctrineExtensionsBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christophe Coevoet",
+                    "email": "stof@notk.org"
+                }
+            ],
+            "description": "Integration of the gedmo/doctrine-extensions with Symfony2",
+            "homepage": "https://github.com/stof/StofDoctrineExtensionsBundle",
+            "keywords": [
+                "behaviors",
+                "doctrine2",
+                "extensions",
+                "gedmo",
+                "loggable",
+                "nestedset",
+                "sluggable",
+                "sortable",
+                "timestampable",
+                "translatable",
+                "tree"
+            ],
+            "time": "2015-08-12 16:23:48"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -3491,12 +3737,12 @@
             "version": "v2.6.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/AsseticBundle.git",
+                "url": "https://github.com/symfony/assetic-bundle.git",
                 "reference": "422b0add2110f0cf9bc7a873a386ea053f4a89f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/AsseticBundle/zipball/422b0add2110f0cf9bc7a873a386ea053f4a89f0",
+                "url": "https://api.github.com/repos/symfony/assetic-bundle/zipball/422b0add2110f0cf9bc7a873a386ea053f4a89f0",
                 "reference": "422b0add2110f0cf9bc7a873a386ea053f4a89f0",
                 "shasum": ""
             },
@@ -3556,12 +3802,12 @@
             "version": "v2.7.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/MonologBundle.git",
+                "url": "https://github.com/symfony/monolog-bundle.git",
                 "reference": "9320b6863404c70ebe111e9040dab96f251de7ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/MonologBundle/zipball/9320b6863404c70ebe111e9040dab96f251de7ac",
+                "url": "https://api.github.com/repos/symfony/monolog-bundle/zipball/9320b6863404c70ebe111e9040dab96f251de7ac",
                 "reference": "9320b6863404c70ebe111e9040dab96f251de7ac",
                 "shasum": ""
             },
@@ -3615,12 +3861,12 @@
             "version": "v2.3.8",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/SwiftmailerBundle.git",
+                "url": "https://github.com/symfony/swiftmailer-bundle.git",
                 "reference": "970b13d01871207e81d17b17ddda025e7e21e797"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/SwiftmailerBundle/zipball/970b13d01871207e81d17b17ddda025e7e21e797",
+                "url": "https://api.github.com/repos/symfony/swiftmailer-bundle/zipball/970b13d01871207e81d17b17ddda025e7e21e797",
                 "reference": "970b13d01871207e81d17b17ddda025e7e21e797",
                 "shasum": ""
             },

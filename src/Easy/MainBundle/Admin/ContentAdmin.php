@@ -17,11 +17,11 @@ use Sonata\AdminBundle\Route\RouteCollection;
 
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilderInterface;
+/*use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvents;
-use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvent;*/
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Form\FormInterface;
+/*use Symfony\Component\Form\FormInterface;*/
  
 class ContentAdmin extends Admin
 {
@@ -34,30 +34,30 @@ class ContentAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Important', array('class' => 'col-md-6'))
-                ->add('type', 'choice', array('choices' => Content::getTypes(), 'expanded' => true))
-                ->add('name')
+            ->with('Общая информация', array('class' => 'col-md-6'))
+                ->add('type', 'choice', array('choices' => Content::getTypes(), 'expanded' => false, 'label'=> 'Тип блока'))
+                ->add('name', 'text', array('label' => 'Название'))
             ->end();
-        
-        
+
         $subject = $this->getSubject();
         switch ($subject->getType()) {
             case 'gallery':
             case 'video':
             case 'content':
                 $formMapper
-                    ->with('General', array('class' => 'col-md-6'))
+                    ->with('Взаимосвязь', array('class' => 'col-md-6'))
                         ->add('url','sonata_type_model_list',array(
-                                'btn_add' => false
+                                'btn_add' => false,
+                                'label' => 'Блок расположен на странице'
                               ))
-                        ->add('top_menu', null, array('required' => false))
-                        ->add('order_column')
+                        ->add('order_column', 'integer', array('label' => 'Порядок', 'help' => 'Чем меньше, тем выше на странице будет расплоложено содержимое'))
                         ->add('gallery','sonata_type_model_list',array(
-                            'btn_add' => false
+                            'btn_add' => false,
+                            'label' => 'Галерея'
                         ))
                     ->end()
-                    ->with('Content', array('class' => 'col-md-12'))
-                        ->add('content', 'ckeditor',array('config_name' => 'default'))
+                    ->with('Контент', array('class' => 'col-md-12'))
+                        ->add('content', 'ckeditor',array('config_name' => 'default', 'label' => 'Текст'))
                     ->end();
                 break;
             

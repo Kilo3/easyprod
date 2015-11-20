@@ -87,10 +87,13 @@ sonata_admin:
                     - easy.admin.calendar
                     - easy.admin.city
                     - easy.admin.stuff
-            Media: 
+                    - easy.admin.photo_gallery
+                    - easy.admin.times
+            Media:
                 items:
                     - sonata.media.admin.gallery
                     - sonata.media.admin.media
+                    - custom_name.admin.media
             Temp:
                 items:
                     - easy.admin.contacts
@@ -131,24 +134,15 @@ sonata_media:
                 - sonata.media.provider.image
                 - sonata.media.provider.file
                 - sonata.media.provider.vimeo
+                - sonata.media.provider.custom
+            formats:
+                big:   { width: 865 , quality: 100}
+        #easy_image:
+        #    providers:
+        #        - sonata.media.provider.image
+        #    formats:
+        #        big:   { width: 865 , quality: 100}
 
-            formats:
-                big:   { width: 865 , quality: 100}
-        gallery:
-            providers:
-                - sonata.media.provider.youtube
-                - sonata.media.provider.image
-                - sonata.media.provider.file
-                - sonata.media.provider.vimeo
-            formats:
-               big:   { width: 865 , quality: 100}
-        easy_times:
-            providers:
-                - sonata.media.provider.image
-                - sonata.media.provider.file
-            formats:
-                big:   { width: 865 , quality: 100}
-            
 
     cdn:
         server:

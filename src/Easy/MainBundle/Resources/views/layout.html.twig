@@ -244,7 +244,7 @@ overflow: hidden;">
             </div>
             {% if content is defined and content is iterable and content|length > 1 and content[0].url is defined %}
                 <nav id="nav">
-                    <a href="javascript:;" class="special"><i class="fa fa-expand"></i><span class="hidden-xs">навигация по разделу</span></a>
+                    <a href="javascript:;" class="special"><i class="fa fa-arrows-v"></i><span class="hidden-xs">навигация по разделу</span></a>
                     <div>
                         {% for value in content %}
                             <a href="#anchor{{ value.id }}">{{ value.name }}</a>
