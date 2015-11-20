@@ -1,0 +1,21 @@
+Easy\MainBundle\Entity\Times:
+    type: entity
+    table: times
+    id:
+        id:
+            type: integer
+            generator: {strategy: AUTO}
+    fields:
+        name:
+            type: string
+            required: false
+            nullable: true
+    manyToOne:
+        image:
+            targetEntity: Application\Sonata\MediaBundle\Entity\Media
+            cascade: ["persist"]
+            fetch: LAZY
+        file:
+            targetEntity: Application\Sonata\MediaBundle\Entity\Media
+            cascade: ["persist"]
+            fetch: LAZY

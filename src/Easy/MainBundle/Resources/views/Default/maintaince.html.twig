@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        {% block title %}
+            Easy School. Школа иностранных языков в Иркутске.&nbsp;Курсы английского языка в Иркутске.
+        {% endblock %}
+    </title>
+    <link rel="shortcut icon" href="/favicon.ico?v=1" type="image/x-icon">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('bundles/easymain/css/font-awesome.min.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ asset('bundles/easymain/css/bootstrap.css') }}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{ asset('bundles/easymain/css/main.css') }}" type="text/css" media="all" />
+    {% endblock %}
+
+</head>
+<body>
+    <div style="width: 600px; margin: 200px auto;">
+        <img src="{{ asset('/bundles/easymain/images/logoMain.png') }}" style="width: 150px; margin: 0 auto; display: block;" >
+        <p style="font-family: sansRoundedBold;font-size: 1.4em; margin-top: 30px;">Сайт временно недоступен из-за технического обновления.</p>
+    </div>
+</body>
+</html>

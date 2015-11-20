@@ -1,0 +1,72 @@
+{#{% extends 'SonataAdminBundle::standard_layout.html.twig' %}#}
+{% extends 'SonataAdminBundle:CRUD:base_edit.html.twig' %}
+ 
+{% block sonata_tab_content %}
+    {{ parent() }}
+
+    <div class="container-fluid">
+        <div class="col-md-12"> {# default class 'col-md-12' removed because it do not work with tabs#}
+            <div class="box box-success">
+                <div class="box-header">
+                    <h4 class="box-title">
+                        JavaScript Upload
+                    </h4>
+                </div>
+                <div class="box-body">
+                    <input id="fileupload" type="file" name="files[]" data-url="{{ oneup_uploader_endpoint('gallery') }}" multiple />
+                    <div id="fileupload-progress" class="progress" style="display: none;">
+                        <div class="progress-bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ asset('bundles/easymain/js/jquery.ui.widget.js') }}" ></script>
+    <script src="{{ asset('bundles/easymain/js/jquery.iframe-transport.js') }}" ></script>
+    <script src="{{ asset('bundles/easymain/js/jquery.fileupload.js') }}" ></script>
+
+    <script>
+        $(document).ready(function()
+        {
+            var galId;
+            if($('#fileupload').length){
+                var path = window.location.pathname;
+                var array = path.split("/");
+                galId = array[array.length-2];
+            }
+            $('#fileupload').fileupload({
+                formData: {
+                    /*galleryId: {{ object.id }}*/
+                    galleryId : galId
+                },
+                start: function (e) {
+                    $('#fileupload').slideUp();
+                    $('#fileupload-progress').slideDown();
+                },
+                stop: function (e) {
+                    $('#fileupload-progress .progress-bar').text('Загрузка завершена');
+                    window.location.reload();
+                },
+                progressall: function (e, data) {
+                    var progress = parseInt(data.loaded / data.total * 100, 10);
+                    var $progressBar = $('#fileupload-progress .progress-bar');
+
+                    $progressBar.css('min-width', '2em');
+                    $progressBar.css('width', progress + '%');
+                    $progressBar.text(progress + ' %');
+                }
+
+            });
+        });
+    </script>
+{% endblock sonata_tab_content %}
+
+{#
+{% block javascripts %}
+    {{ parent() }}
+
+    &#123;&#35;{{ include('XXXX::js_fileuploader.html.twig') }}&#35;&#125;
+
+
+{% endblock javascripts %}#}

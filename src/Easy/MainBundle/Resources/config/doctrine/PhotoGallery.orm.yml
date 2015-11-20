@@ -1,0 +1,18 @@
+Easy\MainBundle\Entity\PhotoGallery:
+    type: entity
+    table: photo_gallery
+    id:
+        id:
+            type: integer
+            generator: {strategy: AUTO}
+    fields:
+        name:
+            type: string
+            required: false
+            nullable: true
+    manyToOne:
+        gallery:
+            targetEntity: Application\Sonata\MediaBundle\Entity\Gallery
+            joinColumn:
+                name: gallery_id
+                referencedColumnName: id
