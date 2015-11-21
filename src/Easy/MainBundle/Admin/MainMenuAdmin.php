@@ -36,33 +36,26 @@ class MainMenuAdmin extends Admin
 
     public function configureFormFields(FormMapper $formMapper)
     {
-        $subject = $this->getSubject();
-        $id = $subject->getId();
+        /*$subject = $this->getSubject();
+        $id = $subject->getId();*/
 
         $formMapper
             ->with('General', array('class' => 'col-md-12'))
                 ->add('url')
                 ->add('title')
                 ->add('order_column')
-                ->add('color', 'choice', array('choices'=> MainMenu::getColors(), 'expanded' => true))
+                ->add('enabled', 'checkbox', array('data'=>true))
+                ->add('color', 'choice', array('choices'=> MainMenu::getColors(), 'expanded' => false))
                 ->add('seo_title')
                 ->add('seo_description')
                 /*->add('parent','sonata_type_model_list',array(
                     'btn_add' => false
                 ))*/
-                ->add('parent', null, array('label' => 'Родитель'
-                    , 'required'=>true
-                    , 'query_builder' => function($er) use ($id) {
-                            $qb = $er->createQueryBuilder('p');
-                            if ($id){
-                                $qb
-                                    ->where('p.id <> :id')
-                                    ->setParameter('id', $id);
-                            }
-                            $qb
-                                ->orderBy('p.root, p.lft', 'ASC');
-                            return $qb;
-                        }
+                ->add('parent', 'sonata_type_model_list', array(
+                    'label' => 'Родитель',
+                    'required'=>true,
+                    'btn_add' => false,
+                    'btn_delete' => false,
                 ))
             ->end()
         ;
@@ -77,7 +70,6 @@ class MainMenuAdmin extends Admin
         $listMapper
             ->add('id', null, array('sortable'=>false))
             ->addIdentifier('laveled_title', null, array('sortable'=>false, 'label'=>'Название страницы'))
-            ->add('parent', 'string')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'view' => array('template' => 'EasyMainBundle:Admin/CRUD:list__action_entity_board.html.twig'),

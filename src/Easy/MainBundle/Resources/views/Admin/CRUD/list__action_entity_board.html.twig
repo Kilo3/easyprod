@@ -1,6 +1,6 @@
 {% if admin.isGranted('VIEW', object) and admin.hasRoute('show') %}
     <a href="{{ path('admin_easy_main_content_list', {'filter[url][value]': object.id, 'filter[_sort_order]': 'ASC', 'filter[_sort_by]': 'order_column'}) }}"
-       class="btn btn-sm btn-default view_link" title="Показать содержимое страницы">
+       target="_blank" class="btn btn-sm btn-default view_link" title="Показать содержимое страницы">
         <i class="fa fa-file-text"></i> Содержимое
     </a>
 {% endif %}

@@ -131,7 +131,7 @@ class ContentAdmin extends Admin
         
         //выбор меню второго уровня если есть контент для этого
         //if ($subject->getUrl() != null && count($subject->getUrl()->getChildren()) > 1) {
-        if ($subject->getUrl() != null) {
+        /*if ($subject->getUrl() != null) {
             $choices = array();
             //dump();die();
             foreach($subject->getUrl()->getChildren() as $index => $value){
@@ -145,7 +145,7 @@ class ContentAdmin extends Admin
                 ->with('secondMenu', array('class' => 'col-md-6'))
                     ->add('second_menu', 'choice', array('choices' => $choices, 'expanded' => true))
                 ->end();
-        }
+        }*/
         
         
         // работает норм только после update
@@ -188,7 +188,6 @@ class ContentAdmin extends Admin
             ->addIdentifier('id')
             ->addIdentifier('name')
             ->add('url', 'string')
-            ->add('top_menu')
             ->add('order_column')
             
             

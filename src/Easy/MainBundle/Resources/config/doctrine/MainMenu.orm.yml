@@ -34,7 +34,10 @@ Easy\MainBundle\Entity\MainMenu:
             type: string
             length: 255
             nullable: true
-
+        enabled:
+            type: boolean
+            options:
+                default: true
         order_column:
             type: integer
             nullable: false
