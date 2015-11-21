@@ -67,7 +67,7 @@ class ContentAdmin extends Admin
                         ->add('url','sonata_type_model_list',array(
                                 'btn_add' => false
                               ))
-                        ->add('top_menu', null, array('required' => false))
+                        
                         ->add('order_column')
                     ->end()
                     ->with('Slider', array('class' => 'col-md-12'))
@@ -87,7 +87,7 @@ class ContentAdmin extends Admin
                         ->add('url','sonata_type_model_list',array(
                                 'btn_add' => false
                               ))
-                        ->add('top_menu', null, array('required' => false))
+                        
                         ->add('order_column')
                         ->add('gallery','sonata_type_model_list',array(
                             'btn_add' => false
@@ -100,7 +100,7 @@ class ContentAdmin extends Admin
                         ->add('url','sonata_type_model_list',array(
                                 'btn_add' => false
                               ))
-                        ->add('top_menu', null, array('required' => false))
+                        
                         ->add('order_column')
                     ->end()
                     ->with('Contacts', array('class' => 'col-md-12'))
@@ -120,7 +120,7 @@ class ContentAdmin extends Admin
                         ->add('url','sonata_type_model_list',array(
                                 'btn_add' => false
                               ))
-                        ->add('top_menu', null, array('required' => false))
+                        
                         ->add('order_column')
                         ->add('stuff', 'choice', array('choices' => Stuff::getTypes(), 'expanded' => true))
                     ->end();

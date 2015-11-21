@@ -65,15 +65,6 @@ class MainMenuAdmin extends Admin
                         }
                 ))
             ->end()
-            ->with('Slider', array('class' => 'col-md-12'))
-                ->add('content', 'sonata_type_collection', array(
-                    'by_reference'       => false,
-                    'cascade_validation' => true,
-                ), array(
-                    'edit' => 'list',
-                    'inline' => 'table'
-                ))
-            ->end()
         ;
 
         /*->add('parent','sonata_type_model_list',array(
