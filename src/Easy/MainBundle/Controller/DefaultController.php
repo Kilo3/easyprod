@@ -17,12 +17,8 @@ class DefaultController extends Controller
         $hp = $this->getDoctrine()->getManager();
         $currentUrl = $hp->getRepository('EasyMainBundle:MainMenu')->findOneBy(array('url'=>$part1));
         
-        $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8)); // id = 8 корень меню
+        $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8, 'enabled' => 1)); // id = 8 корень меню
         if(!isset($currentUrl)){
-            /*if($part1 == 'irk'){ // временная чушь для старой выдачи яндекса
-                header("Location:/");
-                die();
-            }*/
             $topMenu = "";
             return $this->render('EasyMainBundle:Page:404.html.twig', array(
                 'mainMenu' => $mainMenu,
@@ -282,7 +278,7 @@ class DefaultController extends Controller
         $hp = $this->getDoctrine()->getManager();
         $boo = $hp->getRepository('EasyMainBundle:MainMenu')->findOneBy(array('url'=>$part1));
         $foo = $hp->getRepository('EasyMainBundle:MainMenu')->findOneBy(array('url'=>$part2, 'parent' => $boo->getId()));
-        $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => '8')); // id = 8 корень меню
+        $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8, 'enabled' => 1)); // id = 8 корень меню
         if(isset($foo)){
             $content = $hp->getRepository('EasyMainBundle:Content')->findBy(array('url'=>$foo->getId()), array('order_column'=>'ASC'));
         }else{

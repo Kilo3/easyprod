@@ -36,15 +36,19 @@ class MainMenuAdmin extends Admin
 
     public function configureFormFields(FormMapper $formMapper)
     {
-        /*$subject = $this->getSubject();
-        $id = $subject->getId();*/
+        $subject = $this->getSubject();
+        if($subject->getId() == NULL){
+            $enabled = true;
+        }else{
+            $enabled = $subject->getEnabled();
+        }
 
         $formMapper
             ->with('General', array('class' => 'col-md-12'))
                 ->add('url')
                 ->add('title')
                 ->add('order_column')
-                ->add('enabled', 'checkbox', array('data'=>true))
+                ->add('enabled', 'checkbox', array('data'=>$enabled, 'required' => false))
                 ->add('color', 'choice', array('choices'=> MainMenu::getColors(), 'expanded' => false))
                 ->add('seo_title')
                 ->add('seo_description')
