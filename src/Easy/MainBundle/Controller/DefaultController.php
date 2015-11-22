@@ -216,10 +216,10 @@ class DefaultController extends Controller
                     break;
                 
                 case 'easy_times':
-                    $galleries = $hp->getRepository('Application\Sonata\MediaBundle\Entity\Gallery')->findBy(array('context' => 'easy_times'));
+                    $times = $hp->getRepository('Easy\MainBundle\Entity\Times')->findAll();
                     $foo = $this->render('EasyMainBundle:Block:block_easy_times.html.twig', array(
                         'content'   => $value,
-                        'galleries'   => $galleries,
+                        'times'   => $times,
                     ));
                     $value->setContent($foo->getContent());
                     break;
@@ -384,7 +384,7 @@ class DefaultController extends Controller
                     break;
                 
                 case 'photo_links':
-                    $galleries = $hp->getRepository('Application\Sonata\MediaBundle\Entity\Gallery')->findBy(array('context' => 'gallery'));
+                    $galleries = $hp->getRepository('EasyMainBundle:PhotoGallery')->findAll();
                     $foo = $this->render('EasyMainBundle:Block:block_photo_links.html.twig', array(
                         'content'   => $value,
                         'galleries'   => $galleries,
@@ -548,15 +548,15 @@ class DefaultController extends Controller
         $hp = $this->getDoctrine()->getManager();
         
         $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8)); // id = 8 корень меню
-        
-        $content = $hp->getRepository('Application\Sonata\MediaBundle\Entity\Gallery')->findBy(array('context' => 'easy_times'));
+
+        $times = $hp->getRepository('Easy\MainBundle\Entity\Times')->findAll();
         
         
         $topMenu = "";
         $secondLayerMenu = "";
         return $this->render('EasyMainBundle:Page:easy_times.html.twig', array(
             'mainMenu' => $mainMenu,
-            'content' => $content,
+            'content' => $times,
             'topMenu' => $topMenu,
             'secondLayerMenu' => $secondLayerMenu,
             'color' => 'salad'
@@ -589,7 +589,7 @@ class DefaultController extends Controller
         
         $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8)); // id = 8 корень меню
         
-        $content = $hp->getRepository('Application\Sonata\MediaBundle\Entity\Gallery')->findOneBy(array('id' => $id));
+        $content = $hp->getRepository('Easy\MainBundle\Entity\PhotoGallery')->findOneBy(array('id' => $id));
         
         $topMenu = "";
         $secondLayerMenu = "";

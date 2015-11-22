@@ -5,14 +5,14 @@
             <div class="col-md-11">
                 <p class="title">The Easy Times</p>
                 <div class="links">
-                    {% for gallery in content %}
+                    {% for paper in content %}
                         <div class="col-md-3 col-xs-6">
-                            <a href="{% path gallery.GalleryHasMedias[0].media, 'reference' %}" target="_blank">
-                                {% if gallery.GalleryHasMedias[1] is defined %}
-                                    <div style="width: 100%; height: 165px; background: url('{% path gallery.GalleryHasMedias[1].media, 'big' %}'); background-size: cover;">
+                            <a href="{% path paper.file, 'reference' %}" target="_blank">
+                                {% if paper.image is defined %}
+                                    <div style="width: 100%; height: 165px; background: url('{% path paper.image, 'big' %}'); background-size: cover;">
                                     </div>
                                 {% endif %}
-                                {{ gallery.name }}
+                                {{ paper.name }}
                             </a>
                         </div>
                     {% endfor %}

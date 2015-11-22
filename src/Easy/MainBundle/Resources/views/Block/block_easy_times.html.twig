@@ -5,8 +5,8 @@
     <div class="row">
         <div class='col-md-5 col-xs-7'>
             <div class='advantage2 easy-times'>
-                {% for gallery in galleries %}
-                    <a target="_blank" href="{% path gallery.GalleryHasMedias[0].media, 'reference' %}">{{ gallery.name }}</a>
+                {% for paper in times %}
+                    <a target="_blank" href="{% path paper.file, 'reference' %}">{{ paper.name }}</a>
                 {% endfor %}
             </div>
             <a class="button-square" href='/easytimes/' style="float:right;">Все выпуски</a>

@@ -5,8 +5,8 @@
             {% for gallery in galleries %}
                 <div class="col-md-3 col-xs-3">
                     <a href="/gallery/{{ gallery.id }}">
-                        {% if gallery.galleryHasMedias[0] is defined %}
-                            {% media gallery.galleryHasMedias[0].media, 'big' with {'class': ''} %}
+                        {% if gallery.gallery.galleryHasMedias[0] is defined %}
+                            {% media gallery.gallery.galleryHasMedias[0].media, 'big' with {'class': ''} %}
                         {% endif %}
                         {{ gallery.name }}
                     </a>
