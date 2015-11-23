@@ -523,12 +523,12 @@ class DefaultController extends Controller
 
         $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8, 'enabled' => 1)); // id = 8 корень меню
         
-        /*return $this->render('EasyMainBundle:Default:index.html.twig', array(
-            'mainMenu' => $mainMenu
-        ));*/
-        return $this->render('EasyMainBundle:Default:maintaince.html.twig', array(
+        return $this->render('EasyMainBundle:Default:index.html.twig', array(
             'mainMenu' => $mainMenu
         ));
+        /*return $this->render('EasyMainBundle:Default:maintaince.html.twig', array(
+            'mainMenu' => $mainMenu
+        ));*/
     }
     
     public function newsAction()
