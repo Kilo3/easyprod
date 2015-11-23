@@ -81,7 +81,11 @@
                                 {% else %}
                                     <div class="col-md-6 col-xs-7 menu-section-content" info="{{ loop.index }}">
                                 {% endif %}
-                                    <a class="" href="{{ path('easy_main_homepage') }}{{ value.url }}">{{ value.title }}</a>
+                                    {% if value.empty == false %}
+                                        <a href="{{ path('easy_main_homepage') }}{{ value.url }}">{{ value.title }}</a>
+                                    {% else %}
+                                        <p style="font-family: RobotoLight;font-size: 1.3em;color: #616161;margin: 0;">{{ value.title }}</p>
+                                    {% endif %}
                                     {% for children in value.children %}
                                         <a style="margin-left:20px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}">{{ children.title }}</a>
                                         {% for lastchildren in children %}
