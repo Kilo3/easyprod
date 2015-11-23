@@ -10,36 +10,40 @@
         </div>
     </div>
     <div class="col-md-3 leftBlock col-xs-4">
-        {% for monthInfo in month %}
-            {% if loop.index == 1 %}
-                <a href="javascript:;" data="{{ loop.index }}" class="active">{{ monthInfo.monthRus }}</a>
-            {% else %}
-                <a href="javascript:;" data="{{ loop.index }}" class="">{{ monthInfo.monthRus }}</a>
-            {% endif %}
+        {% for key, year in month %}
+            <p style="font-family: RobotoLight;color: #fff;margin: 8px auto;font-size: 1.5em;">{{ key }}</p>
+            {% for monthInfo in year %}
+                {% if loop.parent.loop.last and loop.last %}
+                    <a href="javascript:;" data="{{ loop.parent.loop.index }}{{ loop.index }}" class="active">{{ monthInfo.monthRus }}</a>
+                {% else %}
+                    <a href="javascript:;" data="{{ loop.parent.loop.index }}{{ loop.index }}" class="">{{ monthInfo.monthRus }}</a>
+                {% endif %}
+            {% endfor %}
         {% endfor %}
     </div>
     <div class="col-md-9 rightBlock col-xs-8">
-        {% for monthInfo in month %}
-            {% if loop.index == 1 %}
-                {% set active = 'active' %}
-            {% else %}
-                {% set active = '' %}
-            {% endif %}
-            <div class="calendarMonth {{ active }}" month="{{ loop.index }}">
-                {% for event in monthInfo.content|slice(0, 3) %}
-                    <div class="col-md-12 hidden-xs" style="height: 155px;margin-bottom: 10px;">
-                         {% media event.media, 'big' with {'class': ''} %}
-                        <p>{{ event.date|date('d.m') }} {{ event.name }}</p>
-                        <a class="button-square" href="/calendar/{{ event.id }}" style="float:right;">Узнать подробнее</a>
-                    </div>
-                    <div class="col-xs-12 visible-xs no-padding" style="height: 155px;margin-bottom: 10px;">
-                        <p style="padding: 0;">{{ event.date|date('d.m') }} {{ event.name }}</p>
-                        {% media event.media, 'big' with {'style': 'width: 60px;'} %}
-                        <a class="button-square" href="/calendar/{{ event.id }}" style="float:right;padding: 5px;">Узнать</a>
-                    </div>
-                {% endfor %}
-            </div>
+        {% for year in month %}
+            {% for monthInfo in year %}
+                {% if loop.parent.loop.last and loop.last %}
+                    {% set active = 'active' %}
+                {% else %}
+                    {% set active = '' %}
+                {% endif %}
+                <div class="calendarMonth {{ active }}" month="{{ loop.parent.loop.index }}{{ loop.index }}">
+                    {% for event in monthInfo.content|slice(0, 3) %}
+                        <div class="col-md-12 hidden-xs" style="height: 155px;margin-bottom: 10px;">
+                             {% media event.media, 'big' with {'class': ''} %}
+                            <p>{{ event.date|date('d.m') }} {{ event.name }}</p>
+                            <a class="button-square" href="/calendar/{{ event.id }}" style="float:right;">Узнать подробнее</a>
+                        </div>
+                        <div class="col-xs-12 visible-xs no-padding" style="height: 155px;margin-bottom: 10px;">
+                            <p style="padding: 0;">{{ event.date|date('d.m') }} {{ event.name }}</p>
+                            {% media event.media, 'big' with {'style': 'width: 60px;'} %}
+                            <a class="button-square" href="/calendar/{{ event.id }}" style="float:right;padding: 5px;">Узнать</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
         {% endfor %}
-        
     </div>
 </div>

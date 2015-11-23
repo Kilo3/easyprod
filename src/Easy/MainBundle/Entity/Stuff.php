@@ -112,12 +112,12 @@ class Stuff
     public static function getTypes()
     {
         return array(
-            'adult_teacher' => 'взрослые учителя',
-            'kid_teacher' => 'детские учителя',
-            'kid_kendergarden' => 'детский сад',
-            'tsrr' => 'ЦРР',
-            'tsdo' => 'ЦДО',
-            'coordinators' => 'координаторы',
+            'adult_teacher' => 'Взрослые учителя',
+            'kid_teacher' => 'Детские учителя',
+            'kid_kendergarden' => 'Детский сад',
+            'tsrr' => 'Центр раннего развития',
+            'tsdo' => 'Центр дополнительного образования',
+            'coordinators' => 'Координаторы',
         );
     }
     

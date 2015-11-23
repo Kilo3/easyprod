@@ -5,26 +5,32 @@
             <div class="col-md-12">
                 <p class="title">Новости</p>
                 <div class="links">
-                    {% for news in content %}
-                        <div class="col-md-3 col-xs-6">
-                            <a href="#popup{{ loop.index }}" class="popup">
-                                {% if news.media is defined %}
-                                    <div style="background: url('{% path news.media, 'big' %}');">
+                    <div class="row" style="margin-bottom: 30px;">
+                        {% for news in content %}
+                            <div class="col-md-3 col-xs-6">
+                                <a href="#popup{{ loop.index }}" class="popup">
+                                    {% if news.media is defined %}
+                                        <div style="background: url('{% path news.media, 'big' %}');">
+                                        </div>
+                                    {% endif %}
+                                    {{ news.name }}
+                                </a>
+                            </div>
+                            <div style='display:none;'>
+                                <div id='popup{{ loop.index }}' style='padding:10px; background:#fff;'>
+                                    <div class="inside">
+                                        {% autoescape false %}
+                                            {{ news.text }}
+                                        {% endautoescape %}
                                     </div>
-                                {% endif %}
-                                {{ news.name }}
-                            </a>
-                        </div>
-                        <div style='display:none;'>
-                            <div id='popup{{ loop.index }}' style='padding:10px; background:#fff;'>
-                                <div class="inside">
-                                    {% autoescape false %}
-                                        {{ news.text }}
-                                    {% endautoescape %}
                                 </div>
                             </div>
-                        </div>
-                    {% endfor %}
+                            {% if loop.index%4 == 0 %}
+                                </div>
+                                <div class="row" style="margin-bottom: 30px;">
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>

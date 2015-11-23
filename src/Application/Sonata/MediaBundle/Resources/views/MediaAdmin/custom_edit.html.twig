@@ -29,35 +29,41 @@
     <script>
         $(document).ready(function()
         {
+            $('#fileupload').parents('form').find('.form-actions').hide();
+            $('#fileupload').parents('form').find('.box-success').first().hide();
             var galId;
             if($('#fileupload').length){
                 var path = window.location.pathname;
                 var array = path.split("/");
                 galId = array[array.length-2];
             }
-            $('#fileupload').fileupload({
-                formData: {
-                    /*galleryId: {{ object.id }}*/
-                    galleryId : galId
-                },
-                start: function (e) {
-                    $('#fileupload').slideUp();
-                    $('#fileupload-progress').slideDown();
-                },
-                stop: function (e) {
-                    $('#fileupload-progress .progress-bar').text('Загрузка завершена');
-                    window.location.reload();
-                },
-                progressall: function (e, data) {
-                    var progress = parseInt(data.loaded / data.total * 100, 10);
-                    var $progressBar = $('#fileupload-progress .progress-bar');
+            if($.isNumeric( galId )) {
+                $('#fileupload').fileupload({
+                    formData: {
+                        /*galleryId: {{ object.id }}*/
+                        galleryId: galId
+                    },
+                    start: function (e) {
+                        $('#fileupload').slideUp();
+                        $('#fileupload-progress').slideDown();
+                    },
+                    stop: function (e) {
+                        $('#fileupload-progress .progress-bar').text('Загрузка завершена');
+                        window.location.reload();
+                    },
+                    progressall: function (e, data) {
+                        var progress = parseInt(data.loaded / data.total * 100, 10);
+                        var $progressBar = $('#fileupload-progress .progress-bar');
 
-                    $progressBar.css('min-width', '2em');
-                    $progressBar.css('width', progress + '%');
-                    $progressBar.text(progress + ' %');
-                }
+                        $progressBar.css('min-width', '2em');
+                        $progressBar.css('width', progress + '%');
+                        $progressBar.text(progress + ' %');
+                    }
 
-            });
+                });
+            }else{
+                alert('Не найден уникальный номер галереи. Добавлять файлы нужно в уже созданную галерею. Вначале создайте пустую галерею. Затем добавьте файлы.');
+            }
         });
     </script>
 {% endblock sonata_tab_content %}

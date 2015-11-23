@@ -36,6 +36,8 @@ Easy\MainBundle\Entity\MainMenu:
             nullable: true
         enabled:
             type: boolean
+        empty:
+            type: boolean
         order_column:
             type: integer
             nullable: false

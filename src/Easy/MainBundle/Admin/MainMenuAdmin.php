@@ -39,8 +39,10 @@ class MainMenuAdmin extends Admin
         $subject = $this->getSubject();
         if($subject->getId() == NULL){
             $enabled = true;
+            $empty = false;
         }else{
             $enabled = $subject->getEnabled();
+            $empty = $subject->getEmpty();
         }
 
         $formMapper
@@ -49,6 +51,7 @@ class MainMenuAdmin extends Admin
                 ->add('title')
                 ->add('order_column')
                 ->add('enabled', 'checkbox', array('data'=>$enabled, 'required' => false))
+                ->add('empty', 'checkbox', array('data'=>$empty, 'required' => false))
                 ->add('color', 'choice', array('choices'=> MainMenu::getColors(), 'expanded' => false))
                 ->add('seo_title')
                 ->add('seo_description')
@@ -74,6 +77,7 @@ class MainMenuAdmin extends Admin
         $listMapper
             ->add('id', null, array('sortable'=>false))
             ->addIdentifier('laveled_title', null, array('sortable'=>false, 'label'=>'Название страницы'))
+            ->add('url')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'view' => array('template' => 'EasyMainBundle:Admin/CRUD:list__action_entity_board.html.twig'),

@@ -25,6 +25,10 @@ logout:
 easy_main_gallery:
     path:     /gallery/{id}/
     defaults: { _controller: EasyMainBundle:Default:gallery }
+
+easy_main_linkedgallery:
+    path:     /linkedgallery/{id}/
+    defaults: { _controller: EasyMainBundle:Default:linkedgallery }
     
 easy_main_calendar:
     path:     /calendar/{id}/

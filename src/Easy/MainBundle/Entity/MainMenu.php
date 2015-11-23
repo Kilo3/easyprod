@@ -497,4 +497,32 @@ class MainMenu
     {
         return $this->enabled;
     }
+    /**
+     * @var boolean
+     */
+    private $empty;
+
+
+    /**
+     * Set empty
+     *
+     * @param boolean $empty
+     * @return MainMenu
+     */
+    public function setEmpty($empty)
+    {
+        $this->empty = $empty;
+
+        return $this;
+    }
+
+    /**
+     * Get empty
+     *
+     * @return boolean 
+     */
+    public function getEmpty()
+    {
+        return $this->empty;
+    }
 }
