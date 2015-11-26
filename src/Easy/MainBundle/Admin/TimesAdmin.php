@@ -13,16 +13,16 @@ class TimesAdmin extends Admin
     public function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name')
-            ->add('image','sonata_type_model_list',array())
-            ->add('file','sonata_type_model_list',array())
+            ->add('name', 'text', array('label' => 'Название'))
+            ->add('image','sonata_type_model_list',array('label' => 'Фотография'))
+            ->add('file','sonata_type_model_list',array('label' => 'Файл'))
         ;
     }
 
     public function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name')
+            ->addIdentifier('name', null, array('label' => 'Название'))
         ;
     }
 

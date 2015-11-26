@@ -156,9 +156,9 @@ overflow: hidden;">
                                     {% endif %}
 
                                     {% for children in value.children %}
-                                        <a style="margin-left:20px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}">{{ children.title }}</a>
+                                        <a style="margin-left:0px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}">{{ children.title }}</a>
                                         {% for lastchildren in children %}
-                                            <a style="margin-left:40px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}/{{ lastchildren.url }}">{{ lastchildren.title }}</a>
+                                            <a style="margin-left:20px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}/{{ lastchildren.url }}">{{ lastchildren.title }}</a>
                                         {% endfor %}
                                     {% endfor %}
                                     </div>
@@ -348,5 +348,11 @@ overflow: hidden;">
         ga('send', 'pageview');
 
         </script>
+
+        {#<!-- BEGIN JIVOSITE CODE {literal} -->
+        <script type='text/javascript'>
+            (function(){ var widget_id = 'XRvGlrqE68';
+                var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);})();</script>
+        <!-- {/literal} END JIVOSITE CODE -->#}
     </body>
 </html>

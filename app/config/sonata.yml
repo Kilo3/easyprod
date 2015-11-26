@@ -80,29 +80,29 @@ sonata_admin:
             - { position: right, type: sonata.admin.block.admin_list, settings: { groups: [Media] } }
         groups:
             Settings:
-                items: 
-                    - easy.admin.content
+                label: Настройки
+                items:
                     - easy.admin.mainmenu
-                    - easy.admin.news
                     - easy.admin.calendar
-                    - easy.admin.city
-                    - easy.admin.stuff
-                    - easy.admin.photo_gallery
+                    - easy.admin.news
                     - easy.admin.times
-            Media:
-                items:
-                    - sonata.media.admin.gallery
-                    - sonata.media.admin.media
-                    - custom_name.admin.media
-            Temp:
-                items:
-                    - easy.admin.contacts
-                    - easy.admin.team
+                    - easy.admin.photo_gallery
+                    - easy.admin.stuff
+                    - easy.admin.content
+            #Media:
+            #    items:
+            #        - sonata.media.admin.gallery
+            #        - sonata.media.admin.media
+            #        - custom_name.admin.media
+            #Temp:
+            #    items:
+            #        - easy.admin.contacts
+            #        - easy.admin.team
 ivory_ck_editor:
     default_config: default
     configs:
         default:
-            language:  '%locale%'
+            language:  ru
             toolbar: full
             filebrowserBrowseRoute: admin_sonata_media_media_ckeditor_browser
             filebrowserImageBrowseRoute: admin_sonata_media_media_ckeditor_browser

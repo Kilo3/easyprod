@@ -87,9 +87,9 @@
                                         <p style="font-family: RobotoLight;font-size: 1.3em;color: #616161;margin: 0;">{{ value.title }}</p>
                                     {% endif %}
                                     {% for children in value.children %}
-                                        <a style="margin-left:20px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}">{{ children.title }}</a>
+                                        <a style="margin-left:0px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}">{{ children.title }}</a>
                                         {% for lastchildren in children %}
-                                            <a style="margin-left:40px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}/{{ lastchildren.url }}">{{ lastchildren.title }}</a>
+                                            <a style="margin-left:20px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}/{{ lastchildren.url }}">{{ lastchildren.title }}</a>
                                         {% endfor %}
                                     {% endfor %}
                                     </div>

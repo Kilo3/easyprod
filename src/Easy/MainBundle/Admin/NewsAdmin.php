@@ -21,19 +21,21 @@ class NewsAdmin extends Admin
     public function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name')
-            ->add('media', 'sonata_type_model_list', array())
-            ->add('type', 'choice', array('choices'=>array('published'=>'published','not published'=>'not published')))
+            ->add('name', 'text', array('label' => 'Название'))
+            ->add('media', 'sonata_type_model_list', array('label' => 'Превью картинка'))
+            ->add('type', 'choice', array('choices'=>array('published'=>'Опубликовано','not published'=>'Не опубликовано'), 'label' => 'Отображение на сайте'))
             ->add('text', 'ckeditor', array(
                 'config' => array(
                     'removePlugins' => 'htmldataprocessor'
-                )
+                ),
+                'label' => 'Текст новости'
             ))
-            ->add('order_column')
+            ->add('order_column', 'integer', array('label' => 'Порядок отображения'))
             ->add('date', 'date', array(
                 'pattern' => 'dd MMM Y G',
                 //'locale' => 'en',
                 //'timezone' => 'Europe/Moscow',
+                'label' => 'Дата новости'
             ))
         ;
     }
@@ -41,10 +43,10 @@ class NewsAdmin extends Admin
     public function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name')
-            ->add('type')
-            ->add('date')
-            ->add('order_column')
+            ->addIdentifier('name', null, array('label' => 'Название'))
+            ->add('type', null, array('label' => 'Тип'))
+            ->add('date', null, array('label' => 'Дата'))
+            ->add('order_column', null, array('label' => 'Порядок'))
         ;
     }
 

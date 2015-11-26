@@ -21,26 +21,29 @@ class CalendarAdmin extends Admin
     public function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name')
+            ->add('name', 'text', array('label' => 'Название'))
             ->add('text', 'ckeditor', array(
                 'config' => array(
                     'removePlugins' => 'htmldataprocessor'
-                )
+                ),
+                'label' => 'Описание'
             ))
             ->add('date', 'date', array(
                 'pattern' => 'dd MMM Y G',
                 //'locale' => 'en',
                 //'timezone' => 'Europe/Moscow',
-            ))
-           ->add('media', 'sonata_type_model_list', array())
+                'label' => 'Дата события'
+                )
+            )
+           ->add('media', 'sonata_type_model_list', array('label' => 'Превью картинка'))
         ;
     }
 
     public function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name')
-            ->add('date')
+            ->addIdentifier('name', null, array('label' => 'Название'))
+            ->add('date', null, array('label' => 'Дата события'))
         ;
     }
 

@@ -43,10 +43,11 @@ easy_main_contacts:
     defaults: { _controller: EasyMainBundle:Default:contacts }
     
 easy_main_stuff:
-    path:     /stuff/{type}
-    defaults: { _controller: EasyMainBundle:Default:stuff, type: all }
+    path:     /stuff{trailingSlash}{type}
+    defaults: { _controller: EasyMainBundle:Default:stuff, type: all,trailingSlash : "/" }
     requirements:
         type: .+
+        trailingSlash : "[/]{0,1}"
 
     
 form_controller:

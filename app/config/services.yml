@@ -14,14 +14,11 @@ services:
     easy.admin.content:
         class: Easy\MainBundle\Admin\ContentAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: easy, label: Content }
+            - { name: sonata.admin, manager_type: orm, group: easy, label: Контент страниц }
         arguments:
             - easy.admin.content
             - Easy\MainBundle\Entity\Content
             - 'EasyMainBundle:ContentAdmin'
-
-
-
     easy.admin.team:
         class: Easy\MainBundle\Admin\TeamAdmin
         tags:
@@ -33,7 +30,7 @@ services:
     easy.admin.mainmenu:
         class: Easy\MainBundle\Admin\MainMenuAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: easy, label: MainMenu }
+            - { name: sonata.admin, manager_type: orm, group: easy, label: Cтраницы сайта }
         arguments:
             - ~
             - Easy\MainBundle\Entity\MainMenu
@@ -49,7 +46,7 @@ services:
     easy.admin.news:
         class: Easy\MainBundle\Admin\NewsAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: easy, label: News }
+            - { name: sonata.admin, manager_type: orm, group: easy, label: Новости }
         arguments:
             - ~
             - Easy\MainBundle\Entity\News
@@ -57,7 +54,7 @@ services:
     easy.admin.calendar:
         class: Easy\MainBundle\Admin\CalendarAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: easy, label: Calendar }
+            - { name: sonata.admin, manager_type: orm, group: easy, label: События }
         arguments:
             - ~
             - Easy\MainBundle\Entity\Calendar
@@ -74,7 +71,7 @@ services:
     easy.admin.stuff:
         class: Easy\MainBundle\Admin\StuffAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: easy, label: Stuff}
+            - { name: sonata.admin, manager_type: orm, group: easy, label: Команда}
         arguments:
             - ~
             - Easy\MainBundle\Entity\Stuff
@@ -83,7 +80,7 @@ services:
     easy.admin.photo_gallery:
         class: Easy\MainBundle\Admin\PhotoGalleryAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: easy, label: PhotoGallery}
+            - { name: sonata.admin, manager_type: orm, group: easy, label: Фотогалереи}
         arguments:
             - ~
             - Easy\MainBundle\Entity\PhotoGallery
@@ -91,7 +88,7 @@ services:
     easy.admin.times:
         class: Easy\MainBundle\Admin\TimesAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: easy, label: Times}
+            - { name: sonata.admin, manager_type: orm, group: easy, label: Easy Times}
         arguments:
             - ~
             - Easy\MainBundle\Entity\Times

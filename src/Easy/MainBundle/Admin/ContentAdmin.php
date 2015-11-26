@@ -185,10 +185,10 @@ class ContentAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('id')
-            ->addIdentifier('name')
-            ->add('url', 'string')
-            ->add('order_column')
+            ->add('id')
+            ->addIdentifier('name', null,  array('label' => 'Название'))
+            ->add('url', 'string', array('label' => 'Страница'))
+            ->add('order_column', null, array('label' => 'Порядок следования'))
             
             
 //            ->add('_action', 'actions', array(

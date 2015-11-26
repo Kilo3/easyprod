@@ -47,14 +47,14 @@ class MainMenuAdmin extends Admin
 
         $formMapper
             ->with('General', array('class' => 'col-md-12'))
-                ->add('url')
-                ->add('title')
-                ->add('order_column')
-                ->add('enabled', 'checkbox', array('data'=>$enabled, 'required' => false))
-                ->add('empty', 'checkbox', array('data'=>$empty, 'required' => false))
-                ->add('color', 'choice', array('choices'=> MainMenu::getColors(), 'expanded' => false))
-                ->add('seo_title')
-                ->add('seo_description')
+                ->add('url', 'text', array('label' => 'Адрес страницы'))
+                ->add('title', 'text', array('label' => 'Название страницы'))
+                ->add('order_column', 'text', array('label' => 'Порядок отображения'))
+                ->add('enabled', 'checkbox', array('data'=>$enabled, 'required' => false, 'label' => 'Отображение в меню'))
+                ->add('empty', 'checkbox', array('data'=>$empty, 'required' => false, 'label' => 'Отображение на сайте'))
+                ->add('color', 'choice', array('choices'=> MainMenu::getColors(), 'expanded' => false, 'label' => 'Цвет'))
+                ->add('seo_title', 'text', array('label' => 'СЕО заголовок страницы'))
+                ->add('seo_description', 'text', array('label' => 'СЕО описание страницы'))
                 /*->add('parent','sonata_type_model_list',array(
                     'btn_add' => false
                 ))*/
@@ -76,12 +76,15 @@ class MainMenuAdmin extends Admin
     {
         $listMapper
             ->add('id', null, array('sortable'=>false))
-            ->addIdentifier('laveled_title', null, array('sortable'=>false, 'label'=>'Название страницы'))
-            ->add('url')
+            ->addIdentifier('leveled_title', null, array('sortable'=>false, 'label'=>'Название страницы'))
+            ->add('leveled_url', null, array('label' => 'Адрес страницы'))
+            ->add('enabled', null, array('sortable'=>false, 'label'=>'Отображение в меню'))
+            ->add('empty', null, array('sortable'=>false, 'label'=>'Отображение на сайте'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'view' => array('template' => 'EasyMainBundle:Admin/CRUD:list__action_entity_board.html.twig'),
-                )
+                ),
+                'label' => 'Содержимое страницы'
             ))
 
         ;

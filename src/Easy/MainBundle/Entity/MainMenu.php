@@ -447,6 +447,15 @@ class MainMenu
         return $this->city;
     }
 
+    public function getLeveledUrl()
+    {
+        $prefix = "";
+        for($i = 2; $i <= $this->lvl; $i++){
+            $prefix .= " --- ";
+        }
+        return (string) $prefix.$this->getUrl();
+    }
+
     public function __toString()
     {
         $prefix = "";
@@ -455,7 +464,7 @@ class MainMenu
         }
         return (string) $prefix.$this->getTitle();
     }
-    public function getLaveledTitle()
+    public function getLeveledTitle()
     {
         return (string)$this;
     }

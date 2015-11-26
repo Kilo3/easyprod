@@ -23,18 +23,18 @@ class StuffAdmin extends Admin
     public function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name')
-            ->add('text', 'ckeditor',array('config_name' => 'default'))
-            ->add('type', 'choice', array('choices' => Stuff::getTypes(), 'expanded' => true))
-            ->add('media','sonata_type_model_list',array())
+            ->add('name', 'text', array('label' => 'Иия'))
+            ->add('text', 'ckeditor',array('config_name' => 'default', 'label' => 'Описание'))
+            ->add('type', 'choice', array('choices' => Stuff::getTypes(), 'expanded' => true, 'label'=> 'Тип'))
+            ->add('media','sonata_type_model_list',array('label' => 'Фотография'))
         ;
     }
 
     public function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name')
-            ->add('type')
+            ->addIdentifier('name', null, array('label' => 'Имя'))
+            ->add('type', null, array('label' => 'Тип'))
         ;
     }
 

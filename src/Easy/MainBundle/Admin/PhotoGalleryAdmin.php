@@ -14,16 +14,15 @@ class PhotoGalleryAdmin extends Admin
     public function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name')
-            ->add('gallery','sonata_type_model_list',array())
+            ->add('name','text',array('label' => 'Название'))
+            ->add('gallery','sonata_type_model_list',array('label' => 'Привязанная галерея'))
         ;
     }
 
     public function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name')
-            ->add('type')
+            ->addIdentifier('name', null, array('label' => 'Название'))
         ;
     }
 
@@ -31,7 +30,6 @@ class PhotoGalleryAdmin extends Admin
     {
         $datagridMapper
             ->add('name')
-            //->add('category')
         ;
     }
 }
