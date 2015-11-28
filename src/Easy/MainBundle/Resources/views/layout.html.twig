@@ -4,18 +4,21 @@
         <title>
             {% block title %}
                 {% if content[0].url.seotitle is defined %}
-                     {{ content[0].url.seotitle }} | Easy School
+                     {{ content[0].url.seotitle }} | Образовательный центр
                 {% else %}
-                    Easy School. Школа иностранных языков в Иркутске.
+                    Easy School | Образовательный центр
                 {% endif %}
             {% endblock %}
         </title>
        {% if content[0].url.seodescription is defined %}
             <meta name="description" content="{{ content[0].url.seodescription }}" />
        {% endif %}
+        {% if content[0].url.seokeywords is defined %}
+            <meta name="keywords" content="{{ content[0].url.seokeywords }}" />
+        {% endif %}
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <link rel="shortcut icon" href="/favicon.ico?v=1" type="image/x-icon">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/jquery-ui.css') }}" type="text/css" media="all" />
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/font-awesome.min.css') }}" type="text/css" media="all" />
@@ -171,9 +174,9 @@ overflow: hidden;">
                         <span><i class="dot"></i>7(3952)72-36-72</span>
                     </div>
                     <div class="social-icons">
-                        <a href="http://vk.com/easyschool" target="_blank"><i class="fa fa-vk"></i></a>
-                        <a href="https://instagram.com/easy_school/" target="_blank"><i class="fa fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/easyschool1" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="http://vk.com/easyschool" rel="nofollow" target="_blank"><i class="fa fa-vk"></i></a>
+                        <a href="https://instagram.com/easy_school/" rel="nofollow" target="_blank"><i class="fa fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/easyschool1" rel="nofollow" target="_blank"><i class="fa fa-facebook"></i></a>
                     </div>
 
 

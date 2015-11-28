@@ -534,4 +534,32 @@ class MainMenu
     {
         return $this->empty;
     }
+    /**
+     * @var string
+     */
+    private $seo_keywords;
+
+
+    /**
+     * Set seo_keywords
+     *
+     * @param string $seoKeywords
+     * @return MainMenu
+     */
+    public function setSeoKeywords($seoKeywords)
+    {
+        $this->seo_keywords = $seoKeywords;
+
+        return $this;
+    }
+
+    /**
+     * Get seo_keywords
+     *
+     * @return string 
+     */
+    public function getSeoKeywords()
+    {
+        return $this->seo_keywords;
+    }
 }

@@ -49,6 +49,8 @@ Easy\MainBundle\Entity\MainMenu:
             type: text
         seo_description:
             type: text
+        seo_keywords:
+            type: text
     manyToOne:
         parent:
             targetEntity: MainMenu

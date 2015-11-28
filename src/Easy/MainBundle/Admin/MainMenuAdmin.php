@@ -18,7 +18,7 @@ class MainMenuAdmin extends Admin
         '_sort_order' => 'ASC'
     );
 
-    public function createQuery($context = 'list')
+/*    public function createQuery($context = 'list')
     {
         $em = $this->modelManager->getEntityManager('Easy\MainBundle\Entity\MainMenu');
 
@@ -31,7 +31,7 @@ class MainMenuAdmin extends Admin
 
         $query = new ProxyQuery($queryBuilder);
         return $query;
-    }
+    }*/
 
 
     public function configureFormFields(FormMapper $formMapper)
@@ -55,6 +55,7 @@ class MainMenuAdmin extends Admin
                 ->add('color', 'choice', array('choices'=> MainMenu::getColors(), 'expanded' => false, 'label' => 'Цвет'))
                 ->add('seo_title', 'text', array('label' => 'СЕО заголовок страницы'))
                 ->add('seo_description', 'text', array('label' => 'СЕО описание страницы'))
+                ->add('seo_keywords', 'text', array('label' => 'СЕО ключевые слова'))
                 /*->add('parent','sonata_type_model_list',array(
                     'btn_add' => false
                 ))*/

@@ -522,9 +522,11 @@ class DefaultController extends Controller
         $hp = $this->getDoctrine()->getManager();
 
         $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8, 'enabled' => 1)); // id = 8 корень меню
-        
+        $mainPageSeo = $hp->getRepository('EasyMainBundle:MainMenu')->findOneBy(array('id' => 8)); // id = 8 корень меню
+
         return $this->render('EasyMainBundle:Default:index.html.twig', array(
-            'mainMenu' => $mainMenu
+            'mainMenu' => $mainMenu,
+            'seo' => $mainPageSeo
         ));
         /*return $this->render('EasyMainBundle:Default:maintaince.html.twig', array(
             'mainMenu' => $mainMenu

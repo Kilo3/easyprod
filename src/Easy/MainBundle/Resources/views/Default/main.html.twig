@@ -3,9 +3,19 @@
     <head>
         <title>
             {% block title %}
-                Easy School. Школа иностранных языков в Иркутске.&nbsp;Курсы английского языка в Иркутске.
+                {% if seo.seotitle is defined %}
+                    {{ seo.seotitle }} | Образовательный центр
+                {% else %}
+                    Easy School | Образовательный центр
+                {% endif %}
             {% endblock %}
         </title>
+        {% if seo.seodescription is defined %}
+            <meta name="description" content="{{ seo.seodescription }}" />
+        {% endif %}
+        {% if seo.seokeywords is defined %}
+            <meta name="keywords" content="{{ seo.seokeywords }}" />
+        {% endif %}
         <link rel="shortcut icon" href="/favicon.ico?v=1" type="image/x-icon">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -15,12 +25,7 @@
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/bootstrap.css') }}" type="text/css" media="all" />
             <link rel="stylesheet" href="{{ asset('bundles/easymain/css/main.css') }}" type="text/css" media="all" />
         {% endblock %}
-        {% block javascripts %}
-            <script src="{{ asset('bundles/easymain/js/jquery-2.1.4.min.js') }}"></script>
-            <script src="{{ asset('bundles/easymain/js/jquery.cookie.js') }}"></script>
-            <script src="{{ asset('bundles/easymain/js/pace.min.js') }}"></script>
-            <script src="{{ asset('bundles/easymain/js/jquery-ui.js') }}" ></script>
-        {% endblock %}
+        <script src="{{ asset('bundles/easymain/js/pace.min.js') }}"></script>
     </head>
     <body>
         <div class="contentLoader">
@@ -30,8 +35,8 @@
                     <p>Пожалуйста, выберите город:</p>
                     <a href="#" onclick="hidePreloader()">Иркутск</a>
                     <a href="#" onclick="hidePreloader()">Ангарск</a>
-                    <a href="//kr.e-a-s-y.ru/">Красноярск</a>
-                    <a href="//uu.e-a-s-y.ru">Улан-Удэ</a>
+                    <a href="//kr.e-a-s-y.ru/" rel="nofollow">Красноярск</a>
+                    <a href="//uu.e-a-s-y.ru" rel="nofollow">Улан-Удэ</a>
                 </div>
             </div>
             
@@ -102,9 +107,9 @@
                         <span><i class="dot"></i>7(3952)72-36-72</span>
                     </div>
                     <div class="social-icons">
-                        <a href="http://vk.com/easyschool" target="_blank"><i class="fa fa-vk"></i></a>
-                        <a href="https://instagram.com/easy_school/" target="_blank"><i class="fa fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/easyschool1" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="http://vk.com/easyschool" rel="nofollow" target="_blank"><i class="fa fa-vk"></i></a>
+                        <a href="https://instagram.com/easy_school/" rel="nofollow" target="_blank"><i class="fa fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/easyschool1" rel="nofollow" target="_blank"><i class="fa fa-facebook"></i></a>
                     </div>
                 </div>
             </div>
@@ -122,6 +127,13 @@
             {% block content %}
             {% endblock %}
         </div>
+
+        {% block javascripts %}
+            <script src="{{ asset('bundles/easymain/js/jquery-2.1.4.min.js') }}"></script>
+            <script src="{{ asset('bundles/easymain/js/jquery.cookie.js') }}"></script>
+
+            <script src="{{ asset('bundles/easymain/js/jquery-ui.js') }}" ></script>
+        {% endblock %}
         <script>
             $(window).on('load', function () {
                 if(typeof $.cookie('cityId') === 'undefined'){
