@@ -38,6 +38,8 @@ Easy\MainBundle\Entity\MainMenu:
             type: boolean
         empty:
             type: boolean
+        record:
+            type: boolean
         order_column:
             type: integer
             nullable: false

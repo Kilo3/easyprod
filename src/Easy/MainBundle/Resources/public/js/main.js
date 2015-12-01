@@ -184,7 +184,7 @@ $(function(){
     });
 
 
-    $( "#opener" ).click(function() {
+    $( ".opener" ).click(function() {
         $( "#dialog" ).dialog( "open" );
         $( "#dialog" ).addClass("open");
     });

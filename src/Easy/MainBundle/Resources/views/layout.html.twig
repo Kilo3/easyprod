@@ -139,7 +139,7 @@ overflow: hidden;">
                         <div class="row">
                             <div class="col-md-4 col-md-offset-2 col-xs-5 col-xs-offset-0 menu-section-link">
                                 {% for value in mainMenu %}
-                                    {% if '/'~value.url~'/' in path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+                                    {% if root == value.id %}
                                         <a info="{{ loop.index }}" class="{{ value.color }}Hover header-title active" href="javascript:;">{{ value.title }}</a>
                                     {% else%}
                                         <a info="{{ loop.index }}" class="{{ value.color }}Hover header-title" href="javascript:;">{{ value.title }}</a>
@@ -147,7 +147,7 @@ overflow: hidden;">
                                 {% endfor %}
                             </div>
                             {% for value in mainMenu %}
-                                {% if '/'~value.url~'/' in path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+                                {% if root == value.id %}
                                     <div class="col-md-6 col-xs-7 menu-section-content" info="{{ loop.index }}" style="display:block;">
                                 {% else %}
                                     <div class="col-md-6 col-xs-7 menu-section-content" info="{{ loop.index }}">
@@ -159,9 +159,18 @@ overflow: hidden;">
                                     {% endif %}
 
                                     {% for children in value.children %}
-                                        <a style="margin-left:0px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}">{{ children.title }}</a>
+                                        {% if  children.record == true %}
+                                            <a style="margin-left:0px;" class="opener" href="#">{{ children.title }}</a>
+                                        {% else %}
+                                            <a style="margin-left:0px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}">{{ children.title }}</a>
+                                        {% endif %}
                                         {% for lastchildren in children %}
-                                            <a style="margin-left:20px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}/{{ lastchildren.url }}">{{ lastchildren.title }}</a>
+                                            {{ dump(lastchildren.record) }}
+                                            {% if  lastchildren.record == true %}
+                                                <a style="margin-left:20px;" class="opener" href="#">{{ lastchildren.title }}</a>
+                                            {% else %}
+                                                <a style="margin-left:20px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}/{{ lastchildren.url }}">{{ lastchildren.title }}</a>
+                                            {% endif %}
                                         {% endfor %}
                                     {% endfor %}
                                     </div>
@@ -182,11 +191,11 @@ overflow: hidden;">
 
 
             </div>
-            {% if secondLayerMenu is defined %}
+            {#{% if secondLayerMenu is defined %}
                 {% autoescape false %}
                     {{ secondLayerMenu }}
                 {% endautoescape %}
-            {% endif %}
+            {% endif %}#}
 
             {% if teacherMenu is defined %}
                 <div class="nav-menu secondLayerMenuStuff">
@@ -237,7 +246,7 @@ overflow: hidden;">
                                     <i class="fa fa-map-marker"></i>
                                     <div style="margin-left: -10px;">контакты</div>
                                 </a>
-                                <a href="javascript:;" id="opener" style="position: relative;z-index: 100;">
+                                <a href="javascript:;" class="opener" style="position: relative;z-index: 100;">
                                     <i class="fa fa-phone"></i>
                                     <div style="margin-left: -14px;">записаться</div>
                                 </a>

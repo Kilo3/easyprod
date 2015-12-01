@@ -562,4 +562,32 @@ class MainMenu
     {
         return $this->seo_keywords;
     }
+    /**
+     * @var boolean
+     */
+    private $record;
+
+
+    /**
+     * Set record
+     *
+     * @param boolean $record
+     * @return MainMenu
+     */
+    public function setRecord($record)
+    {
+        $this->record = $record;
+
+        return $this;
+    }
+
+    /**
+     * Get record
+     *
+     * @return boolean 
+     */
+    public function getRecord()
+    {
+        return $this->record;
+    }
 }

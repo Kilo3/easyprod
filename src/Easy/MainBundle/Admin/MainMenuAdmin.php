@@ -40,9 +40,11 @@ class MainMenuAdmin extends Admin
         if($subject->getId() == NULL){
             $enabled = true;
             $empty = false;
+            $record = false;
         }else{
             $enabled = $subject->getEnabled();
             $empty = $subject->getEmpty();
+            $record = $subject->getRecord();
         }
 
         $formMapper
@@ -51,7 +53,8 @@ class MainMenuAdmin extends Admin
                 ->add('title', 'text', array('label' => 'Название страницы'))
                 ->add('order_column', 'text', array('label' => 'Порядок отображения'))
                 ->add('enabled', 'checkbox', array('data'=>$enabled, 'required' => false, 'label' => 'Отображение в меню'))
-                ->add('empty', 'checkbox', array('data'=>$empty, 'required' => false, 'label' => 'Отображение на сайте'))
+                ->add('empty', 'checkbox', array('data'=>$empty, 'required' => false, 'label' => 'Скрыть с сайта'))
+                ->add('record', 'checkbox', array('data'=>$record, 'required' => false, 'label' => 'Этот раздел только вызывает форму Записаться в меню'))
                 ->add('color', 'choice', array('choices'=> MainMenu::getColors(), 'expanded' => false, 'label' => 'Цвет'))
                 ->add('seo_title', 'text', array('label' => 'СЕО заголовок страницы'))
                 ->add('seo_description', 'text', array('label' => 'СЕО описание страницы'))
@@ -80,7 +83,7 @@ class MainMenuAdmin extends Admin
             ->addIdentifier('leveled_title', null, array('sortable'=>false, 'label'=>'Название страницы'))
             ->add('leveled_url', null, array('label' => 'Адрес страницы'))
             ->add('enabled', null, array('sortable'=>false, 'label'=>'Отображение в меню'))
-            ->add('empty', null, array('sortable'=>false, 'label'=>'Отображение на сайте'))
+            ->add('empty', null, array('sortable'=>false, 'label'=>'Скрыт с сайта'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'view' => array('template' => 'EasyMainBundle:Admin/CRUD:list__action_entity_board.html.twig'),

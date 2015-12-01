@@ -261,15 +261,16 @@ class DefaultController extends Controller
             }
         }
         $teacherMenu = Stuff::getTypes();
-        
-        
+
+
         return $this->render('EasyMainBundle::layout.html.twig', array(
             'mainMenu' => $mainMenu,
             'content' => $content,
             'topMenu' => $topMenu,
             'secondLayerMenu' => $secondLayerMenu,
             'teacherMenu' => $teacherMenu,
-            'color' => $currentUrl->getColor()
+            'color' => $currentUrl->getColor(),
+            'root' => $currentUrl->getId()
         ));
     }
     
@@ -506,14 +507,16 @@ class DefaultController extends Controller
         }
         
         $teacherMenu = Stuff::getTypes();
-        
+
+
         return $this->render('EasyMainBundle::layout.html.twig', array(
             'mainMenu' => $mainMenu,
             'content' => $content,
             'topMenu' => $topMenu,
             //'secondLayerMenu' => $secondLayerMenu,
             'teacherMenu' => $teacherMenu,
-            'color' => $currentUrl->getColor()
+            'color' => $currentUrl->getColor(),
+            'root' => $currentUrl->getId()
         ));
     }
     

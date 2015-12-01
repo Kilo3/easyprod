@@ -1,0 +1,22 @@
+{% extends 'EasyMainBundle::layout.html.twig' %}
+{% block pageContent %}
+    <div id="page">
+        <div class="container">
+            <div class="col-md-11">
+                <p class="title">{{ content.name }}</p>
+                <div class="links">
+                    {% for galleryHasMedia in content.galleryHasMedias %}
+                        {% if galleryHasMedia.media.providerName == 'sonata.media.provider.image' %}
+                            <a href="{% path galleryHasMedia.media, 'big' %}" title="" data-gallery style="background: url('{% path galleryHasMedia.media, 'big' %}');"></a>
+                        {% else %}
+                            {% media galleryHasMedia.media, 'special' %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block sideHeader %}
+{% endblock %}
