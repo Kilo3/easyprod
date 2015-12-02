@@ -139,7 +139,7 @@ overflow: hidden;">
                         <div class="row">
                             <div class="col-md-4 col-md-offset-2 col-xs-5 col-xs-offset-0 menu-section-link">
                                 {% for value in mainMenu %}
-                                    {% if root == value.id %}
+                                    {% if root is defined and root == value.id %}
                                         <a info="{{ loop.index }}" class="{{ value.color }}Hover header-title active" href="javascript:;">{{ value.title }}</a>
                                     {% else%}
                                         <a info="{{ loop.index }}" class="{{ value.color }}Hover header-title" href="javascript:;">{{ value.title }}</a>
@@ -147,7 +147,7 @@ overflow: hidden;">
                                 {% endfor %}
                             </div>
                             {% for value in mainMenu %}
-                                {% if root == value.id %}
+                                {% if root is defined and root == value.id %}
                                     <div class="col-md-6 col-xs-7 menu-section-content" info="{{ loop.index }}" style="display:block;">
                                 {% else %}
                                     <div class="col-md-6 col-xs-7 menu-section-content" info="{{ loop.index }}">
