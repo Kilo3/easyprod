@@ -109,11 +109,11 @@ $(function(){
 
     $('a.submit').on('click', function(){
         //отправка
-        //var data = {request : $('#request').val()};
+        var path = $('#form-controller-path').attr('data');
         var data = $('#callback').serializeArray();
         $.ajax({
             type: "POST",
-            url: "{{ path('form_controller') }}",
+            url: path,
             data: data,
             success: function(data, dataType)
             {
@@ -314,8 +314,8 @@ $(function(){
 
     //var colors = new Array('purple', 'yellow', 'lightBlue', 'blue', 'green', 'salad');
     $('.nav-menu:not(.mainMenu) .menuList div a').each(function(index, value){
-        //var random = Math.floor((Math.random() * colors.length) + 0);
-        $(this).attr('class', '{{ color }}Hover');
+        var color = $('#color').attr('data');
+        $(this).attr('class', color+'Hover');
     });
 
     if($("#mainVideoSource").length){
