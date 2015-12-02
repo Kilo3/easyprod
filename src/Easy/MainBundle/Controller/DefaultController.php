@@ -501,6 +501,26 @@ class DefaultController extends Controller
                     
                     $value->setContent($foo->getContent());
                     break;
+                case 'stuff':
+
+                    $repository = $this->getDoctrine()->getRepository('EasyMainBundle:Stuff');
+                    $query = $repository->createQueryBuilder('s')
+                        ->where('s.type = :type')
+                        ->setParameter('type', $value->getStuff())
+                        ->orderBy("s.name", 'ASC')
+                        ->getQuery();
+                    $stuff = $query->getResult();
+
+                    shuffle($stuff);
+
+                    $stuff = array_slice($stuff, 0, 3, true);
+
+                    $foo = $this->render('EasyMainBundle:Block:block_stuff.html.twig', array(
+                        'content'   => $value,
+                        'stuff'   => $stuff
+                    ));
+                    $value->setContent($foo->getContent());
+                    break;
 
                 default:
                     break;
