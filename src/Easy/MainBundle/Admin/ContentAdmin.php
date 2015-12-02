@@ -120,9 +120,19 @@ class ContentAdmin extends Admin
                         ->add('url','sonata_type_model_list',array(
                                 'btn_add' => false
                               ))
-                        
+
                         ->add('order_column')
                         ->add('stuff', 'choice', array('choices' => Stuff::getTypes(), 'expanded' => true))
+                    ->end();
+                break;
+
+            case 'news':
+                $formMapper
+                    ->with('General', array('class' => 'col-md-6'))
+                        ->add('url','sonata_type_model_list',array(
+                            'btn_add' => false
+                        ))
+                        ->add('order_column')
                     ->end();
                 break;
             default:
