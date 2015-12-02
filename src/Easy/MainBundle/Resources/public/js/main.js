@@ -111,6 +111,7 @@ $(function(){
         //отправка
         var path = $('#form-controller-path').attr('data');
         var data = $('#callback').serializeArray();
+        console.log(path);
         $.ajax({
             type: "POST",
             url: path,
