@@ -54,7 +54,6 @@ class MainMenuAdmin extends Admin
                 ->add('order_column', 'text', array('label' => 'Порядок отображения'))
                 ->add('enabled', 'checkbox', array('data'=>$enabled, 'required' => false, 'label' => 'Отображение в меню'))
                 ->add('empty', 'checkbox', array('data'=>$empty, 'required' => false, 'label' => 'Скрыть с сайта'))
-                ->add('record', 'checkbox', array('data'=>$record, 'required' => false, 'label' => 'Этот раздел только вызывает форму Записаться в меню'))
                 ->add('color', 'choice', array('choices'=> MainMenu::getColors(), 'expanded' => false, 'label' => 'Цвет'))
                 ->add('seo_title', 'text', array('label' => 'СЕО заголовок страницы'))
                 ->add('seo_description', 'text', array('label' => 'СЕО описание страницы'))
@@ -68,6 +67,10 @@ class MainMenuAdmin extends Admin
                     'btn_add' => false,
                     'btn_delete' => false,
                 ))
+            ->end()
+            ->with('Специфические атрибуты', array('class' => 'col-md-12'))
+                ->add('record', 'checkbox', array('data'=>$record, 'required' => false, 'label' => 'Этот раздел только вызывает форму Записаться в меню'))
+                ->add('link', 'text', array('label' => 'Внешняя ссылка', 'required' => false))
             ->end()
         ;
 

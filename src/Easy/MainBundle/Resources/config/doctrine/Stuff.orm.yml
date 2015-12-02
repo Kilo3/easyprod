@@ -19,7 +19,7 @@ Easy\MainBundle\Entity\Stuff:
             nullable: true
             required: false
         type:
-            type:string
+            type: string
             
     manyToOne:
         media:

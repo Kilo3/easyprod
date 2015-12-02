@@ -590,4 +590,32 @@ class MainMenu
     {
         return $this->record;
     }
+    /**
+     * @var string
+     */
+    private $link;
+
+
+    /**
+     * Set link
+     *
+     * @param string $link
+     * @return MainMenu
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+
+        return $this;
+    }
+
+    /**
+     * Get link
+     *
+     * @return string 
+     */
+    public function getLink()
+    {
+        return $this->link;
+    }
 }

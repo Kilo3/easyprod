@@ -152,21 +152,27 @@ overflow: hidden;">
                                 {% else %}
                                     <div class="col-md-6 col-xs-7 menu-section-content" info="{{ loop.index }}">
                                 {% endif %}
-                                    {% if value.empty == false %}
+                                    {% if value.empty == false and value.link is empty %}
                                         <a href="{{ path('easy_main_homepage') }}{{ value.url }}" style="font-size: 1.5em;">{{ value.title }}</a>
+                                    {% elseif value.link is not empty %}
+                                        <a href="{{ value.link }}" style="font-size: 1.5em;">{{ value.title }}</a>
                                     {% else %}
                                         <p style="font-family: RobotoLight;font-size: 1.5em;color: #616161;margin: 0;padding-left: 10px;">{{ value.title }}</p>
                                     {% endif %}
 
                                     {% for children in value.children %}
-                                        {% if  children.record == true %}
+                                        {% if  children.record == true and children.link is empty %}
                                             <a style="margin-left:0px;" class="opener" href="#">{{ children.title }}</a>
+                                        {% elseif children.link is not empty %}
+                                            <a style="margin-left:0px;" href="{{ children.link }}">{{ children.title }}</a>
                                         {% else %}
                                             <a style="margin-left:0px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}">{{ children.title }}</a>
                                         {% endif %}
                                         {% for lastchildren in children %}
-                                            {% if  lastchildren.record == true %}
+                                            {% if  lastchildren.record == true and lastchildren.link is empty %}
                                                 <a style="margin-left:20px;" class="opener" href="#">{{ lastchildren.title }}</a>
+                                            {% elseif lastchildren.link is not empty %}
+                                                <a style="margin-left:20px;" href="{{ lastchildren.link }}">{{ lastchildren.title }}</a>
                                             {% else %}
                                                 <a style="margin-left:20px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}/{{ lastchildren.url }}">{{ lastchildren.title }}</a>
                                             {% endif %}

@@ -1038,7 +1038,7 @@ i.dot{
 }
 .advantage p{
     display: block;
-    font-size: 1em;
+    font-size: 1.2em;
     margin: 0;
     color: #2D2D2D;
     font-family: robotoLight;
@@ -2177,6 +2177,7 @@ table>tbody>tr>td{
 }
 .splitted p{
     font-family: robotoLight;
+    font-size: 1.2em;
 }
 .splitted strong{
     font-family: sansRoundedBold;
