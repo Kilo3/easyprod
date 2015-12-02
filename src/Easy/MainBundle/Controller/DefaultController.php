@@ -330,6 +330,29 @@ class DefaultController extends Controller
                     ));
                     $value->setContent($foo->getContent());
                     break;
+
+                case 'news':
+
+                    $repository = $this->getDoctrine()->getRepository('EasyMainBundle:News');
+                    $date_from = date('Y-m-d');
+                    $contacts = $repository->createQueryBuilder('s')
+                        ->where('s.date >= :date_from', 's.type = :type')
+                        ->setParameter('date_from', $date_from)
+                        ->setParameter('type', 'published')
+                        ->orderBy("s.date", 'DESC')
+                        ->setMaxResults(3)
+                        ->getQuery();
+                    $news = $contacts->getResult();
+
+                    if(count($news) < 3 ){
+                        $news = $hp->getRepository('EasyMainBundle:News')->findBy(array('type' => 'published'), array('date'=>'DESC'), 3);
+                    }
+                    $foo = $this->render('EasyMainBundle:Block:block_news.html.twig', array(
+                        'content'   => $value,
+                        'news'   => $news
+                    ));
+                    $value->setContent($foo->getContent());
+                    break;
                 
                 case 'content':
                     
