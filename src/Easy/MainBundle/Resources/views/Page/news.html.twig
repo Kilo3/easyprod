@@ -6,21 +6,23 @@
                 <p class="title">Новости</p>
                 <div class="links">
                     <div class="row" style="margin-bottom: 30px;">
-                        {% for news in content %}
+                        {% for newsInfo in news %}
                             <div class="col-md-3 col-xs-6">
                                 <a href="#popup{{ loop.index }}" class="popup">
-                                    {% if news.media is defined %}
-                                        <div style="background: url('{% path news.media, 'big' %}');">
+                                    {% if newsInfo.media is defined %}
+                                        <div style="background: url('{% path newsInfo.media, 'big' %}');">
                                         </div>
                                     {% endif %}
-                                    {{ news.name }}
+                                    <strong>
+                                        {{ newsInfo.name }}
+                                    </strong>
                                 </a>
                             </div>
                             <div style='display:none;'>
                                 <div id='popup{{ loop.index }}' style='padding:10px; background:#fff;'>
                                     <div class="inside">
                                         {% autoescape false %}
-                                            {{ news.text }}
+                                            {{ newsInfo.text }}
                                         {% endautoescape %}
                                     </div>
                                 </div>
@@ -34,6 +36,44 @@
                 </div>
             </div>
         </div>
+
+       {% if archive|length > 0 %}
+           <div class="container">
+               <div class="col-md-12">
+                   <p class="title">Архив новостей</p>
+                   <div class="links">
+                       <div class="row" style="margin-bottom: 30px;">
+                           {% for newsInfo in archive %}
+                               <div class="col-md-3 col-xs-6">
+                                   <a href="#popup{{ loop.index }}" class="popup">
+                                       {% if newsInfo.media is defined %}
+                                           <div style="background: url('{% path newsInfo.media, 'big' %}');">
+                                           </div>
+                                       {% endif %}
+                                       <strong>
+                                           {{ newsInfo.name }}
+                                       </strong>
+                                   </a>
+                               </div>
+                               <div style='display:none;'>
+                                   <div id='popup{{ loop.index }}' style='padding:10px; background:#fff;'>
+                                       <div class="inside">
+                                           {% autoescape false %}
+                                           {{ newsInfo.text }}
+                                           {% endautoescape %}
+                                       </div>
+                                   </div>
+                               </div>
+                               {% if loop.index%4 == 0 %}
+                                   </div>
+                                   <div class="row" style="margin-bottom: 30px;">
+                               {% endif %}
+                           {% endfor %}
+                       </div>
+                   </div>
+               </div>
+           </div>
+       {% endif %}
     </div>
 {% endblock %}
 

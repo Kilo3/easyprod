@@ -146,7 +146,7 @@ $(function(){
         next: '',
         close: '',
         onComplete: function(){
-            $('#cboxLoadedContent').slimScroll({});
+            //$('#cboxLoadedContent').slimScroll({});
         }
 
     });

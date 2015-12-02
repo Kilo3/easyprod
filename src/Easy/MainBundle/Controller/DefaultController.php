@@ -194,15 +194,16 @@ class DefaultController extends Controller
                     $repository = $this->getDoctrine()->getRepository('EasyMainBundle:News');
                     $date_from = date('Y-m-d');
                     $contacts = $repository->createQueryBuilder('s')
-                        ->where('s.date >= :date_from')
+                        ->where('s.date >= :date_from', 's.type = :type')
                         ->setParameter('date_from', $date_from)
+                        ->setParameter('type', 'published')
                         ->orderBy("s.date", 'DESC')
                         ->setMaxResults(3)
                         ->getQuery();
                     $news = $contacts->getResult();
                     
                     if(count($news) < 3 ){
-                        $news = $hp->getRepository('EasyMainBundle:News')->findBy(array(), array('date'=>'DESC'), 3);    
+                        $news = $hp->getRepository('EasyMainBundle:News')->findBy(array('type' => 'published'), array('date'=>'DESC'), 3);
                     }
                     $foo = $this->render('EasyMainBundle:Block:block_news.html.twig', array(
                         'content'   => $value,
@@ -542,14 +543,15 @@ class DefaultController extends Controller
 
         $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8, 'enabled' => 1)); // id = 8 корень меню
         
-        $content = $hp->getRepository('EasyMainBundle:News')->findBy(array(), array('order_column'=>'ASC'));
-        
+        $news = $hp->getRepository('EasyMainBundle:News')->findBy(array("type" => "published"), array('order_column'=>'ASC'));
+        $archive = $hp->getRepository('EasyMainBundle:News')->findBy(array("type" => "archive"), array('order_column'=>'ASC'));
         
         $topMenu = "";
         $secondLayerMenu = "";
         return $this->render('EasyMainBundle:Page:news.html.twig', array(
             'mainMenu' => $mainMenu,
-            'content' => $content,
+            'news' => $news,
+            'archive' => $archive,
             'topMenu' => $topMenu,
             'secondLayerMenu' => $secondLayerMenu,
             'color' => 'salad'

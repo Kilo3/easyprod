@@ -23,7 +23,7 @@ class NewsAdmin extends Admin
         $formMapper
             ->add('name', 'text', array('label' => 'Название'))
             ->add('media', 'sonata_type_model_list', array('label' => 'Превью картинка'))
-            ->add('type', 'choice', array('choices'=>array('published'=>'Опубликовано','not published'=>'Не опубликовано'), 'label' => 'Отображение на сайте'))
+            ->add('type', 'choice', array('choices'=>array('published'=>'Опубликовано','not published'=>'Не опубликовано','archive' => 'В архиве'), 'label' => 'Состояние'))
             ->add('text', 'ckeditor', array(
                 'config' => array(
                     'removePlugins' => 'htmldataprocessor'
