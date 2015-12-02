@@ -165,7 +165,6 @@ overflow: hidden;">
                                             <a style="margin-left:0px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}">{{ children.title }}</a>
                                         {% endif %}
                                         {% for lastchildren in children %}
-                                            {{ dump(lastchildren.record) }}
                                             {% if  lastchildren.record == true %}
                                                 <a style="margin-left:20px;" class="opener" href="#">{{ lastchildren.title }}</a>
                                             {% else %}
