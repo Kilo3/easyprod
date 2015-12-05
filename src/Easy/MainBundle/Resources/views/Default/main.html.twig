@@ -142,6 +142,33 @@
 
             {% block content %}
             {% endblock %}
+
+            <div id="dialog">
+                <form id="callback">
+                    <input type="text" name="name" placeholder="Ваше имя">
+                    <input type="text" name="phone" placeholder="Ваш номер телефона">
+                    <textarea name="time" placeholder="Время, удобное для занятий" style="resize: none;height: 120px;"></textarea>
+
+                    <p style="margin: 0;font-size: 1.1em;">Как вы хотите заниматься?</p>
+                    <input type="radio" name="type" value="group">В группе<br/>
+                    <input type="radio" name="type" value="individ">Индивидуально<br/>
+                    <input type="radio" name="type" value="company">Корпоративно
+
+                    <a class="submit" style="margin-top:20px;">жду звонка</a>
+                    <a class='close' onclick="$( '#dialog' ).dialog( 'close' )">
+                        <span class=""></span>
+                        <span class=""></span>
+                    </a>
+                </form>
+            </div>
+            <div id="thankyou">
+                <p style='font-size: 42px;margin: 0;'>СПАСИБО!</p>
+                <p style='font-size: 22px;'>Мы свяжемся с вами<br/>в ближайшее время</p>
+                <a href="#" class='close' onclick="$( '#thankyou' ).dialog( 'close' )">
+                    <span class=""></span>
+                    <span class=""></span>
+                </a>
+            </div>
             <div id="form-controller-path" data="{{ path('form_controller') }}"></div>
         </div>
 
@@ -150,6 +177,8 @@
             <script src="{{ asset('bundles/easymain/js/jquery.cookie.js') }}"></script>
 
             <script src="{{ asset('bundles/easymain/js/jquery-ui.js') }}" ></script>
+            <script src="{{ asset('bundles/easymain/js/main.js') }}" ></script>
+
         {% endblock %}
         <script>
             $(window).on('load', function () {
@@ -202,6 +231,12 @@
                    $('.menu-section-content[info='+section+']').css({'display':'block'});
                 });
             });
+
+            {% if color is defined %}
+                coloring('{{ color }}');
+            {% else %}
+                coloring('purple');
+            {% endif %}
             
             
             

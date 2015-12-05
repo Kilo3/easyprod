@@ -134,56 +134,58 @@ $(function(){
 
     });
 
-    $(".popup").colorbox({
-        inline: true,
-        width: "auto",
-        height: "auto",
-        maxWidth: "90%",
-        maxHeight: "100%",
-        rel: "stuff",
-        closeButton: true,
-        arrowKey : false,
-        previous: '',
-        next: '',
-        close: '',
-        onComplete: function(){
-            //$('#cboxLoadedContent').slimScroll({});
-        }
-
-    });
-
-    $( "#dialog" ).dialog({
-        autoOpen: false,
-        modal: true,
-        resizable: false,
-        draggable: false,
-        minWidth: 450,
-        height: 350,
-        close: function( event, ui ) {
-            $( "#dialog" ).removeClass("open");
-        },
-        open: function() {
-            $('.ui-widget-overlay').bind('click', function() {
-                $('#dialog').dialog('close');
-            })
-        }
-    });
-
-    $( "#thankyou" ).dialog({
-        autoOpen: false,
-        modal: true,
-        resizable: false,
-        draggable: false,
-        height: 300,
-        minWidth: 400,
-        open: function( event, ui ) {
-            $( "#thankyou" ).addClass("open");
-        },
-        close: function( event, ui ) {
-            $( "#thankyou" ).removeClass("open");
-        }
-    });
-
+    if($(".popup").length) {
+        $(".popup").colorbox({
+            inline: true,
+            width: "auto",
+            height: "auto",
+            maxWidth: "90%",
+            maxHeight: "100%",
+            rel: "stuff",
+            closeButton: true,
+            arrowKey: false,
+            previous: '',
+            next: '',
+            close: '',
+            onComplete: function () {
+                //$('#cboxLoadedContent').slimScroll({});
+            }
+        });
+    }
+    if($("#dialog").length) {
+        $("#dialog").dialog({
+            autoOpen: false,
+            modal: true,
+            resizable: false,
+            draggable: false,
+            minWidth: 450,
+            height: 350,
+            close: function (event, ui) {
+                $("#dialog").removeClass("open");
+            },
+            open: function () {
+                $('.ui-widget-overlay').bind('click', function () {
+                    $('#dialog').dialog('close');
+                })
+            }
+        });
+    }
+    if($("#thankyou").length) {
+        $("#thankyou").dialog({
+            autoOpen: false,
+            modal: true,
+            resizable: false,
+            draggable: false,
+            height: 300,
+            minWidth: 400,
+            open: function (event, ui) {
+                $("#thankyou").addClass("open");
+            },
+            close: function (event, ui) {
+                $("#thankyou").removeClass("open");
+            }
+        });
+    }
 
     $( ".opener" ).click(function() {
         $( "#dialog" ).dialog( "open" );
@@ -239,28 +241,30 @@ $(function(){
 
 
 
-
-    $('.slidesCont').slidesjs({
-        width: 940,
-        height: 450,
-        navigation: false,
-        play:{
-            auto: false,
-            interval: 5000
-        },
-        pauseOnHover: true
-    });
-
-    $('.slides-container').slidesjs({
-        width: 940,
-        height: 540,
-        navigation: false,
-        play:{
-            auto: false,
-            interval: 5000
-        },
-        pauseOnHover: true
-    });
+    if($('.slidesCont').length) {
+        $('.slidesCont').slidesjs({
+            width: 940,
+            height: 450,
+            navigation: false,
+            play: {
+                auto: false,
+                interval: 5000
+            },
+            pauseOnHover: true
+        });
+    }
+    if($('.slides-container').length) {
+        $('.slides-container').slidesjs({
+            width: 940,
+            height: 540,
+            navigation: false,
+            play: {
+                auto: false,
+                interval: 5000
+            },
+            pauseOnHover: true
+        });
+    }
 
     if($(".content-slider").length){
         $(".content-slider").slidesjs({
