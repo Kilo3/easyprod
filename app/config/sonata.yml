@@ -136,19 +136,6 @@ sonata_media:
                 - sonata.media.provider.custom
             formats:
                 big:   { width: 865 , quality: 100}
-        gallery:
-            providers:
-                - sonata.media.provider.image
-                - sonata.media.provider.custom
-            formats:
-                big:   { width: 865 , quality: 100}
-        easy_times:
-            providers:
-                - sonata.media.provider.image
-                - sonata.media.provider.file
-            formats:
-                big:   { width: 865 , quality: 100}
-
     cdn:
         server:
             path: /uploads/media # http://media.sonata-project.org/

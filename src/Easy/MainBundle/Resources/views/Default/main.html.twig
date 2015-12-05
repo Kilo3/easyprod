@@ -74,7 +74,7 @@
                         <div class="row">
                             <div class="col-md-4 col-md-offset-2 col-xs-5 col-xs-offset-0 menu-section-link">
                                 {% for value in mainMenu %}
-                                    {% if '/'~value.url~'/' in path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+                                    {% if root is defined and root == value.id %}
                                         <a info="{{ loop.index }}" class="{{ value.color }}Hover header-title active" href="javascript:;">{{ value.title }}</a>
                                     {% else%}
                                         <a info="{{ loop.index }}" class="{{ value.color }}Hover header-title" href="javascript:;">{{ value.title }}</a>
@@ -82,23 +82,38 @@
                                 {% endfor %}
                             </div>
                             {% for value in mainMenu %}
-                                {% if '/'~value.url~'/' in path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
-                                    <div class="col-md-6 col-xs-7 menu-section-content" info="{{ loop.index }}" style="display:block;">
-                                {% else %}
-                                    <div class="col-md-6 col-xs-7 menu-section-content" info="{{ loop.index }}">
-                                {% endif %}
-                                    {% if value.empty == false %}
-                                        <a href="{{ path('easy_main_homepage') }}{{ value.url }}" style="font-size: 1.5em;">{{ value.title }}</a>
+                                {% if root is defined and root == value.id %}
+                                <div class="col-md-6 col-xs-7 menu-section-content" info="{{ loop.index }}" style="display:block;">
                                     {% else %}
-                                        <p style="font-family: RobotoLight;font-size: 1.5em;color: #616161;margin: 0;padding-left: 10px;">{{ value.title }}</p>
-                                    {% endif %}
-                                    {% for children in value.children %}
-                                        <a style="margin-left:0px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}">{{ children.title }}</a>
+                                    <div class="col-md-6 col-xs-7 menu-section-content" info="{{ loop.index }}">
+                                        {% endif %}
+                                        {% if value.empty == false and value.link is empty %}
+                                            <a href="{{ path('easy_main_homepage') }}{{ value.url }}" style="font-size: 1.5em;">{{ value.title }}</a>
+                                        {% elseif value.link is not empty %}
+                                            <a href="{{ value.link }}" style="font-size: 1.5em;">{{ value.title }}</a>
+                                        {% else %}
+                                            <p style="font-family: RobotoLight;font-size: 1.5em;color: #616161;margin: 0;padding-left: 10px;">{{ value.title }}</p>
+                                        {% endif %}
+
+                                        {% for children in value.children %}
+                                            {% if  children.record == true and children.link is empty %}
+                                                <a style="margin-left:0px;" class="opener" href="#">{{ children.title }}</a>
+                                            {% elseif children.link is not empty %}
+                                                <a style="margin-left:0px;" href="{{ children.link }}">{{ children.title }}</a>
+                                            {% else %}
+                                                <a style="margin-left:0px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}">{{ children.title }}</a>
+                                            {% endif %}
                                         {% for lastchildren in children %}
-                                            <a style="margin-left:20px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}/{{ lastchildren.url }}">{{ lastchildren.title }}</a>
+                                            {% if  lastchildren.record == true and lastchildren.link is empty %}
+                                                <a style="margin-left:20px;" class="opener" href="#">{{ lastchildren.title }}</a>
+                                            {% elseif lastchildren.link is not empty %}
+                                                <a style="margin-left:20px;" href="{{ lastchildren.link }}">{{ lastchildren.title }}</a>
+                                            {% else %}
+                                                <a style="margin-left:20px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}/{{ lastchildren.url }}">{{ lastchildren.title }}</a>
+                                            {% endif %}
                                         {% endfor %}
                                     {% endfor %}
-                                    </div>
+                                </div>
                             {% endfor %}
                         </div>
                     </div>
@@ -127,7 +142,6 @@
 
             {% block content %}
             {% endblock %}
-            <div id="color" data="{{ color }}"></div>
             <div id="form-controller-path" data="{{ path('form_controller') }}"></div>
         </div>
 
