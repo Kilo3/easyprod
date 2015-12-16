@@ -594,7 +594,7 @@ class DefaultController extends Controller
         $query = $repository->createQueryBuilder('e')
             ->select('YEAR(e.date) AS year, e.type')
             ->where('e.type = :type')
-            ->setParameter('type', 'published')
+            ->setParameter('type', 'archive')
             ->groupBy('year')
             ->orderBy('year', 'DESC')
             ->getQuery()
