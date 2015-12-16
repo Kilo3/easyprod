@@ -4,14 +4,14 @@
         <div class="container">
             <div class="col-md-12">
                 <div class="row" style="margin-bottom: 30px;">
-                    {% if all == 0 %}
-                        <p class="title">{{ title[content[0].type] }}</p>
-                    {% else %}
-                        <p class="title">Команда</p>
-                        {% for key,value in title %}
-                            <a class="button-square" href="/stuff/{{ key }}">{{ value }}</a>
-                        {% endfor %}
-                    {% endif %}
+                    <p class="title">Команда</p>
+                    {% for key,value in title %}
+                        {% if content[0].type == key and all == 0 %}
+                            <a class="button-square active" style="margin-right: 25px; clear: none;" href="/stuff/{{ key }}">{{ value }}</a>
+                        {% else %}
+                            <a class="button-square" style="margin-right: 25px; clear: none;" href="/stuff/{{ key }}">{{ value }}</a>
+                        {% endif %}
+                    {% endfor %}
                 </div>
                 <div class="links">
                     <div class="row" style="margin-bottom: 30px;">

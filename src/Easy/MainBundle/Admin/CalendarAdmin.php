@@ -11,6 +11,11 @@ class CalendarAdmin extends Admin
 {
     protected $parentAssociationMapping = 'content';
 
+    protected $datagridValues = array(
+        '_sort_order' => 'DESC',
+        '_sort_by' => 'id',
+    );
+
     public function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper

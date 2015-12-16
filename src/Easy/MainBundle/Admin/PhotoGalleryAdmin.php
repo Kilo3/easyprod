@@ -10,7 +10,11 @@ use Easy\MainBundle\Entity\Stuff;
 
 class PhotoGalleryAdmin extends Admin
 {
-    
+    protected $datagridValues = array(
+        '_sort_order' => 'DESC',
+        '_sort_by' => 'id',
+    );
+
     public function configureFormFields(FormMapper $formMapper)
     {
         $formMapper

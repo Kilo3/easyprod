@@ -340,6 +340,13 @@ $(function(){
         $('.menu-section-content[info='+section+']').css({'display':'block'});
     });
 
+    if($('.splitted').length){
+        $('.splitted').each(function( index ){
+            var height = $(this).height();
+            $(this).find('>div').css({'height' : height+'px'});
+        });
+    }
+
 });
 
 

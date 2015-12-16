@@ -1161,6 +1161,10 @@ i.dot{
     z-index: 185;
 }
 
+.payment table>tbody>tr>td:first-child {
+    width: 25%;
+}
+
 #page-preloader {
     position: fixed;
     left: 0;
@@ -1570,6 +1574,7 @@ opacity: 1;
 
 .redSquare{
     background: #ea2327;
+    border-color: #ea2327;
 }
 /*.redSquare:after{
     content: "";
@@ -1583,6 +1588,7 @@ opacity: 1;
 
 .yellowSquare{
     background: #fbb516;
+    border-color: #fbb516;
 }
 /*.yellowSquare:after{
     content: "";
@@ -1596,6 +1602,7 @@ opacity: 1;
 
 .greenSquare{
     background: #009846;
+    border-color: #009846;
 }
 /*.greenSquare:after{
     content: "";
@@ -1610,6 +1617,10 @@ opacity: 1;
 
 .purpleSquare{
     background: #724ea0;
+    border-color: #724ea0;
+}
+.purpleSquare.active{
+    color: #724ea0 !important;
 }
 /*.purpleSquare:after{
     content: "";
@@ -1623,58 +1634,23 @@ opacity: 1;
 
 .blueSquare{
     background: #393185;
+    border-color: #393185;
 }
-/*.blueSquare:after{
-    content: "";
-    background: url("../images/blueSmall.png");
-    width: 25px;
-    height: 24px;
-    position: absolute;
-    right: 0;
-    bottom: -14px;
-}*/
 
 .lightBlueSquare{
     background: #008DD2;
+    border-color: #008DD2;
 }
-/*.lightBlueSquare:after{
-    content: "";
-    background: url("../images/lightBlueSmall.png");
-    width: 25px;
-    height: 24px;
-    position: absolute;
-    right: 0;
-    bottom: -14px;
-}*/
+
 .orangeSquare{
     background: #EF7F1A;
+    border-color: #EF7F1A;
 }
-/*.orangeSquare:after{
-    content: "";
-    background: url("../images/orangeSmall.png");
-    width: 25px;
-    height: 24px;
-    position: absolute;
-    right: 0;
-    bottom: -14px;
-}*/
 
 .saladSquare{
     background: #57C7B3;
+    border-color: #57C7B3;
 }
-/*.saladSquare:after{
-    content: "";
-    background: url("../images/saladSmall.png");
-    width: 25px;
-    height: 24px;
-    position: absolute;
-    right: 0;
-    bottom: -14px;
-}*/
-
-
-
-
 
 
 
@@ -1762,10 +1738,11 @@ a.button-square{
     font-size: 1em;
     letter-spacing: 0.5px;
     text-decoration: none;
-    padding: 8px 20px 8px 25px;
+    padding: 6px 18px 6px 23px;
     display: block;
     cursor: pointer;
-    border: none !important;
+    border-width: 4px;
+    border-style: solid;
     line-height: normal;
     border-radius: 5px;
     position: relative;
@@ -1783,6 +1760,12 @@ a.button-square::after{
     margin-left: 8px;
     margin-top: -1px;
 }
+
+a.button-square.active{
+    background: #fff;
+}
+
+
 .ui-dialog-titlebar-close {
   display: none;
 }
@@ -2144,6 +2127,7 @@ table>tbody>tr>td{
     background-size: cover !important;
     width: 100%;
     min-height: 150px;
+    font-weight: bold;
 }
 .links iframe{
     margin: 10px 1%;
@@ -2258,14 +2242,14 @@ table>tbody>tr>td{
 }
 .btn-primary {
     color: #fff;
-    background-color: #EB1C24;
-    border-color: #EB1C24;
+    background-color: #724ea0;
+    border-color: #724ea0;
     font-family: sansRoundedBold;
 }
 .btn-default {
     color: #fff;
-    background-color: #EB1C24;
-    border-color: #EB1C24;
+    background-color: #724ea0;
+    border-color: #724ea0;
     font-family: sansRoundedBold;
     
 }
@@ -2422,11 +2406,15 @@ h4{
 .inside ul{
     display: table;
 }
-.inside a{
-    color: #EA2327;
+.inside a:not(.button-square){
+    color: #393185;
     font-family: sansRoundedBold;
     text-decoration: none;
     border-bottom: 2px solid;
+    transition: border-width 0.2s ease-in-out;
+}
+.inside a:hover:not(.button-square){
+    border-bottom: 0px solid;
 }
 .soundControl{
     position: absolute;
@@ -2480,16 +2468,19 @@ table>thead>tr>th{
     top: 30%;
 }
 #preloaderBlock p{
-    font-size: 1.4em;
+    font-size: 1.8em;
+    color: #724ea0;
+    margin-top: 30px;
 }
 #preloaderBlock a{
-    font-size: 1.2em;
-    color: #EB1C24;
+    font-size: 1.6em;
+    color: #724ea0;
     display: inherit;
-    margin-top: 6px;
+    margin-top: 0px;
+    margin-bottom: -2px;
     text-decoration: none;
 }
-.advantage2 a{
+.advantage2 a:not(.button-square){
     color: #EA2327;
     text-decoration: none;
     border-bottom: 2px solid;
@@ -2520,7 +2511,7 @@ table>thead>tr>th{
     padding: 10px;
 }
 #cboxContent{
-    border:4px solid rgba(234, 35, 39, 0.54);
+    border: 4px solid rgba(103, 62, 139, 0.5);
     padding: 13px;
     border-radius: 5px;
 }

@@ -10,10 +10,11 @@
         </div>
     </div>
     <div class="col-md-3 leftBlock col-xs-4">
+
         {% for key, year in month %}
             <p style="font-family: RobotoLight;color: #fff;margin: 8px auto;font-size: 1.5em;">{{ key }}</p>
-            {% for monthInfo in year %}
-                {% if loop.parent.loop.last and loop.last %}
+            {% for monthKey, monthInfo in year %}
+                {% if currentYear == key and monthKey == currentMonth %}
                     <a href="javascript:;" data="{{ loop.parent.loop.index }}{{ loop.index }}" class="active">{{ monthInfo.monthRus }}</a>
                 {% else %}
                     <a href="javascript:;" data="{{ loop.parent.loop.index }}{{ loop.index }}" class="">{{ monthInfo.monthRus }}</a>
@@ -22,9 +23,9 @@
         {% endfor %}
     </div>
     <div class="col-md-9 rightBlock col-xs-8">
-        {% for year in month %}
-            {% for monthInfo in year %}
-                {% if loop.parent.loop.last and loop.last %}
+        {% for key, year in month %}
+            {% for monthKey, monthInfo in year %}
+                {% if currentYear == key and monthKey == currentMonth %}
                     {% set active = 'active' %}
                 {% else %}
                     {% set active = '' %}

@@ -7,6 +7,12 @@ easy_main_news_show:
     defaults: { _controller: EasyMainBundle:Default:newsShow }
     requirements:
         id: \d+
+
+easy_main_news_archive:
+    pattern:  /news/archive/{year}
+    defaults: { _controller: EasyMainBundle:Default:newsArchiveShow }
+    requirements:
+        id: \year+
         
 easy_main_news:
     path:     /news/
@@ -106,3 +112,9 @@ easy_main_homepage:
 #    path:     /main/
 #    defaults: { _controller: EasyMainBundle:Default:main }
 #    
+
+pageNotFound:
+    pattern:  /{path}
+    defaults: { _controller: EasyMainBundle:Default:pageNotFound, path: '' }
+    requirements:
+        path: .*

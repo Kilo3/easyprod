@@ -176,6 +176,8 @@ class DefaultController extends Controller
                     $foo = $this->render('EasyMainBundle:Block:block_calendar.html.twig', array(
                         'month'   => $month,
                         'content'   => $value,
+                        'currentYear' => date("Y"),
+                        'currentMonth' => date("m"),
                     ));
                     
                     
@@ -587,8 +589,18 @@ class DefaultController extends Controller
         $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8, 'enabled' => 1)); // id = 8 корень меню
         
         $news = $hp->getRepository('EasyMainBundle:News')->findBy(array("type" => "published"), array('order_column'=>'ASC'));
-        $archive = $hp->getRepository('EasyMainBundle:News')->findBy(array("type" => "archive"), array('order_column'=>'ASC'));
-        
+
+        $repository = $this->getDoctrine()->getRepository('EasyMainBundle:News');
+        $query = $repository->createQueryBuilder('e')
+            ->select('YEAR(e.date) AS year, e.type')
+            ->where('e.type = :type')
+            ->setParameter('type', 'published')
+            ->groupBy('year')
+            ->orderBy('year', 'DESC')
+            ->getQuery()
+        ;
+        $archive = $query->getResult();
+
         $topMenu = "";
         $secondLayerMenu = "";
         return $this->render('EasyMainBundle:Page:news.html.twig', array(
@@ -598,6 +610,40 @@ class DefaultController extends Controller
             'topMenu' => $topMenu,
             'secondLayerMenu' => $secondLayerMenu,
             'color' => 'salad'
+        ));
+    }
+    public function newsArchiveShowAction($year)
+    {
+        $hp = $this->getDoctrine()->getManager();
+
+        $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8, 'enabled' => 1)); // id = 8 корень меню
+
+        //$news = $hp->getRepository('EasyMainBundle:News')->findBy(array("type" => "published", "date" => ''), array('order_column'=>'ASC'));
+        // WHERE `date` LIKE '%2015%'
+
+        $setParameter = array(
+            'type' => 'archive',
+            'year' => '%'.$year.'%'
+        );
+        $repository = $this->getDoctrine()->getRepository('EasyMainBundle:News');
+        $query = $repository->createQueryBuilder('a')
+            ->where('a.date LIKE :year')
+            ->andWhere('a.type = :type')
+            ->setParameters($setParameter)
+            ->getQuery();
+        $news = $query->getResult();
+        $archive = null;
+
+        $topMenu = "";
+        $secondLayerMenu = "";
+        return $this->render('EasyMainBundle:Page:news_archive.html.twig', array(
+            'mainMenu' => $mainMenu,
+            'news' => $news,
+            'archive' => $archive,
+            'topMenu' => $topMenu,
+            'secondLayerMenu' => $secondLayerMenu,
+            'color' => 'salad',
+            'year' => $year
         ));
     }
     
@@ -723,7 +769,8 @@ class DefaultController extends Controller
             $repository = $this->getDoctrine()->getRepository('EasyMainBundle:Contacts');
             $contacts = $repository->createQueryBuilder('cc')
                 ->select()
-                ->distinct()
+                ->groupBy("cc.name")
+                ->having("COUNT(cc.name) >= 1")
                 ->getQuery();
             $result = $contacts->getResult();
             
@@ -873,4 +920,17 @@ class DefaultController extends Controller
             'error'         => $error,
         ));
     }
+
+    public function pageNotFoundAction()
+    {
+        $hp = $this->getDoctrine()->getManager();
+        $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8, 'enabled' => 1)); // id = 8 корень меню
+        $topMenu = null;
+        return $this->render('EasyMainBundle:Page:404.html.twig', array(
+            'mainMenu' => $mainMenu,
+            'topMenu' => $topMenu,
+            'color' => 'purple'
+        ));
+    }
+
 }
