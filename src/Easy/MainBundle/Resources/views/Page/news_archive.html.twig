@@ -1,0 +1,87 @@
+{% extends 'EasyMainBundle::layout.html.twig' %}
+{% block pageContent %}
+   <div id="page">
+        <div class="container">
+            <div class="col-md-12">
+                <p class="title">Архив новостей за {{ year }} год</p>
+                <div class="links">
+                    <div class="row" style="margin-bottom: 30px;">
+                        {% for newsInfo in news %}
+                            <div class="col-md-3 col-xs-6">
+                                <a href="#popup{{ loop.index }}" class="popup">
+                                    {% if newsInfo.media is defined %}
+                                        <div style="background: url('{% path newsInfo.media, 'big' %}');">
+                                        </div>
+                                    {% endif %}
+                                    <strong>
+                                        {{ newsInfo.name }}
+                                    </strong>
+                                </a>
+                            </div>
+                            <div style='display:none;'>
+                                <div id='popup{{ loop.index }}' style='padding:10px; background:#fff;'>
+                                    <div class="inside">
+                                        {% autoescape false %}
+                                            {{ newsInfo.text }}
+                                        {% endautoescape %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% if loop.index%4 == 0 %}
+                                </div>
+                                <div class="row" style="margin-bottom: 30px;">
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       {% if archive|length > 0 %}
+           <div class="container">
+               <div class="col-md-12">
+                   <p class="title">Архив новостей</p>
+                   <div class="links">
+                       <div class="row" style="margin-bottom: 30px;">
+                           {% for newsInfo in archive %}
+                               <div class="col-md-3 col-xs-6">
+                                   <a href="#popup{{ loop.index }}" class="popup">
+                                       {% if newsInfo.media is defined %}
+                                           <div style="background: url('{% path newsInfo.media, 'big' %}');">
+                                           </div>
+                                       {% endif %}
+                                       <strong>
+                                           {{ newsInfo.name }}
+                                       </strong>
+                                   </a>
+                               </div>
+                               <div style='display:none;'>
+                                   <div id='popup{{ loop.index }}' style='padding:10px; background:#fff;'>
+                                       <div class="inside">
+                                           {% autoescape false %}
+                                           {{ newsInfo.text }}
+                                           {% endautoescape %}
+                                       </div>
+                                   </div>
+                               </div>
+                               {% if loop.index%4 == 0 %}
+                                   </div>
+                                   <div class="row" style="margin-bottom: 30px;">
+                               {% endif %}
+                           {% endfor %}
+                       </div>
+                   </div>
+               </div>
+           </div>
+       {% endif %}
+    </div>
+{% endblock %}
+
+{% block sideHeader %}
+{% endblock %}
+
+{% block topHeader %}
+    <ul style="position: relative;">
+        <li><a href="/life/#section2" class="scroll">Наша жизнь</a></li>
+    </ul>
+{% endblock %}
