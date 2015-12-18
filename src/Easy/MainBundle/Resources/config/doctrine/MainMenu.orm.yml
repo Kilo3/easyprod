@@ -46,9 +46,8 @@ Easy\MainBundle\Entity\MainMenu:
             default: 0
         link:
             type: string
-            options:
-                nullable: true
-                required: false
+            nullable: true
+            required: false
         color:
             type: string
             length: 50
