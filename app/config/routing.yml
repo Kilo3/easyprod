@@ -6,10 +6,10 @@ _sonata_admin:
     resource: .
     type: sonata_admin
     prefix: /admin
-
-easy_main:
-    resource: "@EasyMainBundle/Resources/config/routing.yml"
-    prefix:   /
+oneup_uploader:
+    resource: .
+    type: uploader
+    methods:  [GET, POST]
 
 app:
     resource: "@AppBundle/Controller/"
@@ -23,10 +23,8 @@ media:
     resource: '@SonataMediaBundle/Resources/config/routing/media.xml'
     prefix: /media
 
-oneup_uploader:
-    resource: .
-    type: uploader
-    methods:  [GET, POST]
-
+easy_main:
+    resource: "@EasyMainBundle/Resources/config/routing.yml"
+    prefix:   /
 
 
