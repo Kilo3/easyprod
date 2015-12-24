@@ -58,7 +58,7 @@ class DefaultController extends Controller
 
                     $foo = explode("<p>&nbsp;</p>\r\n",$value->getContent());
 
-                    if(count($foo) == 3){
+                    if($value->getHorizontal() == true){
                         $foo = $this->render('EasyMainBundle:Block:block_gallery.html.twig', array(
                             'content'   => $value,
                             'splitted' => $foo,

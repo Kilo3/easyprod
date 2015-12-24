@@ -25,6 +25,10 @@ Easy\MainBundle\Entity\Content:
             type: string
             nullable: true
             required: false
+        horizontal:
+            type: boolean
+            nullable: true
+            required: false
     manyToOne:
         gallery:
             targetEntity: Application\Sonata\MediaBundle\Entity\Gallery

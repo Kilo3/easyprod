@@ -40,8 +40,31 @@ class ContentAdmin extends Admin
             ->end();
 
         $subject = $this->getSubject();
+
+        if($subject->getId() == NULL){
+            $horizontal = false;
+        }else{
+            $horizontal = $subject->getHorizontal();
+        }
         switch ($subject->getType()) {
             case 'gallery':
+                $formMapper
+                    ->with('Взаимосвязь', array('class' => 'col-md-6'))
+                        ->add('url','sonata_type_model_list',array(
+                            'btn_add' => false,
+                            'label' => 'Блок расположен на странице'
+                        ))
+                        ->add('order_column', 'integer', array('label' => 'Порядок', 'help' => 'Чем меньше, тем выше на странице будет расплоложено содержимое'))
+                        ->add('gallery','sonata_type_model_list',array(
+                            'btn_add' => false,
+                            'label' => 'Галерея'
+                        ))
+                        ->add('horizontal', 'checkbox', array('data'=>$horizontal, 'required' => false, 'label' => 'Горизонтальное ориентирование блока'))
+                    ->end()
+                    ->with('Контент', array('class' => 'col-md-12'))
+                        ->add('content', 'ckeditor',array('config_name' => 'default', 'label' => 'Текст'))
+                    ->end();
+                break;
             case 'video':
             case 'content':
                 $formMapper

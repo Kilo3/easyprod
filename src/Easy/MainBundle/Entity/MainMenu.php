@@ -476,6 +476,9 @@ class MainMenu
             'blue'=>'blue',
             'green'=>'green',
             'salad'=>'salad',
+            'orange'=>'orange',
+            'lightSalad'=>'lightSalad',
+            'lightPurple'=>'lightPurple',
         );
     }
     /**

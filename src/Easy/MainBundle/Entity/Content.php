@@ -448,4 +448,32 @@ class Content
      * @var \Doctrine\Common\Collections\Collection
      */
 
+    /**
+     * @var boolean
+     */
+    private $horizontal;
+
+
+    /**
+     * Set horizontal
+     *
+     * @param boolean $horizontal
+     * @return Content
+     */
+    public function setHorizontal($horizontal)
+    {
+        $this->horizontal = $horizontal;
+
+        return $this;
+    }
+
+    /**
+     * Get horizontal
+     *
+     * @return boolean 
+     */
+    public function getHorizontal()
+    {
+        return $this->horizontal;
+    }
 }
