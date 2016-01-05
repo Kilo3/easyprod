@@ -25,6 +25,13 @@ class CalendarAdmin extends Admin
 
     public function configureFormFields(FormMapper $formMapper)
     {
+        $subject = $this->getSubject();
+        if($subject->getId() == NULL){
+            $archive = false;
+        }else{
+            $archive = $subject->getArchive();
+        }
+
         $formMapper
             ->add('name', 'text', array('label' => 'Название'))
             ->add('text', 'ckeditor', array(
@@ -33,14 +40,21 @@ class CalendarAdmin extends Admin
                 ),
                 'label' => 'Описание'
             ))
-            ->add('date', 'date', array(
-                'pattern' => 'dd MMM Y G',
-                //'locale' => 'en',
-                //'timezone' => 'Europe/Moscow',
-                'label' => 'Дата события'
+            ->add('datestart', 'sonata_type_date_picker', array(
+                    'label' => 'Дата начала события',
+                    'format'=>'dd/MM/yyyy',
+
                 )
             )
-           ->add('media', 'sonata_type_model_list', array('label' => 'Превью картинка'))
+            ->add('dateend', 'sonata_type_date_picker', array(
+                    'label' => 'Дата окончания события',
+                    'format'=>'dd/MM/yyyy',
+                    'required' => false,
+
+                )
+            )
+            ->add('archive', 'checkbox', array('data'=>$archive, 'required' => false, 'label' => 'Архив'))
+            ->add('media', 'sonata_type_model_list', array('label' => 'Превью картинка'))
         ;
     }
 

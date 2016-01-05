@@ -1,3 +1,11 @@
+page_tree_up:
+    pattern: /admin/page_tree_up/{page_id}
+    defaults:  { _controller: EasyMainBundle:Default:up }
+
+page_tree_down:
+    pattern: /admin/page_tree_down/{page_id}
+    defaults:  { _controller: EasyMainBundle:Default:down }
+
 easy_main_test:
     path:     /test/
     defaults: { _controller: EasyMainBundle:Default:test }
@@ -35,10 +43,18 @@ easy_main_gallery:
 easy_main_linkedgallery:
     path:     /linkedgallery/{id}/
     defaults: { _controller: EasyMainBundle:Default:linkedgallery }
-    
+
+easy_main_calendar_archive:
+    pattern:  /calendar/archive/{year}
+    defaults: { _controller: EasyMainBundle:Default:calendarArchive }
+    requirements:
+        id: \year+
+
 easy_main_calendar:
     path:     /calendar/{id}/
     defaults: { _controller: EasyMainBundle:Default:calendar }
+
+
     
 easy_main_easy_times:
     path:     /easytimes/

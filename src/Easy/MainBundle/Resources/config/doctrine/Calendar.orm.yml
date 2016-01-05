@@ -15,9 +15,14 @@ Easy\MainBundle\Entity\Calendar:
             nullable: false
         text:
             type: text
-        date:
+        datestart:
             type: date
-            
+        dateend:
+            type: date
+            required: false
+            nullable: true
+        archive:
+            type: boolean
     manyToOne:
         media:
             targetEntity: Application\Sonata\MediaBundle\Entity\Media

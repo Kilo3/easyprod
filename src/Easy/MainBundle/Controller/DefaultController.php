@@ -8,6 +8,10 @@ use Easy\MainBundle\Entity\Stuff;
 
 class DefaultController extends Controller
 {
+    public function mainMenu(){
+        $hp = $this->getDoctrine()->getManager();
+        return $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8, 'enabled' => 1), array('lft' => 'ASC')); // id = 8 корень меню
+    }
     public function indexAction($part1=NULL, $part2 = NULL)
     {
         /*if($_SERVER['REMOTE_ADDR'] != '127.0.0.1' && $_SERVER['REMOTE_ADDR'] != '178.217.68.239'){
@@ -17,7 +21,7 @@ class DefaultController extends Controller
 
         $hp = $this->getDoctrine()->getManager();
         $currentUrl = $hp->getRepository('EasyMainBundle:MainMenu')->findOneBy(array('url'=>$part1, 'empty' => false));
-        $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8, 'enabled' => 1)); // id = 8 корень меню
+        $mainMenu = $this->mainMenu();
         if(!isset($currentUrl)){
             $topMenu = "";
             return $this->render('EasyMainBundle:Page:404.html.twig', array(
@@ -26,7 +30,7 @@ class DefaultController extends Controller
                 'color' => 'purple'
             ));
         }
-        $foo = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent'=>$currentUrl->getId()), array('order_column'=>'ASC'));
+        $foo = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent'=>$currentUrl->getId()), array('lft'=>'ASC'));
         if($foo == NULL){
             $secondLayerMenu = NULL;
         }elseif(count($foo) > 0){
@@ -97,7 +101,7 @@ class DefaultController extends Controller
                 case 'calendar':
                     $em = $this->getDoctrine()->getEntityManager();
                     $qb = $em->createQueryBuilder();
-                    $qb->select('e.id, e.name, YEAR(e.date) AS year, MONTH(e.date) AS month, e.date, e.text, m.id AS mediaId')
+                    $qb->select('e.id, e.name, YEAR(e.datestart) AS yearstart, MONTH(e.datestart) AS monthstart, YEAR(e.dateend) AS yearend, MONTH(e.dateend) AS monthend, e.datestart, e.dateend, e.text, m.id AS mediaId')
                         ->from( 'EasyMainBundle:Calendar',  'e' )
 //                    ->Where(
 //                        $qb->expr()->andX(
@@ -109,7 +113,7 @@ class DefaultController extends Controller
                         ->join('e.media','m')
 
                         //->groupBy('month')
-                        ->orderBy('e.date', 'ASC')
+                        ->orderBy('e.datestart', 'ASC')
                         //->setFirstResult( $offset )
                         //->setMaxResults( $limit );
                     ;
@@ -118,67 +122,121 @@ class DefaultController extends Controller
                     foreach ($calendarItems as $itemIndex => $item) {
                         $media = $hp->getRepository('Application\Sonata\MediaBundle\Entity\Media')->find($item['mediaId']);
                         $calendarItems[$itemIndex]['media'] = $media;
-                        switch($item['month']){
+                        switch($item['monthstart']){
                             case 1:
-                                $month[$item['year']][$item['month']]['content'][] = $calendarItems[$itemIndex];
-                                $month[$item['year']][$item['month']]['monthRus'] = 'Январь';
+                                $month[$item['yearstart']][$item['monthstart']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearstart']][$item['monthstart']]['monthRus'] = 'Январь';
                                 break;
                             case 2:
-                                $month[$item['year']][$item['month']]['content'][] = $calendarItems[$itemIndex];
-                                $month[$item['year']][$item['month']]['monthRus'] = 'Февраль';
+                                $month[$item['yearstart']][$item['monthstart']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearstart']][$item['monthstart']]['monthRus'] = 'Февраль';
                                 break;
                             case 3:
-                                $month[$item['year']][$item['month']]['content'][] = $calendarItems[$itemIndex];
-                                $month[$item['year']][$item['month']]['monthRus'] = 'Март';
+                                $month[$item['yearstart']][$item['monthstart']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearstart']][$item['monthstart']]['monthRus'] = 'Март';
                                 break;
                             case 4:
-                                $month[$item['year']][$item['month']]['content'][] = $calendarItems[$itemIndex];
-                                $month[$item['year']][$item['month']]['monthRus'] = 'Апрель';
+                                $month[$item['yearstart']][$item['monthstart']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearstart']][$item['monthstart']]['monthRus'] = 'Апрель';
                                 break;
                             case 5:
-                                $month[$item['year']][$item['month']]['content'][] = $calendarItems[$itemIndex];
-                                $month[$item['year']][$item['month']]['monthRus'] = 'Май';
+                                $month[$item['yearstart']][$item['monthstart']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearstart']][$item['monthstart']]['monthRus'] = 'Май';
                                 break;
                             case 6:
-                                $month[$item['year']][$item['month']]['content'][] = $calendarItems[$itemIndex];
-                                $month[$item['year']][$item['month']]['monthRus'] = 'Июнь';
+                                $month[$item['yearstart']][$item['monthstart']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearstart']][$item['monthstart']]['monthRus'] = 'Июнь';
                                 break;
                             case 7:
-                                $month[$item['year']][$item['month']]['content'][] = $calendarItems[$itemIndex];
-                                $month[$item['year']][$item['month']]['monthRus'] = 'Июль';
+                                $month[$item['yearstart']][$item['monthstart']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearstart']][$item['monthstart']]['monthRus'] = 'Июль';
                                 break;
                             case 8:
-                                $month[$item['year']][$item['month']]['content'][] = $calendarItems[$itemIndex];
-                                $month[$item['year']][$item['month']]['monthRus'] = 'Август';
+                                $month[$item['yearstart']][$item['monthstart']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearstart']][$item['monthstart']]['monthRus'] = 'Август';
                                 break;
                             case 9:
-                                $month[$item['year']][$item['month']]['content'][] = $calendarItems[$itemIndex];
-                                $month[$item['year']][$item['month']]['monthRus'] = 'Сентябрь';
+                                $month[$item['yearstart']][$item['monthstart']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearstart']][$item['monthstart']]['monthRus'] = 'Сентябрь';
                                 break;
                             case 10:
-                                $month[$item['year']][$item['month']]['content'][] = $calendarItems[$itemIndex];
-                                $month[$item['year']][$item['month']]['monthRus'] = 'Октябрь';
+                                $month[$item['yearstart']][$item['monthstart']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearstart']][$item['monthstart']]['monthRus'] = 'Октябрь';
                                 break;
                             case 11:
-                                $month[$item['year']][$item['month']]['content'][] = $calendarItems[$itemIndex];
-                                $month[$item['year']][$item['month']]['monthRus'] = 'Ноябрь';
+                                $month[$item['yearstart']][$item['monthstart']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearstart']][$item['monthstart']]['monthRus'] = 'Ноябрь';
                                 break;
                             case 12:
-                                $month[$item['year']][$item['month']]['content'][] = $calendarItems[$itemIndex];
-                                $month[$item['year']][$item['month']]['monthRus'] = 'Декабрь';
+                                $month[$item['yearstart']][$item['monthstart']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearstart']][$item['monthstart']]['monthRus'] = 'Декабрь';
+                                break;
+                        }
+                        //date end
+                        switch($item['monthend']){
+                            case 1:
+                                $month[$item['yearend']][$item['monthend']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearend']][$item['monthend']]['monthRus'] = 'Январь';
+                                break;
+                            case 2:
+                                $month[$item['yearend']][$item['monthend']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearend']][$item['monthend']]['monthRus'] = 'Февраль';
+                                break;
+                            case 3:
+                                $month[$item['yearend']][$item['monthend']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearend']][$item['monthend']]['monthRus'] = 'Март';
+                                break;
+                            case 4:
+                                $month[$item['yearend']][$item['monthend']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearend']][$item['monthend']]['monthRus'] = 'Апрель';
+                                break;
+                            case 5:
+                                $month[$item['yearend']][$item['monthend']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearend']][$item['monthend']]['monthRus'] = 'Май';
+                                break;
+                            case 6:
+                                $month[$item['yearend']][$item['monthend']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearend']][$item['monthend']]['monthRus'] = 'Июнь';
+                                break;
+                            case 7:
+                                $month[$item['yearend']][$item['monthend']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearend']][$item['monthend']]['monthRus'] = 'Июль';
+                                break;
+                            case 8:
+                                $month[$item['yearend']][$item['monthend']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearend']][$item['monthend']]['monthRus'] = 'Август';
+                                break;
+                            case 9:
+                                $month[$item['yearend']][$item['monthend']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearend']][$item['monthend']]['monthRus'] = 'Сентябрь';
+                                break;
+                            case 10:
+                                $month[$item['yearend']][$item['monthend']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearend']][$item['monthend']]['monthRus'] = 'Октябрь';
+                                break;
+                            case 11:
+                                $month[$item['yearend']][$item['monthend']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearend']][$item['monthend']]['monthRus'] = 'Ноябрь';
+                                break;
+                            case 12:
+                                $month[$item['yearend']][$item['monthend']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearend']][$item['monthend']]['monthRus'] = 'Декабрь';
                                 break;
                         }
                     }
-                    foreach ($month as $year) {
-                        ksort($year);
+                    foreach ($month as $yearKey => $year) {
+                        $temp = $year;
+                        ksort($temp);
+                        $month[$yearKey] = $temp;
                     }
-                    ksort($month);
+
                     $foo = $this->render('EasyMainBundle:Block:block_calendar.html.twig', array(
                         'month'   => $month,
                         'content'   => $value,
                         'currentYear' => date("Y"),
                         'currentMonth' => date("m"),
                     ));
+
                     
                     
                     $value->setContent($foo->getContent());
@@ -286,7 +344,7 @@ class DefaultController extends Controller
         $hp = $this->getDoctrine()->getManager();
         $boo = $hp->getRepository('EasyMainBundle:MainMenu')->findOneBy(array('url'=>$part1));
         $foo = $hp->getRepository('EasyMainBundle:MainMenu')->findOneBy(array('url'=>$part2, 'parent' => $boo->getId(),'empty' => false));
-        $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8, 'enabled' => 1)); // id = 8 корень меню
+        $mainMenu = $this->mainMenu();
         if(isset($foo)){
             $content = $hp->getRepository('EasyMainBundle:Content')->findBy(array('url'=>$foo->getId()), array('order_column'=>'ASC'));
         }else{
@@ -570,7 +628,7 @@ class DefaultController extends Controller
     {
         $hp = $this->getDoctrine()->getManager();
 
-        $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8, 'enabled' => 1)); // id = 8 корень меню
+        $mainMenu = $this->mainMenu();
         $mainPageSeo = $hp->getRepository('EasyMainBundle:MainMenu')->findOneBy(array('id' => 8)); // id = 8 корень меню
 
         return $this->render('EasyMainBundle:Default:index.html.twig', array(
@@ -586,7 +644,7 @@ class DefaultController extends Controller
     {
         $hp = $this->getDoctrine()->getManager();
 
-        $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8, 'enabled' => 1)); // id = 8 корень меню
+        $mainMenu = $this->mainMenu();
         
         $news = $hp->getRepository('EasyMainBundle:News')->findBy(array("type" => "published"), array('order_column'=>'ASC'));
 
@@ -616,7 +674,7 @@ class DefaultController extends Controller
     {
         $hp = $this->getDoctrine()->getManager();
 
-        $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8, 'enabled' => 1)); // id = 8 корень меню
+        $mainMenu = $this->mainMenu();
 
         //$news = $hp->getRepository('EasyMainBundle:News')->findBy(array("type" => "published", "date" => ''), array('order_column'=>'ASC'));
         // WHERE `date` LIKE '%2015%'
@@ -651,7 +709,7 @@ class DefaultController extends Controller
     {
         $hp = $this->getDoctrine()->getManager();
 
-        $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8, 'enabled' => 1)); // id = 8 корень меню
+        $mainMenu = $this->mainMenu();
 
         $times = $hp->getRepository('Easy\MainBundle\Entity\Times')->findAll();
         
@@ -671,7 +729,7 @@ class DefaultController extends Controller
     {
         $hp = $this->getDoctrine()->getManager();
 
-        $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8, 'enabled' => 1)); // id = 8 корень меню
+        $mainMenu = $this->mainMenu();
         
         $content = $hp->getRepository('EasyMainBundle:News')->findOneBy(array('id' => $id), array('order_column'=>'ASC'));
         
@@ -691,7 +749,7 @@ class DefaultController extends Controller
     {
         $hp = $this->getDoctrine()->getManager();
 
-        $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8, 'enabled' => 1)); // id = 8 корень меню
+        $mainMenu = $this->mainMenu();
 
         $content = $hp->getRepository('Easy\MainBundle\Entity\PhotoGallery')->findOneBy(array('id' => $id));
 
@@ -710,7 +768,7 @@ class DefaultController extends Controller
     {
         $hp = $this->getDoctrine()->getManager();
 
-        $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8, 'enabled' => 1)); // id = 8 корень меню
+        $mainMenu = $this->mainMenu();
 
         $content = $hp->getRepository('Application\Sonata\MediaBundle\Entity\Gallery')->findOneBy(array('id' => $id));
 
@@ -729,22 +787,35 @@ class DefaultController extends Controller
     {
         if($id == 'all'){
             $hp = $this->getDoctrine()->getManager();
-            $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8));
-            $content = $hp->getRepository('EasyMainBundle:Calendar')->findAll();
+            $mainMenu = $this->mainMenu();
+            $content = $hp->getRepository('EasyMainBundle:Calendar')->findBy(array('archive' => 'false'));
+
+            $repository = $this->getDoctrine()->getRepository('EasyMainBundle:Calendar');
+            $query = $repository->createQueryBuilder('e')
+                ->select('YEAR(e.datestart) AS year, e.archive')
+                ->where('e.archive = true')
+                ->groupBy('year')
+                ->orderBy('year', 'DESC')
+                ->getQuery()
+            ;
+            $archive = $query->getResult();
 
             $topMenu = "";
             $secondLayerMenu = "";
+
             return $this->render('EasyMainBundle:Block:block_calendar_all.html.twig', array(
                 'mainMenu' => $mainMenu,
                 'calendar' => $content,
+                'archive' => $archive,
                 'topMenu' => $topMenu,
                 'secondLayerMenu' => $secondLayerMenu,
+                'title' => 'Календарь событий',
                 'color' => 'salad'
             ));
         }else{
             $hp = $this->getDoctrine()->getManager();
 
-            $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8, 'enabled' => 1)); // id = 8 корень меню
+            $mainMenu = $this->mainMenu();
 
             $content = $hp->getRepository('EasyMainBundle:Calendar')->findOneBy(array('id' => $id));
 
@@ -759,11 +830,40 @@ class DefaultController extends Controller
             ));
         }
     }
-    
+
+    public function calendarArchiveAction($year)
+    {
+        $hp = $this->getDoctrine()->getManager();
+
+        $mainMenu = $this->mainMenu();
+
+        $repository = $this->getDoctrine()->getRepository('EasyMainBundle:Calendar');
+        $query = $repository->createQueryBuilder('a')
+            ->where('YEAR(a.datestart) = :year')
+            ->andWhere('a.archive = true')
+            ->setParameter('year', $year)
+            ->getQuery();
+        $content = $query->getResult();
+
+
+        $topMenu = "";
+        $secondLayerMenu = "";
+        return $this->render('EasyMainBundle:Block:block_calendar_all.html.twig', array(
+            'mainMenu' => $mainMenu,
+            'calendar' => $content,
+            'archive' => '',
+            'topMenu' => $topMenu,
+            'secondLayerMenu' => $secondLayerMenu,
+            'title' => 'Архив событий: '.$year,
+            'color' => 'salad'
+        ));
+
+    }
+
     public function contactsAction($id)
     {
         $hp = $this->getDoctrine()->getManager();
-        $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8, 'enabled' => 1)); // id = 8 корень меню
+        $mainMenu = $this->mainMenu();
         if($id == 'all'){
             
             $repository = $this->getDoctrine()->getRepository('EasyMainBundle:Contacts');
@@ -841,14 +941,29 @@ class DefaultController extends Controller
     {
         $type = str_replace('/','',$type); // некорректно, нужно через routing работать
         $hp = $this->getDoctrine()->getManager();
-        $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8, 'enabled' => 1)); // id = 8 корень меню
+        $mainMenu = $this->mainMenu();
         $title = Stuff::getTypes();
+
         if($type == 'all'){
             $stuff = $hp->getRepository('EasyMainBundle:Stuff')->findAll();
             $all = 1;
         }else{
+            $teacher = $hp->getRepository('EasyMainBundle:Stuff')->findBy(array('name' => $type));
             $stuff = $hp->getRepository('EasyMainBundle:Stuff')->findBy(array('type' => $type),array('name'=>'ASC'));
-            $all = 0;
+            if(!empty($teacher)){
+                $stuff = $teacher;
+                $all = 1;
+            }elseif(!empty($stuff)){
+                $stuff = $hp->getRepository('EasyMainBundle:Stuff')->findBy(array('type' => $type),array('name'=>'ASC'));
+                $all = 0;
+            }else{
+                return $this->render('EasyMainBundle:Page:404.html.twig', array(
+                    'mainMenu' => $mainMenu,
+                    'topMenu' => '',
+                    'color' => 'purple'
+                ));
+            }
+
         }
 
         if(count($stuff) > 0){
@@ -924,13 +1039,38 @@ class DefaultController extends Controller
     public function pageNotFoundAction()
     {
         $hp = $this->getDoctrine()->getManager();
-        $mainMenu = $hp->getRepository('EasyMainBundle:MainMenu')->findBy(array('parent' => 8, 'enabled' => 1)); // id = 8 корень меню
+        $mainMenu = $this->mainMenu();
         $topMenu = null;
         return $this->render('EasyMainBundle:Page:404.html.twig', array(
             'mainMenu' => $mainMenu,
             'topMenu' => $topMenu,
             'color' => 'purple'
         ));
+    }
+
+    // up down
+
+    public function upAction($page_id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $repo = $em->getRepository('EasyMainBundle:MainMenu');
+        $page = $repo->findOneById($page_id);
+        if ($page->getParent()){
+            $repo->moveUp($page);
+        }
+        return $this->redirect($this->getRequest()->headers->get('referer'));
+    }
+
+
+    public function downAction($page_id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $repo = $em->getRepository('EasyMainBundle:MainMenu');
+        $page = $repo->findOneById($page_id);
+        if ($page->getParent()){
+            $repo->moveDown($page);
+        }
+        return $this->redirect($this->getRequest()->headers->get('referer'));
     }
 
 }

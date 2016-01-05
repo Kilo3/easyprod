@@ -34,11 +34,11 @@
                     {% for event in monthInfo.content|slice(0, 3) %}
                         <div class="col-md-12 hidden-xs" style="height: 155px;margin-bottom: 10px;">
                              {% media event.media, 'big' with {'class': ''} %}
-                            <p>{{ event.date|date('d.m') }} {{ event.name }}</p>
+                            <p>{{ event.datestart|date('d.m') }} {{ event.name }}</p>
                             <a class="button-square" href="/calendar/{{ event.id }}" style="float:right;">Узнать подробнее</a>
                         </div>
                         <div class="col-xs-12 visible-xs no-padding" style="height: 155px;margin-bottom: 10px;">
-                            <p style="padding: 0;">{{ event.date|date('d.m') }} {{ event.name }}</p>
+                            <p style="padding: 0;">{{ event.datestart|date('d.m') }} {{ event.name }}</p>
                             {% media event.media, 'big' with {'style': 'width: 60px;'} %}
                             <a class="button-square" href="/calendar/{{ event.id }}" style="float:right;padding: 5px;">Узнать</a>
                         </div>

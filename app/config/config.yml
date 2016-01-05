@@ -41,6 +41,7 @@ twig:
     form:
         resources:
             - 'EasyMainBundle:Admin:fields.html.twig'
+            - 'SonataCoreBundle:Form:datepicker.html.twig'
 
 # Assetic Configuration
 assetic:

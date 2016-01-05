@@ -137,4 +137,88 @@ class Calendar
     {
         return $this->media;
     }
+    /**
+     * @var \DateTime
+     */
+    private $datestart;
+
+    /**
+     * @var \DateTime
+     */
+    private $dateend;
+
+
+    /**
+     * Set datestart
+     *
+     * @param \DateTime $datestart
+     * @return Calendar
+     */
+    public function setDatestart($datestart)
+    {
+        $this->datestart = $datestart;
+
+        return $this;
+    }
+
+    /**
+     * Get datestart
+     *
+     * @return \DateTime 
+     */
+    public function getDatestart()
+    {
+        return $this->datestart;
+    }
+
+    /**
+     * Set dateend
+     *
+     * @param \DateTime $dateend
+     * @return Calendar
+     */
+    public function setDateend($dateend)
+    {
+        $this->dateend = $dateend;
+
+        return $this;
+    }
+
+    /**
+     * Get dateend
+     *
+     * @return \DateTime 
+     */
+    public function getDateend()
+    {
+        return $this->dateend;
+    }
+    /**
+     * @var boolean
+     */
+    private $archive;
+
+
+    /**
+     * Set archive
+     *
+     * @param boolean $archive
+     * @return Calendar
+     */
+    public function setArchive($archive)
+    {
+        $this->archive = $archive;
+
+        return $this;
+    }
+
+    /**
+     * Get archive
+     *
+     * @return boolean 
+     */
+    public function getArchive()
+    {
+        return $this->archive;
+    }
 }

@@ -3,7 +3,7 @@
     <div id="page">
         <div class="container">
             <div class="col-md-11 col-xs-12">
-                <p class="title">Календарь событий</p>
+                <p class="title">{{ title }}</p>
                 <div class="links">
                     <div class="row" style="margin-bottom: 30px;">
                         {% for event in calendar %}
@@ -34,6 +34,19 @@
                 </div>
             </div>
         </div>
+
+        {% if archive|length > 0 %}
+            <div class="container">
+                <div class="col-md-12">
+                    <p class="title">Архив событий</p>
+                    <div class="row" style="margin-bottom: 30px;">
+                        {% for value in archive %}
+                            <a class="button-square" style="margin-right: 25px; clear: none;" href="/calendar/archive/{{ value.year }}">{{ value.year }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
     </div>
     
 {% endblock %}

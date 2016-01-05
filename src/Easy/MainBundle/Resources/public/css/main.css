@@ -10,7 +10,10 @@ and open the template in the editor.
 
 
 
-
+a:hover, a:focus {
+    color: initial;
+    text-decoration: none;
+}
 
 
 
@@ -131,6 +134,7 @@ a[name*='#anchor']{
     font-family: sansRoundedBold;
     font-size: 16px;
 }
+
 
 
 
@@ -262,8 +266,8 @@ ul.orangeDot li:before {
     height: 41px;
     line-height: 39px;
     padding: 0 20px;
-    width: 345px;
-    letter-spacing: 0.2em;
+    width: 295px;
+    letter-spacing: 0.1em;
     border: 2px solid #fff;
     text-transform: uppercase;
     color: #fff;
@@ -397,11 +401,20 @@ section{
 .bgSalad{
     background: #57C7B3 !important;
 }
+.bgOrange{
+    background: #EF7F1A !important;
+}
+.bgLightSalad{
+    background: #B0CF2E !important;
+}
+.bgLightPurple{
+    background: #CCA6FF !important;
+}
 
 .bgDottedRed{
     background: radial-gradient(#FF4048 5%, transparent 20%) 0px 0px;
-    background-color:#fff;
-    background-size:8px 8px;
+    background-color: #fff;
+    background-size: 8px 8px;
 }
 
 .bgDottedPurple{
@@ -2177,6 +2190,7 @@ table>tbody>tr>td{
     width: 100%;
     min-height: 150px;
     font-weight: bold;
+    outline:0;
 }
 .links iframe{
     margin: 10px 1%;
@@ -2185,6 +2199,7 @@ table>tbody>tr>td{
     width: 100%;
     height: 165px;
     background-size: cover !important;
+    background-position: 50% 0% !important;
 }
 .links img{
     max-width: 100%;
@@ -2653,7 +2668,7 @@ table>thead>tr>th{
     width: 100%;
     transform: rotateZ(-2deg);
     position: absolute;
-    top: -5%;
+    top: -55%;
     min-height: 415px;
 }
 .angle-block-bg{
@@ -3031,4 +3046,27 @@ table>thead>tr>th{
     .splitted>div{
         border-right: none;
     }
+    #goTop{
+        right: 10px !important;
+        left: initial !important;
+    }
+    .specVideo iframe{
+        height: 165px !important;
+    }
+}
+
+#goTop{
+    padding: 5px;
+    position: fixed;
+    bottom: -100px;
+    left: 25px;
+    font-size: 3.5em;
+    color: #EA2327;
+    display: block;
+    -webkit-transform: translateZ(0);
+    cursor: pointer;
+}
+.specVideo iframe{
+    width: 100%;
+    height: 275px;
 }

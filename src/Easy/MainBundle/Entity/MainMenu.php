@@ -621,4 +621,32 @@ class MainMenu
     {
         return $this->link;
     }
+    /**
+     * @var string
+     */
+    private $title_menu;
+
+
+    /**
+     * Set title_menu
+     *
+     * @param string $titleMenu
+     * @return MainMenu
+     */
+    public function setTitleMenu($titleMenu)
+    {
+        $this->title_menu = $titleMenu;
+
+        return $this;
+    }
+
+    /**
+     * Get title_menu
+     *
+     * @return string 
+     */
+    public function getTitleMenu()
+    {
+        return $this->title_menu;
+    }
 }

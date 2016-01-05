@@ -13,6 +13,10 @@ Easy\MainBundle\Entity\MainMenu:
         title:
             type: string
             length: 255
+            nullable: true
+        title_menu:
+            type: string
+            length: 255
         lft:
             type: integer
             gedmo:
@@ -40,10 +44,6 @@ Easy\MainBundle\Entity\MainMenu:
             type: boolean
         record:
             type: boolean
-        order_column:
-            type: integer
-            nullable: false
-            default: 0
         link:
             type: string
             nullable: true
@@ -82,7 +82,3 @@ Easy\MainBundle\Entity\MainMenu:
         content:
             targetEntity: Content
             mappedBy: url
-            orderBy:
-                order_column: ASC
-
-        

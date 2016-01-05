@@ -6,13 +6,15 @@
                 <p class="title">{{ content.name }}</p>
                 <div class="links">
                     {% for galleryHasMedia in content.galleryHasMedias %}
-                        <div class="col-md-3 col-xs-4">
-                            {% if galleryHasMedia.media.providerName == 'sonata.media.provider.image' %}
+                        {% if galleryHasMedia.media.providerName == 'sonata.media.provider.image' %}
+                            <div class="col-md-3 col-xs-4">
                                 <a href="{% path galleryHasMedia.media, 'big' %}" title="" data-gallery style="background: url('{% path galleryHasMedia.media, 'big' %}');"></a>
-                            {% else %}
-                                {% media galleryHasMedia.media, 'special' %}
-                            {% endif %}
-                        </div>
+                            </div>
+                        {% else %}
+                            <div class="col-md-6 col-xs-12 specVideo">
+                                {% media galleryHasMedia.media, 'big' %}
+                            </div>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>

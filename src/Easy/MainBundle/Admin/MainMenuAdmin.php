@@ -47,11 +47,12 @@ class MainMenuAdmin extends Admin
             $record = $subject->getRecord();
         }
 
-        $formMapper
-            ->with('General', array('class' => 'col-md-12'))
+        if($subject->getLvl() == 1){
+            $formMapper
+                ->with('General', array('class' => 'col-md-12'))
                 ->add('url', 'text', array('label' => 'Адрес страницы'))
                 ->add('title', 'text', array('label' => 'Название страницы'))
-                ->add('order_column', 'text', array('label' => 'Порядок отображения'))
+                ->add('title_menu', 'text', array('label' => 'Название в меню слева. Только для страниц первого уровня'))
                 ->add('enabled', 'checkbox', array('data'=>$enabled, 'required' => false, 'label' => 'Отображение в меню'))
                 ->add('empty', 'checkbox', array('data'=>$empty, 'required' => false, 'label' => 'Скрыть с сайта'))
                 ->add('color', 'choice', array('choices'=> MainMenu::getColors(), 'expanded' => false, 'label' => 'Цвет'))
@@ -67,12 +68,41 @@ class MainMenuAdmin extends Admin
                     'btn_add' => false,
                     'btn_delete' => false,
                 ))
-            ->end()
-            ->with('Специфические атрибуты', array('class' => 'col-md-12'))
+                ->end()
+                ->with('Специфические атрибуты', array('class' => 'col-md-12'))
                 ->add('record', 'checkbox', array('data'=>$record, 'required' => false, 'label' => 'Этот раздел только вызывает форму Записаться в меню'))
                 ->add('link', 'text', array('label' => 'Внешняя ссылка', 'required' => false))
-            ->end()
-        ;
+                ->end()
+            ;
+
+        }else{
+            $formMapper
+                ->with('General', array('class' => 'col-md-12'))
+                ->add('url', 'text', array('label' => 'Адрес страницы'))
+                ->add('title', 'text', array('label' => 'Название страницы'))
+                ->add('enabled', 'checkbox', array('data'=>$enabled, 'required' => false, 'label' => 'Отображение в меню'))
+                ->add('empty', 'checkbox', array('data'=>$empty, 'required' => false, 'label' => 'Скрыть с сайта'))
+                ->add('color', 'choice', array('choices'=> MainMenu::getColors(), 'expanded' => false, 'label' => 'Цвет'))
+                ->add('seo_title', 'text', array('label' => 'СЕО заголовок страницы'))
+                ->add('seo_description', 'text', array('label' => 'СЕО описание страницы'))
+                ->add('seo_keywords', 'text', array('label' => 'СЕО ключевые слова'))
+                /*->add('parent','sonata_type_model_list',array(
+                    'btn_add' => false
+                ))*/
+                ->add('parent', 'sonata_type_model_list', array(
+                    'label' => 'Родитель',
+                    'required'=>true,
+                    'btn_add' => false,
+                    'btn_delete' => false,
+                ))
+                ->end()
+                ->with('Специфические атрибуты', array('class' => 'col-md-12'))
+                ->add('record', 'checkbox', array('data'=>$record, 'required' => false, 'label' => 'Этот раздел только вызывает форму Записаться в меню'))
+                ->add('link', 'text', array('label' => 'Внешняя ссылка', 'required' => false))
+                ->end()
+            ;
+        }
+
 
         /*->add('parent','sonata_type_model_list',array(
             'btn_add' => false
@@ -83,6 +113,8 @@ class MainMenuAdmin extends Admin
     {
         $listMapper
             ->add('id', null, array('sortable'=>false))
+            ->add('up', 'text', array('template' => 'EasyMainBundle:Admin:field_tree_up.html.twig', 'label'=>' '))
+            ->add('down', 'text', array('template' => 'EasyMainBundle:Admin:field_tree_down.html.twig', 'label'=>' '))
             ->addIdentifier('leveled_title', null, array('sortable'=>false, 'label'=>'Название страницы'))
             ->add('leveled_url', null, array('label' => 'Адрес страницы'))
             ->add('enabled', null, array('sortable'=>false, 'label'=>'Отображение в меню'))
