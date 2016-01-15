@@ -75,9 +75,17 @@
                             <div class="col-md-4 col-md-offset-2 col-xs-5 col-xs-offset-0 menu-section-link">
                                 {% for value in mainMenu %}
                                     {% if root is defined and root == value.id %}
-                                        <a info="{{ loop.index }}" class="{{ value.color }}Hover header-title active" href="javascript:;">{{ value.title }}</a>
-                                    {% else%}
-                                        <a info="{{ loop.index }}" class="{{ value.color }}Hover header-title" href="javascript:;">{{ value.title }}</a>
+                                        {% if value.titlemenu is not empty %}
+                                            <a info="{{ loop.index }}" class="{{ value.color }}Hover header-title active" href="javascript:;">{{ value.titlemenu }}</a>
+                                        {% else %}
+                                            <a info="{{ loop.index }}" class="{{ value.color }}Hover header-title active" href="javascript:;">{{ value.title }}</a>
+                                        {% endif %}
+                                    {% else %}
+                                        {% if value.titlemenu is not empty %}
+                                            <a info="{{ loop.index }}" class="{{ value.color }}Hover header-title" href="javascript:;">{{ value.titlemenu }}</a>
+                                        {% else %}
+                                            <a info="{{ loop.index }}" class="{{ value.color }}Hover header-title" href="javascript:;">{{ value.title }}</a>
+                                        {% endif %}
                                     {% endif %}
                                 {% endfor %}
                             </div>
@@ -103,16 +111,16 @@
                                             {% else %}
                                                 <a style="margin-left:0px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}">{{ children.title }}</a>
                                             {% endif %}
-                                        {% for lastchildren in children %}
-                                            {% if  lastchildren.record == true and lastchildren.link is empty %}
-                                                <a style="margin-left:20px;" class="opener" href="#">{{ lastchildren.title }}</a>
-                                            {% elseif lastchildren.link is not empty %}
-                                                <a style="margin-left:20px;" href="{{ lastchildren.link }}">{{ lastchildren.title }}</a>
-                                            {% else %}
-                                                <a style="margin-left:20px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}/{{ lastchildren.url }}">{{ lastchildren.title }}</a>
-                                            {% endif %}
+                                            {% for lastchildren in children %}
+                                                {% if  lastchildren.record == true and lastchildren.link is empty %}
+                                                    <a style="margin-left:20px;" class="opener" href="#">{{ lastchildren.title }}</a>
+                                                {% elseif lastchildren.link is not empty %}
+                                                    <a style="margin-left:20px;" href="{{ lastchildren.link }}">{{ lastchildren.title }}</a>
+                                                {% else %}
+                                                    <a style="margin-left:20px;" href="{{ path('easy_main_homepage') }}{{ value.url }}/{{ children.url }}/{{ lastchildren.url }}">{{ lastchildren.title }}</a>
+                                                {% endif %}
+                                            {% endfor %}
                                         {% endfor %}
-                                    {% endfor %}
                                 </div>
                             {% endfor %}
                         </div>
