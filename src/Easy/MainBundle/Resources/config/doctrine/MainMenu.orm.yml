@@ -17,6 +17,8 @@ Easy\MainBundle\Entity\MainMenu:
         title_menu:
             type: string
             length: 255
+            nullable: true
+            required: false
         lft:
             type: integer
             gedmo:
