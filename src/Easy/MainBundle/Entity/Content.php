@@ -476,4 +476,32 @@ class Content
     {
         return $this->horizontal;
     }
+    /**
+     * @var string
+     */
+    private $link;
+
+
+    /**
+     * Set link
+     *
+     * @param string $link
+     * @return Content
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+
+        return $this;
+    }
+
+    /**
+     * Get link
+     *
+     * @return string 
+     */
+    public function getLink()
+    {
+        return $this->link;
+    }
 }

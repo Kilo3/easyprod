@@ -631,7 +631,7 @@ section{
     width: 100%;
     top: 0;
     min-width: 1000px;
-    z-index: 180;
+    z-index: 201;
     background: rgba(255, 255, 255, 0.9);
 /*    padding-right: 10%;*/
     height: 115px;
@@ -926,16 +926,20 @@ a.greenHover:hover{
 a.saladHover:hover{
     background: #57C7B3!important;
 }
-/*a.saladHover:hover:after{
-    content: "";
-    background: url("../images/saladSmall.png");
-    width: 25px;
-    height: 24px;
-    position: absolute;
-    right: 0;
-    bottom: -14px;
-    right: 1px;
-}*/
+
+a.raspberryHover:hover{
+    background: #E50A80!important;
+}
+a.orangeHover:hover{
+    background: #EF7F1A!important;
+}
+
+a.lightSaladHover:hover{
+    background: #B0CF2E!important;
+}
+a.lightPurpleHover:hover{
+    background: #CCA6FF!important;
+}
 
 
 .social-icons{
@@ -2191,6 +2195,7 @@ table>tbody>tr>td{
     min-height: 150px;
     font-weight: bold;
     outline:0;
+    margin-bottom: 15px;
 }
 .links iframe{
     margin: 10px 1%;

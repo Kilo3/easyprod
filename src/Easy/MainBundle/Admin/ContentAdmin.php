@@ -37,6 +37,7 @@ class ContentAdmin extends Admin
             ->with('Общая информация', array('class' => 'col-md-6'))
                 ->add('type', 'choice', array('choices' => Content::getTypes(), 'expanded' => false, 'label'=> 'Тип блока'))
                 ->add('name', 'text', array('label' => 'Название'))
+                ->add('link', 'text', array('label' => 'Ссылка с названия', 'required' => false))
             ->end();
 
         $subject = $this->getSubject();

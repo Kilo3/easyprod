@@ -10,6 +10,10 @@ Easy\MainBundle\Entity\Content:
             type: string
             required: false
             nullable: true
+        link:
+            type: string
+            required: false
+            nullable: true
         type:
             type: string
         content:
