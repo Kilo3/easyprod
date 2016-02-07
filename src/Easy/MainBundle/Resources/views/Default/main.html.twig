@@ -55,21 +55,31 @@
                                 <img src="{{ asset('/bundles/easymain/images/logoMain.png') }}" >
                             </a>
                         </div>
+                        <div class="top top-menu">
+                            <a href="/news/" class="">
+                                <i class="fa fa-newspaper-o"></i>
+                                <div style="margin-left: -6px;">новости</div>
+                            </a>
+                            <a href="/pay/">
+                                <i class="fa fa-credit-card"></i>
+                                <div style="margin-left: -2px;">оплата</div>
+                            </a>
+                            <a href="/contacts/all">
+                                <i class="fa fa-map-marker"></i>
+                                <div style="margin-left: -10px;">контакты</div>
+                            </a>
+
+                            <a href="javascript:;" class="opener" style="position: relative;z-index: 100;">
+                                <i class="fa fa-phone"></i>
+                                <div style="margin-left: -14px;">записаться</div>
+                            </a>
+                            <div class="contact" style="position: relative;">
+                                <p><span style="font-size: 0.9em;">(3952)</span> 72-36-72</p>
+                            </div>
+
+                        </div>
                     </div>
-                    <div class="top top-menu">
-                        <a href="/news/" class="">
-                            <i class="fa fa-newspaper-o"></i>
-                            <div style="margin-left: -6px;">новости</div>
-                        </a>
-                        <a href="/pay/">
-                            <i class="fa fa-credit-card"></i>
-                            <div style="margin-left: -2px;">оплата</div>
-                        </a>
-                        <a href="/contacts/all">
-                            <i class="fa fa-map-marker"></i>
-                            <div style="margin-left: -10px;">контакты</div>
-                        </a>
-                    </div>
+
                     <div class="menuList" style="position: relative;z-index: 100;">
                         <div class="row">
                             <div class="col-md-4 col-md-offset-2 col-xs-5 col-xs-offset-0 menu-section-link">
@@ -126,7 +136,7 @@
                         </div>
                     </div>
                     <div class="menuInfo col-md-8 col-xs-8" style="position: absolute;z-index: 100;">
-                        <p class="hidden-xs" style="margin-bottom: 5px;">2000-2015 Сеть образовательных центров Easy School</p>
+                        <p class="hidden-xs" style="margin-bottom: 5px;">2000-2016 Сеть образовательных центров Easy School</p>
                         <span style="margin-right: 20px;"><i class="dot"></i>info@e-a-s-y.ru</span>
                         <span><i class="dot"></i>7(3952)72-36-72</span>
                     </div>
@@ -138,7 +148,7 @@
                 </div>
             </div>
 
-            <div id="top-header" style="display: none;">
+            {#<div id="top-header" style="display: none;">
                 <a href="{{ path('easy_main_homepage') }}">
                     <img src="{{ asset('/bundles/easymain/images/logoSchool.png') }}" style="position: relative;">
                 </a>
@@ -146,7 +156,7 @@
                     <a class="buttonHover opener">записаться</a>
                     <p><span style="font-size: 17px;">(3952)</span> 72-36-72</p>
                 </div>
-            </div>
+            </div>#}
 
             {% block content %}
             {% endblock %}

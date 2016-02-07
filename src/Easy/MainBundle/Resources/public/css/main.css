@@ -2733,6 +2733,7 @@ table>thead>tr>th{
     display: block;
     float: right;
     margin-top: 25px;
+    margin-right: 30px;
 }
 .top a {
     height: 45px;
@@ -2825,9 +2826,6 @@ table>thead>tr>th{
     top: 18%;
     width: 300px;
 }
-.top-menu{
-    display: none;
-}
 
 @media (min-width: 1px) {
     #nav{
@@ -2836,6 +2834,12 @@ table>thead>tr>th{
 }
 
 @media (max-width: 480px) {
+    .top-menu .opener{
+        display: none !important;
+    }
+    .top-menu .contact{
+        display: none !important;
+    }
     #nav{
         right: -450px;
         border-radius: 0;
@@ -2918,6 +2922,7 @@ table>thead>tr>th{
 
     #top-header{
         height: 75px;
+        position: initial;
     }
 
     .header-logo img{
@@ -2976,6 +2981,12 @@ table>thead>tr>th{
         margin-left: 15px;
         display: block !important;
     }
+    /*.top-menu.contact{
+        display: none !important;
+    }
+    .top-menu a:last-child{
+        display: none !important;
+    }*/
     .top-menu a>i{
         margin: 9px auto 0 auto;
     }
