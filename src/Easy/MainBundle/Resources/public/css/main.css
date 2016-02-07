@@ -2832,12 +2832,18 @@ table>thead>tr>th{
         right: -470px;
     }
 }
+.top-menu{
+    display: none !important;
+}
 
 @media (max-width: 480px) {
-    .top-menu .opener{
+    .top-menu{
+        display: initial !important;
+    }
+    .top .opener{
         display: none !important;
     }
-    .top-menu .contact{
+    .top .contact{
         display: none !important;
     }
     #nav{
