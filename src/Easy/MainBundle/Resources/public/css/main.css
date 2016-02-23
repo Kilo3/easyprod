@@ -2428,6 +2428,7 @@ h4{
 .video-gallery div {
     display: inline-block;
     margin-bottom: 50px;
+    float: left !important;
 }
 .video-gallery div:nth-child(even){
     float:right;

@@ -1,3 +1,11 @@
+set_main_news_true:
+    pattern: /admin/set_main_news_true/{page_id}
+    defaults:  { _controller: EasyMainBundle:Default:setMainNewsTrue}
+
+set_main_news_false:
+    pattern: /admin/set_main_news_false/{page_id}
+    defaults:  { _controller: EasyMainBundle:Default:setMainNewsFalse}
+
 page_tree_up:
     pattern: /admin/page_tree_up/{page_id}
     defaults:  { _controller: EasyMainBundle:Default:up }

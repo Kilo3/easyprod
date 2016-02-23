@@ -17,6 +17,9 @@ Easy\MainBundle\Entity\News:
             type: integer
         date:
             type: date
+        main:
+            type: boolean
+            default: false
     manyToOne:
         media:
             targetEntity: Application\Sonata\MediaBundle\Entity\Media

@@ -80,6 +80,16 @@ function init () {
 
 $(function(){
 
+    //anchor links
+    if (window.location.hash.length) {
+        var target = $('[name=' + window.location.hash.slice(1) +']');
+        if (target.length) {
+            $('html,body').animate({
+                scrollTop: target.offset().top
+            }, 300);
+        }
+    }
+
 
     $('.inside table').closest('.inside').css({'overflow-x':'scroll'});
 

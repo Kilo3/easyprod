@@ -220,4 +220,32 @@ class News
     {
         return $this->media;
     }
+    /**
+     * @var boolean
+     */
+    private $main;
+
+
+    /**
+     * Set main
+     *
+     * @param boolean $main
+     * @return News
+     */
+    public function setMain($main)
+    {
+        $this->main = $main;
+
+        return $this;
+    }
+
+    /**
+     * Get main
+     *
+     * @return boolean 
+     */
+    public function getMain()
+    {
+        return $this->main;
+    }
 }

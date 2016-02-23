@@ -52,6 +52,7 @@ class NewsAdmin extends Admin
             ->add('type', null, array('label' => 'Тип'))
             ->add('date', null, array('label' => 'Дата'))
             ->add('order_column', null, array('label' => 'Порядок'))
+            ->add('set_main', 'boolean', array('template' => 'EasyMainBundle:Admin:set_main_news.html.twig', 'label'=>'Важные'))
         ;
     }
 

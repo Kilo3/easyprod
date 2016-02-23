@@ -252,7 +252,8 @@ class DefaultController extends Controller
                     break;
                 
                 case 'news':
-                    
+                    $news = $this->getDoctrine()->getRepository('EasyMainBundle:News')->findBy(array('main'=>true));
+                    /*
                     $repository = $this->getDoctrine()->getRepository('EasyMainBundle:News');
                     $date_from = date('Y-m-d');
                     $contacts = $repository->createQueryBuilder('s')
@@ -266,7 +267,7 @@ class DefaultController extends Controller
                     
                     if(count($news) < 3 ){
                         $news = $hp->getRepository('EasyMainBundle:News')->findBy(array('type' => 'published'), array('date'=>'DESC'), 3);
-                    }
+                    }*/
                     $foo = $this->render('EasyMainBundle:Block:block_news.html.twig', array(
                         'content'   => $value,
                         'news'   => $news
@@ -498,94 +499,153 @@ class DefaultController extends Controller
                     ));
                     $value->setContent($foo->getContent());
                     break;
-                
+
                 case 'calendar':
                     $em = $this->getDoctrine()->getEntityManager();
                     $qb = $em->createQueryBuilder();
-                    $qb->select('e.id, e.name, YEAR(e.date) AS year, MONTH(e.date) AS month, e.date, e.text, m.id AS mediaId')
-                    ->from( 'EasyMainBundle:Calendar',  'e' )
-//                    ->Where( 
+                    $qb->select('e.id, e.name, YEAR(e.datestart) AS yearstart, MONTH(e.datestart) AS monthstart, YEAR(e.dateend) AS yearend, MONTH(e.dateend) AS monthend, e.datestart, e.dateend, e.text, m.id AS mediaId')
+                        ->from( 'EasyMainBundle:Calendar',  'e' )
+//                    ->Where(
 //                        $qb->expr()->andX(
 //                            $qb->expr()->between('e.dateStart', ':from', ':to')
 //                        )
 //                    )
-                            
-                    //->join('e', 'media__media', 'm', 'e.media_id = m.id')
-                    ->join('e.media','m')
-                            
-                    //->groupBy('month')
-                    ->orderBy('e.date', 'ASC')
-                    //->setFirstResult( $offset )
-                    //->setMaxResults( $limit );
+
+                        //->join('e', 'media__media', 'm', 'e.media_id = m.id')
+                        ->join('e.media','m')
+
+                        //->groupBy('month')
+                        ->orderBy('e.datestart', 'DESC')
+                        //->setFirstResult( $offset )
+                        //->setMaxResults( $limit );
                     ;
                     $month = array();
                     $calendarItems = $qb->getQuery()->getResult();
                     foreach ($calendarItems as $itemIndex => $item) {
                         $media = $hp->getRepository('Application\Sonata\MediaBundle\Entity\Media')->find($item['mediaId']);
                         $calendarItems[$itemIndex]['media'] = $media;
-                        switch($item['month']){
+                        switch($item['monthstart']){
                             case 1:
-                                $month[$item['year']][$item['month']]['content'][] = $calendarItems[$itemIndex];
-                                $month[$item['year']][$item['month']]['monthRus'] = 'Январь';
+                                $month[$item['yearstart']][$item['monthstart']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearstart']][$item['monthstart']]['monthRus'] = 'Январь';
                                 break;
                             case 2:
-                                $month[$item['year']][$item['month']]['content'][] = $calendarItems[$itemIndex];
-                                $month[$item['year']][$item['month']]['monthRus'] = 'Февраль';
+                                $month[$item['yearstart']][$item['monthstart']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearstart']][$item['monthstart']]['monthRus'] = 'Февраль';
                                 break;
                             case 3:
-                                $month[$item['year']][$item['month']]['content'][] = $calendarItems[$itemIndex];
-                                $month[$item['year']][$item['month']]['monthRus'] = 'Март';
+                                $month[$item['yearstart']][$item['monthstart']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearstart']][$item['monthstart']]['monthRus'] = 'Март';
                                 break;
                             case 4:
-                                $month[$item['year']][$item['month']]['content'][] = $calendarItems[$itemIndex];
-                                $month[$item['year']][$item['month']]['monthRus'] = 'Апрель';
+                                $month[$item['yearstart']][$item['monthstart']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearstart']][$item['monthstart']]['monthRus'] = 'Апрель';
                                 break;
                             case 5:
-                                $month[$item['year']][$item['month']]['content'][] = $calendarItems[$itemIndex];
-                                $month[$item['year']][$item['month']]['monthRus'] = 'Май';
+                                $month[$item['yearstart']][$item['monthstart']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearstart']][$item['monthstart']]['monthRus'] = 'Май';
                                 break;
                             case 6:
-                                $month[$item['year']][$item['month']]['content'][] = $calendarItems[$itemIndex];
-                                $month[$item['year']][$item['month']]['monthRus'] = 'Июнь';
+                                $month[$item['yearstart']][$item['monthstart']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearstart']][$item['monthstart']]['monthRus'] = 'Июнь';
                                 break;
                             case 7:
-                                $month[$item['year']][$item['month']]['content'][] = $calendarItems[$itemIndex];
-                                $month[$item['year']][$item['month']]['monthRus'] = 'Июль';
+                                $month[$item['yearstart']][$item['monthstart']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearstart']][$item['monthstart']]['monthRus'] = 'Июль';
                                 break;
                             case 8:
-                                $month[$item['year']][$item['month']]['content'][] = $calendarItems[$itemIndex];
-                                $month[$item['year']][$item['month']]['monthRus'] = 'Август';
+                                $month[$item['yearstart']][$item['monthstart']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearstart']][$item['monthstart']]['monthRus'] = 'Август';
                                 break;
                             case 9:
-                                $month[$item['year']][$item['month']]['content'][] = $calendarItems[$itemIndex];
-                                $month[$item['year']][$item['month']]['monthRus'] = 'Сентябрь';
+                                $month[$item['yearstart']][$item['monthstart']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearstart']][$item['monthstart']]['monthRus'] = 'Сентябрь';
                                 break;
                             case 10:
-                                $month[$item['year']][$item['month']]['content'][] = $calendarItems[$itemIndex];
-                                $month[$item['year']][$item['month']]['monthRus'] = 'Октябрь';
+                                $month[$item['yearstart']][$item['monthstart']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearstart']][$item['monthstart']]['monthRus'] = 'Октябрь';
                                 break;
                             case 11:
-                                $month[$item['year']][$item['month']]['content'][] = $calendarItems[$itemIndex];
-                                $month[$item['year']][$item['month']]['monthRus'] = 'Ноябрь';
+                                $month[$item['yearstart']][$item['monthstart']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearstart']][$item['monthstart']]['monthRus'] = 'Ноябрь';
                                 break;
                             case 12:
-                                $month[$item['year']][$item['month']]['content'][] = $calendarItems[$itemIndex];
-                                $month[$item['year']][$item['month']]['monthRus'] = 'Декабрь';
+                                $month[$item['yearstart']][$item['monthstart']]['content'][] = $calendarItems[$itemIndex];
+                                $month[$item['yearstart']][$item['monthstart']]['monthRus'] = 'Декабрь';
                                 break;
                         }
+                        //date end
+                        if($item['monthend'] != $item['monthstart']) {
+                            switch ($item['monthend']) {
+                                case 1:
+                                    $month[$item['yearend']][$item['monthend']]['content'][] = $calendarItems[$itemIndex];
+                                    $month[$item['yearend']][$item['monthend']]['monthRus'] = 'Январь';
+                                    break;
+                                case 2:
+                                    $month[$item['yearend']][$item['monthend']]['content'][] = $calendarItems[$itemIndex];
+                                    $month[$item['yearend']][$item['monthend']]['monthRus'] = 'Февраль';
+                                    break;
+                                case 3:
+                                    $month[$item['yearend']][$item['monthend']]['content'][] = $calendarItems[$itemIndex];
+                                    $month[$item['yearend']][$item['monthend']]['monthRus'] = 'Март';
+                                    break;
+                                case 4:
+                                    $month[$item['yearend']][$item['monthend']]['content'][] = $calendarItems[$itemIndex];
+                                    $month[$item['yearend']][$item['monthend']]['monthRus'] = 'Апрель';
+                                    break;
+                                case 5:
+                                    $month[$item['yearend']][$item['monthend']]['content'][] = $calendarItems[$itemIndex];
+                                    $month[$item['yearend']][$item['monthend']]['monthRus'] = 'Май';
+                                    break;
+                                case 6:
+                                    $month[$item['yearend']][$item['monthend']]['content'][] = $calendarItems[$itemIndex];
+                                    $month[$item['yearend']][$item['monthend']]['monthRus'] = 'Июнь';
+                                    break;
+                                case 7:
+                                    $month[$item['yearend']][$item['monthend']]['content'][] = $calendarItems[$itemIndex];
+                                    $month[$item['yearend']][$item['monthend']]['monthRus'] = 'Июль';
+                                    break;
+                                case 8:
+                                    $month[$item['yearend']][$item['monthend']]['content'][] = $calendarItems[$itemIndex];
+                                    $month[$item['yearend']][$item['monthend']]['monthRus'] = 'Август';
+                                    break;
+                                case 9:
+                                    $month[$item['yearend']][$item['monthend']]['content'][] = $calendarItems[$itemIndex];
+                                    $month[$item['yearend']][$item['monthend']]['monthRus'] = 'Сентябрь';
+                                    break;
+                                case 10:
+                                    $month[$item['yearend']][$item['monthend']]['content'][] = $calendarItems[$itemIndex];
+                                    $month[$item['yearend']][$item['monthend']]['monthRus'] = 'Октябрь';
+                                    break;
+                                case 11:
+                                    $month[$item['yearend']][$item['monthend']]['content'][] = $calendarItems[$itemIndex];
+                                    $month[$item['yearend']][$item['monthend']]['monthRus'] = 'Ноябрь';
+                                    break;
+                                case 12:
+                                    $month[$item['yearend']][$item['monthend']]['content'][] = $calendarItems[$itemIndex];
+                                    $month[$item['yearend']][$item['monthend']]['monthRus'] = 'Декабрь';
+                                    break;
+                            }
+                        }
                     }
-                    foreach ($month as $year) {
-                        ksort($year);
+                    foreach ($month as $yearKey => $year) {
+                        $temp = $year;
+                        ksort($temp);
+                        $month[$yearKey] = $temp;
                     }
-                    ksort($month);
+
                     $foo = $this->render('EasyMainBundle:Block:block_calendar.html.twig', array(
                         'month'   => $month,
                         'content'   => $value,
+                        'currentYear' => date("Y"),
+                        'currentMonth' => date("m"),
                     ));
-                    
-                    
+
+
+
                     $value->setContent($foo->getContent());
                     break;
+
                 case 'stuff':
 
                     $repository = $this->getDoctrine()->getRepository('EasyMainBundle:Stuff');
@@ -900,7 +960,9 @@ class DefaultController extends Controller
             $repository = $this->getDoctrine()->getRepository('EasyMainBundle:Contacts');
             $contacts = $repository->createQueryBuilder('cc')
                 ->select()
-                ->groupBy('cc.coordinates')
+                //->groupBy('cc.coordinates')
+                ->groupBy("cc.name")
+                ->having("COUNT(cc.name) >= 1")
                 ->getQuery();
             $result = $contacts->getResult();
 
@@ -1076,4 +1138,21 @@ class DefaultController extends Controller
         return $this->redirect($this->getRequest()->headers->get('referer'));
     }
 
+    public function setMainNewsTrueAction($page_id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $repo = $em->getRepository('EasyMainBundle:News')->find($page_id);
+        $repo->setMain(true);
+        $em->flush();
+        return $this->redirect($this->getRequest()->headers->get('referer'));
+    }
+
+    public function setMainNewsFalseAction($page_id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $repo = $em->getRepository('EasyMainBundle:News')->find($page_id);
+        $repo->setMain(false);
+        $em->flush();
+        return $this->redirect($this->getRequest()->headers->get('referer'));
+    }
 }

@@ -1,0 +1,15 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    {% spaceless %}
+        {% if object.main == true %}
+            <a href="{{ path('set_main_news_false', {'page_id': object.id}) }}">
+                <i class="fa fa-check-square-o"></i>
+            </a>
+        {% else %}
+            <a href="{{ path('set_main_news_true', {'page_id': object.id}) }}">
+                <i class="fa fa-square-o"></i>
+            </a>
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}
