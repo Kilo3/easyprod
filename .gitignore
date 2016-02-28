@@ -44,3 +44,5 @@
 # specific
 Apache-2.4+Nginx-1.7_vhosta.conf
 Apache-2.4+Nginx-1.7_vhostn.conf
+/app/check.php
+/app/SymfonyRequirements.php

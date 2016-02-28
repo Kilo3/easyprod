@@ -89,9 +89,10 @@ sonata_admin:
                     - easy.admin.photo_gallery
                     - easy.admin.stuff
                     - easy.admin.content
-            #Media:
-            #    items:
-            #        - sonata.media.admin.gallery
+            Media:
+                label: Доп. настройки
+                items:
+                    - sonata.media.admin.gallery
             #        - sonata.media.admin.media
             #        - custom_name.admin.media
             #Temp:
