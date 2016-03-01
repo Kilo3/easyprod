@@ -20,6 +20,7 @@ Easy\MainBundle\Entity\News:
         main:
             type: boolean
             default: false
+            required: false
     manyToOne:
         media:
             targetEntity: Application\Sonata\MediaBundle\Entity\Media

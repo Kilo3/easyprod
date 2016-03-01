@@ -36,6 +36,7 @@ class NewsAdmin extends Admin
                 'label' => 'Текст новости'
             ))
             ->add('order_column', 'integer', array('label' => 'Порядок отображения'))
+            ->add('main', 'checkbox', array('label' => 'Важные', 'required' => false))
             ->add('date', 'date', array(
                 'pattern' => 'dd MMM Y G',
                 //'locale' => 'en',
