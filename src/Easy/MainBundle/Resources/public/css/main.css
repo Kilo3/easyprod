@@ -2476,14 +2476,22 @@ h4{
 .inside ul{
     display: table;
 }
-.inside a:not(.button-square){
+.inside a{
+    color:#525252;
+    /*text-decoration: underline;*/
+}
+.inside a:hover{
+    color:#525252;
+}
+
+.inside a.fancy-link{
     color: #EA2327;
     font-family: sansRoundedBold;
     text-decoration: none;
     border-bottom: 2px solid;
     transition: border-width 0.2s ease-in-out;
 }
-.inside a:hover:not(.button-square){
+.inside a.fancy-link:hover{
     border-bottom: 0px solid;
 }
 .soundControl{
