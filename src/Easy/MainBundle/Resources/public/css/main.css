@@ -1231,6 +1231,9 @@ i.dot{
     clear: both;
     margin-bottom: 8px;
 }
+.address .button-square{
+    float:left;
+}
 #mainVideo{
     position: absolute;
     left: 0px;

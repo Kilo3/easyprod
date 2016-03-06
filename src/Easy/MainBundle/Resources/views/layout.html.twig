@@ -159,7 +159,9 @@ overflow: hidden;">
                                 {% else %}
                                     <div class="col-md-6 col-xs-7 menu-section-content" info="{{ loop.index }}">
                                 {% endif %}
-                                    {% if value.empty == false and value.link is empty %}
+                                    {% if value.enabled == false %}
+                                        <!-- disabled -->
+                                    {% elseif value.empty == false and value.link is empty %}
                                         <a href="{{ path('easy_main_homepage') }}{{ value.url }}" style="font-size: 1.5em;">{{ value.title }}</a>
                                     {% elseif value.link is not empty %}
                                         <a href="{{ value.link }}" style="font-size: 1.5em;">{{ value.title }}</a>
@@ -168,7 +170,9 @@ overflow: hidden;">
                                     {% endif %}
 
                                     {% for children in value.children %}
-                                        {% if  children.record == true and children.link is empty %}
+                                        {% if children.enabled == false %}
+                                        <!-- disabled -->
+                                        {% elseif  children.record == true and children.link is empty %}
                                             <a style="margin-left:0px;" class="opener" href="#">{{ children.title }}</a>
                                         {% elseif children.link is not empty %}
                                             <a style="margin-left:0px;" href="{{ children.link }}">{{ children.title }}</a>
@@ -335,7 +339,7 @@ overflow: hidden;">
             {% endif %}
         </script>
 
-        {#<!— Yandex.Metrika counter —>
+        <!— Yandex.Metrika counter —>
         <script type="text/javascript">
         (function (d, w, c) {
         (w[c] = w[c] || []).push(function() {
@@ -380,6 +384,6 @@ overflow: hidden;">
         <script type='text/javascript'>
             (function(){ var widget_id = 'XRvGlrqE68';
                 var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);})();</script>
-        <!-- {/literal} END JIVOSITE CODE -->#}
+        <!-- {/literal} END JIVOSITE CODE -->
     </body>
 </html>

@@ -105,7 +105,9 @@
                                     {% else %}
                                     <div class="col-md-6 col-xs-7 menu-section-content" info="{{ loop.index }}">
                                         {% endif %}
-                                        {% if value.empty == false and value.link is empty %}
+                                        {% if value.enabled == false %}
+                                        <!-- disabled -->
+                                        {% elseif value.empty == false and value.link is empty %}
                                             <a href="{{ path('easy_main_homepage') }}{{ value.url }}" style="font-size: 1.5em;">{{ value.title }}</a>
                                         {% elseif value.link is not empty %}
                                             <a href="{{ value.link }}" style="font-size: 1.5em;">{{ value.title }}</a>
@@ -114,7 +116,9 @@
                                         {% endif %}
 
                                         {% for children in value.children %}
-                                            {% if  children.record == true and children.link is empty %}
+                                            {% if children.enabled == false %}
+                                            <!-- disabled -->
+                                            {% elseif  children.record == true and children.link is empty %}
                                                 <a style="margin-left:0px;" class="opener" href="#">{{ children.title }}</a>
                                             {% elseif children.link is not empty %}
                                                 <a style="margin-left:0px;" href="{{ children.link }}">{{ children.title }}</a>
