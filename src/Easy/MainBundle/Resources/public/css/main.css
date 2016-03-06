@@ -134,7 +134,73 @@ a[name*='#anchor']{
     font-family: sansRoundedBold;
     font-size: 16px;
 }
+.inside{
+    font-family: RobotoLight;
+    color: #525252;
+}
+.inside span{
+    font-family: sansRoundedBold;
+}
+.inside img{
+    padding: 15px;
+    max-width: 100%;
+    height: initial !important;
+}
+.inside{
+    font-family: robotoLight;
+    color: #525252;
+    line-height: 1.5em;
+    letter-spacing: 0.3px;
+    text-align: justify;
+    /*    text-indent: 25px;*/
+}
+.inside span{
+    font-family: sansRoundedBold;
+}
+.inside{
+    font-family: RobotoLight;
+    color: #525252;
+}
+.inside span{
+    font-family: sansRoundedBold;
+}
+.inside img{
+    padding: 15px;
+    max-width: 100%;
+    height: initial !important;
+}
+.inside{
+    font-family: robotoLight;
+    color: #525252;
+    line-height: 1.5em;
+    letter-spacing: 0.3px;
+    text-align: justify;
+    /*    text-indent: 25px;*/
+}
+.inside span{
+    font-family: sansRoundedBold;
+}
 
+.inside ul{
+    display: table;
+}
+a{
+    color:#525252;
+}
+a:hover{
+    color:#525252;
+}
+
+a.fancy-link{
+    color: #EA2327;
+    font-family: sansRoundedBold;
+    text-decoration: none;
+    border-bottom: 2px solid;
+    transition: border-width 0.2s ease-in-out;
+}
+a.fancy-link:hover{
+    border-bottom: 0px solid;
+}
 
 
 
@@ -1763,14 +1829,14 @@ a.button-square{
     letter-spacing: 0.5px;
     text-decoration: none;
     padding: 6px 18px 6px 23px;
-    display: block;
+    display: inline-block;
     cursor: pointer;
     border-width: 4px;
     border-style: solid;
     line-height: normal;
     border-radius: 5px;
     position: relative;
-    float: left;
+    /*float: left;*/
     margin-top: 15px;
     clear: both;
 }
@@ -2143,30 +2209,6 @@ a.button-square.active{
     vertical-align: inherit;
 }
 
-.inside{
-    font-family: RobotoLight;
-    color: #525252;
-}
-.inside span{
-    font-family: sansRoundedBold;
-}
-.inside img{
-    padding: 15px;
-    max-width: 100%;
-    height: initial !important;
-}
-.inside{
-    font-family: robotoLight;
-    color: #525252;
-    line-height: 1.5em;
-    letter-spacing: 0.3px;
-    text-align: justify;
-    /*    text-indent: 25px;*/
-}
-.inside span{
-    font-family: sansRoundedBold;
-}
-
 table{
     border: 1px solid #ddd;
     border-spacing: 0;
@@ -2260,11 +2302,11 @@ table>tbody>tr>td{
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
     border: 1px solid #999;
-    border: 1px solid rgba(0,0,0,.2);
-    border-radius: 6px;
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 0;
     outline: 0;
     -webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);
-    box-shadow: 0 3px 9px rgba(0,0,0,.5);
+    box-shadow: 0 3px 9px rgba(0,0,0,.1);
 }
 .modal-header {
     min-height: 16.43px;
@@ -2286,18 +2328,22 @@ table>tbody>tr>td{
 .modal-footer table{
     width: initial !important;
     float: left;
+    margin-top: 8px;
 }
 .modal-footer table>tbody>tr>td{
     padding: 0;
 }
+.blueimp-gallery{
+    background: rgba(255, 255, 255, 0.6) !important;
+}
 .btn {
     display: inline-block;
-    padding: 6px 12px;
+
     margin-bottom: 0;
     font-size: 14px;
     font-weight: 400;
     line-height: 1.42857143;
-    text-align: center;
+    text-align: initial;
     white-space: nowrap;
     vertical-align: middle;
     cursor: pointer;
@@ -2305,9 +2351,21 @@ table>tbody>tr>td{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background-image: none;
-    border: 1px solid transparent;
-    border-radius: 4px;
+    position: absolute;
+    left: 0;
+    top: 43%;
+    font-size: 3em;
+    border:none;
+}
+.btn-default, .btn-default:hover, .btn-default:focus, .btn-default.focus, .btn-default:active, .btn-default:active:hover, .btn-default.active:hover, .open > .dropdown-toggle.btn-default:hover, .btn-default:active:focus, .btn-default.active:focus, .open > .dropdown-toggle.btn-default:focus, .btn-default:active.focus, .btn-default.active.focus, .open > .dropdown-toggle.btn-default.focus{
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background-color: initial;
+    border: none;
+}
+a.next{
+    right: 0 !important;
+    left: initial;
 }
 .btn-primary {
     color: #fff;
@@ -2316,9 +2374,7 @@ table>tbody>tr>td{
     font-family: sansRoundedBold;
 }
 .btn-default {
-    color: #fff;
-    background-color: #724ea0;
-    border-color: #724ea0;
+    color: #724ea0;
     font-family: sansRoundedBold;
     
 }
@@ -2473,27 +2529,7 @@ h4{
     top: initial;
 /*    text-shadow: -1px -1px 3px #FFF, 1px 1px 3px #FFF;*/
 }
-.inside ul{
-    display: table;
-}
-.inside a{
-    color:#525252;
-    /*text-decoration: underline;*/
-}
-.inside a:hover{
-    color:#525252;
-}
 
-.inside a.fancy-link{
-    color: #EA2327;
-    font-family: sansRoundedBold;
-    text-decoration: none;
-    border-bottom: 2px solid;
-    transition: border-width 0.2s ease-in-out;
-}
-.inside a.fancy-link:hover{
-    border-bottom: 0px solid;
-}
 .soundControl{
     position: absolute;
     color: rgb(235, 28, 36) !important;
@@ -2799,11 +2835,11 @@ table>thead>tr>th{
     display: none;
 }
 
-.btn-primary:hover {
+/*.btn-primary:hover {
     color: #333;
     background-color: #e6e6e6;
     border-color: #adadad;
-}
+}*/
 
 
 #nav>div{

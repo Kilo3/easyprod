@@ -85,7 +85,7 @@ $(function(){
         var target = $('[name=' + window.location.hash.slice(1) +']');
         if (target.length) {
             $('html,body').animate({
-                scrollTop: target.offset().top
+                scrollTop: target.offset().top - 120
             }, 300);
         }
     }

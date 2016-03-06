@@ -84,3 +84,4 @@ Easy\MainBundle\Entity\MainMenu:
         content:
             targetEntity: Content
             mappedBy: url
+            cascade: ["persist", "remove"]

@@ -68,24 +68,22 @@
                         </div>
                         <div class="modal-body next"></div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default pull-left prev">
+                            <a type="button" class="btn btn-default prev">
                                 <i class="fa fa-chevron-left"></i>
-                                <span class="hidden-xs">Предыдущая</span>
-                            </button>
-                            <div style="display: table;float: left;margin-left: 15px;">
+                            </a>
+                            <div style="display: table;float: initial;margin: 0 auto;">
                                 <script type="text/javascript"><!--
                                 document.write(VK.Share.button(false,{type: "round_nocount", text: "Share"}));
                                 --></script>
                                 
-                                <a href="#" target="_blank" download onclick="$(this).attr('href',$(this).parents('.modal-content').find('img').attr('src'));" type="button" class="btn btn-default" style="text-decoration: none;float: left;display: table;margin-left: 10px;">
+                                <a href="#" target="_blank" download onclick="$(this).attr('href',$(this).parents('.modal-content').find('img').attr('src'));" type="button" class="btn btn-default" style="text-decoration: none;float: left;display: table;margin-left: 10px;position: relative;font-size: 1.4em;">
                                     <i class="fa fa-download"></i>
                                     <span class="hidden-xs">Скачать</span>
                                 </a>
                             </div>
-                            <button type="button" class="btn btn-primary next">
-                                <span class="hidden-xs">Следующая</span>
+                            <a type="button" class="btn btn-default next">
                                 <i class="fa fa-chevron-right"></i>
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -337,7 +335,7 @@ overflow: hidden;">
             {% endif %}
         </script>
 
-        <!— Yandex.Metrika counter —>
+        {#<!— Yandex.Metrika counter —>
         <script type="text/javascript">
         (function (d, w, c) {
         (w[c] = w[c] || []).push(function() {
@@ -382,6 +380,6 @@ overflow: hidden;">
         <script type='text/javascript'>
             (function(){ var widget_id = 'XRvGlrqE68';
                 var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);})();</script>
-        <!-- {/literal} END JIVOSITE CODE -->
+        <!-- {/literal} END JIVOSITE CODE -->#}
     </body>
 </html>
