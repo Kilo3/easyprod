@@ -79,6 +79,21 @@ function init () {
 }
 
 $(function(){
+    //back url hack
+    var split = window.location.pathname.split('/');
+    if(document.referrer.slice(document.referrer.length - 11) === "e-a-s-y.ru/" && split.length > 3){
+        history.replaceState(null, document.title, location.pathname+"#!/stealinghistory");
+        history.pushState(null, document.title, location.pathname);
+        var backurl = window.location.origin+"/"+split[1]+"/";
+        window.addEventListener("popstate", function() {
+            if(location.hash === "#!/stealinghistory") {
+                history.replaceState(null, document.title, location.pathname);
+                setTimeout(function(){
+                    location.replace(backurl);
+                },0);
+            }
+        }, false);
+    }
 
     //anchor links
     if (window.location.hash.length) {
