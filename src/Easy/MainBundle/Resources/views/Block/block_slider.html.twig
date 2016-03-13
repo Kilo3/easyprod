@@ -1,8 +1,11 @@
 <div class="col-md-11">
     <a name="anchor{{ content.id }}"></a>
     <div class="stick"></div>
-    <p class="title">{{ content.getName() }}</p>
-
+    {% if content.link is empty %}
+        <h1 class='title'>{{ content.getName()}}</h1>
+    {% else %}
+        <a href="{{ content.link }}"><h1 class='title'>{{ content.getName()}}</h1></a>
+    {% endif %}
     <div class="content-slider">
         {% for team in content.getTeams() %}
             <figure class="slidesjs-slide" style="margin:0;padding: 0;">

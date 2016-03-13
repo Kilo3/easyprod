@@ -6,7 +6,6 @@
 
 $(window).on('load', function () {
     if(typeof $.cookie('cityId') === 'undefined'){
-
     }
 });
 
@@ -73,7 +72,7 @@ function init () {
 
     myMap.events.add('click', function (e) {
         var coords = e.get('coords');
-        console.log(coords);
+        //console.log(coords);
     });
 
 }

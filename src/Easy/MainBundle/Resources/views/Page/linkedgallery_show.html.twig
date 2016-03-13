@@ -6,7 +6,7 @@
                 <p class="title">{{ content.name }}</p>
                 <div class="links">
                     {% for galleryHasMedia in content.galleryHasMedias %}
-                        {% if galleryHasMedia.media.providerName == 'sonata.media.provider.image' %}
+                        {% if galleryHasMedia.media is not null and galleryHasMedia.media.providerName == 'sonata.media.provider.image' %}
                             <div class="col-md-3 col-xs-4">
                                 <a href="{% path galleryHasMedia.media, 'big' %}" title="" data-gallery style="background: url('{% path galleryHasMedia.media, 'big' %}');"></a>
                             </div>

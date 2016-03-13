@@ -113,7 +113,7 @@ class DefaultController extends Controller
                         ->join('e.media','m')
 
                         //->groupBy('month')
-                        ->orderBy('e.datestart', 'DESC')
+                        ->orderBy('e.datestart', 'ASC')
                         //->setFirstResult( $offset )
                         //->setMaxResults( $limit );
                     ;
@@ -515,7 +515,7 @@ class DefaultController extends Controller
                         ->join('e.media','m')
 
                         //->groupBy('month')
-                        ->orderBy('e.datestart', 'DESC')
+                        ->orderBy('e.datestart', 'ASC')
                         //->setFirstResult( $offset )
                         //->setMaxResults( $limit );
                     ;
@@ -811,11 +811,8 @@ class DefaultController extends Controller
     public function galleryAction($id)
     {
         $hp = $this->getDoctrine()->getManager();
-
         $mainMenu = $this->mainMenu();
-
         $content = $hp->getRepository('Easy\MainBundle\Entity\PhotoGallery')->findOneBy(array('id' => $id));
-
         $topMenu = "";
         $secondLayerMenu = "";
         return $this->render('EasyMainBundle:Page:gallery_show.html.twig', array(

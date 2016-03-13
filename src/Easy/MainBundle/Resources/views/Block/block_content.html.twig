@@ -1,6 +1,10 @@
 <div class="col-md-11">
     <a name="anchor{{ content.id }}" style=""></a>
-    <p class="title">{{ content.getName() }}</p>
+    {% if content.link is empty %}
+        <h1 class='title'>{{ content.getName()}}</h1>
+    {% else %}
+        <a href="{{ content.link }}"><h1 class='title'>{{ content.getName()}}</h1></a>
+    {% endif %}
     <div class="inside">
         {% if galleryId is defined and galleryId is not null  %}
             <a class="button-square" href="/linkedgallery/{{ galleryId }}" style="margin-left: 50px;margin-bottom: 20px;float: right;">Фото / Видео</a>

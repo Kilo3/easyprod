@@ -22,7 +22,7 @@
             {% endfor %}
         {% endfor %}
     </div>
-    <div class="col-md-9 rightBlock col-xs-8">
+    <div class="col-md-9 rightBlock col-xs-8" style="overflow-y: scroll;">
         {% for key, year in month %}
             {% for monthKey, monthInfo in year %}
                 {% if currentYear == key and monthKey == currentMonth %}
@@ -31,7 +31,7 @@
                     {% set active = '' %}
                 {% endif %}
                 <div class="calendarMonth {{ active }}" month="{{ loop.parent.loop.index }}{{ loop.index }}">
-                    {% for event in monthInfo.content|slice(0, 3) %}
+                    {% for event in monthInfo.content %}
                         <div class="col-md-12 hidden-xs" style="height: 155px;margin-bottom: 10px;">
                              {% media event.media, 'big' with {'class': ''} %}
                             <p>{{ event.datestart|date('d.m') }} {{ event.name }}</p>

@@ -159,6 +159,15 @@ class ContentAdmin extends Admin
                         ->add('order_column')
                     ->end();
                 break;
+            case 'photo_links':
+                $formMapper
+                    ->with('General', array('class' => 'col-md-6'))
+                        ->add('url','sonata_type_model_list',array(
+                            'btn_add' => false
+                        ))
+                        ->add('order_column')
+                    ->end();
+                break;
             default:
                 break;
         }
