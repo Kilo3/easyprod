@@ -2286,10 +2286,10 @@ table>tbody>tr>td{
 .splitted>div:last-child{
     border-right: none;
 }
-.blueimp-gallery .modal-dialog{
+/*.blueimp-gallery .modal-dialog{
     margin: 0 auto;
     margin-top: 2%;
-}
+}*/
 
 #video-container{
     position: fixed;
@@ -2324,7 +2324,7 @@ table>tbody>tr>td{
     cursor: pointer;
 }
 .modal-footer {
-    padding: 15px;
+    padding: 0px;
     text-align: right;
     border-top: 1px solid #e5e5e5;
 }
@@ -2488,9 +2488,16 @@ h4{
     display: inline-block;
     margin-bottom: 50px;
     float: left !important;
+    width: 45%;
+
 }
 .video-gallery div:nth-child(even){
     float:right;
+    margin-left: 10%;
+}
+.video-gallery div>iframe{
+    width: 100%;
+    max-height: 260px;
 }
 #map img{
     padding:inherit;
@@ -3143,6 +3150,7 @@ table>thead>tr>th{
 
 .modal-dialog {
     max-width: 1200px !important;
+    margin-top: 10%;
 }
 
 .blueimp-gallery .modal-body img, .blueimp-gallery .modal-body .video-content video, .blueimp-gallery .modal-body .video-content iframe, .blueimp-gallery .modal-body .video-content a{
