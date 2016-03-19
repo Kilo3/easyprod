@@ -31,7 +31,7 @@
                     {% set active = '' %}
                 {% endif %}
                 <div class="calendarMonth {{ active }}" month="{{ loop.parent.loop.index }}{{ loop.index }}">
-                    {% for event in monthInfo.content %}
+                    {% for event in monthInfo.content|slice(0, 3) %}
                         <div class="col-md-12 hidden-xs" style="height: 155px;margin-bottom: 10px;">
                              {% media event.media, 'big' with {'class': ''} %}
                             <p>{{ event.datestart|date('d.m') }} {{ event.name }}</p>
