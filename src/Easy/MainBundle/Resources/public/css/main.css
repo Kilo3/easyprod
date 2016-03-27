@@ -3153,4 +3153,5 @@ table>thead>tr>th{
 
 .blueimp-gallery .modal-body img, .blueimp-gallery .modal-body .video-content video, .blueimp-gallery .modal-body .video-content iframe, .blueimp-gallery .modal-body .video-content a{
     margin: 0 auto !important;
+    min-height: 100%;
 }
