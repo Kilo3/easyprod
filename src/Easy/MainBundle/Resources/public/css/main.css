@@ -2428,10 +2428,9 @@ h4{
     font-family: robotoLight;
     font-size: 1.2em;
     color: #939598;
-    display: block;
-    float: left;
     padding: 25px 5px;
-    text-align: center;
+    text-align: left;
+    display: table;
 }
 .calendar .rightBlock div.row{
     display: table;
@@ -3150,7 +3149,6 @@ table>thead>tr>th{
 
 .modal-dialog {
     max-width: 1200px !important;
-    margin-top: 10%;
 }
 
 .blueimp-gallery .modal-body img, .blueimp-gallery .modal-body .video-content video, .blueimp-gallery .modal-body .video-content iframe, .blueimp-gallery .modal-body .video-content a{

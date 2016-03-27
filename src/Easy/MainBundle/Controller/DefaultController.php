@@ -101,8 +101,9 @@ class DefaultController extends Controller
                 case 'calendar':
                     $em = $this->getDoctrine()->getEntityManager();
                     $qb = $em->createQueryBuilder();
-                    $qb->select('e.id, e.name, YEAR(e.datestart) AS yearstart, MONTH(e.datestart) AS monthstart, YEAR(e.dateend) AS yearend, MONTH(e.dateend) AS monthend, e.datestart, e.dateend, e.text, m.id AS mediaId')
+                    $qb->select('e.id, e.name, DAY(e.datestart) as daystart, YEAR(e.datestart) AS yearstart, MONTH(e.datestart) AS monthstart, YEAR(e.dateend) AS yearend, MONTH(e.dateend) AS monthend, e.datestart, e.dateend, e.text, m.id AS mediaId')
                         ->from( 'EasyMainBundle:Calendar',  'e' )
+                        ->where('e.archive = false')
 //                    ->Where(
 //                        $qb->expr()->andX(
 //                            $qb->expr()->between('e.dateStart', ':from', ':to')
@@ -113,7 +114,9 @@ class DefaultController extends Controller
                         ->join('e.media','m')
 
                         //->groupBy('month')
-                        ->orderBy('e.datestart', 'ASC')
+
+                        ->orderBy('daystart', 'ASC')
+                        ->orderBy('yearstart', 'DESC')
                         //->setFirstResult( $offset )
                         //->setMaxResults( $limit );
                     ;
@@ -503,8 +506,9 @@ class DefaultController extends Controller
                 case 'calendar':
                     $em = $this->getDoctrine()->getEntityManager();
                     $qb = $em->createQueryBuilder();
-                    $qb->select('e.id, e.name, YEAR(e.datestart) AS yearstart, MONTH(e.datestart) AS monthstart, YEAR(e.dateend) AS yearend, MONTH(e.dateend) AS monthend, e.datestart, e.dateend, e.text, m.id AS mediaId')
+                    $qb->select('e.id, e.name, DAY(e.datestart) as daystart, YEAR(e.datestart) AS yearstart, MONTH(e.datestart) AS monthstart, YEAR(e.dateend) AS yearend, MONTH(e.dateend) AS monthend, e.datestart, e.dateend, e.text, m.id AS mediaId')
                         ->from( 'EasyMainBundle:Calendar',  'e' )
+                        ->where('e.archive = false')
 //                    ->Where(
 //                        $qb->expr()->andX(
 //                            $qb->expr()->between('e.dateStart', ':from', ':to')
@@ -515,7 +519,9 @@ class DefaultController extends Controller
                         ->join('e.media','m')
 
                         //->groupBy('month')
-                        ->orderBy('e.datestart', 'ASC')
+
+                        ->orderBy('daystart', 'ASC')
+                        ->orderBy('yearstart', 'DESC')
                         //->setFirstResult( $offset )
                         //->setMaxResults( $limit );
                     ;

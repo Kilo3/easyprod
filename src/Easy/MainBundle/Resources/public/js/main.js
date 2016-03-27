@@ -103,6 +103,11 @@ $(function(){
             }, 300);
         }
     }
+    //
+    if($(".modal-dialog").length){
+        var marTop = ($(window).height() - 500)/2;
+        $(".modal-dialog").css('margin-top', marTop+'px');
+    }
 
 
     $('.inside table').closest('.inside').css({'overflow-x':'scroll'});

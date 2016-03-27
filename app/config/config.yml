@@ -85,6 +85,7 @@ doctrine:
                     string_functions:
                         MONTH: DoctrineExtensions\Query\Mysql\Month
                         YEAR: DoctrineExtensions\Query\Mysql\Year
+                        DAY: DoctrineExtensions\Query\Mysql\Day
                 mappings:
                     SonataMediaBundle: ~
                     EasyMainBundle: ~
