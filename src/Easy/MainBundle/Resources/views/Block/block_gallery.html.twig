@@ -1,7 +1,12 @@
 {% if splitted is defined %}
     <div class='col-md-11'>
         <a name="anchor{{ content.id }}"></a>
-        <h2 class='title'>{{ content.getName()}}</h2>
+        <div class="stick"></div>
+        {% if content.link is empty %}
+            <h1 class='title'>{{ content.getName()}}</h1>
+        {% else %}
+            <a href="{{ content.link }}"><h1 class='title'>{{ content.getName()}}</h1></a>
+        {% endif %}
         <div class="row splitted">
             {% for split in splitted %}
                 <div class="col-md-4 col-xs-12">
@@ -31,7 +36,11 @@
         <div class="stick"></div>
         <div class="row">
             <div class='col-md-4 col-xs-12 content'>
-                <p class='title'>{{ content.getName()}}</p>
+                {% if content.link is empty %}
+                    <h1 class='title'>{{ content.getName()}}</h1>
+                {% else %}
+                    <a href="{{ content.link }}"><h1 class='title'>{{ content.getName()}}</h1></a>
+                {% endif %}
                 <div class='advantage'>
                     {% autoescape false %}
                         {{ content.getContent()}}
